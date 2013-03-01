@@ -142,3 +142,9 @@ $LIGHT_RED\u$DEFAULT@$LIGHT_GREEN\h$DEFAULT:$LIGHT_BLUE\w$DEFAULT\
 \$ "
 }
 colors
+
+if [ -d ~/.bash_completion.d ]; then
+    for file in ~/.bash_completion.d/*; do
+        . $file
+    done
+fi
