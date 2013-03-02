@@ -110,6 +110,9 @@ fi
 
 # The below are custom settings
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 colors() {
   local DEFAULT="\[\033[0m\]"
   local BRIGHT="\[\033[1;37m\]"
