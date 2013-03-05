@@ -63,3 +63,21 @@ set laststatus=2
 
 set wildmenu
 set wildmode=list:longest
+
+" Status bar (Shared by pct) {{{
+let s:fancy_status_line_enabled = 0
+if s:fancy_status_line_enabled
+    set statusline=%4*%<\ %1*[%F]
+    set statusline+=%4*\ %5*[%{&encoding}, " encoding
+    set statusline+=%{&fileformat}
+    set statusline+=%{\"\".((exists(\"+bomb\")\ &&\ &bomb)?\",BOM\":\"\").\"\"}
+    set statusline+=]%m%4*%=\ %6*%y%4*\ %3*%l%4*,\ %3*%c%4*\ \<\ %2*%P%4*\ \>
+    highlight User1 ctermfg=red
+    highlight User2 term=underline cterm=underline ctermfg=green
+    highlight User3 term=underline cterm=underline ctermfg=yellow
+    highlight User4 term=underline cterm=underline ctermfg=white
+    highlight User5 ctermfg=cyan
+    highlight User7 ctermfg=white
+endif
+unlet s:fancy_status_line_enabled
+" }}}
