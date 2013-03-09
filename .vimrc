@@ -94,3 +94,8 @@ function! LoadCscope()
 endfunction
 au BufEnter /* call LoadCscope()
 " }}}
+
+" Reselect visual block after indent/outdent {{{
+vnoremap < <gv
+vnoremap > >gv
+" }}}
