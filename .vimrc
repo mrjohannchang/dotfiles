@@ -99,3 +99,7 @@ au BufEnter /* call LoadCscope()
 vnoremap < <gv
 vnoremap > >gv
 " }}}
+
+" Make Y behave like other capitals {{{
+map Y y$
+" }}}
