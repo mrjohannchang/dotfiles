@@ -103,3 +103,8 @@ vnoremap > >gv
 " Make Y behave like other capitals {{{
 map Y y$
 " }}}
+
+" Improve up/down movement on wrapped lines {{{
+nnoremap j gj
+nnoremap k gk
+" }}}
