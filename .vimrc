@@ -108,3 +108,7 @@ map Y y$
 nnoremap j gj
 nnoremap k gk
 " }}}
+
+" Toggling search highlights {{{
+noremap <silent><Leader>/ :nohls<CR>
+" }}}
