@@ -151,3 +151,6 @@ if [ -d ~/.bash_completion.d ]; then
         . $file
     done
 fi
+
+[[ -d $HOME/sdk/android-sdk-linux ]] \
+    && PATH="$PATH:$HOME/sdk/android-sdk-linux/tools:$HOME/sdk/android-sdk-linux/platform-tools"
