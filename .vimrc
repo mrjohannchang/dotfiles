@@ -112,3 +112,7 @@ nnoremap k gk
 " Toggling search highlights {{{
 noremap <silent><Leader>/ :nohls<CR>
 " }}}
+
+" Saving files as root {{{
+cmap w!! %!sudo tee > /dev/null %
+" }}}
