@@ -154,3 +154,9 @@ fi
 
 [[ -d $HOME/sdk/android-sdk-linux ]] \
     && PATH="$PATH:$HOME/sdk/android-sdk-linux/tools:$HOME/sdk/android-sdk-linux/platform-tools"
+
+[[ -d $HOME/.rvm/bin ]] \
+    && PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] \
+    && . "$HOME/.rvm/scripts/rvm" # Load RVM function
