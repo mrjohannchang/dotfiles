@@ -123,3 +123,8 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 " }}}
+
+" Tagbar configs {{{
+let g:tagbar_left = 1
+let g:tagbar_width = 30
+" }}}
