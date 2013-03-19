@@ -128,3 +128,7 @@ nnoremap <C-l> <C-w>l
 let g:tagbar_left = 1
 let g:tagbar_width = 30
 " }}}
+
+" Toggle invisibles (list) {{{
+noremap <Leader>i :set list!<CR>
+" }}}
