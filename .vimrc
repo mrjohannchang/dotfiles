@@ -132,3 +132,12 @@ let g:tagbar_width = 30
 " Toggle invisibles (list) {{{
 noremap <Leader>i :set list!<CR>
 " }}}
+
+" Paste mode toggling configs {{{
+" Toggling paste mode outside insert mode "
+map <Leader>v :set invpaste<CR>:set paste?<CR>
+" Toggling paste mode inside insert mode "
+set pastetoggle=<Leader>v
+" Turning off paste mode when leaving insert
+autocmd InsertLeave * set nopaste
+" }}}
