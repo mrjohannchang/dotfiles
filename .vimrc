@@ -36,6 +36,10 @@ filetype plugin on
 filetype indent on
 
 set background=dark
+if ($TERM == "screen-256color" || $TERM == "xterm-256color")
+    set t_Co=256
+endif
+
 set number        " always show line numbers
 
 set hidden
