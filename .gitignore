@@ -1,0 +1,9 @@
+*.pyc
+.*.swp
+/.vim/.netrwhist
+/.vim/.VimballRecord
+/.vim/bundle
+/.vim/doc/tags
+/.vim/eclim
+/.vim/plugin/eclim.vim
+/bundle
