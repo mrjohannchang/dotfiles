@@ -165,3 +165,9 @@ fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] \
     && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+
+# for virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+[[ -f /usr/local/bin/virtualenvwrapper.sh ]] \
+    && source /usr/local/bin/virtualenvwrapper.sh
