@@ -155,3 +155,18 @@ set pastetoggle=<Leader>v
 " Turning off paste mode when leaving insert
 autocmd InsertLeave * set nopaste
 " }}}
+
+" Vimwiki {{{
+let g:vimwiki_list = [{
+    \ 'path': '~/wikidata/',
+    \ 'syntax': 'pandoc',
+    \ 'ext': '.page',
+    \ 'nested_syntaxes': {
+        \ 'c': 'c',
+        \ 'cpp': 'cpp',
+        \ 'java': 'java',
+        \ 'python': 'python',
+        \ 'scala': 'scala',
+    \ },
+\ }]
+" }}}
