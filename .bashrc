@@ -146,8 +146,12 @@ colors() {
 
   PS1="${TITLEBAR}\
 $LIGHT_RED\u$DEFAULT@$LIGHT_GREEN\h$DEFAULT:$LIGHT_BLUE\w$DEFAULT\
-\$(__git_ps1 \"($GREEN%s$DEFAULT)\")[$CYAN\d$DEFAULT $YELLOW\t$DEFAULT]\n\
-\$ "
+\$(__git_ps1 \"($GREEN%s$DEFAULT)\")[$CYAN\d$DEFAULT $YELLOW\t$DEFAULT]\n"
+  if [ $USER = root ]; then
+      PS1="$PS1# "
+  else
+      PS1="$PS1\$ "
+  fi
 }
 colors
 
