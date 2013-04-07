@@ -155,6 +155,27 @@ $LIGHT_RED\u$DEFAULT@$LIGHT_GREEN\h$DEFAULT:$LIGHT_BLUE\w$DEFAULT\
 }
 colors
 
+fancycwd() {
+    if [ "$PWD" = "/" ] \
+        || [ "$(dirname "$PWD")" = "/" ] \
+        || [ "$(dirname "$(dirname "$PWD")")" = "/" ] \
+        && [ ! "$PWD" = "$HOME" ]; then
+        echo -ne "$PWD"
+    elif [ "$PWD" = "$HOME" ]; then
+        echo -ne "~"
+    elif [ "$(dirname "$PWD")" = "$HOME" ]; then
+        echo -ne ""~"/$(basename "$PWD")"
+    elif [ "$(dirname "$(dirname "$PWD")")" = "$HOME" ]; then
+        echo -ne ""~"/$(basename "$(dirname "$PWD")")/$(basename "$PWD")"
+    else
+        echo -ne "$(basename "$(dirname "$PWD")")/$(basename "$PWD")"
+    fi;
+}
+
+if [ ! -z $TMUX ]; then
+    PROMPT_COMMAND='echo -ne "\033k[$(fancycwd)]\033\\"'
+fi
+
 if [ -d ~/.bash_completion.d ]; then
     for file in ~/.bash_completion.d/*; do
         . $file
