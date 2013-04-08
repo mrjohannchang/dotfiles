@@ -185,6 +185,9 @@ fi
 [[ -d $HOME/sdk/android-sdk-linux ]] \
     && PATH="$PATH:$HOME/sdk/android-sdk-linux/tools:$HOME/sdk/android-sdk-linux/platform-tools"
 
+[[ -d $HOME/.cabal/bin ]] \
+    && PATH="$PATH:$HOME/.cabal/bin"
+
 [[ -d $HOME/.rvm/bin ]] \
     && PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
