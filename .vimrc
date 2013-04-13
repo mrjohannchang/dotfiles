@@ -1,5 +1,13 @@
 set nocompatible
 
+" NeoBundle's configs (1/2) {{{
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+call neobundle#rc(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+" }}}
+
 if (has("gui_running"))
     highlight normal guifg=gray guibg=black
     set guifont=Inconsolata\ Medium\ 11
@@ -169,4 +177,9 @@ let g:vimwiki_list = [{
         \ 'scala': 'scala',
     \ },
 \ }]
+" }}}
+
+" NeoBundle's configs (2/2) {{{
+" Should be always at the end
+NeoBundleCheck
 " }}}
