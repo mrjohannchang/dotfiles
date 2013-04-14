@@ -8,6 +8,8 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 " }}}
 
+NeoBundle 'changyuheng/color-scheme-solarized-for-vim'
+
 if (has("gui_running"))
     highlight normal guifg=gray guibg=black
     set guifont=Inconsolata\ Medium\ 11
