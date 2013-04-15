@@ -9,6 +9,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " }}}
 
 NeoBundle 'changyuheng/color-scheme-solarized-for-vim'
+NeoBundle 'honza/vim-snippets'
+NeoBundle 'SirVer/ultisnips'
 
 if (has("gui_running"))
     highlight normal guifg=gray guibg=black
