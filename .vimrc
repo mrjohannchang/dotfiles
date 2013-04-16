@@ -10,6 +10,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'changyuheng/color-scheme-solarized-for-vim'
 NeoBundle 'honza/vim-snippets'
+NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'SirVer/ultisnips'
 
 if (has("gui_running"))
@@ -181,6 +182,10 @@ let g:vimwiki_list = [{
         \ 'scala': 'scala',
     \ },
 \ }]
+" }}}
+
+" NeoComplete configs {{{
+let g:neocomplete#enable_at_startup = 1
 " }}}
 
 " NeoBundle's configs (2/2) {{{
