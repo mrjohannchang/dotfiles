@@ -9,6 +9,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " }}}
 
 NeoBundle 'changyuheng/color-scheme-solarized-for-vim'
+NeoBundleLazy 'davidhalter/jedi-vim', {'filetypes': ['python']}
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'SirVer/ultisnips'
@@ -186,6 +187,13 @@ let g:vimwiki_list = [{
 
 " NeoComplete configs {{{
 let g:neocomplete#enable_at_startup = 1
+" }}}
+
+" jedi-vim configs {{{
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#completions_enabled = 0
+let g:jedi#popup_select_first = 0
+autocmd FileType python setlocal completeopt-=preview
 " }}}
 
 " NeoBundle's configs (2/2) {{{
