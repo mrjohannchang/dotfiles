@@ -11,6 +11,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'changyuheng/color-scheme-solarized-for-vim'
 NeoBundleLazy 'davidhalter/jedi-vim', {'filetypes': ['python']}
 NeoBundle 'honza/vim-snippets'
+NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'SirVer/ultisnips'
 
