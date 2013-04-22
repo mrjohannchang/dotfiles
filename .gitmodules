@@ -2,3 +2,7 @@
 	path = .vim/bundle/neobundle.vim
 	url = https://github.com/Shougo/neobundle.vim.git
 	branch = master
+[submodule "bundle/dircolors-solarized"]
+	path = bundle/dircolors-solarized
+	url = https://github.com/seebi/dircolors-solarized.git
+	branch = master

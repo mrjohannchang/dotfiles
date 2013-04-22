@@ -201,3 +201,5 @@ export PROJECT_HOME=$HOME/Devel
     && source /usr/local/bin/virtualenvwrapper.sh
 
 mkdircd() { mkdir -p "$@" && eval cd "\"\$$#\""; }
+
+[ -f "$HOME/.dircolorsdb" ] && eval $(dircolors "$HOME/.dircolorsdb")

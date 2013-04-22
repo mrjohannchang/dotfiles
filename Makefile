@@ -29,6 +29,11 @@ uninstall:
 		echo ".bashrc uninstalled."; \
 	fi
 
+	@if [ -L ~/.dircolorsdb ]; then \
+		unlink ~/.dircolorsdb; \
+		echo "dircolorsdb uninstalled."; \
+	fi
+
 	@if [ -L ~/.pentadactylrc ]; then \
 		unlink ~/.pentadactylrc; \
 		echo ".pentadactylrc uninstalled."; \
@@ -86,6 +91,18 @@ install: uninstall
 	fi
 	@ln -fs "$$PWD"/.bashrc ~/.bashrc
 	@echo ".bashrc installed."
+
+	@echo -n "Install Solaried dircolorsdb [y/N]? "
+	@read ans; \
+	if [ "$${ans,,}" = "y" ]; then \
+		if [ -e ~/.dircolorsdb ] && [ ! -L ~/.dircolorsdb ]; then \
+			rm -rf ~/.dircolorsdb.bak; \
+			mv ~/.dircolorsdb ~/.dircolorsdb.bak; \
+		fi; \
+		ln -fs "$$PWD"/bundle/dircolors-solarized/dircolors.ansi-light \
+			~/.dircolorsdb; \
+		echo ".dircolorsdb installed."; \
+	fi
 
 	@if [ -e ~/.pentadactylrc ] && [ ! -L ~/.pentadactylrc ]; then \
 		rm -rf ~/.pentadactylrc.bak; \
