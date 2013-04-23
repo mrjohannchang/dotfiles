@@ -104,6 +104,14 @@ install: uninstall
 		echo ".dircolorsdb installed."; \
 	fi
 
+	@echo "Installing Solarized color scheme to current Gnome Terminal profile,"
+	@echo -n "this cannot be undone. Proceed to install [y/N]? "
+	@read ans; \
+	if [ "$${ans,,}" = "y" ]; then \
+		bundle/gnome-terminal-colors-solarized/set_light.sh; \
+		echo "Gnome Terminal is now solarized."; \
+	fi
+
 	@if [ -e ~/.pentadactylrc ] && [ ! -L ~/.pentadactylrc ]; then \
 		rm -rf ~/.pentadactylrc.bak; \
 		mv ~/.pentadactylrc ~/.pentadactylrc.bak; \
