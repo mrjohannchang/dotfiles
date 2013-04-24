@@ -9,6 +9,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " }}}
 
 NeoBundle 'changyuheng/color-scheme-solarized-for-vim'
+NeoBundle 'changyuheng/cscope.vim'
 NeoBundleLazy 'davidhalter/jedi-vim', {'filetypes': ['python']}
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
