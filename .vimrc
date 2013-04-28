@@ -14,6 +14,7 @@ NeoBundleLazy 'davidhalter/jedi-vim', {'filetypes': ['python']}
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/vimproc', {
             \ 'build' : {
