@@ -15,6 +15,7 @@ NeoBundle 'honza/vim-snippets'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'majutsushi/tagbar'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/vimproc', {
             \ 'build' : {
@@ -168,6 +169,7 @@ nnoremap <C-l> <C-w>l
 " Tagbar configs {{{
 let g:tagbar_left = 1
 let g:tagbar_width = 30
+noremap <Leader>t :TagbarToggle<CR>
 " }}}
 
 " Toggle invisibles (list) {{{
@@ -223,6 +225,12 @@ call unite#filters#matcher_default#use(['matcher_fuzzy'])
 nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
 nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
 nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+" }}}
+
+" Tagbar configs {{{
+let g:tagbar_left = 1
+let g:tagbar_width = 30
+noremap <Leader>t :TagbarToggle<CR>
 " }}}
 
 " NeoBundle's configs (2/2) {{{
