@@ -18,6 +18,7 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'rstacruz/sparkup', {'rtp': 'vim'}
+NeoBundle 'sayuan/vimwiki'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/vimproc', {
             \ 'build' : {
@@ -233,6 +234,21 @@ nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
 let g:tagbar_left = 1
 let g:tagbar_width = 30
 noremap <Leader>t :TagbarToggle<CR>
+" }}}
+
+" vimwiki {{{
+let g:vimwiki_list = [{
+    \ 'path': '~/wikidata/',
+    \ 'syntax': 'pandoc',
+    \ 'ext': '.page',
+    \ 'nested_syntaxes': {
+        \ 'c': 'c',
+        \ 'cpp': 'cpp',
+        \ 'java': 'java',
+        \ 'python': 'python',
+        \ 'scala': 'scala',
+    \ },
+\ }]
 " }}}
 
 " NeoBundle's configs (2/2) {{{
