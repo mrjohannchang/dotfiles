@@ -19,6 +19,7 @@ NeoBundle 'majutsushi/tagbar'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'rstacruz/sparkup', {'rtp': 'vim'}
 NeoBundle 'sayuan/vimwiki'
+NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/vimproc', {
             \ 'build' : {
@@ -249,6 +250,10 @@ let g:vimwiki_list = [{
         \ 'scala': 'scala',
     \ },
 \ }]
+" }}}
+
+" NERD Commenter configs {{{
+let NERDSpaceDelims=1
 " }}}
 
 " NeoBundle's configs (2/2) {{{
