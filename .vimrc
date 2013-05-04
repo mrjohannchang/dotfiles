@@ -31,6 +31,7 @@ NeoBundle 'Shougo/vimproc', {
             \ }
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'SirVer/ultisnips'
+NeoBundle 'thinca/vim-template'
 
 if (has("gui_running"))
     highlight normal guifg=gray guibg=black
