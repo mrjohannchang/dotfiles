@@ -155,6 +155,10 @@ $LIGHT_RED\u$DEFAULT@$LIGHT_GREEN\h$DEFAULT:$LIGHT_BLUE\w$DEFAULT\
 }
 colors
 
+# Binding C-t to fire search forward {{{
+bind '"\C-t": forward-search-history'
+# }}}
+
 fancycwd() {
     if [ "$PWD" = "/" ] \
         || [ "$(dirname "$PWD")" = "/" ] \
