@@ -207,3 +207,11 @@ export PROJECT_HOME=$HOME/Devel
 mkdircd() { mkdir -p "$@" && eval cd "\"\$$#\""; }
 
 [ -f "$HOME/.dircolorsdb" ] && eval $(dircolors "$HOME/.dircolorsdb")
+
+# Refresh SSH agent in case it was dead {{{
+if [ ! -z "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ] ; then
+    unlink "$HOME/.ssh/agent_sock" 2>/dev/null
+    ln -s "$SSH_AUTH_SOCK" "$HOME/.ssh/agent_sock"
+    export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
+fi
+# }}}
