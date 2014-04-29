@@ -1,4 +1,4 @@
-set guioptions+=Bn
+set guioptions+=BnT
 
 nnoremap <C-c> <C-v><C-c>
 nnoremap <C-v> <C-v><C-v>
