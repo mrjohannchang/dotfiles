@@ -1,3 +1,22 @@
 set popups=resized
 set cpt=l
-set! browser.tabs.closeButtons=2
+set tabnumbers
+
+noremap <C-a> <Insert><C-a><Insert>
+
+noremap <C-c> <C-v><C-c>
+noremap <C-v> <C-v><C-v>
+noremap <C-x> <C-v><C-x>
+
+inoremap <C-c> <C-v><C-c>
+inoremap <C-v> <C-v><C-v>
+inoremap <C-x> <C-v><C-x>
+
+cnoremap <C-c> <C-v><C-c>
+cnoremap <C-v> <C-v><C-v>
+cnoremap <C-x> <C-v><C-x>
+
+nnoremap <C-s> :stop<CR>
+
+autocmd LocationChange .*                  js modes.passAllKeys = false
+autocmd LocationChange mail\\.google\\.com js modes.passAllKeys = true
