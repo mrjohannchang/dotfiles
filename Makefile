@@ -59,6 +59,11 @@ uninstall:
 		echo ".vimrc uninstalled."; \
 	fi
 
+	@if [ -L ~/.vimperatorrc ]; then \
+		unlink ~/.vimperatorrc; \
+		echo ".vimperatorrc uninstalled."; \
+	fi
+
 	@if [ -L ~/.fonts/PowerlineSymbols.otf ] \
 		|| [ -L ~/.config/fontconfig/conf.d/10-powerline-symbols.conf ]; then \
 		if [ -L ~/.fonts/PowerlineSymbols.otf ]; then \
@@ -146,6 +151,13 @@ install: uninstall
 	fi
 	@ln -fs "$$PWD"/.vimrc ~/.vimrc
 	@echo ".vimrc installed."
+
+	@if [ -e ~/.vimperatorrc ] && [ ! -L ~/.vimperatorrc ]; then \
+		rm -rf ~/.vimperatorrc.bak; \
+		mv ~/.vimperatorrc ~/.vimperatorrc.bak; \
+	fi
+	@ln -fs "$$PWD"/.vimperatorrc ~/.vimperatorrc
+	@echo ".vimperatorrc installed."
 
 	@if [ ! -d ~/.fonts ]; then \
 		rm -rf ~/.fonts; \
