@@ -215,3 +215,8 @@ if [ ! -z "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ] ; th
     export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
 fi
 # }}}
+
+# Add node.js executables {{{
+[[ -d "$HOME/node_modules/.bin" ]] \
+    && PATH="$PATH:$HOME/node_modules/.bin"
+# }}}
