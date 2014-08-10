@@ -1,6 +1,9 @@
 SHELL = /bin/bash
 
 
+.PHONY: default clean uninstall install
+
+
 default:
 
 	@git submodule update --init --recursive --remote
