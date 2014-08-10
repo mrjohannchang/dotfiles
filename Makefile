@@ -34,6 +34,11 @@ uninstall:
 		echo "dircolorsdb uninstalled."; \
 	fi
 
+	@if [ -L ~/.fonts.conf ]; then \
+		unlink ~/.fonts.conf; \
+		echo ".fonts.conf uninstalled."; \
+	fi
+
 	@if [ -L ~/.pentadactylrc ]; then \
 		unlink ~/.pentadactylrc; \
 		echo ".pentadactylrc uninstalled."; \
@@ -158,6 +163,13 @@ install: uninstall
 	fi
 	@ln -fs "$$PWD"/.vimperatorrc ~/.vimperatorrc
 	@echo ".vimperatorrc installed."
+
+	@if [ -e ~/.fonts.conf ] && [ ! -L ~/.fonts.conf ]; then \
+		rm -rf ~/.fonts.conf.bak; \
+		mv ~/.fonts.conf ~/.fonts.conf.bak; \
+	fi
+	@ln -fs "$$PWD"/.fonts.conf ~/.fonts.conf
+	@echo ".fonts.conf installed."
 
 	@if [ ! -d ~/.fonts ]; then \
 		rm -rf ~/.fonts; \
