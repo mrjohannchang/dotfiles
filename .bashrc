@@ -220,3 +220,5 @@ fi
 [[ -d "$HOME/node_modules/.bin" ]] \
     && PATH="$PATH:$HOME/node_modules/.bin"
 # }}}
+
+export ANDROID_HOME=$HOME/sdk/android-sdk-linux
