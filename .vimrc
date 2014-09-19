@@ -33,6 +33,7 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'thinca/vim-template'
+NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
 
 if (has("gui_running"))
