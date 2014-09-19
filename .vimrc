@@ -263,3 +263,8 @@ let NERDSpaceDelims=1
 " Should be always at the end
 NeoBundleCheck
 " }}}
+
+" vim-airline's configs {{{
+let g:airline#extensions#branch#enabled = 1
+let g:airline_powerline_fonts = 1
+" }}}
