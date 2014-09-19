@@ -82,9 +82,6 @@ uninstall:
 		fi; \
 		echo "Powerline uninstalled."; \
 	fi
-	@if [ -L ~/.config/powerline/config.json ]; then \
-		unlink ~/.config/powerline/config.json; \
-	fi
 
 	@echo Done.
 
@@ -185,11 +182,6 @@ install: uninstall
 	@ln -fs "$$PWD"/.vim/bundle/powerline/font/PowerlineSymbols.otf ~/.fonts
 	@ln -fs "$$PWD"/.vim/bundle/powerline/font/10-powerline-symbols.conf \
 		~/.config/fontconfig/conf.d
-	@if [ ! -d ~/.config/powerline ]; then \
-		rm -rf ~/.config/powerline; \
-		mkdir -p ~/.config/powerline; \
-	fi
-	@ln -fs "$$PWD"/.config/powerline/config.json ~/.config/powerline
 	@echo "Powerline installed."
 
 	@echo Done.
