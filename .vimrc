@@ -8,6 +8,7 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 " }}}
 
+NeoBundle 'bling/vim-airline'
 NeoBundle 'changyuheng/color-scheme-holokai-for-vim'
 NeoBundle 'changyuheng/color-scheme-solarized-for-vim'
 NeoBundle 'changyuheng/cscope.vim'
