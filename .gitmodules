@@ -8,5 +8,5 @@
 	branch = master
 [submodule "bundle/gnome-terminal-colors-solarized"]
 	path = bundle/gnome-terminal-colors-solarized
-	url = https://github.com/sigurdga/gnome-terminal-colors-solarized.git
+	url = https://github.com/Anthony25/gnome-terminal-colors-solarized.git
 	branch = master
