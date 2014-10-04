@@ -21,7 +21,6 @@ NeoBundle 'mileszs/ack.vim'
 NeoBundle 'rstacruz/sparkup', {'rtp': 'vim'}
 NeoBundle 'sayuan/vimwiki'
 NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/vimproc', {
             \ 'build' : {
             \     'windows' : 'make -f make_mingw32.mak',
@@ -206,10 +205,6 @@ let g:vimwiki_list = [{
         \ 'scala': 'scala',
     \ },
 \ }]
-" }}}
-
-" NeoComplete configs {{{
-let g:neocomplete#enable_at_startup = 1
 " }}}
 
 " jedi-vim configs {{{
