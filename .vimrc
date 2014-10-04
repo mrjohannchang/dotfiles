@@ -33,6 +33,7 @@ NeoBundle 'SirVer/ultisnips'
 NeoBundle 'thinca/vim-template'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'Valloric/YouCompleteMe'
 
 if (has("gui_running"))
     highlight normal guifg=gray guibg=black
