@@ -12,7 +12,6 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'changyuheng/color-scheme-holokai-for-vim'
 NeoBundle 'changyuheng/color-scheme-solarized-for-vim'
 NeoBundle 'changyuheng/cscope.vim'
-NeoBundleLazy 'davidhalter/jedi-vim', {'filetypes': ['python']}
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'Lokaltog/vim-easymotion'
@@ -205,13 +204,6 @@ let g:vimwiki_list = [{
         \ 'scala': 'scala',
     \ },
 \ }]
-" }}}
-
-" jedi-vim configs {{{
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#completions_enabled = 0
-let g:jedi#popup_select_first = 0
-autocmd FileType python setlocal completeopt-=preview
 " }}}
 
 " vim-easy-align configs {{{
