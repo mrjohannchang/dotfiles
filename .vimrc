@@ -255,3 +255,7 @@ nnoremap <F5> :GundoToggle<CR>
 " CtrlP configs {{{
 let g:ctrlp_map = '<Leader>p'
 " }}}
+
+" syntastic {{{
+let g:syntastic_java_checkers=['checkstyle']
+" }}}
