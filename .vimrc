@@ -22,7 +22,6 @@ NeoBundle 'mileszs/ack.vim'
 NeoBundle 'rstacruz/sparkup', {'rtp': 'vim'}
 NeoBundle 'sayuan/vimwiki'
 NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'Shougo/unite.vim'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'thinca/vim-template'
@@ -205,17 +204,6 @@ let g:vimwiki_list = [{
 " vim-easy-align configs {{{
 vnoremap <Enter> :EasyAlign<Enter>
 vnoremap <Leader>a <Plug>(EasyAlign)
-" }}}
-
-" Unite configs {{{
-let g:unite_source_rec_max_cache_files = 0
-call unite#custom#source('file_rec,file_rec/async',
-            \ 'max_candidates', 0)
-let g:unite_source_history_yank_enable = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
-nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
 " }}}
 
 " Tagbar configs {{{
