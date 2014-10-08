@@ -32,6 +32,7 @@ NeoBundle 'Shougo/vimproc', {
             \ }
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'SirVer/ultisnips'
+NeoBundle 'sjl/gundo.vim'
 NeoBundle 'thinca/vim-template'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
@@ -263,4 +264,8 @@ let g:airline_theme = 'solarized'
 
 " UltiSnips configs {{{
 let g:UltiSnipsExpandTrigger="<c-j>"
+" }}}
+
+" Gundo configs {{{
+nnoremap <F5> :GundoToggle<CR>
 " }}}
