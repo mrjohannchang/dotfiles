@@ -16,6 +16,7 @@ NeoBundle 'dsolstad/vim-wombat256i'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'jlanzarotta/bufexplorer'
 NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'mileszs/ack.vim'
@@ -249,4 +250,8 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 
 " Gundo configs {{{
 nnoremap <F5> :GundoToggle<CR>
+" }}}
+
+" CtrlP configs {{{
+let g:ctrlp_map = '<Leader>p'
 " }}}
