@@ -22,6 +22,7 @@ NeoBundle 'mileszs/ack.vim'
 NeoBundle 'rstacruz/sparkup', {'rtp': 'vim'}
 NeoBundle 'sayuan/vimwiki'
 NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'thinca/vim-template'
