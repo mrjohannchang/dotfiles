@@ -222,3 +222,5 @@ fi
 # }}}
 
 export ANDROID_HOME=$HOME/sdk/android-sdk-linux
+
+export GOPATH=$HOME/go
