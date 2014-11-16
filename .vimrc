@@ -1,36 +1,54 @@
 set nocompatible
 
-" NeoBundle's configs (1/2) {{{
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-call neobundle#rc(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-" }}}
+" Vundle's configs (1/2) {{{
+"
+" required
+filetype off
 
-NeoBundle 'bling/vim-airline'
-NeoBundle 'changyuheng/color-scheme-holokai-for-vim'
-NeoBundle 'changyuheng/color-scheme-solarized-for-vim'
-NeoBundle 'changyuheng/cscope.vim'
-NeoBundle 'dsolstad/vim-wombat256i'
-NeoBundle 'fatih/vim-go'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'jlanzarotta/bufexplorer'
-NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'rstacruz/sparkup', {'rtp': 'vim'}
-NeoBundle 'sayuan/vimwiki'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'sjl/gundo.vim'
-NeoBundle 'thinca/vim-template'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'Valloric/YouCompleteMe'
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" plugin on GitHub repo
+Plugin 'bling/vim-airline'
+Plugin 'changyuheng/color-scheme-holokai-for-vim'
+Plugin 'changyuheng/color-scheme-solarized-for-vim'
+Plugin 'changyuheng/cscope.vim'
+Plugin 'dsolstad/vim-wombat256i'
+Plugin 'fatih/vim-go'
+Plugin 'honza/vim-snippets'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'majutsushi/tagbar'
+Plugin 'mileszs/ack.vim'
+
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim'}
+
+Plugin 'sayuan/vimwiki'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/syntastic'
+Plugin 'SirVer/ultisnips'
+Plugin 'sjl/gundo.vim'
+Plugin 'thinca/vim-template'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'Valloric/YouCompleteMe'
+
+" All of your Plugins must be added before the following line, required
+call vundle#end()
+
+" }}}
 
 if (has("gui_running"))
     highlight normal guifg=gray guibg=black
@@ -232,11 +250,6 @@ let g:vimwiki_list = [{
 
 " NERD Commenter configs {{{
 let NERDSpaceDelims=1
-" }}}
-
-" NeoBundle's configs (2/2) {{{
-" Should be always at the end
-NeoBundleCheck
 " }}}
 
 " vim-airline's configs {{{
