@@ -223,4 +223,9 @@ fi
 
 export ANDROID_HOME=$HOME/sdk/android-sdk-linux
 
-export GOPATH=$HOME/go
+# Go {{{
+export GOPATH=$HOME/.go
+export GOBIN=${GOPATH}/bin
+[[ -d ${GOBIN} ]] \
+    && PATH="$PATH:$GOBIN"
+# }}}
