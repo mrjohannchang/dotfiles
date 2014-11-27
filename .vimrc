@@ -263,7 +263,7 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 " }}}
 
 " Gundo configs {{{
-nnoremap <F5> :GundoToggle<CR>
+nnoremap <F6> :GundoToggle<CR>
 " }}}
 
 " CtrlP configs {{{
