@@ -277,3 +277,8 @@ let g:ctrlp_regexp = 1
 " syntastic {{{
 let g:syntastic_java_checkers=['checkstyle']
 " }}}
+
+" bufExplorer {{{
+let g:bufExplorerShowRelativePath=1  " Show relative paths.
+let g:bufExplorerSplitBelow=1        " Split new window below current.
+" }}}
