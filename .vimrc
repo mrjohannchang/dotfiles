@@ -127,7 +127,6 @@ set wildmenu
 set wildmode=list:longest
 
 set cursorcolumn
-set cursorline
 
 " Status bar (Shared by pct) {{{
 let s:fancy_status_line_enabled = 0
