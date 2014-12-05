@@ -178,7 +178,7 @@ noremap <silent><Leader>/ :nohls<CR>
 " }}}
 
 " Saving files as root {{{
-cmap w!! %!sudo tee > /dev/null %
+cnoremap w!! %!sudo tee > /dev/null %
 " }}}
 
 " Easy split navigation {{{
@@ -280,4 +280,16 @@ let g:syntastic_java_checkers=['checkstyle']
 " bufExplorer {{{
 let g:bufExplorerShowRelativePath=1  " Show relative paths.
 let g:bufExplorerSplitBelow=1        " Split new window below current.
+" }}}
+
+" Protect your fat fingers from the evils of <F1> {{{
+" I can type :help on my own, thanks.
+noremap <F1> <Esc>
+" }}}
+
+" Better comand-line editing {{{
+cnoremap <C-j> <t_kd>
+cnoremap <C-k> <t_ku>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
 " }}}
