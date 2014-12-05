@@ -105,6 +105,7 @@ set hidden
 
 behave xterm
 set autoindent    " always set autoindenting on
+set autoread
 set backspace=start,indent,eol
 set softtabstop=4
 "set copyindent    " copy the previous indentation on autoindenting
