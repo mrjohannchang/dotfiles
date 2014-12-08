@@ -32,6 +32,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'majutsushi/tagbar'
 Plugin 'mileszs/ack.vim'
 Plugin 'milkypostman/vim-togglelist'
+Plugin 'tomasr/molokai'
 
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
@@ -177,7 +178,7 @@ nnoremap k gk
 " }}}
 
 " Toggling search highlights {{{
-noremap <silent><Leader>/ :nohls<CR>
+noremap <silent> <Leader>/ :nohls<CR>
 " }}}
 
 " Saving files as root {{{
@@ -194,7 +195,7 @@ nnoremap <C-l> <C-w>l
 " Tagbar configs {{{
 let g:tagbar_left = 1
 let g:tagbar_width = 30
-noremap <Leader>t :TagbarToggle<CR>
+noremap <silent> <Leader>t :TagbarToggle<CR>
 " }}}
 
 " Toggle invisibles (list) {{{
@@ -228,12 +229,6 @@ let g:vimwiki_list = [{
 " vim-easy-align configs {{{
 vnoremap <Enter> :EasyAlign<Enter>
 vnoremap <Leader>a <Plug>(EasyAlign)
-" }}}
-
-" Tagbar configs {{{
-let g:tagbar_left = 1
-let g:tagbar_width = 30
-noremap <Leader>t :TagbarToggle<CR>
 " }}}
 
 " vimwiki {{{
@@ -303,5 +298,5 @@ cnoremap <C-e> <End>
 let g:buffergator_show_full_directory_path = 0
 let g:buffergator_suppress_keymaps = 1
 let g:buffergator_viewport_split_policy = 'R'
-nnoremap <silent><Leader>b :BuffergatorToggle<CR>
+nnoremap <silent> <Leader>b :BuffergatorToggle<CR>
 " }}}
