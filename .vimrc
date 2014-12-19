@@ -246,7 +246,7 @@ let g:vimwiki_list = [{
 " }}}
 
 " NERD Commenter configs {{{
-let NERDSpaceDelims=1
+let NERDSpaceDelims = 1
 " }}}
 
 " vim-airline's configs {{{
@@ -256,7 +256,7 @@ let g:airline_theme = 'solarized'
 " }}}
 
 " UltiSnips configs {{{
-let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsExpandTrigger = "<C-j>"
 " }}}
 
 " Gundo configs {{{
@@ -271,12 +271,13 @@ let g:ctrlp_regexp = 1
 " }}}
 
 " syntastic {{{
-let g:syntastic_java_checkers=['checkstyle']
+let g:syntastic_java_checkers = ['checkstyle']
 " }}}
 
 " bufExplorer {{{
-let g:bufExplorerShowRelativePath=1  " Show relative paths.
-let g:bufExplorerSplitBelow=1        " Split new window below current.
+let g:bufExplorerShowRelativePath = 1  " Show relative paths.
+let g:bufExplorerSplitBelow = 1        " Split new window below current.
+let g:bufExplorerSplitOutPathName = 0
 " }}}
 
 " Protect your fat fingers from the evils of <F1> {{{
