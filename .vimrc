@@ -131,6 +131,8 @@ set wildmode=list:longest
 
 set cursorcolumn
 
+set completeopt-=preview
+
 " Status bar (Shared by pct) {{{
 let s:fancy_status_line_enabled = 0
 if s:fancy_status_line_enabled
