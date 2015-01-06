@@ -229,3 +229,9 @@ export GOBIN=${GOPATH}/bin
 [[ -d ${GOBIN} ]] \
     && PATH="$PATH:$GOBIN"
 # }}}
+
+# Java {{{
+export JAVA8_HOME="/usr/lib/jvm/java-8-oracle"
+export JAVA7_HOME="/usr/lib/jvm/java-7-oracle"
+export JAVA_HOME="$JAVA8_HOME"
+# }}}
