@@ -286,6 +286,7 @@ let g:bufExplorerSplitOutPathName = 0
 " Protect your fat fingers from the evils of <F1> {{{
 " I can type :help on my own, thanks.
 noremap <F1> <Esc>
+inoremap <F1> <lt>F1>
 " }}}
 
 " Better comand-line editing {{{
