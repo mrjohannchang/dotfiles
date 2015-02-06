@@ -28,7 +28,7 @@ make uninstall
 
 ## License
 
-Everything in this repository are repected to their own licenses if exist or are
-under GPLv3.
+Except where otherwise noted, all parts of this software is licensed under the
+[MIT license](http://opensource.org/licenses/MIT).
 
-© 2014 Chang Yu-heng
+© 2015 Chang Yu-heng
