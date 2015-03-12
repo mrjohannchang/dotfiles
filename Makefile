@@ -83,6 +83,11 @@ uninstall:
 		echo "Noto Sans' fontconfig uninstalled."; \
 	fi
 
+	@if [ -L ~/.npmrc ]; then \
+		unlink ~/.npmrc; \
+		echo ".npmrc uninstalled."; \
+	fi
+
 	@echo Done.
 
 
@@ -180,5 +185,12 @@ install: uninstall
 	@ln -fs "$$PWD"/.config/fontconfig/conf.d/20-noto-cjk.conf \
 		~/.config/fontconfig/conf.d
 	@echo "Noto Sans' fontconfig installed."
+
+	@if [ -e ~/.npmrc ] && [ ! -L ~/.npmrc ]; then \
+		rm -rf ~/.npmrc.bak; \
+		mv ~/.npmrc ~/.npmrc.bak; \
+	fi
+	@ln -fs "$$PWD"/.npmrc ~/.npmrc
+	@echo ".npmrc installed."
 
 	@echo Done.

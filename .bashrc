@@ -217,8 +217,8 @@ fi
 # }}}
 
 # Add node.js executables {{{
-[[ -d "$HOME/node_modules/.bin" ]] \
-    && PATH="$PATH:$HOME/node_modules/.bin"
+[[ -d "$HOME/.npm-packages/bin" ]] \
+    && PATH="$PATH:$HOME/.npm-packages/bin"
 # }}}
 
 export ANDROID_HOME=$HOME/sdk/android-sdk-linux
