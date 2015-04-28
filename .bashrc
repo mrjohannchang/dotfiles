@@ -221,7 +221,7 @@ fi
     && PATH="$PATH:$HOME/.npm-packages/bin"
 # }}}
 
-export ANDROID_HOME=$HOME/sdk/android-sdk-linux
+export ANDROID_HOME=$HOME/Android/Sdk
 
 # Go {{{
 export GOPATH=$HOME/.go
