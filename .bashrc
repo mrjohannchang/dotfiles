@@ -187,7 +187,8 @@ if [ -d ~/.bash_completion.d ]; then
 fi
 
 [[ -d $HOME/sdk/android-sdk-linux ]] \
-    && PATH="$PATH:$HOME/sdk/android-sdk-linux/tools:$HOME/sdk/android-sdk-linux/platform-tools"
+    && PATH="$PATH:$HOME/sdk/android-sdk-linux/tools:$HOME/sdk/android-sdk-linux/platform-tools" \
+    && export ANDROID_HOME=$HOME/sdk/android-sdk-linux
 
 [[ -d $HOME/.cabal/bin ]] \
     && PATH="$PATH:$HOME/.cabal/bin"
@@ -220,8 +221,6 @@ fi
 [[ -d "$HOME/node_modules/.bin" ]] \
     && PATH="$PATH:$HOME/node_modules/.bin"
 # }}}
-
-export ANDROID_HOME=$HOME/Android/Sdk
 
 # Go {{{
 export GOPATH=$HOME/.go
