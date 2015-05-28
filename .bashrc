@@ -235,3 +235,9 @@ export JAVA8_HOME="/usr/lib/jvm/java-8-oracle"
 export JAVA7_HOME="/usr/lib/jvm/java-7-oracle"
 export JAVA_HOME="$JAVA8_HOME"
 # }}}
+
+# Node Version Manager {{{
+if [ -f ~/.nvm/nvm.sh ]; then
+    . ~/.nvm/nvm.sh
+fi
+# }}}
