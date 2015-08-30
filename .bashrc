@@ -118,6 +118,10 @@ fi
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+if [ -f /usr/local/etc/bash_completion ]; then
+    . /usr/local/etc/bash_completion
+fi
+
 colors() {
   local DEFAULT="\[\033[0m\]"
   local BRIGHT="\[\033[1;37m\]"
@@ -240,3 +244,11 @@ if [ -f ~/.nvm/nvm.sh ]; then
     . ~/.nvm/nvm.sh
 fi
 # }}}
+
+# Darwin specific tweaks
+if [[ "${OSTYPE,,}" == darwin* ]]; then
+    # ls color
+    alias ls='ls -G'
+    # updatedb
+    alias updatedb='sudo /usr/libexec/locate.updatedb'
+fi

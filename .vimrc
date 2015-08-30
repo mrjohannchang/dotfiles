@@ -59,7 +59,7 @@ call vundle#end()
 
 if (has("gui_running"))
     highlight normal guifg=gray guibg=black
-    set guifont=Inconsolata\ Medium\ 11
+    set guifont=Monaco:h13
 
     set diffexpr=MyDiff()
     function MyDiff()

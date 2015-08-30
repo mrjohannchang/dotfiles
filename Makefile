@@ -1,4 +1,4 @@
-SHELL = /bin/bash
+SHELL = bash
 
 
 .PHONY: default clean uninstall install
@@ -32,11 +32,6 @@ uninstall:
 		echo ".bashrc uninstalled."; \
 	fi
 
-	@if [ -L ~/.dircolorsdb ]; then \
-		unlink ~/.dircolorsdb; \
-		echo "dircolorsdb uninstalled."; \
-	fi
-
 	@if [ -L ~/.pentadactylrc ]; then \
 		unlink ~/.pentadactylrc; \
 		echo ".pentadactylrc uninstalled."; \
@@ -67,23 +62,30 @@ uninstall:
 		echo ".vimperatorrc uninstalled."; \
 	fi
 
-	@if [ -L ~/.fonts/PowerlineSymbols.otf ] \
-		|| [ -L ~/.config/fontconfig/conf.d/10-powerline-symbols.conf ]; then \
-		if [ -L ~/.fonts/PowerlineSymbols.otf ]; then \
-			unlink ~/.fonts/PowerlineSymbols.otf; \
+	@if [[ "$${OSTYPE,,}" == linux* ]]; then \
+		if [ -L ~/.dircolorsdb ]; then \
+			unlink ~/.dircolorsdb; \
+			echo "dircolorsdb uninstalled."; \
 		fi; \
-		if [ -L ~/.config/fontconfig/conf.d/10-powerline-symbols.conf ]; then \
-			unlink ~/.config/fontconfig/conf.d/10-powerline-symbols.conf; \
+		\
+		if [ -L ~/.fonts/PowerlineSymbols.otf ] || \
+			[ -L ~/.config/fontconfig/conf.d/10-powerline-symbols.conf ]; then \
+			if [ -L ~/.fonts/PowerlineSymbols.otf ]; then \
+				unlink ~/.fonts/PowerlineSymbols.otf; \
+			fi; \
+			if [ -L ~/.config/fontconfig/conf.d/10-powerline-symbols.conf ]; then \
+				unlink ~/.config/fontconfig/conf.d/10-powerline-symbols.conf; \
+			fi; \
+			echo "Powerline's font uninstalled."; \
 		fi; \
-		echo "Powerline's font uninstalled."; \
+		\
+		if [ -L ~/.config/fontconfig/conf.d/20-noto-cjk.conf ]; then \
+			unlink ~/.config/fontconfig/conf.d/20-noto-cjk.conf; \
+			echo "Noto Sans' fontconfig uninstalled."; \
+		fi; \
 	fi
 
-	@if [ -L ~/.config/fontconfig/conf.d/20-noto-cjk.conf ]; then \
-		unlink ~/.config/fontconfig/conf.d/20-noto-cjk.conf; \
-		echo "Noto Sans' fontconfig uninstalled."; \
-	fi
-
-	@echo Done.
+	@echo "uninstallation completed."
 
 
 install: uninstall
@@ -101,26 +103,6 @@ install: uninstall
 	fi
 	@ln -fs "$$PWD"/.bashrc ~/.bashrc
 	@echo ".bashrc installed."
-
-	@echo -n "Install Solaried dircolorsdb [y/N]? "
-	@read ans; \
-	if [ "$${ans,,}" = "y" ]; then \
-		if [ -e ~/.dircolorsdb ] && [ ! -L ~/.dircolorsdb ]; then \
-			rm -rf ~/.dircolorsdb.bak; \
-			mv ~/.dircolorsdb ~/.dircolorsdb.bak; \
-		fi; \
-		ln -fs "$$PWD"/bundle/dircolors-solarized/dircolors.ansi-light \
-			~/.dircolorsdb; \
-		echo ".dircolorsdb installed."; \
-	fi
-
-	@echo "Installing Solarized color scheme to current Gnome Terminal profile,"
-	@echo -n "this cannot be undone. Proceed to install [y/N]? "
-	@read ans; \
-	if [ "$${ans,,}" = "y" ]; then \
-		bundle/gnome-terminal-colors-solarized/set_light.sh; \
-		echo "Gnome Terminal is now solarized."; \
-	fi
 
 	@if [ -e ~/.pentadactylrc ] && [ ! -L ~/.pentadactylrc ]; then \
 		rm -rf ~/.pentadactylrc.bak; \
@@ -164,21 +146,44 @@ install: uninstall
 	@ln -fs "$$PWD"/.vimperatorrc ~/.vimperatorrc
 	@echo ".vimperatorrc installed."
 
-	@if [ ! -d ~/.fonts ]; then \
-		rm -rf ~/.fonts; \
-		mkdir ~/.fonts; \
+	@if [[ "$${OSTYPE,,}" == linux* ]]; then \
+		echo -n "Install Solaried dircolorsdb [y/N]? " \
+		read ans; \
+		if [ "$${ans,,}" = "y" ]; then \
+			if [ -e ~/.dircolorsdb ] && [ ! -L ~/.dircolorsdb ]; then \
+				rm -rf ~/.dircolorsdb.bak; \
+				mv ~/.dircolorsdb ~/.dircolorsdb.bak; \
+			fi; \
+			ln -fs "$$PWD"/bundle/dircolors-solarized/dircolors.ansi-light \
+				~/.dircolorsdb; \
+			echo ".dircolorsdb installed."; \
+		fi; \
+		\
+		echo "Installing Solarized color scheme to current Gnome Terminal profile," \
+		echo -n "this cannot be undone. Proceed to install [y/N]? " \
+		read ans; \
+		if [ "$${ans,,}" = "y" ]; then \
+			bundle/gnome-terminal-colors-solarized/set_light.sh; \
+			echo "Gnome Terminal is now solarized."; \
+		fi; \
+		\
+		if [ ! -d ~/.fonts ]; then \
+			rm -rf ~/.fonts; \
+			mkdir ~/.fonts; \
+		fi; \
+		\
+		if [ ! -d ~/.config/fontconfig/conf.d ]; then \
+			rm -rf ~/.config/fontconfig/conf.d; \
+			mkdir -p ~/.config/fontconfig/conf.d; \
+		fi; \
+		ln -fs "$$PWD"/.fonts/PowerlineSymbols.otf ~/.fonts; \
+		ln -fs "$$PWD"/.config/fontconfig/conf.d/10-powerline-symbols.conf \
+			~/.config/fontconfig/conf.d; \
+		echo "Powerline's font installed."; \
+		\
+		ln -fs "$$PWD"/.config/fontconfig/conf.d/20-noto-cjk.conf \
+			~/.config/fontconfig/conf.d; \
+		echo "Noto Sans' fontconfig installed."; \
 	fi
-	@if [ ! -d ~/.config/fontconfig/conf.d ]; then \
-		rm -rf ~/.config/fontconfig/conf.d; \
-		mkdir -p ~/.config/fontconfig/conf.d; \
-	fi
-	@ln -fs "$$PWD"/.fonts/PowerlineSymbols.otf ~/.fonts
-	@ln -fs "$$PWD"/.config/fontconfig/conf.d/10-powerline-symbols.conf \
-		~/.config/fontconfig/conf.d
-	@echo "Powerline's font installed."
 
-	@ln -fs "$$PWD"/.config/fontconfig/conf.d/20-noto-cjk.conf \
-		~/.config/fontconfig/conf.d
-	@echo "Noto Sans' fontconfig installed."
-
-	@echo Done.
+	@echo "installation completed."
