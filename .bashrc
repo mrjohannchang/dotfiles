@@ -234,9 +234,21 @@ export GOBIN=${GOPATH}/bin
 # }}}
 
 # Java {{{
-export JAVA8_HOME="/usr/lib/jvm/java-8-oracle"
-export JAVA7_HOME="/usr/lib/jvm/java-7-oracle"
-export JAVA_HOME="$JAVA8_HOME"
+if [ -d "/usr/lib/jvm/java-7-oracle" ]; then
+    export JAVA7_HOME="/usr/lib/jvm/java-7-oracle"
+elif [ -d "/Library/Java/JavaVirtualMachines/jdk1.7"*".jdk/Contents/Home" ]; then
+    export JAVA7_HOME=$(echo "/Library/Java/JavaVirtualMachines/jdk1.7"*".jdk/Contents/Home")
+fi
+if [ -d "/usr/lib/jvm/java-8-oracle" ]; then
+    export JAVA8_HOME="/usr/lib/jvm/java-8-oracle"
+elif [ -d "/Library/Java/JavaVirtualMachines/jdk1.8"*".jdk/Contents/Home" ]; then
+    export JAVA8_HOME=$(echo "/Library/Java/JavaVirtualMachines/jdk1.8"*".jdk/Contents/Home")
+fi
+if [ -n $JAVA8_HOME ]; then
+    export JAVA_HOME="$JAVA8_HOME"
+elif [ -n $JAVA7_HOME ]; then
+    export JAVA_HOME="$JAVA7_HOME"
+fi
 # }}}
 
 # Node Version Manager {{{
