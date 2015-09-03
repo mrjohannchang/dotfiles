@@ -7,3 +7,4 @@
 /.vim/eclim
 /.vim/plugin/eclim.vim
 /bundle
+.DS_Store
