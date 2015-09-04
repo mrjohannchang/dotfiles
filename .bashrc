@@ -193,6 +193,9 @@ fi
 [[ -d $HOME/sdk/android-sdk-linux ]] \
     && PATH="$PATH:$HOME/sdk/android-sdk-linux/tools:$HOME/sdk/android-sdk-linux/platform-tools" \
     && export ANDROID_HOME=$HOME/sdk/android-sdk-linux
+[[ -d $HOME/Library/Android/sdk ]] \
+    && PATH="$PATH:$HOME/Library/Android/sdk/tools:$HOME/Library/Android/sdk/platform-tools" \
+    && export ANDROID_HOME=$HOME/Library/Android/sdk
 
 [[ -d $HOME/.cabal/bin ]] \
     && PATH="$PATH:$HOME/.cabal/bin"
