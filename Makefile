@@ -147,7 +147,7 @@ install: uninstall
 	@echo ".vimperatorrc installed."
 
 	@if [[ "$${OSTYPE,,}" == linux* ]]; then \
-		echo -n "Install Solaried dircolorsdb [y/N]? " \
+		echo -n "Install Solaried dircolorsdb [y/N]? "; \
 		read ans; \
 		if [ "$${ans,,}" = "y" ]; then \
 			if [ -e ~/.dircolorsdb ] && [ ! -L ~/.dircolorsdb ]; then \
@@ -159,8 +159,8 @@ install: uninstall
 			echo ".dircolorsdb installed."; \
 		fi; \
 		\
-		echo "Installing Solarized color scheme to current Gnome Terminal profile," \
-		echo -n "this cannot be undone. Proceed to install [y/N]? " \
+		echo "Installing Solarized color scheme to current Gnome Terminal profile,"; \
+		echo -n "this cannot be undone. Proceed to install [y/N]? "; \
 		read ans; \
 		if [ "$${ans,,}" = "y" ]; then \
 			bundle/gnome-terminal-colors-solarized/set_light.sh; \
