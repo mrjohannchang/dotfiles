@@ -24,7 +24,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'kchmck/vim-coffee-script'
 Plug 'kien/ctrlp.vim'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+Plug 'majutsushi/tagbar'
 Plug 'milkypostman/vim-togglelist'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
