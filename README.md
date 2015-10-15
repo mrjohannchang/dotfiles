@@ -1,30 +1,47 @@
-# Dotfiles
+# Dotfiles by changyuheng
 
-## Usage
+## Installation
 
-### The preparation of installation
+### OS X
 
-After cloning, you should cook it before the installation. Simply execute the
-following command:
+**Prerequisites**
 
-~~~ bash
-make
-~~~
+- Xcode and its Command Line Tools
+- CMake
 
-### Installation and uninstallation
+**Do install**
 
-To install, please use the command make with an argument install:
+```
+./os-x-install.sh
+```
 
-~~~ bash
-make install
-~~~
+### Ubuntu
 
-The uninstallation is similar, please use the command make with an argument
-uninstall:
+**Prerequisites**
 
-~~~ bash
-make uninstall
-~~~
+```sh
+sudo apt-get install build-essential cmake python-dev git
+```
+
+**Do install**
+
+```sh
+./ubuntu-install.sh
+```
+
+## Uninstallation
+
+### OS X
+
+```
+./os-x-uninstall.sh
+```
+
+### Ubuntu
+
+```sh
+./ubuntu-uninstall.sh
+```
 
 ## License
 
