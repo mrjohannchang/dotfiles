@@ -1,60 +1,53 @@
 set nocompatible
 
-" Vundle's configs (1/2) {{{
-"
-" required
-filetype off
+" Plug-ins {{{
+" Load
+call plug#begin('~/.vim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-
-call vundle#begin()
-
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" plugin on GitHub repo
-Plugin 'bling/vim-airline'
-Plugin 'changyuheng/color-scheme-holokai-for-vim'
-Plugin 'changyuheng/color-scheme-solarized-for-vim'
+" plug-in on GitHub repo
+Plug 'bling/vim-airline'
+Plug 'changyuheng/color-scheme-holokai-for-vim'
+Plug 'changyuheng/color-scheme-solarized-for-vim'
 " Plugin 'changyuheng/cscope.vim'
-Plugin 'chrisbra/vim-diff-enhanced'
-Plugin 'dsolstad/vim-wombat256i'
-Plugin 'fatih/vim-go'
-Plugin 'gkz/vim-ls'
-Plugin 'godlygeek/tabular'
-Plugin 'honza/vim-snippets'
-Plugin 'jlanzarotta/bufexplorer'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'kien/ctrlp.vim'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'majutsushi/tagbar'
-Plugin 'mileszs/ack.vim'
-Plugin 'milkypostman/vim-togglelist'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'tomasr/molokai'
+Plug 'chrisbra/vim-diff-enhanced'
+Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
+Plug 'dsolstad/vim-wombat256i'
+Plug 'fatih/vim-go'
+Plug 'gkz/vim-ls'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'godlygeek/tabular'
+Plug 'groenewege/vim-less'
+Plug 'honza/dockerfile.vim'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'kchmck/vim-coffee-script'
+Plug 'kien/ctrlp.vim'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+Plug 'milkypostman/vim-togglelist'
+Plug 'pangloss/vim-javascript'
+Plug 'plasticboy/vim-markdown'
 
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim'}
+Plug 'rstacruz/sparkup', { 'rtp': 'vim' }
 
-Plugin 'sayuan/vimwiki'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
-Plugin 'SirVer/ultisnips'
-Plugin 'sjl/gundo.vim'
-Plugin 'tfnico/vim-gradle'
-Plugin 'thinca/vim-template'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'Valloric/YouCompleteMe'
+Plug 'sayuan/vimwiki'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'sjl/gundo.vim'
+Plug 'tfnico/vim-gradle'
+Plug 'thinca/vim-template'
+Plug 'tomasr/molokai'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --gocode-completer' }
+Plug 'wting/rust.vim'
 
-" All of your Plugins must be added before the following line, required
-call vundle#end()
-
+" Add plugins to &runtimepath
+call plug#end()
 " }}}
 
 if (has("gui_running"))
