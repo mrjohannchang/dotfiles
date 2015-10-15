@@ -34,7 +34,7 @@ function install {
     INFO "updating module..."
 
     git submodule update --init --recursive --remote
-    git submodule foreach -q --recursive 'branch=$(git config -f "$toplevel"/.gitmodules submodule."$name".branch); git checkout "$branch"'
+    git submodule foreach -q --recursive 'branch=$(git config -f "$toplevel"/.gitmodules submodule."$name".branch); git checkout "$branch"; git pull --rebase'
 
     INFO "deploying..."
 
