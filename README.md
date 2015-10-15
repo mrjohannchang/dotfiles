@@ -9,10 +9,16 @@
 - Xcode and its Command Line Tools
 - CMake
 
-**Do install**
+**Install**
 
 ```
 ./os-x-install.sh
+```
+
+The open Vim and execute
+
+```
+:PlugInstall
 ```
 
 ### Ubuntu
@@ -23,10 +29,16 @@
 sudo apt-get install build-essential cmake python-dev git
 ```
 
-**Do install**
+**Iinstall**
 
 ```sh
 ./ubuntu-install.sh
+```
+
+The open Vim and execute
+
+```
+:PlugInstall
 ```
 
 ## Uninstallation
