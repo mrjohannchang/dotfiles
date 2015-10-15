@@ -5,6 +5,7 @@
 /.vim/bundle
 /.vim/doc/tags
 /.vim/eclim
+/.vim/plugged
 /.vim/plugin/eclim.vim
 /bundle
 .DS_Store
