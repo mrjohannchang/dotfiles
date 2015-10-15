@@ -143,41 +143,65 @@ function uninstall {
 
     if [ -L ~/.bash_completion.d ]; then
         unlink ~/.bash_completion.d
+        if [ -e ~/.bash_completion.d.bak ]; then
+            mv ~/.bash_completion.d.bak ~/.bash_completion.d
+        fi
         echo ".bash_completion.d uninstalled"
     fi
 
     if [ -L ~/.bashrc ]; then
         unlink ~/.bashrc
+        if [ -e ~/.bashrc.bak ]; then
+            mv ~/.bashrc.bak ~/.bashrc
+        fi
         echo ".bashrc uninstalled"
     fi
 
     if [ -L ~/.pentadactylrc ]; then
         unlink ~/.pentadactylrc
+        if [ -e ~/.pentadactylrc.bak ]; then
+            mv ~/.pentadactylrc.bak ~/.pentadactylrc
+        fi
         echo ".pentadactylrc uninstalled"
     fi
 
     if [ -L ~/.profile ]; then
         unlink ~/.profile
+        if [ -e ~/.profile.bak ]; then
+            mv ~/.profile.bak ~/.profile
+        fi
         echo ".profile uninstalled"
     fi
 
     if [ -L ~/.tmux.conf ]; then
         unlink ~/.tmux.conf
+        if [ -e ~/.tmux.conf.bak ]; then
+            mv ~/.tmux.conf.bak ~/.tmux.conf
+        fi
         echo ".tmux.conf uninstalled"
     fi
 
     if [ -L ~/.vim ]; then
         unlink ~/.vim
+        if [ -e ~/.vim.bak ]; then
+            mv ~/.vim.bak ~/.vim
+        fi
         echo ".vim uninstalled"
     fi
 
     if [ -L ~/.vimrc ]; then
         unlink ~/.vimrc
+        if [ -e ~/.vimrc.bak ]; then
+            mv ~/.vimrc.bak ~/.vimrc
+        fi
         echo ".vimrc uninstalled"
     fi
 
     if [ -L ~/.vimperatorrc ]; then
         unlink ~/.vimperatorrc
+        if [ -e ~/.vimperatorrc.bak ]; then
+            mv ~/.vimperatorrc.bak ~/.vimperatorrc
+        fi
         echo ".vimperatorrc uninstalled"
     fi
 
