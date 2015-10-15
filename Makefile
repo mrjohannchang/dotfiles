@@ -184,6 +184,11 @@ install: uninstall
 		ln -fs "$$PWD"/.config/fontconfig/conf.d/20-noto-cjk.conf \
 			~/.config/fontconfig/conf.d; \
 		echo "Noto Sans' fontconfig installed."; \
+	elif [[ "$${OSTYPE,,}" == darwin* ]]; then \
+		if [ -d ~/Library/Fonts ]; then \
+			ln -fs "$$PWD/.fonts/Monaco for Powerline.otf" ~/Library/Fonts; \
+			echo "Powerline's font installed."; \
+		fi; \
 	fi
 
 	@echo "installation completed."
