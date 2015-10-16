@@ -11,15 +11,21 @@
 
 **Install**
 
+Run in the shell
+
 ```
 ./os-x-install.sh
 ```
 
-The open Vim and execute
+Open Vim and execute
 
 ```
 :PlugInstall
 ```
+
+Open Tmux and press
+
+`C-s I`
 
 ### Ubuntu
 
@@ -31,15 +37,21 @@ sudo apt-get install build-essential cmake python-dev git
 
 **Iinstall**
 
+Run in the shell
+
 ```sh
 ./ubuntu-install.sh
 ```
 
-The open Vim and execute
+Open Vim and execute
 
 ```
 :PlugInstall
 ```
+
+Open Tmux and press
+
+`C-s I`
 
 ## Uninstallation
 
