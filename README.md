@@ -14,6 +14,7 @@
 Run in the shell
 
 ```
+git submodule update --init --recursive --remote
 ./os-x-install.sh
 ```
 
@@ -40,6 +41,7 @@ sudo apt-get install build-essential cmake python-dev git
 Run in the shell
 
 ```sh
+git submodule update --init --recursive --remote
 ./ubuntu-install.sh
 ```
 

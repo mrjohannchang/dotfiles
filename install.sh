@@ -31,13 +31,6 @@ fi
 function install {
     INFO "begin to install"
 
-    INFO "updating module..."
-
-    git submodule update --init --recursive --remote
-    git submodule foreach -q --recursive 'branch=$(git config -f "$toplevel"/.gitmodules submodule."$name".branch); git checkout "$branch"; git pull --rebase'
-
-    INFO "deploying..."
-
     if [ -e ~/.bash_completion.d ] && [ ! -L ~/.bash_completion.d ]; then
         rm -rf ~/.bash_completion.d.bak
         mv ~/.bash_completion.d ~/.bash_completion.d.bak
@@ -142,6 +135,7 @@ function install {
             echo "font \"Monaco for Powerline.otf\" installed"
         fi
     fi
+
     INFO "installation completed"
 }
 
