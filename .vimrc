@@ -131,6 +131,8 @@ set cursorcolumn
 set completeopt-=preview
 set splitbelow
 
+set formatoptions+=j    " Delete comment character when joining commented lines
+
 " Status bar (Shared by pct) {{{
 let s:fancy_status_line_enabled = 0
 if s:fancy_status_line_enabled
