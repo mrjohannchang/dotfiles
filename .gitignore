@@ -9,3 +9,5 @@
 /.vim/plugin/eclim.vim
 /bundle
 .DS_Store
+/.tmux/plugins
+/.tmux/resurrect
