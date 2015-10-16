@@ -66,6 +66,13 @@ function install {
     ln -fs "$PWD"/.profile ~/.profile
     echo ".profile installed"
 
+    if [ -e ~/.tmux ] && [ ! -L ~/.tmux ]; then
+        rm -rf ~/.tmux.bak
+        mv ~/.tmux ~/.tmux.bak
+    fi
+    ln -fs "$PWD"/.tmux ~/.tmux
+    echo ".tmux installed"
+
     if [ -e ~/.tmux.conf ] && [ ! -L ~/.tmux.conf ]; then
         rm -rf ~/.tmux.conf.bak
         mv ~/.tmux.conf ~/.tmux.conf.bak
@@ -171,6 +178,14 @@ function uninstall {
             mv ~/.profile.bak ~/.profile
         fi
         echo ".profile uninstalled"
+    fi
+
+    if [ -L ~/.tmux ]; then
+        unlink ~/.tmux
+        if [ -e ~/.tmux.bak ]; then
+            mv ~/.tmux.bak ~/.tmux
+        fi
+        echo ".tmux uninstalled"
     fi
 
     if [ -L ~/.tmux.conf ]; then
