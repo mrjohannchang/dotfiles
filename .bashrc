@@ -282,7 +282,7 @@ prompt_git() {
 
         [ -n "${s}" ] && s=" [${s}]";
 
-        echo -e "${1}${branchName}${blue}${s}";
+        echo -e "${1}${branchName}${purple}${s}";
     else
         return;
     fi;
@@ -334,16 +334,14 @@ fi;
 
 # Set the terminal title to the current working directory.
 PS1="\[\033]0;\w\007\]";
-PS1+="\[${bold}\]\n"; # newline
 PS1+="\[${userStyle}\]\u"; # username
 PS1+="\[${reset}\] at ";
 PS1+="\[${hostStyle}\]\h"; # host
 PS1+="\[${reset}\] in ";
-PS1+="\[${green}\]\w"; # working directory
+PS1+="\[${bold}${blue}\]\w"; # working directory
 PS1+="\$(prompt_git \"${reset} on ${violet}\")"; # Git repository details
 PS1+="\[${reset}\] since ";
-PS1+="\[${cyan}\]\d \[${purple}\]\t"; # date
-PS1+="\[${reset}\]";
+PS1+="\[${green}\]\d \[${cyan}\]\t"; # date
 PS1+="\n";
 PS1+="\[${reset}\]\$ \[${reset}\]"; # `$` (and reset color)
 export PS1;
