@@ -1,72 +1,35 @@
 # Dotfiles by changyuheng
 
-## Installation
+## Prerequisites
 
 ### OS X
-
-**Prerequisites**
 
 - Xcode and its Command Line Tools
 - CMake
 
-**Install**
-
-Run in the shell
-
-```
-git submodule update --init --recursive --remote
-./os-x-install.sh
-```
-
-Open Vim and execute
-
-```
-:PlugInstall
-```
-
-Open Tmux and press
-
-`C-s I`
-
 ### Ubuntu
-
-**Prerequisites**
 
 ```sh
 sudo apt-get install build-essential cmake python-dev git
 ```
 
-**Iinstall**
+## Installation
 
-Run in the shell
+1. Run in the shell
 
-```sh
-git submodule update --init --recursive --remote
-./ubuntu-install.sh
-```
+    ```sh
+    git submodule update --init --recursive --remote
+    ./install.sh
+    ```
 
-Open Vim and execute
+2. Open Vim and execute `:PlugInstall`
 
-```
-:PlugInstall
-```
-
-Open Tmux and press
-
-`C-s I`
+3. Open Tmux and press `C-s I`
 
 ## Uninstallation
 
-### OS X
-
 ```
-./os-x-uninstall.sh
-```
-
-### Ubuntu
-
-```sh
-./ubuntu-uninstall.sh
+./uninstall.sh
 ```
 
 ## License
