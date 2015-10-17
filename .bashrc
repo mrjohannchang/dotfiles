@@ -238,7 +238,7 @@ elif infocmp xterm-256color >/dev/null 2>&1; then
     export TERM='xterm-256color';
 fi;
 
-prompt_git() {
+__prompt_git() {
     local s='';
     local branchName='';
 
@@ -286,6 +286,14 @@ prompt_git() {
     else
         return;
     fi;
+}
+
+__prompt_sign() {
+    if [ $(id -u) -eq 0 ]; then
+        echo '#'
+    else
+        echo '$'
+    fi
 }
 
 if tput setaf 1 &> /dev/null; then
@@ -339,11 +347,11 @@ PS1+="\[${reset}\] at ";
 PS1+="\[${hostStyle}\]\h"; # host
 PS1+="\[${reset}\] in ";
 PS1+="\[${bold}${blue}\]\w"; # working directory
-PS1+="\$(prompt_git \"${reset} on ${violet}\")"; # Git repository details
+PS1+="\$(__prompt_git \"${reset} on ${violet}\")"; # Git repository details
 PS1+="\[${reset}\] since ";
 PS1+="\[${green}\]\d \[${cyan}\]\t"; # date
 PS1+="\n";
-PS1+="\[${reset}\]\$ \[${reset}\]"; # `$` (and reset color)
+PS1+="\[${reset}\]\$(__prompt_sign) \[${reset}\]"; # `$` or `#` (and reset color)
 export PS1;
 
 PS2="\[${yellow}\]→ \[${reset}\]";
