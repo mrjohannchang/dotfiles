@@ -6,12 +6,12 @@ COLOR_RESET=$(tput sgr0)
 COLOR_RED=$(tput setaf 124)
 COLOR_BOLD=$(tput bold)
 
-function ERR {
+ERR() {
     echo -e ${COLOR_BOLD}${COLOR_RED}ERROR${COLOR_RESET} "$@" >&2
     exit 2
 }
 
-function INFO {
+INFO() {
     echo -e ${COLOR_BOLD}INFO${COLOR_RESET} "$@"
 }
 
@@ -28,7 +28,7 @@ elif [[ $(basename "$file_name") = "uninstall"* ]]; then
     uninstall=1
 fi
 
-function install {
+install() {
     INFO "begin to install"
 
     if [ -e ~/.bash_completion.d ] && [ ! -L ~/.bash_completion.d ]; then
@@ -139,7 +139,7 @@ function install {
     INFO "installation completed"
 }
 
-function uninstall {
+uninstall() {
     INFO "begin to uninstall"
 
     if [ -L ~/.bash_completion.d ]; then
