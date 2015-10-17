@@ -122,43 +122,6 @@ if [ -f /usr/local/etc/bash_completion ]; then
     . /usr/local/etc/bash_completion
 fi
 
-colors() {
-  local DEFAULT="\[\033[0m\]"
-  local BRIGHT="\[\033[1;37m\]"
-  local BLACK="\[\033[0;30m\]"
-  local LIGHT_BLACK="\[\033[1;30m\]"
-  local RED="\[\033[0;31m\]"
-  local LIGHT_RED="\[\033[1;31m\]"
-  local GREEN="\[\033[0;32m\]"
-  local LIGHT_GREEN="\[\033[1;32m\]"
-  local YELLOW="\[\033[0;33m\]"
-  local LIGHT_YELLOW="\[\033[1;33m\]"
-  local BLUE="\[\033[0;34m\]"
-  local LIGHT_BLUE="\[\033[1;34m\]"
-  local MAGENTA="\[\033[0;35m\]"
-  local LIGHT_MAGENTA="\[\033[1;35m\]"
-  local CYAN="\[\033[0;36m\]"
-  local LIGHT_CYAN="\[\033[1;36m\]"
-  case $TERM in
-    xterm*|rxvt*)
-    TITLEBAR='\[\033]0;\u@\h:\w\007\]'
-    ;;
-    *)
-    TITLEBAR=""
-    ;;
-  esac
-
-  PS1="${TITLEBAR}\
-$LIGHT_RED\u$DEFAULT@$LIGHT_GREEN\H$DEFAULT:$LIGHT_BLUE\w$DEFAULT\
-\$(__git_ps1 \"($GREEN%s$DEFAULT)\")[$CYAN\d$DEFAULT $YELLOW\t$DEFAULT]\n"
-  if [ $USER = root ]; then
-      PS1="$PS1# "
-  else
-      PS1="$PS1\$ "
-  fi
-}
-colors
-
 # Binding C-t to fire search forward {{{
 bind '"\C-t": forward-search-history'
 # }}}
@@ -267,3 +230,124 @@ if [[ "${OSTYPE,,}" == darwin* ]]; then
     # updatedb
     alias updatedb='sudo /usr/libexec/locate.updatedb'
 fi
+
+# Bash prompt {{{
+if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
+    export TERM='gnome-256color';
+elif infocmp xterm-256color >/dev/null 2>&1; then
+    export TERM='xterm-256color';
+fi;
+
+prompt_git() {
+    local s='';
+    local branchName='';
+
+    # Check if the current directory is in a Git repository.
+    if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == '0' ]; then
+
+        # check if the current directory is in .git before running git checks
+        if [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]; then
+
+            # Ensure the index is up to date.
+            git update-index --really-refresh -q &>/dev/null;
+
+            # Check for uncommitted changes in the index.
+            if ! $(git diff --quiet --ignore-submodules --cached); then
+                s+='+';
+            fi;
+
+            # Check for unstaged changes.
+            if ! $(git diff-files --quiet --ignore-submodules --); then
+                s+='!';
+            fi;
+
+            # Check for untracked files.
+            if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+                s+='?';
+            fi;
+
+            # Check for stashed files.
+            if $(git rev-parse --verify refs/stash &>/dev/null); then
+                s+='$';
+            fi;
+
+        fi;
+
+        # Get the short symbolic ref.
+        # If HEAD isn’t a symbolic ref, get the short SHA for the latest commit
+        # Otherwise, just give up.
+        branchName="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
+            git rev-parse --short HEAD 2> /dev/null || \
+            echo '(unknown)')";
+
+        [ -n "${s}" ] && s=" [${s}]";
+
+        echo -e "${1}${branchName}${blue}${s}";
+    else
+        return;
+    fi;
+}
+
+if tput setaf 1 &> /dev/null; then
+    tput sgr0; # reset colors
+    bold=$(tput bold);
+    reset=$(tput sgr0);
+    # Solarized colors, taken from http://git.io/solarized-colors.
+    black=$(tput setaf 0);
+    blue=$(tput setaf 33);
+    cyan=$(tput setaf 37);
+    green=$(tput setaf 64);
+    orange=$(tput setaf 166);
+    purple=$(tput setaf 125);
+    red=$(tput setaf 124);
+    violet=$(tput setaf 61);
+    white=$(tput setaf 15);
+    yellow=$(tput setaf 136);
+else
+    bold='';
+    reset="\e[0m";
+    black="\e[1;30m";
+    blue="\e[1;34m";
+    cyan="\e[1;36m";
+    green="\e[1;32m";
+    orange="\e[1;33m";
+    purple="\e[1;35m";
+    red="\e[1;31m";
+    violet="\e[1;35m";
+    white="\e[1;37m";
+    yellow="\e[1;33m";
+fi;
+
+# Highlight the user name when logged in as root.
+if [[ "${USER}" == "root" ]]; then
+    userStyle="${red}";
+else
+    userStyle="${orange}";
+fi;
+
+# Highlight the hostname when connected via SSH.
+if [[ "${SSH_TTY}" ]]; then
+    hostStyle="${bold}${red}";
+else
+    hostStyle="${yellow}";
+fi;
+
+# Set the terminal title to the current working directory.
+PS1="\[\033]0;\w\007\]";
+PS1+="\[${bold}\]\n"; # newline
+PS1+="\[${userStyle}\]\u"; # username
+PS1+="\[${reset}\] at ";
+PS1+="\[${hostStyle}\]\h"; # host
+PS1+="\[${reset}\] in ";
+PS1+="\[${green}\]\w"; # working directory
+PS1+="\$(prompt_git \"${reset} on ${violet}\")"; # Git repository details
+PS1+="\[${reset}\] since ";
+PS1+="\[${cyan}\]\d \[${purple}\]\t"; # date
+PS1+="\[${reset}\]";
+PS1+="\n";
+PS1+="\[${reset}\]\$ \[${reset}\]"; # `$` (and reset color)
+export PS1;
+
+PS2="\[${yellow}\]→ \[${reset}\]";
+export PS2;
+# }}}
