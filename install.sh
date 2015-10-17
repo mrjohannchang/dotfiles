@@ -2,17 +2,17 @@
 
 set -e
 
-COLOR_CLEAR="\e[0m"
-COLOR_RED="\e[31m"
-COLOR_BOLD="\e[1m"
+COLOR_RESET=$(tput sgr0)
+COLOR_RED=$(tput setaf 124)
+COLOR_BOLD=$(tput bold)
 
 function ERR {
-    echo -e ${COLOR_BOLD}${COLOR_RED}ERROR${COLOR_CLEAR} "$@" >&2
+    echo -e ${COLOR_BOLD}${COLOR_RED}ERROR${COLOR_RESET} "$@" >&2
     exit 2
 }
 
 function INFO {
-    echo -e ${COLOR_BOLD}INFO${COLOR_CLEAR} "$@"
+    echo -e ${COLOR_BOLD}INFO${COLOR_RESET} "$@"
 }
 
 entry_point="$0"
