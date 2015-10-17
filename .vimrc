@@ -10,6 +10,7 @@ Plug 'changyuheng/color-scheme-holokai-for-vim'
 Plug 'changyuheng/color-scheme-solarized-for-vim'
 " Plugin 'changyuheng/cscope.vim'
 Plug 'chrisbra/vim-diff-enhanced'
+Plug 'dag/vim-fish'
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'dsolstad/vim-wombat256i'
 Plug 'fatih/vim-go'
