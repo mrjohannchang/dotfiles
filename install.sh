@@ -94,6 +94,16 @@ install() {
     ln -fs "$PWD"/.vimperatorrc ~/.vimperatorrc
     echo ".vimperatorrc installed"
 
+    if [ ! -d ~/.config/fish ]; then
+        mkdir -p ~/.config/fish
+    fi
+    if [ -e ~/.config/fish/config.fish ] && [ ! -L ~/.config/fish/config.fish ]; then
+        rm -rf ~/.config/fish/config.fish.bak
+        mv ~/.config/fish/config.fish ~/.config/fish/config.fish.bak
+    fi
+    ln -fs "$PWD"/.config/fish/config.fish ~/.config/fish/config.fish
+    echo "config.fish installed"
+
     if [[ "${OSTYPE,,}" == linux* ]]; then
         echo -n "Install Solaried dircolorsdb [y/N]? "
         read ans
@@ -212,6 +222,14 @@ uninstall() {
             mv ~/.vimperatorrc.bak ~/.vimperatorrc
         fi
         echo ".vimperatorrc uninstalled"
+    fi
+
+    if [ -L ~/.config/fish/config.fish ]; then
+        unlink ~/.config/fish/config.fish
+        if [ -e ~/.config/fish/config.fish.bak ]; then
+            mv ~/.config/fish/config.fish.bak ~/.config/fish/config.fish
+        fi
+        echo "config.fish uninstalled"
     fi
 
     if [[ "${OSTYPE,,}" == linux* ]]; then
