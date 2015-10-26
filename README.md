@@ -26,6 +26,12 @@ sudo apt-get install build-essential cmake python-dev git
 
 3. Open Tmux and press `C-s I`
 
+4. Run in the shell
+
+    ```sh
+    curl -L https://github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | fish
+    ```
+
 ## Uninstallation
 
 ```

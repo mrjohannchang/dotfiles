@@ -41,4 +41,4 @@ if [ (uname) = Darwin ]
     # updatedb
     alias updatedb='sudo /usr/libexec/locate.updatedb'
 end
-}}}
+# }}}

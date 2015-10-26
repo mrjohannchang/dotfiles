@@ -94,11 +94,6 @@ install() {
     ln -fs "$PWD"/.vimperatorrc ~/.vimperatorrc
     echo ".vimperatorrc installed"
 
-    if [ ! -e ~/.local/share/omf ]; then
-        curl -L https://github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | fish
-        echo "Oh My Fish installed"
-    fi
-
     if [ ! -d ~/.config/omf ]; then
         rm -rf ~/.config/omf
         mkdir ~/.config/omf
@@ -228,10 +223,6 @@ uninstall() {
             mv ~/.vimperatorrc.bak ~/.vimperatorrc
         fi
         echo ".vimperatorrc uninstalled"
-    fi
-
-    if [ -e ~/.local/share/omf ]; then
-        rm -rf ~/.local/share/omf
     fi
 
     if [ -L ~/.config/omf/init.fish ]; then
