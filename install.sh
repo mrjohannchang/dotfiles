@@ -94,16 +94,12 @@ install() {
     ln -fs "$PWD"/.vimperatorrc ~/.vimperatorrc
     echo ".vimperatorrc installed"
 
-    if [ ! -d ~/.config/omf ]; then
-        rm -rf ~/.config/omf
-        mkdir ~/.config/omf
+    if [ -e ~/.config/omf ] && [ ! -L ~/.config/omf ]; then
+        rm -rf ~/.config/omf.bak
+        mv ~/.config/omf ~/.config/omf.bak
     fi
-    if [ -e ~/.config/omf/init.fish ] && [ ! -L ~/.config/omf/init.fish ]; then
-        rm -rf ~/.config/omf/init.fish.bak
-        mv ~/.config/omf/init.fish ~/.config/omf/init.fish.bak
-    fi
-    ln -fs "$PWD"/.config/omf/init.fish ~/.config/omf/init.fish
-    echo "init.fish installed"
+    ln -fs "$PWD"/.config/omf ~/.config/omf
+    echo ".config/omf installed"
 
     if [[ "${OSTYPE,,}" == linux* ]]; then
         echo -n "Install Solaried dircolorsdb [y/N]? "
@@ -225,12 +221,12 @@ uninstall() {
         echo ".vimperatorrc uninstalled"
     fi
 
-    if [ -L ~/.config/omf/init.fish ]; then
-        unlink ~/.config/omf/init.fish
-        if [ -e ~/.config/omf/init.fish.bak ]; then
-            mv ~/.config/omf/init.fish.bak ~/.config/omf/init.fish
+    if [ -L ~/.config/omf ]; then
+        unlink ~/.config/omf
+        if [ -e ~/.config/omf.bak ]; then
+            mv ~/.config/omf.bak ~/.config/omf
         fi
-        echo "init.fish uninstalled"
+        echo ".config/omf uninstalled"
     fi
 
     if [[ "${OSTYPE,,}" == linux* ]]; then
