@@ -10,3 +10,7 @@
 	path = .tmux/plugins/tpm
 	url = git@github.com:tmux-plugins/tpm.git
 	branch = master
+[submodule ".config/omf/themes/plain"]
+	path = .config/omf/themes/plain
+	url = git@github.com:changyuheng/fish-theme-plain.git
+	branch = master
