@@ -22,11 +22,6 @@ end
 # }}}
 
 
-# ls color {{{
-test -f ~/.dircolorsdb ; and eval (dircolors ~/.dircolorsdb)
-# }}}
-
-
 # Go {{{
 set -x GOPATH ~/.go
 set -x GOBIN $GOPATH/bin
