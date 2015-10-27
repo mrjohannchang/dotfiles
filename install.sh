@@ -94,6 +94,10 @@ install() {
     ln -fs "$PWD"/.vimperatorrc ~/.vimperatorrc
     echo ".vimperatorrc installed"
 
+    if [ ! -e ~/.config ]; then
+        mkdir ~/.config
+    fi
+
     if [ -e ~/.config/omf ] && [ ! -L ~/.config/omf ]; then
         rm -rf ~/.config/omf.bak
         mv ~/.config/omf ~/.config/omf.bak
