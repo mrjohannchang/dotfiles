@@ -6,11 +6,16 @@
 
 - Xcode and its Command Line Tools
 - CMake
+- Homebrew
+
+```sh
+brew install go
+```
 
 ### Ubuntu
 
 ```sh
-sudo apt-get install build-essential cmake python-dev git
+sudo apt-get install build-essential cmake python-dev git golang
 ```
 
 ## Installation
