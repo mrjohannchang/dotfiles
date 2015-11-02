@@ -7,6 +7,15 @@ test -d ~/.cabal/bin ; and set PATH ~/.cabal/bin $PATH
 test -d ~/.rvm/bin ; and set PATH ~/.rvm/bin $PATH
 # }}}
 
+# Color {{{
+if begin echo "$COLORTERM" | grep -q "^gnome-" ;and [ "$TERM" = xterm ]; \
+        and infocmp gnome-256color >/dev/null 2>&1; end
+    set -gx TERM gnome-256color
+else if infocmp xterm-256color >/dev/null 2>&1
+    set -gx TERM xterm-256color
+end
+# }}}
+
 # Functions {{{
 function l ; tree --dirsfirst -aFCNL 1 $argv ; end
 function ll ; tree --dirsfirst -ChFupDaLg 1 $argv ; end
