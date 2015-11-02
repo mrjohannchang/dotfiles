@@ -261,6 +261,7 @@ let g:airline_theme = 'solarized'
 
 " UltiSnips configs {{{
 let g:UltiSnipsExpandTrigger = "<C-j>"
+let g:UltiSnipsUsePythonVersion = 2
 " }}}
 
 " Gundo configs {{{
