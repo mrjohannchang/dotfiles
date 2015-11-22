@@ -9,13 +9,13 @@
 - Homebrew
 
 ```sh
-brew install go
+brew install go fish
 ```
 
 ### Ubuntu
 
 ```sh
-sudo apt-get install build-essential cmake python-dev git golang
+sudo apt-get install build-essential cmake python-dev git golang fish
 ```
 
 ## Installation
