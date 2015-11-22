@@ -2,3 +2,4 @@ package brew
 package foreign-env
 package nvm
 theme default
+theme plain
