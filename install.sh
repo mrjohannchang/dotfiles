@@ -109,11 +109,11 @@ install() {
         echo -n "Install Solaried dircolorsdb [y/N]? "
         read ans
         if [ "${ans,,}" = "y" ]; then
-            if [ -e ~/.dircolorsdb ] && [ ! -L ~/.dircolorsdb ]; then
-                rm -rf ~/.dircolorsdb.bak
-                mv ~/.dircolorsdb ~/.dircolorsdb.bak
+            if [ -e ~/.dircolors ] && [ ! -L ~/.dircolors ]; then
+                rm -rf ~/.dircolors.bak
+                mv ~/.dircolors ~/.dircolors.bak
             fi
-            ln -fs "$PWD"/bundle/dircolors-solarized/dircolors.ansi-light ~/.dircolorsdb
+            ln -fs "$PWD"/bundle/dircolors-solarized/dircolors.ansi-light ~/.dircolors
             echo ".dircolorsdb installed"
         fi
 
@@ -234,8 +234,8 @@ uninstall() {
     fi
 
     if [[ "${OSTYPE,,}" == linux* ]]; then
-        if [ -L ~/.dircolorsdb ]; then
-            unlink ~/.dircolorsdb
+        if [ -L ~/.dircolors ]; then
+            unlink ~/.dircolors
             echo "dircolorsdb uninstalled"
         fi
 
