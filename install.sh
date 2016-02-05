@@ -105,6 +105,15 @@ install() {
     ln -fs "$PWD"/.config/omf ~/.config/omf
     echo ".config/omf installed"
 
+    echo -n "Install git configurations (cannot be undone) [y/N]? "
+    read ans
+    if [ "${ans,,}" = "y" ]; then
+         git config --global color.ui auto
+         git config --global core.quotepath no
+         git config --global diff.algorithm patience
+         git config --global push.default simple
+    fi
+
     if [[ "${OSTYPE,,}" == linux* ]]; then
         echo -n "Install Solaried dircolorsdb [y/N]? "
         read ans
