@@ -2,6 +2,12 @@
 
 ## Prerequisites
 
+### Optional
+
+```sh
+curl -sL get.fisherman.sh | fish
+```
+
 ### OS X
 
 - Xcode and its Command Line Tools
@@ -30,12 +36,6 @@ sudo apt-get install build-essential cmake python-dev git golang fish
 2. Open Vim and execute `:PlugInstall`
 
 3. Open Tmux and press `C-s I`
-
-4. Run in the shell
-
-    ```sh
-    curl -L https://github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | fish
-    ```
 
 ## Uninstallation
 
