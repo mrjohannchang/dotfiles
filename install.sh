@@ -98,7 +98,7 @@ install() {
         mkdir ~/.config
     fi
 
-    echo -n "Install git configurations (cannot be undone) [y/N]? "
+    echo -n "Install Git configurations (cannot be undone) [y/N]? "
     read ans
     if [ "${ans,,}" = "y" ]; then
          git config --global color.ui auto
