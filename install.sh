@@ -98,13 +98,6 @@ install() {
         mkdir ~/.config
     fi
 
-    if [ -e ~/.config/omf ] && [ ! -L ~/.config/omf ]; then
-        rm -rf ~/.config/omf.bak
-        mv ~/.config/omf ~/.config/omf.bak
-    fi
-    ln -fs "$PWD"/.config/omf ~/.config/omf
-    echo ".config/omf installed"
-
     echo -n "Install git configurations (cannot be undone) [y/N]? "
     read ans
     if [ "${ans,,}" = "y" ]; then
@@ -232,14 +225,6 @@ uninstall() {
             mv ~/.vimperatorrc.bak ~/.vimperatorrc
         fi
         echo ".vimperatorrc uninstalled"
-    fi
-
-    if [ -L ~/.config/omf ]; then
-        unlink ~/.config/omf
-        if [ -e ~/.config/omf.bak ]; then
-            mv ~/.config/omf.bak ~/.config/omf
-        fi
-        echo ".config/omf uninstalled"
     fi
 
     if [[ "${OSTYPE,,}" == linux* ]]; then
