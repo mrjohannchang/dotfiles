@@ -110,6 +110,7 @@ install() {
     echo -n "Install Fisherman configurations (cannot be undone) [y/N]? "
     read ans
     if [ "${ans,,}" = "y" ]; then
+        echo -n "fisher install changyuheng/my-fish-config" | fish
         echo -n "fisher install changyuheng/theme-plain" | fish
     fi
 
