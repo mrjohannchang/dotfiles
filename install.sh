@@ -113,6 +113,7 @@ install() {
         echo -n "fisher install changyuheng/my-fish-config" | fish
         echo -n "fisher install changyuheng/theme-plain" | fish
         echo -n "fisher install bass" | fish
+        echo -n "fisher install https://github.com/passcod/nvm-fish-wrapper" | fish
     fi
 
     if [[ "${OSTYPE,,}" == linux* ]]; then
