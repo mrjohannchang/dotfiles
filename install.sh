@@ -112,6 +112,7 @@ install() {
     if [ "${ans,,}" = "y" ]; then
         echo -n "fisher install changyuheng/my-fish-config" | fish
         echo -n "fisher install changyuheng/theme-plain" | fish
+        echo -n "fisher install bass" | fish
     fi
 
     if [[ "${OSTYPE,,}" == linux* ]]; then
