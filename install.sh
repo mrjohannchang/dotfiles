@@ -110,10 +110,10 @@ install() {
     echo -n "Install Fisherman configurations (cannot be undone) [y/N]? "
     read ans
     if [ "${ans,,}" = "y" ]; then
-        echo -n "fisher install changyuheng/my-fish-config" | fish || true
+        echo -n "fisher install changyuheng/changyuheng-fish-config" | fish || true
         echo -n "fisher install changyuheng/theme-plain" | fish || true
         echo -n "fisher install bass" | fish || true
-        echo -n "fisher install https://github.com/passcod/nvm-fish-wrapper" | fish || true
+        echo -n "fisher install z" | fish || true
     fi
 
     if [[ "${OSTYPE,,}" == linux* ]]; then
