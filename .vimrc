@@ -107,12 +107,12 @@ behave xterm
 set autoindent    " always set autoindenting on
 set autoread
 set backspace=start,indent,eol
-set softtabstop=4
+set softtabstop=2
 "set copyindent    " copy the previous indentation on autoindenting
 set nowrap
 set expandtab
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 
 set fileencodings=utf-8,big5,gbk,cp936,iso-2022-jp,sjis,euc-jp,euc-kr,utf-bom,iso8859-1
 set fileencoding=utf-8
