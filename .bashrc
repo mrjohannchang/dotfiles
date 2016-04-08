@@ -29,17 +29,17 @@ shopt -s checkwinsize
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+  debian_chroot=$(cat /etc/debian_chroot)
 fi
 
 # Enable 256 color.
 case "$TERM" in
-    xterm*) TERM=xterm-256color
+  xterm*) TERM=xterm-256color
 esac
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+  xterm-color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -48,42 +48,42 @@ esac
 #force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
+  if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
+  else
+    color_prompt=
+  fi
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
+  xterm*|rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
-*)
+  *)
     ;;
 esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls --color=auto'
+  #alias dir='dir --color=auto'
+  #alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
 fi
 
 # some more ls aliases
@@ -101,14 +101,14 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+  . ~/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+  . /etc/bash_completion
 fi
 
 
@@ -119,61 +119,62 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 if [ -f /usr/local/etc/bash_completion ]; then
-    . /usr/local/etc/bash_completion
+  . /usr/local/etc/bash_completion
 fi
 
 # Binding C-t to fire search forward {{{
 bind '"\C-t": forward-search-history'
 # }}}
 
-fancycwd() {
-    if [ "$PWD" = "/" ] \
-        || [ "$(dirname "$PWD")" = "/" ] \
-        || [ "$(dirname "$(dirname "$PWD")")" = "/" ] \
-        && [ ! "$PWD" = "$HOME" ]; then
-        echo -ne "$PWD"
-    elif [ "$PWD" = "$HOME" ]; then
-        echo -ne "~"
-    elif [ "$(dirname "$PWD")" = "$HOME" ]; then
-        echo -ne ""~"/$(basename "$PWD")"
-    elif [ "$(dirname "$(dirname "$PWD")")" = "$HOME" ]; then
-        echo -ne ""~"/$(basename "$(dirname "$PWD")")/$(basename "$PWD")"
-    else
-        echo -ne "$(basename "$(dirname "$PWD")")/$(basename "$PWD")"
-    fi;
+__my_fancy_cwd()
+{
+  if [ "$PWD" = "/" ] \
+      || [ "$(dirname "$PWD")" = "/" ] \
+      || [ "$(dirname "$(dirname "$PWD")")" = "/" ] \
+      && [ ! "$PWD" = "$HOME" ]; then
+    echo -ne "$PWD"
+  elif [ "$PWD" = "$HOME" ]; then
+    echo -ne "~"
+  elif [ "$(dirname "$PWD")" = "$HOME" ]; then
+    echo -ne ""~"/$(basename "$PWD")"
+  elif [ "$(dirname "$(dirname "$PWD")")" = "$HOME" ]; then
+    echo -ne ""~"/$(basename "$(dirname "$PWD")")/$(basename "$PWD")"
+  else
+    echo -ne "$(basename "$(dirname "$PWD")")/$(basename "$PWD")"
+  fi;
 }
 
 if [ ! -z $TMUX ]; then
-    PROMPT_COMMAND='echo -ne "\033k[$(fancycwd)]\033\\"'
+  PROMPT_COMMAND='echo -ne "\033k[$(__my_fancy_cwd)]\033\\"'
 fi
 
 if [ -d ~/.bash_completion.d ]; then
-    for file in ~/.bash_completion.d/*; do
-        . $file
-    done
+  for file in ~/.bash_completion.d/*; do
+    . $file
+  done
 fi
 
 [[ -d $HOME/sdk/android-sdk-linux ]] \
-    && PATH="$PATH:$HOME/sdk/android-sdk-linux/tools:$HOME/sdk/android-sdk-linux/platform-tools" \
-    && export ANDROID_HOME=$HOME/sdk/android-sdk-linux
+  && PATH="$PATH:$HOME/sdk/android-sdk-linux/tools:$HOME/sdk/android-sdk-linux/platform-tools" \
+  && export ANDROID_HOME=$HOME/sdk/android-sdk-linux
 [[ -d $HOME/Library/Android/sdk ]] \
-    && PATH="$PATH:$HOME/Library/Android/sdk/tools:$HOME/Library/Android/sdk/platform-tools" \
-    && export ANDROID_HOME=$HOME/Library/Android/sdk
+  && PATH="$PATH:$HOME/Library/Android/sdk/tools:$HOME/Library/Android/sdk/platform-tools" \
+  && export ANDROID_HOME=$HOME/Library/Android/sdk
 
 [[ -d $HOME/.cabal/bin ]] \
-    && PATH="$PATH:$HOME/.cabal/bin"
+  && PATH="$PATH:$HOME/.cabal/bin"
 
 [[ -d $HOME/.rvm/bin ]] \
-    && PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+  && PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] \
-    && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+  && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 
 # for virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 [[ -f /usr/local/bin/virtualenvwrapper.sh ]] \
-    && source /usr/local/bin/virtualenvwrapper.sh
+  && source /usr/local/bin/virtualenvwrapper.sh
 
 mkdircd() { mkdir -p "$@" && eval cd "\"\$$#\""; }
 
@@ -181,179 +182,223 @@ mkdircd() { mkdir -p "$@" && eval cd "\"\$$#\""; }
 
 # Refresh SSH agent in case it was dead {{{
 if [ ! -z "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ] ; then
-    unlink "$HOME/.ssh/agent_sock" 2>/dev/null
-    ln -s "$SSH_AUTH_SOCK" "$HOME/.ssh/agent_sock"
-    export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
+  unlink "$HOME/.ssh/agent_sock" 2>/dev/null
+  ln -s "$SSH_AUTH_SOCK" "$HOME/.ssh/agent_sock"
+  export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
 fi
 # }}}
 
 # Add node.js executables {{{
 [[ -d "$HOME/node_modules/.bin" ]] \
-    && PATH="$PATH:$HOME/node_modules/.bin"
+  && PATH="$PATH:$HOME/node_modules/.bin"
 # }}}
 
 # Go {{{
 export GOPATH=$HOME/.go
 export GOBIN=${GOPATH}/bin
 [[ -d ${GOBIN} ]] \
-    && PATH="$PATH:$GOBIN"
+  && PATH="$PATH:$GOBIN"
 # }}}
 
 # Java {{{
 if [ -d "/usr/lib/jvm/java-7-oracle" ]; then
-    export JAVA7_HOME="/usr/lib/jvm/java-7-oracle"
+  export JAVA7_HOME="/usr/lib/jvm/java-7-oracle"
 elif [ -d "/Library/Java/JavaVirtualMachines/jdk1.7"*".jdk/Contents/Home" ]; then
-    export JAVA7_HOME=$(echo "/Library/Java/JavaVirtualMachines/jdk1.7"*".jdk/Contents/Home")
+  export JAVA7_HOME=$(echo "/Library/Java/JavaVirtualMachines/jdk1.7"*".jdk/Contents/Home")
 fi
 if [ -d "/usr/lib/jvm/java-8-oracle" ]; then
-    export JAVA8_HOME="/usr/lib/jvm/java-8-oracle"
+  export JAVA8_HOME="/usr/lib/jvm/java-8-oracle"
 elif [ -d "/Library/Java/JavaVirtualMachines/jdk1.8"*".jdk/Contents/Home" ]; then
-    export JAVA8_HOME=$(echo "/Library/Java/JavaVirtualMachines/jdk1.8"*".jdk/Contents/Home")
+  export JAVA8_HOME=$(echo "/Library/Java/JavaVirtualMachines/jdk1.8"*".jdk/Contents/Home")
 fi
 if [ -n $JAVA8_HOME ]; then
-    export JAVA_HOME="$JAVA8_HOME"
+  export JAVA_HOME="$JAVA8_HOME"
 elif [ -n $JAVA7_HOME ]; then
-    export JAVA_HOME="$JAVA7_HOME"
+  export JAVA_HOME="$JAVA7_HOME"
 fi
 # }}}
 
 # Node Version Manager {{{
 if [ -f ~/.nvm/nvm.sh ]; then
-    . ~/.nvm/nvm.sh
+  . ~/.nvm/nvm.sh
 fi
 # }}}
 
 # Darwin specific tweaks
 if [[ "${OSTYPE,,}" == darwin* ]]; then
-    # ls color
-    alias ls='ls -G'
-    # updatedb
-    alias updatedb='sudo /usr/libexec/locate.updatedb'
+  # ls color
+  alias ls='ls -G'
+  # updatedb
+  alias updatedb='sudo /usr/libexec/locate.updatedb'
 fi
 
 # Bash prompt {{{
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
-    export TERM='gnome-256color';
+  export TERM='gnome-256color';
 elif infocmp xterm-256color >/dev/null 2>&1; then
-    export TERM='xterm-256color';
-fi;
+  export TERM='xterm-256color';
+fi
 
-__prompt_git() {
-    local s='';
-    local branchName='';
+__my_prompt_git()
+{
+  local s='';
+  local branchName='';
 
-    # Check if the current directory is in a Git repository.
-    if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == '0' ]; then
+  # Check if the current directory is in a Git repository.
+  if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == '0' ]; then
 
-        # check if the current directory is in .git before running git checks
-        if [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]; then
+    # check if the current directory is in .git before running git checks
+    if [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]; then
 
-            # Ensure the index is up to date.
-            git update-index --really-refresh -q &>/dev/null;
+      # Ensure the index is up to date.
+      git update-index --really-refresh -q &>/dev/null;
 
-            # Check for uncommitted changes in the index.
-            if ! $(git diff --quiet --ignore-submodules --cached); then
-                s+='+';
-            fi;
+      # Check for uncommitted changes in the index.
+      if ! $(git diff --quiet --ignore-submodules --cached); then
+        s+='+';
+      fi;
 
-            # Check for unstaged changes.
-            if ! $(git diff-files --quiet --ignore-submodules --); then
-                s+='!';
-            fi;
+      # Check for unstaged changes.
+      if ! $(git diff-files --quiet --ignore-submodules --); then
+        s+='!';
+      fi;
 
-            # Check for untracked files.
-            if [ -n "$(git ls-files --others --exclude-standard)" ]; then
-                s+='?';
-            fi;
+      # Check for untracked files.
+      if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+        s+='?';
+      fi;
 
-            # Check for stashed files.
-            if $(git rev-parse --verify refs/stash &>/dev/null); then
-                s+='$';
-            fi;
+      # Check for stashed files.
+      if $(git rev-parse --verify refs/stash &>/dev/null); then
+        s+='$';
+      fi;
 
-        fi;
-
-        # Get the short symbolic ref.
-        # If HEAD isn’t a symbolic ref, get the short SHA for the latest commit
-        # Otherwise, just give up.
-        branchName="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
-            git rev-parse --short HEAD 2> /dev/null || \
-            echo '(unknown)')";
-
-        [ -n "${s}" ] && s=" [${s}]";
-
-        echo -e "${1}${branchName}${purple}${s}";
-    else
-        return;
     fi;
+
+    # Get the short symbolic ref.
+    # If HEAD isn’t a symbolic ref, get the short SHA for the latest commit
+    # Otherwise, just give up.
+    branchName="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
+        git rev-parse --short HEAD 2> /dev/null || \
+        echo '(unknown)')";
+
+    [ -n "${s}" ] && s=" [${s}]";
+
+    echo -e "${1}${branchName}${purple}${s}";
+  else
+    return;
+  fi;
 }
 
-__prompt_sign() {
-    if [ $(id -u) -eq 0 ]; then
-        echo '#'
-    else
-        echo '$'
-    fi
+__my_prompt_sign()
+{
+  if [ $(id -u) -eq 0 ]; then
+    echo '#'
+  else
+    echo '$'
+  fi
 }
 
-if tput setaf 1 &> /dev/null; then
-    tput sgr0; # reset colors
-    bold=$(tput bold);
-    reset=$(tput sgr0);
+__my_ps1()
+{
+  if tput setaf 1 &> /dev/null; then
+    tput sgr0 # reset colors
+    bold=$(tput bold)
+    reset=$(tput sgr0)
     # Solarized colors, taken from http://git.io/solarized-colors.
-    black=$(tput setaf 0);
-    blue=$(tput setaf 33);
-    cyan=$(tput setaf 37);
-    green=$(tput setaf 64);
-    orange=$(tput setaf 166);
-    purple=$(tput setaf 125);
-    red=$(tput setaf 124);
-    violet=$(tput setaf 61);
-    white=$(tput setaf 15);
-    yellow=$(tput setaf 136);
-else
-    bold='';
-    reset="\e[0m";
-    black="\e[1;30m";
-    blue="\e[1;34m";
-    cyan="\e[1;36m";
-    green="\e[1;32m";
-    orange="\e[1;33m";
-    purple="\e[1;35m";
-    red="\e[1;31m";
-    violet="\e[1;35m";
-    white="\e[1;37m";
-    yellow="\e[1;33m";
-fi;
+    black=$(tput setaf 0)
+    blue=$(tput setaf 33)
+    cyan=$(tput setaf 37)
+    green=$(tput setaf 64)
+    orange=$(tput setaf 166)
+    purple=$(tput setaf 125)
+    red=$(tput setaf 124)
+    violet=$(tput setaf 61)
+    white=$(tput setaf 15)
+    yellow=$(tput setaf 136)
+  else
+    bold=''
+    reset="\e[0m"
+    black="\e[1;30m"
+    blue="\e[1;34m"
+    cyan="\e[1;36m"
+    green="\e[1;32m"
+    orange="\e[1;33m"
+    purple="\e[1;35m"
+    red="\e[1;31m"
+    violet="\e[1;35m"
+    white="\e[1;37m"
+    yellow="\e[1;33m"
+  fi
 
-# Highlight the user name when logged in as root.
-if [[ "${USER}" == "root" ]]; then
-    userStyle="${red}";
-else
-    userStyle="${orange}";
-fi;
+  # Highlight the user name when logged in as root.
+  if [[ "${USER}" == "root" ]]; then
+    userStyle="${red}"
+  else
+    userStyle="${orange}"
+  fi
 
-# Highlight the hostname when connected via SSH.
-if [[ "${SSH_TTY}" ]]; then
-    hostStyle="${bold}${red}";
-else
-    hostStyle="${yellow}";
-fi;
+  # Highlight the hostname when connected via SSH.
+  if [[ "${SSH_TTY}" ]]; then
+    hostStyle="${bold}${red}"
+  else
+    hostStyle="${yellow}"
+  fi
 
-# Set the terminal title to the current working directory.
-PS1="\[\033]0;\w\007\]";
-PS1+="\[${userStyle}\]\u"; # username
-PS1+="\[${reset}\] at ";
-PS1+="\[${hostStyle}\]\h"; # host
-PS1+="\[${reset}\] in ";
-PS1+="\[${bold}${blue}\]\w"; # working directory
-PS1+="\$(__prompt_git \"${reset} on ${violet}\")"; # Git repository details
-PS1+="\[${reset}\] since ";
-PS1+="\[${green}\]\d \[${cyan}\]\t"; # date
-PS1+="\n";
-PS1+="\[${reset}\]\$(__prompt_sign) \[${reset}\]"; # `$` or `#` (and reset color)
-export PS1;
+  # Set the terminal title to the current working directory.
+  PS1="\[\033]0;\w\007\]"
+  PS1+="\[${userStyle}\]\u" # username
+  PS1+="\[${reset}\] at "
+  PS1+="\[${hostStyle}\]\h" # host
+  PS1+="\[${reset}\] in "
+  PS1+="\[${bold}${blue}\]\w" # working directory
+  PS1+="\$(__my_prompt_git \"${reset} on ${violet}\")" # Git repository details
+  PS1+="\[${reset}\] since "
+  PS1+="\[${green}\]\d \[${cyan}\]\t" # date
+  PS1+="\n"
+  PS1+="\[${reset}\]\$(__my_prompt_sign) \[${reset}\]" # `$` or `#` (and reset color)
+  echo -n "${PS1}"
+}
 
-PS2="\[${yellow}\]→ \[${reset}\]";
-export PS2;
+__my_ps2()
+{
+  if tput setaf 1 &> /dev/null; then
+    tput sgr0 # reset colors
+    bold=$(tput bold)
+    reset=$(tput sgr0)
+    # Solarized colors, taken from http://git.io/solarized-colors.
+    black=$(tput setaf 0)
+    blue=$(tput setaf 33)
+    cyan=$(tput setaf 37)
+    green=$(tput setaf 64)
+    orange=$(tput setaf 166)
+    purple=$(tput setaf 125)
+    red=$(tput setaf 124)
+    violet=$(tput setaf 61)
+    white=$(tput setaf 15)
+    yellow=$(tput setaf 136)
+  else
+    bold=''
+    reset="\e[0m"
+    black="\e[1;30m"
+    blue="\e[1;34m"
+    cyan="\e[1;36m"
+    green="\e[1;32m"
+    orange="\e[1;33m"
+    purple="\e[1;35m"
+    red="\e[1;31m"
+    violet="\e[1;35m"
+    white="\e[1;37m"
+    yellow="\e[1;33m"
+  fi
+  echo -n "\[${yellow}\]→ \[${reset}\]"
+}
+
+PS1=$(__my_ps1)
+export PS1
+PS2=$(__my_ps2)
+export PS2
+
+unset -f __my_ps1
+unset -f __my_ps2
 # }}}
