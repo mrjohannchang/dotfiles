@@ -435,6 +435,8 @@ if [ -f "${__gpg_agent_info_file}" ]; then
   if [ -S "${__gpg_agent_sock}" ]; then
     GPG_AGENT_INFO="${__gpg_agent_info}"
     export GPG_AGENT_INFO
+  else
+    unset GPG_AGENT_INFO
   fi
 else
   if [ -n "${GPG_AGENT_INFO}" ]; then
@@ -450,7 +452,8 @@ if [ -z "${GPG_AGENT_INFO}" ]; then
   pgrep -U "$(id -u)" "gpg-agent" | while read line; do
     kill "${line}"
   done
-  command -v gpg-agent && gpg-agent --daemon --sh --default-cache-ttl 7200 > "${__gpg_agent_info_file}"
+  command -v gpg-agent > /dev/null 2>&1 \
+    && gpg-agent --daemon --sh --default-cache-ttl 7200 > "${__gpg_agent_info_file}"
   GPG_AGENT_INFO=$(__get_gpg_agent_info "${__gpg_agent_info_file}")
   export GPG_AGENT_INFO
 fi
