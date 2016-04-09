@@ -145,7 +145,8 @@ __my_fancy_cwd()
 }
 
 if [ ! -z $TMUX ]; then
-  PROMPT_COMMAND='echo -ne "\033k[$(__my_fancy_cwd)]\033\\"'
+  true
+  # PROMPT_COMMAND='echo -ne "\033k[$(__my_fancy_cwd)]\033\\"'
 fi
 
 if [ -d ~/.bash_completion.d ]; then
