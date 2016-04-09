@@ -452,9 +452,16 @@ if [ -z "${GPG_AGENT_INFO}" ]; then
   pgrep -U "$(id -u)" "gpg-agent" | while read line; do
     kill "${line}"
   done
-  command -v gpg-agent > /dev/null 2>&1 \
-    && gpg-agent --daemon --sh --default-cache-ttl 7200 > "${__gpg_agent_info_file}"
-  GPG_AGENT_INFO=$(__get_gpg_agent_info "${__gpg_agent_info_file}")
+  __gpg_agent_info=$(gpg-agent --daemon --sh --default-cache-ttl 7200)
+  if [ -z "${__gpg_agent_info}" ]; then
+    if [ -S "${HOME}/.gnupg/S.gpg-agent" ]; then
+      __gpg_agent_info="${HOME}/.gnupg/S.gpg-agent"
+    fi
+  fi
+  if [ -n "${__gpg_agent_info}" ]; then
+    echo -n "${__gpg_agent_info}" > "${__gpg_agent_info_file}"
+    GPG_AGENT_INFO="${__gpg_agent_info}"
+  fi
   export GPG_AGENT_INFO
 fi
 
