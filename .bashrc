@@ -402,3 +402,61 @@ export PS2
 unset -f __my_ps1
 unset -f __my_ps2
 # }}}
+
+# gpg-agent {{{
+__get_gpg_agent_sock()
+{
+  __gpg_agent_info_file="${1}"
+  cat "${__gpg_agent_info_file}" | while IFS='' read -r line || [ -n "${line}" ]; do
+    if echo -n "${line}" | grep -q "S\.gpg-agent" > /dev/null 2>&1; then
+      echo -n "${line}" | sed 's/.*\(\/tmp\/gpg.*\/S\.gpg-agent\).*/\1/'
+      break
+    fi
+  done
+}
+
+__get_gpg_agent_info()
+{
+  __gpg_agent_info_file="${1}"
+  cat "${__gpg_agent_info_file}" | while IFS='' read -r line || [ -n "${line}" ]; do
+    if echo -n "${line}" | grep -q "S\.gpg-agent" > /dev/null 2>&1; then
+      echo -n "${line}" | sed 's/GPG_AGENT_INFO=//' | sed 's/; export GPG_AGENT_INFO;//'
+      break
+    fi
+  done
+}
+
+__gpg_agent_info_file="${HOME}/.gpg-agent-info"
+
+if [ -f "${__gpg_agent_info_file}" ]; then
+  __gpg_agent_info=$(__get_gpg_agent_info "${__gpg_agent_info_file}")
+  __gpg_agent_sock=$(__get_gpg_agent_sock "${__gpg_agent_info_file}")
+  if [ -S "${__gpg_agent_sock}" ]; then
+    GPG_AGENT_INFO="${__gpg_agent_info}"
+    export GPG_AGENT_INFO
+  fi
+else
+  if [ -n "${GPG_AGENT_INFO}" ]; then
+    __gpg_agent_sock=$(__get_gpg_agent_sock <(echo -n ${GPG_AGENT_INFO}))
+    if [ ! -S "${__gpg_agent_sock}" ]; then
+      unset GPG_AGENT_INFO
+    fi
+  fi
+fi
+
+if [ -z "${GPG_AGENT_INFO}" ]; then
+  rm -rf "${__gpg_agent_info_file}"
+  pgrep -U "$(id -u)"  gpg-agent | while read line; do
+    kill "${line}"
+  done
+  command -v gpg-agent && gpg-agent --daemon --sh --default-cache-ttl 7200 > "${__gpg_agent_info_file}"
+  GPG_AGENT_INFO=$(__get_gpg_agent_info "${__gpg_agent_info_file}")
+  export GPG_AGENT_INFO
+fi
+
+unset __gpg_agent_sock
+unset __gpg_agent_info
+unset -f __get_gpg_agent_sock
+unset -f __get_gpg_agent_info
+unset __gpg_agent_info_file
+# }}}
