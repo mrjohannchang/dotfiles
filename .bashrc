@@ -447,7 +447,7 @@ fi
 
 if [ -z "${GPG_AGENT_INFO}" ]; then
   rm -rf "${__gpg_agent_info_file}"
-  pgrep -U "$(id -u)"  gpg-agent | while read line; do
+  pgrep -U "$(id -u)" "gpg-agent" | while read line; do
     kill "${line}"
   done
   command -v gpg-agent && gpg-agent --daemon --sh --default-cache-ttl 7200 > "${__gpg_agent_info_file}"
