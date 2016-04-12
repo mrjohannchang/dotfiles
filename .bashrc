@@ -471,3 +471,16 @@ unset -f __get_gpg_agent_sock
 unset -f __get_gpg_agent_info
 unset __gpg_agent_info_file
 # }}}
+
+# pyenv {{{
+# should be at the end of this file
+if [ -d "${HOME}/.pyenv" ]; then
+  export PYENV_ROOT="${HOME}/.pyenv"
+  if [ -d "${PYENV_ROOT}/bin" ]; then
+    export PATH="${PYENV_ROOT}/bin:${PATH}"
+  fi
+fi
+if command -v pyenv >/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+# }}}
