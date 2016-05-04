@@ -59,6 +59,12 @@ install() {
     ln -fs "$PWD"/.profile ~/.profile
     echo ".profile installed"
 
+    if [ -e ~/.pyenv ] && [ ! -d ~/.pyenv ]; then
+        rm -fr ~/.pyenv
+    fi
+    curl -sL https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash > /dev/null 2>&1
+    echo "pyenv installed"
+
     if [ -e ~/.tmux ] && [ ! -L ~/.tmux ]; then
         rm -rf ~/.tmux.bak
         mv ~/.tmux ~/.tmux.bak
@@ -197,6 +203,11 @@ uninstall() {
             mv ~/.profile.bak ~/.profile
         fi
         echo ".profile uninstalled"
+    fi
+
+    if [ -e ~/.pyenv ]; then
+        rm -fr ~/.pyenv
+        echo "pyenv uninstalled"
     fi
 
     if [ -L ~/.tmux ]; then
