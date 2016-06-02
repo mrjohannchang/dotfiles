@@ -2,12 +2,6 @@
 
 ## Prerequisites
 
-### Optional
-
-```sh
-curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
-```
-
 ### OS X
 
 - Xcode and its Command Line Tools
@@ -22,6 +16,12 @@ brew install go fish
 
 ```sh
 sudo apt-get install build-essential cmake python-dev git golang fish
+```
+
+### Optional
+
+```sh
+curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
 ```
 
 ## Installation
