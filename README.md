@@ -5,7 +5,7 @@
 ### Optional
 
 ```sh
-curl -sL get.fisherman.sh | fish
+curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
 ```
 
 ### OS X
