@@ -121,7 +121,6 @@ install() {
         echo -n "fisher install changyuheng/myfishconfig" | fish || true
         echo -n "fisher install changyuheng/theme-plain" | fish || true
         echo -n "fisher install edc/bass" | fish || true
-        (cd ~/.config/fisherman/cache/bass && make install || true)
         echo -n "fisher install nvm" | fish || true
         echo -n "fisher install pyenv" | fish || true
         echo -n "fisher install z" | fish || true
