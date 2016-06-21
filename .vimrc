@@ -5,7 +5,6 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 
 " plug-in on GitHub repo
-Plug 'bling/vim-airline'
 Plug 'changyuheng/color-scheme-holokai-for-vim'
 Plug 'changyuheng/color-scheme-solarized-for-vim'
 " Plugin 'changyuheng/cscope.vim'
@@ -46,6 +45,8 @@ Plug 'tomasr/molokai'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --gocode-completer' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'will133/vim-dirdiff'
 Plug 'wting/rust.vim'
 
