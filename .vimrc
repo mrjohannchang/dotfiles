@@ -46,6 +46,7 @@ Plug 'tomasr/molokai'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --gocode-completer' }
+Plug 'will133/vim-dirdiff'
 Plug 'wting/rust.vim'
 
 " Add plugins to &runtimepath
