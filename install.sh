@@ -45,6 +45,13 @@ install() {
     ln -fs "$PWD"/.bashrc ~/.bashrc
     echo ".bashrc installed"
 
+    if [ -e ~/.ideavimrc ] && [ ! -L ~/.ideavimrc ]; then
+        rm -rf ~/.ideavimrc.bak
+        mv ~/.ideavimrc ~/.ideavimrc.bak
+    fi
+    ln -fs "$PWD"/.ideavimrc ~/.ideavimrc
+    echo ".ideavimrc installed"
+
     if [ -e ~/.pentadactylrc ] && [ ! -L ~/.pentadactylrc ]; then
         rm -rf ~/.pentadactylrc.bak
         mv ~/.pentadactylrc ~/.pentadactylrc.bak
@@ -188,6 +195,14 @@ uninstall() {
             mv ~/.bashrc.bak ~/.bashrc
         fi
         echo ".bashrc uninstalled"
+    fi
+
+    if [ -L ~/.ideavimrc ]; then
+        unlink ~/.ideavimrc
+        if [ -e ~/.ideavimrc.bak ]; then
+            mv ~/.ideavimrc.bak ~/.ideavimrc
+        fi
+        echo ".ideavimrc uninstalled"
     fi
 
     if [ -L ~/.pentadactylrc ]; then
