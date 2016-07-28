@@ -9,20 +9,24 @@
 - Homebrew
 
 ```sh
-brew install go fish
+brew install go fish tmux
+brew install macvim --with-override-system-vim
 ```
 
 ### Ubuntu
 
 ```sh
-sudo apt-get install build-essential cmake python-dev git golang fish
+sudo apt-get install build-essential cmake python-dev git golang fish tmux vim-gnome
 ```
 
-### Optional
+### For all
 
-```sh
-curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
-```
+- Fisherman
+    ```sh
+    curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
+    ```
+- nvm
+- pyenv
 
 ## Installation
 
