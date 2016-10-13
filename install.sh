@@ -84,6 +84,13 @@ install() {
         mv ~/.tmux.conf ~/.tmux.conf.bak
     fi
     ln -fs "$PWD"/.tmux.conf ~/.tmux.conf
+    if [[ "${OSTYPE,,}" == darwin* ]]; then
+      if [ -e ~/.tmux.macos.conf ] && [ ! -L ~/.tmux.macos.conf ]; then
+          rm -rf ~/.tmux.macos.conf.bak
+          mv ~/.tmux.macos.conf ~/.tmux.macos.conf.bak
+      fi
+      ln -fs "$PWD"/.tmux.macos.conf ~/.tmux.macos.conf
+    fi
     echo ".tmux.conf installed"
 
     if [ -e ~/.vim ] && [ ! -L ~/.vim ]; then
@@ -240,6 +247,14 @@ uninstall() {
             mv ~/.tmux.conf.bak ~/.tmux.conf
         fi
         echo ".tmux.conf uninstalled"
+    fi
+
+    if [ -L ~/.tmux.macos.conf ]; then
+        unlink ~/.tmux.macos.conf
+        if [ -e ~/.tmux.macos.conf.bak ]; then
+            mv ~/.tmux.macos.conf.bak ~/.tmux.macos.conf
+        fi
+        echo ".tmux.macos.conf uninstalled"
     fi
 
     if [ -L ~/.vim ]; then
