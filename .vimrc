@@ -271,6 +271,7 @@ endif
 " }}}
 
 " Gundo configs {{{
+let g:gundo_prefer_python3 = 1
 nnoremap U :GundoToggle<CR>
 " }}}
 
