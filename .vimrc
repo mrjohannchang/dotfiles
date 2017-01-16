@@ -44,7 +44,7 @@ Plug 'thinca/vim-template'
 Plug 'tomasr/molokai'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --gocode-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --clang-completer --gocode-completer' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'will133/vim-dirdiff'
@@ -303,4 +303,9 @@ cnoremap <C-j> <t_kd>
 cnoremap <C-k> <t_ku>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
+" }}}
+
+" YouCompleteMe {{{
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_python_binary_path = 'python3'
 " }}}
