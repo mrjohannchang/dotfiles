@@ -7,32 +7,37 @@
 - Xcode and its Command Line Tools
 - CMake
 - Homebrew
+- Bash
+- Python 3
+- CMake
+- reattach-to-user-namespace
 
-```sh
-brew install go fish tmux
+```
+brew install go fish tmux bash python3 cmake reattach-to-user-namespace
 brew install macvim --with-override-system-vim
 ```
 
 ### Ubuntu
 
-```sh
+```
 sudo apt-get install build-essential cmake python-dev git golang fish tmux vim-gnome
 ```
 
 ### For all
 
 - Fisherman
-    ```sh
+    ```
     curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
     ```
 - nvm
 - pyenv
+- Python 3
 
 ## Installation
 
 1. Run in the shell
 
-    ```sh
+    ```
     git submodule update --init --recursive --remote
     ./install.sh
     ```
