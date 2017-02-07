@@ -5,33 +5,27 @@
 ### OS X
 
 - Xcode and its Command Line Tools
-- CMake
-- Homebrew
-- Bash
-- Python 3
-- CMake
-- reattach-to-user-namespace
+- Homebrew [link](http://brew.sh/)
 
 ```
 brew install go fish tmux bash python3 cmake reattach-to-user-namespace
 brew install macvim --with-override-system-vim
 ```
 
+- Set fish to default login shell
+    ![](assets/images/macos-default-login-shell.png)
+
 ### Ubuntu
 
 ```
-sudo apt-get install build-essential cmake python-dev git golang fish tmux vim-gnome
+sudo apt-get install build-essential cmake python-dev git golang fish tmux vim-gnome python3
 ```
 
 ### For all
 
-- Fisherman
-    ```
-    curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
-    ```
-- nvm
-- pyenv
-- Python 3
+- Fisherman [link](https://github.com/fisherman/fisherman)
+- nvm [link](https://github.com/creationix/nvm)
+- pyenv [link](https://github.com/yyuu/pyenv)
 
 ## Installation
 
@@ -57,4 +51,4 @@ sudo apt-get install build-essential cmake python-dev git golang fish tmux vim-g
 Except where otherwise noted, all parts of this software is licensed under the
 [MIT license](http://opensource.org/licenses/MIT).
 
-© 2015 Chang Yu-heng
+© 2017 Henry Chang
