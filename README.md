@@ -18,14 +18,13 @@ brew install macvim --with-override-system-vim
 ### Ubuntu
 
 ```
-sudo apt-get install build-essential cmake python-dev git golang fish tmux vim-gnome python3
+sudo apt-get install build-essential cmake python-dev git golang fish tmux vim-gnome python3 python3-dev curl
 ```
 
 ### For all
 
 - Fisherman [link](https://github.com/fisherman/fisherman)
 - nvm [link](https://github.com/creationix/nvm)
-- pyenv [link](https://github.com/yyuu/pyenv)
 
 ## Installation
 
