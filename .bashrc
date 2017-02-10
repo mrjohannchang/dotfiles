@@ -470,6 +470,10 @@ unset __gpg_agent_info
 unset -f __get_gpg_agent_sock
 unset -f __get_gpg_agent_info
 unset __gpg_agent_info_file
+
+if [[ "${SSH_TTY}" ]]; then
+  export GPG_TTY=`tty`
+fi
 # }}}
 
 # pyenv {{{
