@@ -85,11 +85,11 @@ install() {
     fi
     ln -fs "$PWD"/.tmux.conf ~/.tmux.conf
     if [[ "${OSTYPE,,}" == darwin* ]]; then
-      if [ -e ~/.tmux.macos.conf ] && [ ! -L ~/.tmux.macos.conf ]; then
-          rm -rf ~/.tmux.macos.conf.bak
-          mv ~/.tmux.macos.conf ~/.tmux.macos.conf.bak
+      if [ -e ~/.tmux.darwin.conf ] && [ ! -L ~/.tmux.darwin.conf ]; then
+          rm -rf ~/.tmux.darwin.conf.bak
+          mv ~/.tmux.darwin.conf ~/.tmux.darwin.conf.bak
       fi
-      ln -fs "$PWD"/.tmux.macos.conf ~/.tmux.macos.conf
+      ln -fs "$PWD"/.tmux.darwin.conf ~/.tmux.darwin.conf
     fi
     echo ".tmux.conf installed"
 
@@ -249,12 +249,12 @@ uninstall() {
         echo ".tmux.conf uninstalled"
     fi
 
-    if [ -L ~/.tmux.macos.conf ]; then
-        unlink ~/.tmux.macos.conf
-        if [ -e ~/.tmux.macos.conf.bak ]; then
-            mv ~/.tmux.macos.conf.bak ~/.tmux.macos.conf
+    if [ -L ~/.tmux.darwin.conf ]; then
+        unlink ~/.tmux.darwin.conf
+        if [ -e ~/.tmux.darwin.conf.bak ]; then
+            mv ~/.tmux.darwin.conf.bak ~/.tmux.darwin.conf
         fi
-        echo ".tmux.macos.conf uninstalled"
+        echo ".tmux.darwin.conf uninstalled"
     fi
 
     if [ -L ~/.vim ]; then
