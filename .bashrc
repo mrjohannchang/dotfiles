@@ -231,6 +231,7 @@ if [[ "${OSTYPE,,}" == darwin* ]]; then
   alias ls='ls -G'
   # updatedb
   alias updatedb='sudo /usr/libexec/locate.updatedb'
+  [ -d "$HOME/bin/darwin" ] && export PATH="$PATH:$HOME/bin/darwin"
 fi
 
 # Bash prompt {{{
