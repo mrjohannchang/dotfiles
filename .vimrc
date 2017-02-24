@@ -36,6 +36,7 @@ Plug 'rstacruz/sparkup', { 'rtp': 'vim' }
 
 Plug 'sayuan/vimwiki'
 Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'sjl/gundo.vim'
@@ -308,4 +309,10 @@ cnoremap <C-e> <End>
 " YouCompleteMe {{{
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_python_binary_path = 'python3'
+" }}}
+
+" NERDTree {{{
+noremap <silent> <Leader>n :NERDTreeToggle<CR>
+noremap <silent> <leader>r :NERDTreeFind<CR>
+let g:NERDTreeWinPos = "right"
 " }}}
