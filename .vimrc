@@ -26,6 +26,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'kien/ctrlp.vim'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'majutsushi/tagbar'
+Plug 'mileszs/ack.vim'
 Plug 'milkypostman/vim-togglelist'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
@@ -315,4 +316,11 @@ let g:ycm_python_binary_path = 'python3'
 noremap <silent> <Leader>n :NERDTreeToggle<CR>
 noremap <silent> <leader>r :NERDTreeFind<CR>
 let g:NERDTreeWinPos = "right"
+" }}}
+
+" Ack {{{
+nnoremap <Leader>a :Ack!<Space>
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 " }}}
