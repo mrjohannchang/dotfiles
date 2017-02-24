@@ -8,7 +8,7 @@
 - Homebrew [link](http://brew.sh/)
 
 ```
-brew install go fish tmux bash python3 cmake reattach-to-user-namespace
+brew install go fish tmux bash python3 cmake reattach-to-user-namespace the_silver_searcher
 brew install macvim --with-override-system-vim
 ```
 
@@ -18,7 +18,7 @@ brew install macvim --with-override-system-vim
 ### Ubuntu
 
 ```
-sudo apt-get install build-essential cmake python-dev git golang fish tmux vim-gnome python3 python3-dev curl
+sudo apt-get install build-essential cmake python-dev git golang fish tmux vim-gnome python3 python3-dev curl silversearcher-ag
 ```
 
 ### For all
