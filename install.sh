@@ -130,7 +130,7 @@ install() {
          git config --global gpg.program gpg2
     fi
 
-    echo -n "Install Fisherman configurations (cannot be undone) [y/N]? "
+    echo -n "Install fisherman configurations (cannot be undone) [y/N]? "
     read ans
     if [ "${ans,,}" = "y" ]; then
         echo -n "fisher update" | fish || true

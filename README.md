@@ -2,29 +2,32 @@
 
 ## Prerequisites
 
-### OS X
+### macOS
 
 - Xcode and its Command Line Tools
-- Homebrew [link](http://brew.sh/)
+- [Homebrew](http://brew.sh/)
 
 ```
 brew install go fish tmux bash python3 cmake reattach-to-user-namespace the_silver_searcher
 brew install macvim --with-override-system-vim
 ```
 
-- Set fish to default login shell
+- Set preferred login shell
     ![](assets/images/macos-default-login-shell.png)
 
 ### Ubuntu
 
 ```
-sudo apt-get install build-essential cmake python-dev git golang fish tmux vim-gnome python3 python3-dev curl silversearcher-ag
+sudo apt-get install build-essential cmake python-dev git golang fish tmux vim-gnome python3 python3-dev curl silversearcher-ag zsh
 ```
 
 ### For all
 
-- Fisherman [link](https://github.com/fisherman/fisherman)
-- nvm [link](https://github.com/creationix/nvm)
+- [nvm](https://github.com/creationix/nvm)
+
+#### Optional
+- [fisherman](https://fisherman.github.io/)
+- [zplug](https://zplug.sh/)
 
 ## Installation
 
