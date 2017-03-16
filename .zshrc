@@ -37,11 +37,18 @@ setopt IGNORE_EOF
 # }}}
 
 
+# zsh-history-substring-search {{{
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+# }}}
+
+
 # {{{ zplug
 source ~/.zplug/init.zsh
 
 zplug "bhilburn/powerlevel9k", as:theme
 zplug "rupa/z", use:z.sh
+zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
