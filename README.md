@@ -8,7 +8,7 @@
 - [Homebrew](http://brew.sh/)
 
 ```
-brew install go fish tmux bash python3 cmake reattach-to-user-namespace the_silver_searcher
+brew install coreutils go fish tmux bash python3 cmake reattach-to-user-namespace the_silver_searcher
 brew install macvim --with-override-system-vim
 ```
 
@@ -24,6 +24,7 @@ sudo apt-get install build-essential cmake python-dev git golang fish tmux vim-g
 ### For all
 
 - [nvm](https://github.com/creationix/nvm)
+- [pyenv](https://github.com/pyenv/pyenv)
 
 #### Optional
 - [fisherman](https://fisherman.github.io/)

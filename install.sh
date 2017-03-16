@@ -68,12 +68,6 @@ install() {
     ln -fs "$script_dir"/.profile ~/.profile
     echo ".profile installed"
 
-    if [ -e ~/.pyenv ] && [ ! -d ~/.pyenv ]; then
-        rm -fr ~/.pyenv
-    fi
-    curl -sL https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash > /dev/null 2>&1
-    echo "pyenv installed"
-
     if [ -e ~/.tmux ] && [ ! -L ~/.tmux ]; then
         rm -rf ~/.tmux.bak
         mv ~/.tmux ~/.tmux.bak
@@ -142,18 +136,18 @@ install() {
         echo -n "fisher install z" | fish || true
     fi
 
-    if [[ "${OSTYPE,,}" == linux* ]]; then
-        echo -n "Install Solaried dircolorsdb [y/N]? "
-        read ans
-        if [ "${ans,,}" = "y" ]; then
-            if [ -e ~/.dircolors ] && [ ! -L ~/.dircolors ]; then
-                rm -rf ~/.dircolors.bak
-                mv ~/.dircolors ~/.dircolors.bak
-            fi
-            ln -fs "$script_dir"/bundle/dircolors-solarized/dircolors.ansi-light ~/.dircolors
-            echo ".dircolorsdb installed"
+    echo -n "Install Solaried dircolorsdb [y/N]? "
+    read ans
+    if [ "${ans,,}" = "y" ]; then
+        if [ -e ~/.dircolors ] && [ ! -L ~/.dircolors ]; then
+            rm -rf ~/.dircolors.bak
+            mv ~/.dircolors ~/.dircolors.bak
         fi
+        ln -fs "$script_dir"/bundle/dircolors-solarized/dircolors.ansi-light ~/.dircolors
+        echo ".dircolorsdb installed"
+    fi
 
+    if [[ "${OSTYPE,,}" == linux* ]]; then
         echo "Installing Solarized color scheme to current Gnome Terminal profile,"
         echo -n "this cannot be undone. Proceed to install [y/N]? "
         read ans
@@ -237,11 +231,6 @@ uninstall() {
         echo ".profile uninstalled"
     fi
 
-    if [ -e ~/.pyenv ]; then
-        rm -fr ~/.pyenv
-        echo "pyenv uninstalled"
-    fi
-
     if [ -L ~/.tmux ]; then
         unlink ~/.tmux
         if [ -e ~/.tmux.bak ]; then
@@ -290,12 +279,12 @@ uninstall() {
         echo ".vimperatorrc uninstalled"
     fi
 
-    if [[ "${OSTYPE,,}" == linux* ]]; then
-        if [ -L ~/.dircolors ]; then
-            unlink ~/.dircolors
-            echo "dircolorsdb uninstalled"
-        fi
+    if [ -L ~/.dircolors ]; then
+        unlink ~/.dircolors
+        echo "dircolorsdb uninstalled"
+    fi
 
+    if [[ "${OSTYPE,,}" == linux* ]]; then
         if [ -L ~/.fonts/PowerlineSymbols.otf ] ||
             [ -L ~/.config/fontconfig/conf.d/10-powerline-symbols.conf ]; then
             if [ -L ~/.fonts/PowerlineSymbols.otf ]; then

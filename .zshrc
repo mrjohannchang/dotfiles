@@ -43,6 +43,18 @@ bindkey -M emacs '^N' history-substring-search-down
 # }}}
 
 
+# macOS {{{
+if [[ "$OSTYPE" == darwin* ]]; then
+  # ls color
+  eval $(gdircolors ~/.dircolors)
+  alias ls='gls --color=auto'
+  # updatedb
+  alias updatedb='sudo /usr/libexec/locate.updatedb'
+  [ -d "$HOME/bin/darwin" ] && export PATH="$PATH:$HOME/bin/darwin"
+fi
+# }}}
+
+
 # {{{ zplug
 source ~/.zplug/init.zsh
 
