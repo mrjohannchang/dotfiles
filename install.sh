@@ -182,6 +182,13 @@ install() {
         fi
     fi
 
+    if [ -e ~/.zshrc ] && [ ! -L ~/.zshrc ]; then
+        rm -rf ~/.zshrc.bak
+        mv ~/.zshrc ~/.zshrc.bak
+    fi
+    ln -fs "$PWD"/.zshrc ~/.zshrc
+    echo ".zshrc installed"
+
     INFO "installation completed"
 }
 
@@ -307,6 +314,14 @@ uninstall() {
             unlink "~/Library/Fonts/Monaco for Powerline.otf"
             echo "font \"Monaco for Powerline.otf\" uninstalled"
         fi
+    fi
+
+    if [ -L ~/.zshrc ]; then
+        unlink ~/.zshrc
+        if [ -e ~/.zshrc.bak ]; then
+            mv ~/.zshrc.bak ~/.zshrc
+        fi
+        echo ".zshrc uninstalled"
     fi
 
     INFO "uninstallation completed"
