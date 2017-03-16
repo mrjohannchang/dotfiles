@@ -2,6 +2,8 @@
 
 set -e
 
+script_dir=$(cd -P -- "$(dirname -- "$(command -v -- "$0")")" && pwd -P)
+
 COLOR_RESET=$(tput sgr0)
 COLOR_RED=$(tput setaf 124)
 COLOR_BOLD=$(tput bold)
@@ -35,35 +37,35 @@ install() {
         rm -rf ~/.bash_completion.d.bak
         mv ~/.bash_completion.d ~/.bash_completion.d.bak
     fi
-    ln -fs "$PWD"/.bash_completion.d ~/.bash_completion.d
+    ln -fs "$script_dir"/.bash_completion.d ~/.bash_completion.d
     echo ".bash_completion.d installed"
 
     if [ -e ~/.bashrc ] && [ ! -L ~/.bashrc ]; then
         rm -rf ~/.bashrc.bak
         mv ~/.bashrc ~/.bashrc.bak
     fi
-    ln -fs "$PWD"/.bashrc ~/.bashrc
+    ln -fs "$script_dir"/.bashrc ~/.bashrc
     echo ".bashrc installed"
 
     if [ -e ~/.ideavimrc ] && [ ! -L ~/.ideavimrc ]; then
         rm -rf ~/.ideavimrc.bak
         mv ~/.ideavimrc ~/.ideavimrc.bak
     fi
-    ln -fs "$PWD"/.ideavimrc ~/.ideavimrc
+    ln -fs "$script_dir"/.ideavimrc ~/.ideavimrc
     echo ".ideavimrc installed"
 
     if [ -e ~/.pentadactylrc ] && [ ! -L ~/.pentadactylrc ]; then
         rm -rf ~/.pentadactylrc.bak
         mv ~/.pentadactylrc ~/.pentadactylrc.bak
     fi
-    ln -fs "$PWD"/.pentadactylrc ~/.pentadactylrc
+    ln -fs "$script_dir"/.pentadactylrc ~/.pentadactylrc
     echo ".pentadactylrc installed"
 
     if [ -e ~/.profile ] && [ ! -L ~/.profile ]; then
         rm -rf ~/.profile.bak
         mv ~/.profile ~/.profile.bak
     fi
-    ln -fs "$PWD"/.profile ~/.profile
+    ln -fs "$script_dir"/.profile ~/.profile
     echo ".profile installed"
 
     if [ -e ~/.pyenv ] && [ ! -d ~/.pyenv ]; then
@@ -76,20 +78,20 @@ install() {
         rm -rf ~/.tmux.bak
         mv ~/.tmux ~/.tmux.bak
     fi
-    ln -fs "$PWD"/.tmux ~/.tmux
+    ln -fs "$script_dir"/.tmux ~/.tmux
     echo ".tmux installed"
 
     if [ -e ~/.tmux.conf ] && [ ! -L ~/.tmux.conf ]; then
         rm -rf ~/.tmux.conf.bak
         mv ~/.tmux.conf ~/.tmux.conf.bak
     fi
-    ln -fs "$PWD"/.tmux.conf ~/.tmux.conf
+    ln -fs "$script_dir"/.tmux.conf ~/.tmux.conf
     if [[ "${OSTYPE,,}" == darwin* ]]; then
       if [ -e ~/.tmux.darwin.conf ] && [ ! -L ~/.tmux.darwin.conf ]; then
           rm -rf ~/.tmux.darwin.conf.bak
           mv ~/.tmux.darwin.conf ~/.tmux.darwin.conf.bak
       fi
-      ln -fs "$PWD"/.tmux.darwin.conf ~/.tmux.darwin.conf
+      ln -fs "$script_dir"/.tmux.darwin.conf ~/.tmux.darwin.conf
     fi
     echo ".tmux.conf installed"
 
@@ -97,21 +99,21 @@ install() {
         rm -rf ~/.vim.bak
         mv ~/.vim ~/.vim.bak
     fi
-    ln -fs "$PWD"/.vim ~/.vim
+    ln -fs "$script_dir"/.vim ~/.vim
     echo ".vim installed"
 
     if [ -e ~/.vimrc ] && [ ! -L ~/.vimrc ]; then
         rm -rf ~/.vimrc.bak
         mv ~/.vimrc ~/.vimrc.bak
     fi
-    ln -fs "$PWD"/.vimrc ~/.vimrc
+    ln -fs "$script_dir"/.vimrc ~/.vimrc
     echo ".vimrc installed"
 
     if [ -e ~/.vimperatorrc ] && [ ! -L ~/.vimperatorrc ]; then
         rm -rf ~/.vimperatorrc.bak
         mv ~/.vimperatorrc ~/.vimperatorrc.bak
     fi
-    ln -fs "$PWD"/.vimperatorrc ~/.vimperatorrc
+    ln -fs "$script_dir"/.vimperatorrc ~/.vimperatorrc
     echo ".vimperatorrc installed"
 
     if [ ! -e ~/.config ]; then
@@ -148,7 +150,7 @@ install() {
                 rm -rf ~/.dircolors.bak
                 mv ~/.dircolors ~/.dircolors.bak
             fi
-            ln -fs "$PWD"/bundle/dircolors-solarized/dircolors.ansi-light ~/.dircolors
+            ln -fs "$script_dir"/bundle/dircolors-solarized/dircolors.ansi-light ~/.dircolors
             echo ".dircolorsdb installed"
         fi
 
@@ -169,15 +171,15 @@ install() {
             rm -rf ~/.config/fontconfig/conf.d
             mkdir -p ~/.config/fontconfig/conf.d
         fi
-        ln -fs "$PWD"/.fonts/PowerlineSymbols.otf ~/.fonts
-        ln -fs "$PWD"/.config/fontconfig/conf.d/10-powerline-symbols.conf ~/.config/fontconfig/conf.d
+        ln -fs "$script_dir"/.fonts/PowerlineSymbols.otf ~/.fonts
+        ln -fs "$script_dir"/.config/fontconfig/conf.d/10-powerline-symbols.conf ~/.config/fontconfig/conf.d
         echo "Powerline's font installed"
 
-        ln -fs "$PWD"/.config/fontconfig/conf.d/20-noto-cjk.conf ~/.config/fontconfig/conf.d
+        ln -fs "$script_dir"/.config/fontconfig/conf.d/20-noto-cjk.conf ~/.config/fontconfig/conf.d
         echo "Noto Sans' fontconfig installed"
     elif [[ "${OSTYPE,,}" == darwin* ]]; then
         if [ -d ~/Library/Fonts ]; then
-            ln -fs "$PWD/.fonts/Monaco for Powerline.otf" ~/Library/Fonts
+            ln -fs "$script_dir/.fonts/Monaco for Powerline.otf" ~/Library/Fonts
             echo "font \"Monaco for Powerline.otf\" installed"
         fi
     fi
@@ -186,7 +188,7 @@ install() {
         rm -rf ~/.zshrc.bak
         mv ~/.zshrc ~/.zshrc.bak
     fi
-    ln -fs "$PWD"/.zshrc ~/.zshrc
+    ln -fs "$script_dir"/.zshrc ~/.zshrc
     echo ".zshrc installed"
 
     INFO "installation completed"
