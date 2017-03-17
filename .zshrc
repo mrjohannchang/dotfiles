@@ -11,6 +11,7 @@ fi
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( \
   ssh \
   context \
+  virtualenv \
   dir_writable \
   dir \
   rbenv \
