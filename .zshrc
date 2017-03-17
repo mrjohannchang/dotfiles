@@ -25,10 +25,7 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( \
 
 
 # MISC {{{
-# This options works like APPEND_HISTORY except that new history lines are
-# added to the $HISTFILE incrementally (as soon as they are entered),
-# rather than waiting until the shell exits.
-setopt INC_APPEND_HISTORY
+setopt APPEND_HISTORY
 setopt SHARE_HISTORY
 # }}}
 
@@ -49,10 +46,18 @@ if [[ "$OSTYPE" == darwin* ]]; then
   # ls color
   eval $(gdircolors ~/.dircolors)
   alias ls='gls --color=auto'
+
   # updatedb
   alias updatedb='sudo /usr/libexec/locate.updatedb'
+
+  # include macOS specific executables
   [ -d "$HOME/bin/darwin" ] && export PATH="$PATH:$HOME/bin/darwin"
 fi
+# }}}
+
+
+# misc {{{
+export CASE_SENSITIVE=true
 # }}}
 
 
@@ -68,7 +73,7 @@ fz() {
 source ~/.zplug/init.zsh
 
 zplug "bhilburn/powerlevel9k", as:theme
-zplug "rupa/z", use:z.sh
+zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
