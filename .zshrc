@@ -41,19 +41,13 @@ bindkey -M emacs '^N' history-substring-search-down
 # }}}
 
 
-# macOS {{{
-if [[ "$OSTYPE" == darwin* ]]; then
-  # ls color
-  eval $(gdircolors ~/.dircolors)
-  alias ls='gls --color=auto'
-
-  # updatedb
-  alias updatedb='sudo /usr/libexec/locate.updatedb'
-
-  # include macOS specific executables
-  [ -d "$HOME/bin/darwin" ] && export PATH="$PATH:$HOME/bin/darwin"
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+  test -r ~/.dircolors \
+    && eval "$(dircolors -b ~/.dircolors)" \
+    || eval "$(dircolors -b)"
+  alias ls='ls --color=auto'
 fi
-# }}}
 
 
 # misc {{{
@@ -66,6 +60,21 @@ fz() {
   local dir
   dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
 }
+# }}}
+
+
+# macOS {{{
+if [[ "$OSTYPE" == darwin* ]]; then
+  # ls color
+  eval $(gdircolors ~/.dircolors)
+  alias ls='gls --color=auto'
+
+  # updatedb
+  alias updatedb='sudo /usr/libexec/locate.updatedb'
+
+  # include macOS specific executables
+  [ -d "$HOME/bin/darwin" ] && export PATH="$PATH:$HOME/bin/darwin"
+fi
 # }}}
 
 
