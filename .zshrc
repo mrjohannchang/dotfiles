@@ -93,3 +93,24 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load
 # }}}
+
+
+# autosuggestions {{{
+# this has to be done after the plugin being loaded
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(
+  beginning-of-line
+  backward-delete-char
+  backward-delete-word
+  backward-kill-word
+  history-search-forward
+  history-search-backward
+  history-beginning-search-forward
+  history-beginning-search-backward
+  history-substring-search-up
+  history-substring-search-down
+  up-line-or-history
+  down-line-or-history
+  accept-line
+)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=black,bold,underline'
+# }}}
