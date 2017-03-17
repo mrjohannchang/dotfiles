@@ -56,6 +56,14 @@ fi
 # }}}
 
 
+# fasd + fzf {{{
+fz() {
+  local dir
+  dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
+}
+# }}}
+
+
 # {{{ zplug
 source ~/.zplug/init.zsh
 
@@ -67,6 +75,7 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # Enable all oh-my-zsh's features
 zplug "lib/*", from:oh-my-zsh
+zplug "plugins/fasd", from:oh-my-zsh
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
