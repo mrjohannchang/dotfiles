@@ -53,7 +53,7 @@ setopt IGNORE_EOF
 # macOS {{{
 if [[ "$OSTYPE" == darwin* ]]; then
   # ls color
-  eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
   alias ls='gls --quoting-style=literal --color=auto'
 
   # updatedb
