@@ -24,42 +24,37 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( \
 # }}}
 
 
-# MISC {{{
-setopt APPEND_HISTORY
-setopt SHARE_HISTORY
-# }}}
-
-
-# Disable ctrl-d {{{
-setopt IGNORE_EOF
-# }}}
-
-
 # zsh-history-substring-search {{{
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 # }}}
 
 
-# enable color support of ls and also add handy aliases
+# enable the color support of ls
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors \
     && eval "$(dircolors -b ~/.dircolors)" \
     || eval "$(dircolors -b)"
-  alias ls='ls --color=auto'
+  alias ls='ls --quoting-style=literal --color=auto'
 fi
 
 
 # misc {{{
 export CASE_SENSITIVE=true
+
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+
+# disable ctrl-d
+setopt IGNORE_EOF
 # }}}
 
 
 # macOS {{{
 if [[ "$OSTYPE" == darwin* ]]; then
   # ls color
-  eval $(gdircolors ~/.dircolors)
-  alias ls='gls --color=auto'
+  eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='gls --quoting-style=literal --color=auto'
 
   # updatedb
   alias updatedb='sudo /usr/libexec/locate.updatedb'
@@ -83,6 +78,8 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # Enable all oh-my-zsh's features
 zplug "lib/*", from:oh-my-zsh
+zplug "plugins/gpg-agent", from:oh-my-zsh
+zplug "plugins/ssh-agent", from:oh-my-zsh
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -117,4 +114,7 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=black,bold,underline'
 # }}}
 
+
+# fzf {{{
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# }}}

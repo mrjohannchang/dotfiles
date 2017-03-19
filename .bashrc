@@ -493,3 +493,7 @@ fi
 # Stop control-D to terminate the shell {{{
 set -o ignoreeof
 # }}}
+
+# fzf {{{
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# }}}
