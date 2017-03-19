@@ -79,6 +79,8 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 # Enable all oh-my-zsh's features
 zplug "lib/*", from:oh-my-zsh
 zplug "plugins/gpg-agent", from:oh-my-zsh
+zplug "plugins/nvm", from:oh-my-zsh
+zplug "plugins/pyenv", from:oh-my-zsh
 zplug "plugins/ssh-agent", from:oh-my-zsh
 
 # Install plugins if there are plugins that have not been installed
