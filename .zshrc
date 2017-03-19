@@ -50,21 +50,6 @@ setopt IGNORE_EOF
 # }}}
 
 
-# macOS {{{
-if [[ "$OSTYPE" == darwin* ]]; then
-  # ls color
-  eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
-  alias ls='gls --quoting-style=literal --color=auto'
-
-  # updatedb
-  alias updatedb='sudo /usr/libexec/locate.updatedb'
-
-  # include macOS specific executables
-  [ -d "$HOME/bin/darwin" ] && export PATH="$PATH:$HOME/bin/darwin"
-fi
-# }}}
-
-
 # {{{ zplug
 source ~/.zplug/init.zsh
 
@@ -143,4 +128,19 @@ fzf_default_opts() {
 }
 fzf_default_opts && unset fzf_default_opts
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# }}}
+
+
+# macOS {{{
+if [[ "$OSTYPE" == darwin* ]]; then
+  # ls color
+  eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
+  alias ls='gls --quoting-style=literal --color=auto'
+
+  # updatedb
+  alias updatedb='sudo /usr/libexec/locate.updatedb'
+
+  # include macOS specific executables
+  [ -d "$HOME/bin/darwin" ] && export PATH="$PATH:$HOME/bin/darwin"
+fi
 # }}}
