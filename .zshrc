@@ -55,14 +55,6 @@ export CASE_SENSITIVE=true
 # }}}
 
 
-# fasd + fzf {{{
-fz() {
-  local dir
-  dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
-}
-# }}}
-
-
 # macOS {{{
 if [[ "$OSTYPE" == darwin* ]]; then
   # ls color
@@ -82,6 +74,8 @@ fi
 source ~/.zplug/init.zsh
 
 zplug "bhilburn/powerlevel9k", as:theme
+zplug "changyuheng/fz"
+zplug "rupa/z", use:z.sh
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
@@ -89,7 +83,6 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # Enable all oh-my-zsh's features
 zplug "lib/*", from:oh-my-zsh
-zplug "plugins/fasd", from:oh-my-zsh
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -123,3 +116,5 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(
 )
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=black,bold,underline'
 # }}}
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
