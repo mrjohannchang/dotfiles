@@ -40,6 +40,17 @@ fi
 # }}}
 
 
+# TODO: Move SSH agent out as a standalone plugin
+# Refresh SSH agent in case it was dead {{{
+if [ ! -z "$SSH_AUTH_SOCK" \
+    -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ] ; then
+  unlink "$HOME/.ssh/agent_sock" 2>/dev/null
+  ln -s "$SSH_AUTH_SOCK" "$HOME/.ssh/agent_sock"
+  export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
+fi
+# }}}
+
+
 # misc {{{
 export CASE_SENSITIVE=true
 
@@ -67,7 +78,6 @@ zplug "lib/*", from:oh-my-zsh
 zplug "plugins/gpg-agent", from:oh-my-zsh
 zplug "plugins/nvm", from:oh-my-zsh
 zplug "plugins/pyenv", from:oh-my-zsh
-zplug "plugins/ssh-agent", from:oh-my-zsh
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
