@@ -30,13 +30,14 @@ bindkey -M emacs '^N' history-substring-search-down
 # }}}
 
 
-# enable the color support of ls
+# enable the color support of ls {{{
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors \
     && eval "$(dircolors -b ~/.dircolors)" \
     || eval "$(dircolors -b)"
   alias ls='ls --quoting-style=literal --color=auto'
 fi
+# }}}
 
 
 # misc {{{
@@ -127,7 +128,11 @@ fzf_default_opts() {
   "
 }
 fzf_default_opts && unset fzf_default_opts
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Enable fzf
+if [ -f ~/.fzf.zsh ]; then
+  source ~/.fzf.zsh
+fi
 # }}}
 
 
@@ -141,6 +146,6 @@ if [[ "$OSTYPE" == darwin* ]]; then
   alias updatedb='sudo /usr/libexec/locate.updatedb'
 
   # include macOS specific executables
-  [ -d "$HOME/bin/darwin" ] && export PATH="$PATH:$HOME/bin/darwin"
+  if [ -d "$HOME/bin/darwin" ]; then export PATH="$PATH:$HOME/bin/darwin"; fi
 fi
 # }}}

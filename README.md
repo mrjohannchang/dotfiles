@@ -9,7 +9,7 @@
 
 ```
 brew install coreutils go fish tmux bash python3 cmake \
-  reattach-to-user-namespace the_silver_searcher fasd fzf ctags
+  reattach-to-user-namespace the_silver_searcher fzf ctags
 brew install macvim --with-override-system-vim
 ```
 
@@ -23,7 +23,6 @@ sudo apt-get install build-essential cmake python-dev git golang fish tmux \
   vim-gnome python3 python3-dev curl silversearcher-ag zsh exuberant-ctags
 ```
 
-- [fasd](https://github.com/clvv/fasd)
 - [fzf](https://github.com/junegunn/fzf)
 
 ### For all
