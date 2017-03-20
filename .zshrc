@@ -12,9 +12,9 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( \
   ssh \
   context \
   virtualenv \
+  rbenv \
   dir_writable \
   dir \
-  rbenv \
   vcs \
   status \
   root_indicator \
