@@ -1,5 +1,12 @@
 # Dotfiles by changyuheng
 
+## Screenshots
+
+![](screenshots/git.png)
+![](screenshots/root.png)
+![](screenshots/vim-ctrl-p.png)
+![](screenshots/vim.png)
+
 ## Prerequisites
 
 ### macOS
