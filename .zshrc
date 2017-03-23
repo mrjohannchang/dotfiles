@@ -1,3 +1,18 @@
+# misc {{{
+export CASE_SENSITIVE=true
+
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+
+# disable ctrl-d
+setopt IGNORE_EOF
+
+export PATH="$HOME/bin:$PATH"
+# }}}
+
+
+
+
 # {{{ Powerlevel9k
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_DISABLE_RPROMPT=true
@@ -48,17 +63,6 @@ if [ ! -z "$SSH_AUTH_SOCK" \
   ln -s "$SSH_AUTH_SOCK" "$HOME/.ssh/agent_sock"
   export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
 fi
-# }}}
-
-
-# misc {{{
-export CASE_SENSITIVE=true
-
-setopt APPEND_HISTORY
-setopt SHARE_HISTORY
-
-# disable ctrl-d
-setopt IGNORE_EOF
 # }}}
 
 
