@@ -11,6 +11,9 @@ export PATH="$HOME/bin:$PATH"
 # }}}
 
 
+# fz {{{
+FZ_SUB_DIR_TRAVERSAL_ENABLED=1
+# }}}
 
 
 # {{{ Powerlevel9k
