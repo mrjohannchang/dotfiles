@@ -74,6 +74,7 @@ source ~/.zplug/init.zsh
 
 zplug "bhilburn/powerlevel9k", as:theme
 zplug "changyuheng/fz"
+zplug "changyuheng/zsh-interactive-cd"
 zplug "rupa/z", use:z.sh
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search"
