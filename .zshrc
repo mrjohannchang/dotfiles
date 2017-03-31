@@ -73,9 +73,9 @@ fi
 source ~/.zplug/init.zsh
 
 zplug "bhilburn/powerlevel9k", as:theme
-zplug "changyuheng/fz"
 zplug "changyuheng/zsh-interactive-cd"
 zplug "rupa/z", use:z.sh
+zplug "changyuheng/fz"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
