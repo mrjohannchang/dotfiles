@@ -11,11 +11,6 @@ export PATH="$HOME/bin:$PATH"
 # }}}
 
 
-# fz {{{
-FZ_SUB_DIR_TRAVERSAL_ENABLED=1
-# }}}
-
-
 # {{{ Powerlevel9k
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_DISABLE_RPROMPT=true
