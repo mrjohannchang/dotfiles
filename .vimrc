@@ -38,7 +38,6 @@ Plug 'rstacruz/sparkup', { 'rtp': 'vim' }
 Plug 'sayuan/vimwiki'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'sjl/gundo.vim'
 Plug 'tfnico/vim-gradle'
@@ -49,6 +48,7 @@ Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --clang-completer --gocode-completer' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'w0rp/ale'
 Plug 'will133/vim-dirdiff'
 Plug 'wting/rust.vim'
 
