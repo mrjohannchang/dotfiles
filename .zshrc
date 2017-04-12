@@ -138,6 +138,7 @@ fzf_default_opts() {
   export FZF_DEFAULT_OPTS="
     --color fg:-1,bg:-1,hl:$blue,fg+:$base02,bg+:$base2,hl+:$blue
     --color info:$yellow,prompt:$yellow,pointer:$base03,marker:$base03,spinner:$yellow
+    --height ${FZF_TMUX_HEIGHT:-40%} --reverse --bind 'shift-tab:up,tab:down'
   "
 }
 fzf_default_opts && unset fzf_default_opts
