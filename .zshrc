@@ -43,8 +43,8 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( \
 
 
 # # zsh-history-substring-search {{{
-# bindkey -M emacs '^P' history-substring-search-up
-# bindkey -M emacs '^N' history-substring-search-down
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
 # # }}}
 
 
@@ -77,7 +77,7 @@ zplug "changyuheng/fz", defer:1
 zplug "changyuheng/zsh-interactive-cd"
 zplug "rupa/z", use:z.sh
 zplug "zsh-users/zsh-completions"
-# zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-history-substring-search"
 # zplug "zsh-users/zsh-autosuggestions"
 # zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
