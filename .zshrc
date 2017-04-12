@@ -7,6 +7,11 @@ setopt SHARE_HISTORY
 # disable ctrl-d
 setopt IGNORE_EOF
 
+# HIST_IGNORE_ALL_DUPS: If a new command line being added to the history list
+# duplicates an older one, the older command is removed from the list (even if
+# it is not the previous event).
+setopt HIST_IGNORE_ALL_DUPS
+
 export PATH="$HOME/bin:$PATH"
 # }}}
 
