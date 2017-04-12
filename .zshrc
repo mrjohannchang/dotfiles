@@ -73,8 +73,8 @@ zplug "changyuheng/zsh-interactive-cd"
 zplug "rupa/z", use:z.sh
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
+# zplug "zsh-users/zsh-autosuggestions"
+# zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # Enable all oh-my-zsh's features
 zplug "lib/*", from:oh-my-zsh
