@@ -1,8 +1,8 @@
 # misc {{{
 export CASE_SENSITIVE=true
 
-setopt APPEND_HISTORY
-setopt SHARE_HISTORY
+# setopt APPEND_HISTORY
+# setopt SHARE_HISTORY
 
 # disable ctrl-d
 setopt IGNORE_EOF
@@ -83,7 +83,17 @@ zplug "zsh-users/zsh-history-substring-search"
 # zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # Enable all oh-my-zsh's features
-zplug "lib/*", from:oh-my-zsh
+zplug "lib/bzr", from:oh-my-zsh
+zplug "lib/clipboard", from:oh-my-zsh
+zplug "lib/compfix", from:oh-my-zsh
+zplug "lib/completion", from:oh-my-zsh
+zplug "lib/correction", from:oh-my-zsh
+zplug "lib/history", from:oh-my-zsh
+zplug "lib/key-bindings", from:oh-my-zsh
+zplug "lib/nvm", from:oh-my-zsh
+zplug "lib/prompt_info_functions", from:oh-my-zsh
+zplug "lib/spectrum", from:oh-my-zsh
+zplug "lib/termsupport", from:oh-my-zsh
 zplug "plugins/gpg-agent", from:oh-my-zsh
 zplug "plugins/nvm", from:oh-my-zsh
 zplug "plugins/pyenv", from:oh-my-zsh
@@ -119,11 +129,6 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(
   accept-line
 )
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=black,bold,underline'
-# }}}
-
-
-# zsh-syntax-highlighting {{{
-ZSH_HIGHLIGHT_MAXLENGTH=100
 # }}}
 
 
