@@ -85,6 +85,7 @@ zplug "lib/clipboard", from:oh-my-zsh
 zplug "lib/compfix", from:oh-my-zsh
 zplug "lib/completion", from:oh-my-zsh
 zplug "lib/correction", from:oh-my-zsh
+zplug "lib/functions", from:oh-my-zsh
 zplug "lib/history", from:oh-my-zsh
 zplug "lib/key-bindings", from:oh-my-zsh
 zplug "lib/nvm", from:oh-my-zsh
@@ -175,4 +176,11 @@ if [[ "$OSTYPE" == darwin* ]]; then
   # include macOS specific executables
   if [ -d "$HOME/bin/darwin" ]; then export PATH="$PATH:$HOME/bin/darwin"; fi
 fi
+# }}}
+
+
+# Go {{{
+export GOPATH=$HOME/.go
+export GOBIN=${GOPATH}/bin
+[[ -d ${GOBIN} ]] && PATH="$PATH:$GOBIN"
 # }}}
