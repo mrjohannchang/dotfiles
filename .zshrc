@@ -10,6 +10,9 @@ setopt IGNORE_EOF
 setopt HIST_IGNORE_ALL_DUPS
 
 export PATH="$HOME/bin:$PATH"
+
+# Activate the bash-style comments in interactive mode
+setopt INTERACTIVE_COMMENTS
 # }}}
 
 
