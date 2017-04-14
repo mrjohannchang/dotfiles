@@ -1,9 +1,6 @@
 # misc {{{
 export CASE_SENSITIVE=true
 
-# setopt APPEND_HISTORY
-# setopt SHARE_HISTORY
-
 # disable ctrl-d
 setopt IGNORE_EOF
 
