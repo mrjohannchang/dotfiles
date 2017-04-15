@@ -20,11 +20,12 @@ Plug 'godlygeek/tabular'
 Plug 'groenewege/vim-less'
 Plug 'honza/dockerfile.vim'
 Plug 'jlanzarotta/bufexplorer'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'kchmck/vim-coffee-script'
-Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'
 Plug 'milkypostman/vim-togglelist'
@@ -284,8 +285,10 @@ let g:ctrlp_max_files = 0
 let g:ctrlp_regexp = 1
 " }}}
 
-" syntastic {{{
-let g:syntastic_java_checkers = ['checkstyle']
+" fzf.vim {{{
+let $FZF_DEFAULT_OPTS = '--color fg:-1,bg:-1,hl:33,fg+:235,bg+:254,hl+:33
+      \ --color info:136,prompt:136,pointer:234,marker:234,spinner:136'
+nnoremap <Leader>p :FZF<CR>
 " }}}
 
 " bufExplorer {{{
