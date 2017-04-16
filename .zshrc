@@ -188,3 +188,7 @@ export GOPATH=$HOME/go
 export GOBIN=${GOPATH}/bin
 [[ ! -d ${GOBIN} ]] || PATH="$PATH:$GOBIN"
 # }}}
+
+# fast-syntax-highlighting {{{
+FAST_HIGHLIGHT_STYLES[variable]="fg=blue"
+# }}}
