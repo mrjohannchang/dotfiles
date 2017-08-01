@@ -100,6 +100,7 @@ zplug "lib/termsupport", from:oh-my-zsh
 zplug "plugins/gpg-agent", from:oh-my-zsh
 zplug "plugins/nvm", from:oh-my-zsh
 zplug "plugins/pyenv", from:oh-my-zsh
+zplug "plugins/rvm", from:oh-my-zsh
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -192,4 +193,10 @@ export GOBIN=${GOPATH}/bin
 
 # fast-syntax-highlighting {{{
 FAST_HIGHLIGHT_STYLES[variable]="fg=blue"
+# }}}
+
+# {{{ rvm
+if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
+  source "$HOME/.rvm/scripts/rvm"
+fi
 # }}}
