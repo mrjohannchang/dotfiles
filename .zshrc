@@ -60,11 +60,8 @@ fi
 
 # TODO: Move SSH agent out as a standalone plugin
 # Refresh SSH agent in case it was dead {{{
-if [ ! -z "$SSH_AUTH_SOCK" \
-    -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ] ; then
-  unlink "$HOME/.ssh/agent_sock" 2>/dev/null
-  ln -s "$SSH_AUTH_SOCK" "$HOME/.ssh/agent_sock"
-  export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
+if [ -f "${HOME}/.gnupg/S.gpg-agent.ssh" ] ; then
+  export SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
 fi
 # }}}
 
@@ -193,6 +190,7 @@ export GOBIN=${GOPATH}/bin
 
 # fast-syntax-highlighting {{{
 FAST_HIGHLIGHT_STYLES[variable]="fg=blue"
+zle_highlight+=(paste:none)
 # }}}
 
 # {{{ rvm
