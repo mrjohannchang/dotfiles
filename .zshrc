@@ -60,6 +60,7 @@ fi
 
 # TODO: Move SSH agent out as a standalone plugin
 # Refresh SSH agent in case it was dead {{{
+SSH_AUTH_SOCK='/var/run/user/1000/keyring/ssh'
 if [ ! -z "$SSH_AUTH_SOCK" \
     -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ] ; then
   unlink "$HOME/.ssh/agent_sock" 2>/dev/null
