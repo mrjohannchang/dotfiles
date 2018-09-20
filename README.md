@@ -46,6 +46,9 @@ sudo apt-get install build-essential cmake python-dev git golang fish tmux \
 1. Run in the shell
 
     ```
+    cd $HOME
+    git clone git@github.com:changyuheng/dotfiles.git
+    cd dotfiles
     git submodule update --init --recursive --remote
     ./install.sh
     ```
