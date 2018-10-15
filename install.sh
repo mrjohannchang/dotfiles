@@ -121,7 +121,6 @@ install() {
          git config --global core.quotepath no
          git config --global diff.algorithm patience
          git config --global push.default simple
-         git config --global gpg.program gpg2
     fi
 
     echo -n "Install fisherman configurations (cannot be undone) [y/N]? "
