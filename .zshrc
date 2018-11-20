@@ -99,7 +99,7 @@ zplug "lib/spectrum", from:oh-my-zsh
 zplug "lib/termsupport", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
 zplug "plugins/docker-compose", from:oh-my-zsh
-zplug "plugins/gpg-agent", from:oh-my-zsh
+# zplug "plugins/gpg-agent", from:oh-my-zsh
 zplug "plugins/nvm", from:oh-my-zsh
 zplug "plugins/pyenv", from:oh-my-zsh
 zplug "plugins/rvm", from:oh-my-zsh
