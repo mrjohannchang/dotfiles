@@ -9,7 +9,7 @@ setopt IGNORE_EOF
 # it is not the previous event).
 setopt HIST_IGNORE_ALL_DUPS
 
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 # Activate the bash-style comments in interactive mode
 setopt INTERACTIVE_COMMENTS

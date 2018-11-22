@@ -477,6 +477,10 @@ if [[ "${SSH_TTY}" ]]; then
 fi
 # }}}
 
+# XDG bin dir {{{
+export PATH="${HOME}/.local/bin:${PATH}"
+# }}}
+
 # pyenv {{{
 # should be at the end of this file
 if [ -d "${HOME}/.pyenv" ]; then
