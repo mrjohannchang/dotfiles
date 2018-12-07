@@ -40,7 +40,7 @@ sudo apt-get install build-essential cmake python-dev git golang fish tmux \
 
 #### Optional
 - [fisherman](https://fisherman.github.io/)
-- [zplug](https://zplug.sh/)
+- [zplug](https://github.com/zplug/zplug)
 
 ## Installation
 
@@ -48,9 +48,9 @@ sudo apt-get install build-essential cmake python-dev git golang fish tmux \
 
     ```
     cd $HOME
-    git clone git@github.com:changyuheng/dotfiles.git
+    git clone --recurse-submodules https://github.com/changyuheng/dotfiles.git
     cd dotfiles
-    git submodule update --init --recursive --remote
+    # git submodule update --init --recursive --remote
     ./install.sh
     ```
 
