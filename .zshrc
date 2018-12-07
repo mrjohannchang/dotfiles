@@ -51,7 +51,7 @@ bindkey -M emacs "^N" history-substring-search-down
 # enable the color support of ls {{{
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors \
-    && eval "$(dircolors -b ~/.dircolors)" \
+    && eval "$(dircolors -b ~/.dircolors 2>/dev/null)" \
     || eval "$(dircolors -b)"
   alias ls="ls --quoting-style=literal --color=auto"
 fi
@@ -175,7 +175,7 @@ fi
 # macOS {{{
 if [[ "$OSTYPE" == darwin* ]]; then
   # ls color
-  eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
+  eval "$(gdircolors -b ~/.dircolors 2>/dev/null)" || eval "$(gdircolors -b)"
   alias ls="gls --quoting-style=literal --color=auto"
 
   # updatedb
