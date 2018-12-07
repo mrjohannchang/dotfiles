@@ -12,15 +12,16 @@
 ### macOS
 
 - Xcode and its Command Line Tools
+
 - [Homebrew](http://brew.sh/)
 
-```
-brew install coreutils go fish tmux bash python3 cmake \
-  reattach-to-user-namespace the_silver_searcher fzf ctags
-brew install macvim --with-override-system-vim
-```
+    ```
+    brew install coreutils go fish tmux bash python3 cmake reattach-to-user-namespace the_silver_searcher fzf ctags
+    brew install macvim --with-override-system-vim --with-lua --with-luajit
+    ```
 
 - Set preferred login shell
+
     ![](assets/images/macos-default-login-shell.png)
 
 ### Ubuntu
