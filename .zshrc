@@ -42,10 +42,10 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( \
 # }}}
 
 
-# # zsh-history-substring-search {{{
+# zsh-history-substring-search {{{
 bindkey -M emacs "^P" history-substring-search-up
 bindkey -M emacs "^N" history-substring-search-down
-# # }}}
+# }}}
 
 
 # enable the color support of ls {{{
@@ -198,8 +198,13 @@ FAST_HIGHLIGHT_STYLES[variable]="fg=blue"
 zle_highlight+=(paste:none)
 # }}}
 
-# {{{ rvm
+# rvm {{{
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
   source "$HOME/.rvm/scripts/rvm"
 fi
+# }}}
+
+# locale {{{
+[[ -n "$LANG" ]] || export LANG=en_US.UTF-8
+[[ -n "$LC_ALL" ]] || export LC_ALL=en_US.UTF-8
 # }}}
