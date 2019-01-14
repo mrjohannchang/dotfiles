@@ -11,12 +11,12 @@
 
 ### macOS
 
-- Xcode and its Command Line Tools
+- [Xcode and its Command Line Tools](https://stackoverflow.com/questions/9329243/xcode-install-command-line-tools)
 
 - [Homebrew](http://brew.sh/)
 
     ```
-    brew install coreutils go fish tmux bash python3 cmake reattach-to-user-namespace the_silver_searcher fzf ctags
+    brew install coreutils go fish tmux bash python3 cmake the_silver_searcher fzf ctags
     brew install macvim --with-override-system-vim --with-lua --with-luajit
     ```
 
