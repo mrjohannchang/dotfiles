@@ -74,7 +74,7 @@ source ~/.zplug/init.zsh
 
 zplug "bhilburn/powerlevel9k", as:theme
 zplug "changyuheng/fz", defer:1
-zplug "changyuheng/zsh-interactive-cd"
+# zplug "changyuheng/zsh-interactive-cd"
 zplug "rupa/z", use:z.sh
 zplug "supercrabtree/k"
 zplug "Tarrasch/zsh-bd"
