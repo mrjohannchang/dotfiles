@@ -78,11 +78,11 @@ zplug "changyuheng/fz", defer:1
 zplug "rupa/z", use:z.sh
 zplug "supercrabtree/k"
 zplug "Tarrasch/zsh-bd"
-zplug "zdharma/fast-syntax-highlighting", defer:2
+# zplug "zdharma/fast-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search"
 # zplug "zsh-users/zsh-autosuggestions"
-# zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # Enable all oh-my-zsh's features
 zplug "lib/bzr", from:oh-my-zsh
@@ -194,7 +194,7 @@ export GOBIN=${GOPATH}/bin
 # }}}
 
 # fast-syntax-highlighting {{{
-FAST_HIGHLIGHT_STYLES[variable]="fg=blue"
+# FAST_HIGHLIGHT_STYLES[variable]="fg=blue"
 zle_highlight+=(paste:none)
 # }}}
 
