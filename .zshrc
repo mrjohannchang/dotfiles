@@ -13,6 +13,8 @@ export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 # Activate the bash-style comments in interactive mode
 setopt INTERACTIVE_COMMENTS
+
+bindkey "^T" history-incremental-search-forward
 # }}}
 
 
