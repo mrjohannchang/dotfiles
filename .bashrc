@@ -501,3 +501,7 @@ set -o ignoreeof
 # fzf {{{
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 # }}}
+
+# Snappy binary dir {{{
+export PATH="/snap/bin:${PATH}"
+# }}}
