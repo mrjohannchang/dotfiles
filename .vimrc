@@ -48,13 +48,13 @@ Plug 'thinca/vim-template'
 Plug 'tomasr/molokai'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-" Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --clang-completer --gocode-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --clang-completer --gocode-completer' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
 Plug 'will133/vim-dirdiff'
 Plug 'wting/rust.vim'
-Plug 'zxqfl/tabnine-vim'
+" Plug 'zxqfl/tabnine-vim'
 
 " Add plugins to &runtimepath
 call plug#end()
