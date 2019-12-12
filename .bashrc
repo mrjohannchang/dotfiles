@@ -195,8 +195,9 @@ fi
 # }}}
 
 # Go {{{
-export GOPATH=$HOME/go
+export GO111MODULE=on
 export GOBIN=${GOPATH}/bin
+export GOPATH=$HOME/go
 [[ -d ${GOBIN} ]] \
   && PATH="$PATH:$GOBIN"
 # }}}
