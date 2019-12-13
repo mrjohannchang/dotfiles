@@ -123,17 +123,17 @@ install() {
          git config --global push.default simple
     fi
 
-    echo -n "Install fisherman configurations (cannot be undone) [y/N]? "
-    read ans
-    if [ "${ans,,}" = "y" ]; then
-        echo -n "fisher update" | fish || true
-        echo -n "fisher install changyuheng/myfishconfig" | fish || true
-        echo -n "fisher install changyuheng/theme-plain" | fish || true
-        echo -n "fisher install edc/bass" | fish || true
-        echo -n "fisher install nvm" | fish || true
-        echo -n "fisher install pyenv" | fish || true
-        echo -n "fisher install z" | fish || true
-    fi
+    # echo -n "Install fisherman configurations (cannot be undone) [y/N]? "
+    # read ans
+    # if [ "${ans,,}" = "y" ]; then
+        # echo -n "fisher update" | fish || true
+        # echo -n "fisher install changyuheng/myfishconfig" | fish || true
+        # echo -n "fisher install changyuheng/theme-plain" | fish || true
+        # echo -n "fisher install edc/bass" | fish || true
+        # echo -n "fisher install nvm" | fish || true
+        # echo -n "fisher install pyenv" | fish || true
+        # echo -n "fisher install z" | fish || true
+    # fi
 
     echo -n "Install Solaried dircolorsdb [y/N]? "
     read ans

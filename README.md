@@ -9,54 +9,48 @@
 
 ## Prerequisites
 
-### macOS
+- [fzf](https://github.com/junegunn/fzf)
+- [nvm](https://github.com/creationix/nvm)
+- [pyenv](https://github.com/pyenv/pyenv)
+- [zplug](https://github.com/zplug/zplug)
 
-- [Xcode and its Command Line Tools](https://stackoverflow.com/questions/9329243/xcode-install-command-line-tools)
+### macOS specific
 
 - [Homebrew](http://brew.sh/)
 
     ```
-    brew install coreutils go fish tmux bash python3 cmake the_silver_searcher fzf ctags
-    brew install macvim --with-override-system-vim --with-lua --with-luajit
+    brew install bash
+    brew install cmake ctags
+    brew install go
+    brew install nvm
+    brew install pyenv python3
+    brew install coreutils fd ripgrep tmux
     ```
 
 - Set preferred login shell
 
-    ![](assets/images/macos-default-login-shell.png)
+    ![](screenshots/macos-default-login-shell.png)
 
-### Ubuntu
+### Ubuntu specific
 
 ```
-sudo apt-get install build-essential cmake python-dev git golang fish tmux \
-  vim-gnome python3 python3-dev curl silversearcher-ag zsh exuberant-ctags
+sudo apt-get install build-essential cmake python-dev git golang tmux \
+  vim-gnome python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags
 ```
-
-- [fzf](https://github.com/junegunn/fzf)
-
-### For all
-
-- [nvm](https://github.com/creationix/nvm)
-- [pyenv](https://github.com/pyenv/pyenv)
-
-#### Optional
-- [fisherman](https://fisherman.github.io/)
-- [zplug](https://github.com/zplug/zplug)
 
 ## Installation
 
-1. Run in the shell
+1. Clone and cd into this repo.
 
+2. Do this in the terminal:
     ```
-    cd $HOME
-    git clone --recurse-submodules https://github.com/changyuheng/dotfiles.git
-    cd dotfiles
-    # git submodule update --init --recursive --remote
+    git submodule update --init --recursive --remote
     ./install.sh
     ```
 
-2. Open Vim and execute `:PlugInstall`
-
 3. Open Tmux and press `C-s I`
+
+4. Open Vim and execute `:PlugInstall`
 
 ## Uninstallation
 
