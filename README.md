@@ -24,7 +24,7 @@
     brew install go
     brew install nvm
     brew install pyenv python3
-    brew install coreutils fd ripgrep tmux
+    brew install coreutils fd ripgrep tmux trash
     ```
 
 - Set preferred login shell
@@ -35,7 +35,8 @@
 
 ```
 sudo apt-get install build-essential cmake python-dev git golang tmux \
-  vim-gnome python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags
+  vim-gnome python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags \
+  trash-cli
 ```
 
 ## Installation
