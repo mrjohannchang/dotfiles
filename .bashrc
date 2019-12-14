@@ -506,3 +506,7 @@ set -o ignoreeof
 # Snappy binary dir {{{
 export PATH="/snap/bin:${PATH}"
 # }}}
+
+# Python Poetry {{{
+export PATH="$HOME/.poetry/bin:$PATH"
+# }}}
