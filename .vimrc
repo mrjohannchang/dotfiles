@@ -5,6 +5,7 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 
 " plug-in on GitHub repo
+Plug 'cespare/vim-toml'
 Plug 'changyuheng/color-scheme-holokai-for-vim'
 Plug 'changyuheng/color-scheme-solarized-for-vim'
 " Plugin 'changyuheng/cscope.vim'
