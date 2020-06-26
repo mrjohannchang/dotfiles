@@ -120,6 +120,7 @@ install() {
          git config --global color.ui auto
          git config --global core.quotepath no
          git config --global diff.algorithm patience
+         git config --global pull.ff only
          git config --global push.default simple
     fi
 
