@@ -122,6 +122,7 @@ install() {
          git config --global diff.algorithm patience
          git config --global pull.ff only
          git config --global push.default simple
+         git config --global alias.show-tracked-ignored "ls-files -i --exclude-standard"
     fi
 
     # echo -n "Install fisherman configurations (cannot be undone) [y/N]? "
