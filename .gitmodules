@@ -2,10 +2,6 @@
 	path = bundle/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
 	branch = master
-[submodule "bundle/gnome-terminal-colors-solarized"]
-	path = bundle/gnome-terminal-colors-solarized
-	url = https://github.com/Anthony25/gnome-terminal-colors-solarized.git
-	branch = master
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git

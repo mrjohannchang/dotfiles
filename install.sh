@@ -149,14 +149,6 @@ install() {
     fi
 
     if [[ "${OSTYPE,,}" == linux* ]]; then
-        echo "Installing Solarized color scheme to current Gnome Terminal profile,"
-        echo -n "this cannot be undone. Proceed to install [y/N]? "
-        read ans
-        if [ "${ans,,}" = "y" ]; then
-            bundle/gnome-terminal-colors-solarized/set_light.sh
-            echo "Gnome Terminal is now solarized"
-        fi
-
         if [ ! -d ~/.fonts ]; then
             rm -rf ~/.fonts
             mkdir ~/.fonts
