@@ -31,12 +31,10 @@
 
     ![](screenshots/macos-default-login-shell.png)
 
-### Ubuntu specific
+### Ubuntu specific (tested on Ubuntu 20.04 Focal Fossa Desktop)
 
 ```
-sudo apt-get install build-essential cmake python-dev git golang tmux \
-  vim-gnome python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags \
-  trash-cli
+sudo apt install build-essential cmake git golang tmux vim-gtk3 python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags trash-cli
 ```
 
 ## Installation
