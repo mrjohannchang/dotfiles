@@ -9,7 +9,6 @@
 
 ## Prerequisites
 
-- [fzf](https://github.com/junegunn/fzf)
 - [nvm](https://github.com/creationix/nvm)
 - [pyenv](https://github.com/pyenv/pyenv)
 - [zplug](https://github.com/zplug/zplug)
@@ -24,7 +23,7 @@
     brew install go
     brew install nvm
     brew install pyenv python3
-    brew install coreutils fd ripgrep tmux trash
+    brew install coreutils fd ripgrep tmux trash fzf
     ```
 
 - Set preferred login shell
@@ -34,7 +33,7 @@
 ### Ubuntu specific (tested on Ubuntu 20.04 Focal Fossa Desktop)
 
 ```
-sudo apt install build-essential cmake git golang tmux vim-gtk3 python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags trash-cli
+sudo apt install build-essential cmake git golang tmux vim-gtk3 python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf
 ```
 
 ## Installation
