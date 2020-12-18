@@ -9,10 +9,6 @@
 
 ## Prerequisites
 
-- [nvm](https://github.com/creationix/nvm)
-- [pyenv](https://github.com/pyenv/pyenv)
-- [zplug](https://github.com/zplug/zplug)
-
 ### macOS specific
 
 - [Homebrew](http://brew.sh/)
@@ -46,9 +42,11 @@ sudo apt install build-essential cmake git golang tmux vim-gtk3 python3 python3-
     ./install.sh
     ```
 
-3. Open Tmux and press `C-s I`
+3. Install [nvm](https://github.com/creationix/nvm), [pyenv](https://github.com/pyenv/pyenv), [zplug](https://github.com/zplug/zplug) by following their instructions.
 
-4. Open Vim and execute `:PlugInstall`
+4. Open Tmux and press `C-s I`
+
+5. Open Vim and execute `:PlugInstall`
 
 ## Uninstallation
 
