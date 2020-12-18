@@ -22,15 +22,19 @@
     brew install coreutils fd ripgrep tmux trash fzf
     ```
 
-- Set preferred login shell
+- Set preferred login shell.
 
     ![](screenshots/macos-default-login-shell.png)
 
 ### Ubuntu specific (tested on Ubuntu 20.04 Focal Fossa Desktop)
 
+- Install necessary programs.
+
 ```
 sudo apt install build-essential cmake git golang tmux vim-gtk3 python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf
 ```
+
+- Set preferred login shell by `chsh`.
 
 ## Installation
 
@@ -44,9 +48,9 @@ sudo apt install build-essential cmake git golang tmux vim-gtk3 python3 python3-
 
 3. Install [nvm](https://github.com/creationix/nvm), [pyenv](https://github.com/pyenv/pyenv), [zplug](https://github.com/zplug/zplug) by following their instructions.
 
-4. Open Tmux and press `C-s I`
+4. Open Tmux and press `C-s I`.
 
-5. Open Vim and execute `:PlugInstall`
+5. Open Vim and execute `:PlugInstall`.
 
 ## Uninstallation
 
