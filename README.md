@@ -22,7 +22,7 @@
     brew install coreutils fd ripgrep tmux trash fzf
     ```
 
-- Set preferred login shell.
+- Set the preferred login shell.
 
     ![](screenshots/macos-default-login-shell.png)
 
@@ -34,11 +34,11 @@
 sudo apt install build-essential cmake git golang tmux vim-gtk3 python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf
 ```
 
-- Set preferred login shell by `chsh`.
+- Set the preferred login shell by `chsh`.
 
 ## Installation
 
-1. Clone and cd into this repo.
+1. `git clone` and `cd` into this repo.
 
 2. Do this in the terminal:
     ```
@@ -46,7 +46,7 @@ sudo apt install build-essential cmake git golang tmux vim-gtk3 python3 python3-
     ./install.sh
     ```
 
-3. Install [nvm](https://github.com/creationix/nvm), [pyenv](https://github.com/pyenv/pyenv), [zplug](https://github.com/zplug/zplug) by following their instructions.
+3. Install [nvm](https://github.com/creationix/nvm), [pyenv](https://github.com/pyenv/pyenv), [zplug](https://github.com/zplug/zplug) by following their manuals.
 
 4. Open Tmux and press `C-s I`.
 
