@@ -9,7 +9,7 @@
 
 ## Prerequisites
 
-### macOS specific
+### macOS
 
 - [Homebrew](http://brew.sh/)
 
@@ -26,7 +26,7 @@
 
     ![](screenshots/macos-default-login-shell.png)
 
-### Ubuntu specific (tested on Ubuntu 20.04 Focal Fossa Desktop)
+### Ubuntu (tested on Ubuntu 20.04 Focal Fossa Desktop)
 
 - Install necessary programs.
 
@@ -57,3 +57,17 @@ sudo apt install build-essential cmake git golang tmux vim-gtk3 python3 python3-
 ```
 ./uninstall.sh
 ```
+
+## Tweak
+
+
+### Ubuntu
+
+1. Key remapping for REALFORCE for Mac:
+
+    a. Config udev:
+    ```
+    sudo cp ubuntu/etc/udev/rules.d/1000-key-remapping-for-realforce-for-mac.rules /etc/udev/rules.d
+    sudo udevadm control --reload
+    ```
+    b. In `Startup Applications Preferences`, add an item that executes "$HOME/dotfiles/scripts/ubuntu/swap-option-and-command-for-realforce-for-mac.sh"
