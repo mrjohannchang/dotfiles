@@ -219,3 +219,7 @@ export PATH="/snap/bin:${PATH}"
 # Python Poetry {{{
 export PATH="$HOME/.poetry/bin:$PATH"
 # }}}
+
+# pvt binary dir {{{
+export PATH="$HOME/pvt/bin:${PATH}"
+# }}}
