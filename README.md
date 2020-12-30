@@ -71,3 +71,16 @@ sudo apt install build-essential cmake git golang tmux vim-gtk3 python3 python3-
     sudo udevadm control --reload
     ```
     b. In `Startup Applications Preferences`, add an item that executes "$HOME/dotfiles/scripts/ubuntu/swap-option-and-command-for-realforce-for-mac.sh"
+
+#### Traditional Chinese input methods
+
+1. Install fcitx to replace iBus.
+
+    a.
+    ```
+    sudo apt install fcitx-chewing fcitx-table-boshiamy
+    ```
+    b. Choose `fcitx` as the keyboard input method system in `gnome-language-selector`.
+    c. Remove keyboard layouts if there are more than 1 from Input Source in `gnome-control-center` > Region & Language.
+    d. Remove the hotkey for switching input source in `gnome-control-center` > Keyboard Shortcuts > Typing.
+    e. Replace the hotkey for Trigger Input Method to Super + Space in `fcitx-configtool` > Global Config > Hotkey > Trigger Input Method.
