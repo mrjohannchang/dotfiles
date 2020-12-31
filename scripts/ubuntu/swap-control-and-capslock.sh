@@ -7,5 +7,4 @@ else
 fi
 xenv="env DISPLAY=:0 XAUTHORITY=/run/user/$(id -u $username)/gdm/Xauthority"
 
-$xenv setxkbmap -option  # clear existing settings
 $xenv setxkbmap -option ctrl:swapcaps
