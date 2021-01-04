@@ -515,3 +515,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 # pvt binary dir {{{
 export PATH="$HOME/pvt/bin:${PATH}"
 # }}}
+
+# fd-find {{{
+[[ ! -x /usr/bin/fdfind ]] || alias fd=fdfind
+# }}}
