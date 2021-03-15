@@ -38,7 +38,6 @@ Plug 'plasticboy/vim-markdown'
 " Pass the path to set the runtimepath properly.
 Plug 'rstacruz/sparkup', { 'rtp': 'vim' }
 
-Plug 'sayuan/vimwiki'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
