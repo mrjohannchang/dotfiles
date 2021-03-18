@@ -14,43 +14,54 @@
 - [Homebrew](http://brew.sh/)
 
     ```
-    brew install bash
-    brew install cmake ctags
-    brew install go
-    brew install nvm
-    brew install pyenv python3
-    brew install coreutils fd ripgrep tmux trash fzf
+    brew install bash zsh cmake ctags go nvm pyenv python3 coreutils fd ripgrep tmux trash fzf vim
+    brew tap homebrew/cask-fonts
+    brew install font-hack
     ```
 
-- Set the preferred login shell.
+- Set the preferred shell to `zsh`.
 
-    ![](screenshots/macos-default-login-shell.png)
+    ![](screenshots/macos-terminal-default-shell.png)
+
+- Set the terminal font to Hack.
+
+    ![](screenshots/macos-terminal-font.png)
 
 ### Ubuntu (tested on Ubuntu 20.04 Focal Fossa Desktop)
 
 - Install necessary programs.
 
 ```
-sudo apt install build-essential cmake git golang tmux vim-gtk3 python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf
+sudo apt install build-essential cmake git golang tmux vim-gtk3 python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf fonts-hack-ttf
 ```
 
-- Set the preferred login shell by `chsh`.
+- Set the preferred login shell to `zsh` by `chsh`.
+
+- Install [nvm](https://github.com/creationix/nvm) and [pyenv](https://github.com/pyenv/pyenv) by following their manuals.
+
+- Set the terminal font to Hack.
 
 ## Installation
 
 1. `git clone` and `cd` into this repo.
 
-2. Do this in the terminal:
+2. Install the configurations:
     ```
     git submodule update --init --recursive --remote
     ./install.sh
     ```
 
-3. Install [nvm](https://github.com/creationix/nvm), [pyenv](https://github.com/pyenv/pyenv), [zplug](https://github.com/zplug/zplug) by following their manuals.
+3. Install [zplug](https://github.com/zplug/zplug) with:
 
-4. Open Tmux and press `C-s I`.
+    ```
+    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+    ```
 
-5. Open Vim and execute `:PlugInstall`.
+4. Open a new zsh shell to install the plugins of `zplug`.
+
+5. Execute `tmux` and press `C-s I` to install the plugins of it.
+
+6. Execute `vim` and then `:PlugInstall` to install the plugins of it.
 
 ## Uninstallation
 
@@ -59,7 +70,6 @@ sudo apt install build-essential cmake git golang tmux vim-gtk3 python3 python3-
 ```
 
 ## Tweak
-
 
 ### Ubuntu
 
