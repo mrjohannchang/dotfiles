@@ -14,7 +14,7 @@
 - [Homebrew](http://brew.sh/)
 
     ```
-    brew install bash zsh cmake ctags go nvm pyenv python3 coreutils fd ripgrep tmux trash fzf vim
+    brew install bash zsh cmake ctags go nvm pyenv python3 coreutils fd ripgrep tmux trash fzf vim gotags
     brew tap homebrew/cask-fonts
     brew install font-hack
     ```
