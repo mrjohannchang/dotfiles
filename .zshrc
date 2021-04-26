@@ -86,7 +86,7 @@ zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search", defer:3
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-# Enable all oh-my-zsh's features
+# Enable specific oh-my-zsh's features
 zplug "lib/bzr", from:oh-my-zsh
 zplug "lib/clipboard", from:oh-my-zsh
 zplug "lib/compfix", from:oh-my-zsh
@@ -98,7 +98,6 @@ zplug "lib/key-bindings", from:oh-my-zsh
 zplug "lib/nvm", from:oh-my-zsh
 zplug "lib/prompt_info_functions", from:oh-my-zsh
 zplug "lib/spectrum", from:oh-my-zsh
-zplug "lib/termsupport", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
 zplug "plugins/docker-compose", from:oh-my-zsh
 # zplug "plugins/gpg-agent", from:oh-my-zsh
