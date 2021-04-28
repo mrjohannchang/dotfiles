@@ -18,15 +18,14 @@ INFO() {
 }
 
 entry_point="$0"
-file_name="$BASH_SOURCE"
 
 if [[ "$entry_point" = *bash ]]; then
     ERR "file sourced by shell not executed"
 fi
 
-if [[ $(basename "$file_name") = "install"* ]]; then
+if [[ $(basename "$BASH_SOURCE") = "install"* ]]; then
     install=1
-elif [[ $(basename "$file_name") = "uninstall"* ]]; then
+elif [[ $(basename "$BASH_SOURCE") = "uninstall"* ]]; then
     uninstall=1
 fi
 
@@ -343,7 +342,7 @@ uninstall() {
     INFO "uninstallation completed"
 }
 
-cd $(dirname "$file_name")
+cd "$script_dir"
 
 if [[ $install ]]; then
     uninstall
