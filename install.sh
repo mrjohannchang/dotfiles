@@ -325,6 +325,7 @@ uninstall() {
     fi
 
     local f
+    local executable_uninstalled
 
     if [ -d ~/bin ]; then
         for f in ~/bin/*; do
@@ -335,8 +336,11 @@ uninstall() {
                 continue
             fi
             unlink "$f"
+            executable_uninstalled=1
         done
-        echo "executables uninstalled from ~/bin"
+        [ -z $executable_uninstalled ] || {
+            echo "executables uninstalled from ~/bin"
+        }
     fi
 
     INFO "uninstallation completed"
