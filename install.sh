@@ -178,6 +178,23 @@ install() {
     ln -fs "$script_dir"/.zshrc ~/.zshrc
     echo ".zshrc installed"
 
+    local f
+
+    echo -n "Install executables into ~/bin [y/N]? "
+    read ans
+    if [ "${ans,,}" = "y" ]; then
+        if [ ! -e ~/bin ]; then
+            mkdir ~/bin
+        fi
+        for f in bin/*; do
+            if [ "$(basename "$f")" = "README"* ] || [ "$(basename "$f")" = "LICENSE"* ]; then
+                continue
+            fi
+            ln -s "$(pwd)/$f" ~/bin
+        done
+        echo "executables installed to ~/bin"
+    fi
+
     INFO "installation completed"
 }
 
@@ -306,6 +323,21 @@ uninstall() {
             mv ~/.zshrc.bak ~/.zshrc
         fi
         echo ".zshrc uninstalled"
+    fi
+
+    local f
+
+    if [ -d ~/bin ]; then
+        for f in ~/bin/*; do
+            if [ ! -L "$f" ]; then
+                continue
+            fi
+            if [[ "$(readlink "$f")" != "$script_dir/bin/"* ]]; then
+                continue
+            fi
+            unlink "$f"
+        done
+        echo "executables uninstalled from ~/bin"
     fi
 
     INFO "uninstallation completed"
