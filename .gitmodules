@@ -6,3 +6,6 @@
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
 	branch = master
+[submodule "bin"]
+	path = bin
+	url = git@github.com:changyuheng/bin.git
