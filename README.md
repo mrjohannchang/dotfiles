@@ -32,7 +32,7 @@
 - Install necessary programs.
 
 ```
-sudo apt install build-essential cmake git golang tmux vim-gtk3 python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf fonts-hack-ttf
+sudo apt install build-essential cmake git golang tmux vim-gtk3 python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf fonts-hack-ttf xsel
 ```
 
 - Set the preferred login shell to `zsh` by `chsh`.
