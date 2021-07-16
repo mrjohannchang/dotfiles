@@ -163,6 +163,10 @@ install() {
 
         ln -fs "$script_dir"/.config/fontconfig/conf.d/20-noto-cjk.conf ~/.config/fontconfig/conf.d
         echo "Noto Sans' fontconfig installed"
+
+        ln -fs "$script_dir"/.fonts/jf-openhuninn-1.1.ttf ~/.fonts
+        ln -fs "$script_dir"/.config/fontconfig/conf.d/30-jf-openhuninn.conf ~/.config/fontconfig/conf.d
+        echo "justfont open 粉圓 installed"
     elif [[ "${OSTYPE,,}" == darwin* ]]; then
         if [ -d ~/Library/Fonts ]; then
             ln -fs "$script_dir/.fonts/Monaco for Powerline.otf" ~/Library/Fonts
@@ -308,6 +312,17 @@ uninstall() {
         if [ -L ~/.config/fontconfig/conf.d/20-noto-cjk.conf ]; then
             unlink ~/.config/fontconfig/conf.d/20-noto-cjk.conf
             echo "Noto Sans' fontconfig uninstalled"
+        fi
+
+        if [ -L ~/.fonts/jf-openhuninn-1.1.ttf ] ||
+            [ -L ~/.config/fontconfig/conf.d/30-jf-openhuninn.conf ]; then
+            if [ -L ~/.fonts/jf-openhuninn-1.1.ttf ]; then
+                unlink ~/.fonts/jf-openhuninn-1.1.ttf
+            fi
+            if [ -L ~/.config/fontconfig/conf.d/30-jf-openhuninn.conf ]; then
+                unlink ~/.config/fontconfig/conf.d/30-jf-openhuninn.conf
+            fi
+            echo "justfont open 粉圓 uninstalled"
         fi
     elif [[ "${OSTYPE,,}" == darwin* ]]; then
         if [ -L "~/Library/Fonts/Monaco for Powerline.otf" ]; then
