@@ -148,28 +148,29 @@ install() {
     fi
 
     if [[ "${OSTYPE,,}" == linux* ]]; then
-        if [ ! -d ~/.fonts ]; then
-            rm -rf ~/.fonts
-            mkdir ~/.fonts
+        if [ ! -d ~/.local/share/fonts ]; then
+            rm -rf ~/.local/share/fonts
+            mkdir ~/.local/share/fonts
         fi
 
         if [ ! -d ~/.config/fontconfig/conf.d ]; then
             rm -rf ~/.config/fontconfig/conf.d
             mkdir -p ~/.config/fontconfig/conf.d
         fi
-        ln -fs "$script_dir"/.fonts/PowerlineSymbols.otf ~/.fonts
+
+        ln -fs "$script_dir"/.local/share/fonts/PowerlineSymbols.otf ~/.local/share/fonts
         ln -fs "$script_dir"/.config/fontconfig/conf.d/10-powerline-symbols.conf ~/.config/fontconfig/conf.d
         echo "Powerline's font installed"
 
         ln -fs "$script_dir"/.config/fontconfig/conf.d/20-noto-cjk.conf ~/.config/fontconfig/conf.d
         echo "Noto Sans' fontconfig installed"
 
-        ln -fs "$script_dir"/.fonts/jf-openhuninn-1.1.ttf ~/.fonts
+        ln -fs "$script_dir"/.local/share/fonts/jf-openhuninn-1.1.ttf ~/.local/share/fonts
         ln -fs "$script_dir"/.config/fontconfig/conf.d/30-jf-openhuninn.conf ~/.config/fontconfig/conf.d
         echo "justfont open 粉圓 installed"
     elif [[ "${OSTYPE,,}" == darwin* ]]; then
         if [ -d ~/Library/Fonts ]; then
-            ln -fs "$script_dir/.fonts/Monaco for Powerline.otf" ~/Library/Fonts
+            ln -fs "$script_dir/.local/share/fonts/Monaco for Powerline.otf" ~/Library/Fonts
             echo "font \"Monaco for Powerline.otf\" installed"
         fi
     fi
@@ -298,10 +299,10 @@ uninstall() {
     fi
 
     if [[ "${OSTYPE,,}" == linux* ]]; then
-        if [ -L ~/.fonts/PowerlineSymbols.otf ] ||
+        if [ -L ~/.local/share/fonts/PowerlineSymbols.otf ] ||
             [ -L ~/.config/fontconfig/conf.d/10-powerline-symbols.conf ]; then
-            if [ -L ~/.fonts/PowerlineSymbols.otf ]; then
-                unlink ~/.fonts/PowerlineSymbols.otf
+            if [ -L ~/.local/share/fonts/PowerlineSymbols.otf ]; then
+                unlink ~/.local/share/fonts/PowerlineSymbols.otf
             fi
             if [ -L ~/.config/fontconfig/conf.d/10-powerline-symbols.conf ]; then
                 unlink ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
@@ -314,10 +315,10 @@ uninstall() {
             echo "Noto Sans' fontconfig uninstalled"
         fi
 
-        if [ -L ~/.fonts/jf-openhuninn-1.1.ttf ] ||
+        if [ -L ~/.local/share/fonts/jf-openhuninn-1.1.ttf ] ||
             [ -L ~/.config/fontconfig/conf.d/30-jf-openhuninn.conf ]; then
-            if [ -L ~/.fonts/jf-openhuninn-1.1.ttf ]; then
-                unlink ~/.fonts/jf-openhuninn-1.1.ttf
+            if [ -L ~/.local/share/fonts/jf-openhuninn-1.1.ttf ]; then
+                unlink ~/.local/share/fonts/jf-openhuninn-1.1.ttf
             fi
             if [ -L ~/.config/fontconfig/conf.d/30-jf-openhuninn.conf ]; then
                 unlink ~/.config/fontconfig/conf.d/30-jf-openhuninn.conf
