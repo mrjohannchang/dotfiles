@@ -150,7 +150,7 @@ install() {
     if [[ "${OSTYPE,,}" == linux* ]]; then
         if [ ! -d ~/.local/share/fonts ]; then
             rm -rf ~/.local/share/fonts
-            mkdir ~/.local/share/fonts
+            mkdir -p ~/.local/share/fonts
         fi
 
         if [ ! -d ~/.config/fontconfig/conf.d ]; then
