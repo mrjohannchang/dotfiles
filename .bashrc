@@ -155,6 +155,15 @@ if [ -d ~/.bash_completion.d ]; then
   done
 fi
 
+[[ ! -d "$HOME/bin.d" ]] || {
+  for d in "$HOME/bin.d/"*; do
+    if [[ ! -d "$d" ]] && [[ ! -L "$d" && -d "$d" ]]; then
+      continue
+    fi
+    PATH="$d:$PATH"
+  done
+}
+
 [[ -d $HOME/sdk/android-sdk-linux ]] \
   && PATH="$PATH:$HOME/sdk/android-sdk-linux/tools:$HOME/sdk/android-sdk-linux/platform-tools" \
   && export ANDROID_HOME=$HOME/sdk/android-sdk-linux

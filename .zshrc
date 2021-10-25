@@ -9,7 +9,18 @@ setopt IGNORE_EOF
 # it is not the previous event).
 setopt HIST_IGNORE_ALL_DUPS
 
-export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+PATH="$HOME/bin:$PATH"
+
+[[ ! -d "$HOME/bin.d" ]] || {
+  for d in "$HOME/bin.d/"*; do
+    if [[ ! -d "$d" ]] && [[ ! -L "$d" && -d "$d" ]]; then
+      continue
+    fi
+    PATH="$d:$PATH"
+  done
+}
+
+PATH="$HOME/.local/bin:$PATH"
 
 # Activate the bash-style comments in interactive mode
 setopt INTERACTIVE_COMMENTS
