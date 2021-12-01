@@ -8,6 +8,8 @@ COLOR_RESET=$(tput sgr0)
 COLOR_RED=$(tput setaf 124)
 COLOR_BOLD=$(tput bold)
 
+user_terminal_bg=dark
+
 ERR() {
     echo -e ${COLOR_BOLD}${COLOR_RED}ERROR${COLOR_RESET} "$@" >&2
     exit 2
@@ -39,6 +41,12 @@ ln() {
 
 install() {
     INFO "begin to install"
+
+    echo -n "Is your terimnal background light [y/N]? "
+    read ans
+    if [ "${ans,,}" = "y" ]; then
+        user_terminal_bg=light
+    fi
 
     if [ -e "$HOME/.bash_completion.d" ] && [ ! -L "$HOME/.bash_completion.d" ]; then
         rm -rf "$HOME/.bash_completion.d.bak"
@@ -107,7 +115,11 @@ install() {
         rm -rf "$HOME/.vimrc.bak"
         mv "$HOME/.vimrc" "$HOME/.vimrc.bak"
     fi
-    ln -fs "$script_dir"/home/.vimrc "$HOME/.vimrc"
+    if [ $user_terminal_bg = light ]; then
+        ln -fs "$script_dir"/home/.vimrc "$HOME/.vimrc"
+    else
+        ln -fs "$script_dir"/home/.vimrc.dark "$HOME/.vimrc"
+    fi
     echo ".vimrc installed"
 
     if [ -e "$HOME/.vimperatorrc" ] && [ ! -L "$HOME/.vimperatorrc" ]; then
@@ -144,15 +156,17 @@ install() {
         # echo -n "fisher install z" | fish || true
     # fi
 
-    echo -n "Install Solaried dircolorsdb [y/N]? "
-    read ans
-    if [ "${ans,,}" = "y" ]; then
-        if [ -e "$HOME/.dircolors" ] && [ ! -L "$HOME/.dircolors" ]; then
-            rm -rf "$HOME/.dircolors.bak"
-            mv "$HOME/.dircolors" "$HOME/.dircolors.bak"
+    if [ $user_terminal_bg = light ]; then
+        echo -n "Install Solaried dircolorsdb [y/N]? "
+        read ans
+        if [ "${ans,,}" = "y" ]; then
+            if [ -e "$HOME/.dircolors" ] && [ ! -L "$HOME/.dircolors" ]; then
+                rm -rf "$HOME/.dircolors.bak"
+                mv "$HOME/.dircolors" "$HOME/.dircolors.bak"
+            fi
+            ln -fs "$script_dir"/home/.dircolors "$HOME/.dircolors"
+            echo ".dircolorsdb installed"
         fi
-        ln -fs "$script_dir"/home/.dircolors "$HOME/.dircolors"
-        echo ".dircolorsdb installed"
     fi
 
     if [[ "${OSTYPE,,}" == linux* ]]; then
