@@ -149,12 +149,10 @@ install() {
 
     if [[ "${OSTYPE,,}" == linux* ]]; then
         if [ ! -d "$HOME/.local/share/fonts" ]; then
-            rm -rf "$HOME/.local/share/fonts"
             mkdir -p "$HOME/.local/share/fonts"
         fi
 
         if [ ! -d "$HOME/.config/fontconfig/conf.d" ]; then
-            rm -rf "$HOME/.config/fontconfig/conf.d"
             mkdir -p "$HOME/.config/fontconfig/conf.d"
         fi
 
@@ -190,7 +188,7 @@ install() {
         if [ ! -e "$HOME/bin.d" ]; then
             mkdir "$HOME/bin.d"
         fi
-        ln -s "$script_dir/bin" "$HOME/bin.d/changyuheng"
+        ln -fs "$script_dir/bin" "$HOME/bin.d/changyuheng"
         echo "custom bin folder installed"
     fi
 
