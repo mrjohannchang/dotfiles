@@ -1,11 +1,11 @@
-[submodule "bundle/dircolors-solarized"]
-	path = bundle/dircolors-solarized
+[submodule "dircolors-solarized"]
+	path = home/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
 	branch = master
-[submodule ".tmux/plugins/tpm"]
-	path = .tmux/plugins/tpm
+[submodule "tpm"]
+	path = home/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
 	branch = master
 [submodule "bin"]
-	path = bin
+	path = home/bin
 	url = git@github.com:changyuheng/bin.git
