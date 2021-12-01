@@ -29,6 +29,14 @@ elif [[ $(basename "$BASH_SOURCE") = "uninstall"* ]]; then
     uninstall=1
 fi
 
+ln() {
+    if [[ "${OSTYPE,,}" == msys* ]]; then
+        "$script_dir/bin/win/ln.exe" "$@"
+    else
+        command ln "$@"
+    fi
+}
+
 install() {
     INFO "begin to install"
 
@@ -117,7 +125,7 @@ install() {
     read ans
     if [ "${ans,,}" = "y" ]; then
          git config --global color.ui auto
-         git config --global core.quotepath no
+         git config --global core.quotePath false
          git config --global diff.algorithm patience
          git config --global pull.ff only
          git config --global push.default simple
