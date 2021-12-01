@@ -36,55 +36,55 @@ install() {
         rm -rf "$HOME/.bash_completion.d.bak"
         mv "$HOME/.bash_completion.d" "$HOME/.bash_completion.d.bak"
     fi
-    ln -fs "$script_dir"/.bash_completion.d "$HOME/.bash_completion.d"
+    ln -fs "$script_dir"/home/.bash_completion.d "$HOME/.bash_completion.d"
     echo ".bash_completion.d installed"
 
     if [ -e "$HOME/.bashrc" ] && [ ! -L "$HOME/.bashrc" ]; then
         rm -rf "$HOME/.bashrc.bak"
         mv "$HOME/.bashrc" "$HOME/.bashrc.bak"
     fi
-    ln -fs "$script_dir"/.bashrc "$HOME/.bashrc"
+    ln -fs "$script_dir"/home/.bashrc "$HOME/.bashrc"
     echo ".bashrc installed"
 
     if [ -e "$HOME/.ideavimrc" ] && [ ! -L "$HOME/.ideavimrc" ]; then
         rm -rf "$HOME/.ideavimrc.bak"
         mv "$HOME/.ideavimrc" "$HOME/.ideavimrc.bak"
     fi
-    ln -fs "$script_dir"/.ideavimrc "$HOME/.ideavimrc"
+    ln -fs "$script_dir"/home/.ideavimrc "$HOME/.ideavimrc"
     echo ".ideavimrc installed"
 
     if [ -e "$HOME/.pentadactylrc" ] && [ ! -L "$HOME/.pentadactylrc" ]; then
         rm -rf "$HOME/.pentadactylrc.bak"
         mv "$HOME/.pentadactylrc" "$HOME/.pentadactylrc.bak"
     fi
-    ln -fs "$script_dir"/.pentadactylrc "$HOME/.pentadactylrc"
+    ln -fs "$script_dir"/home/.pentadactylrc "$HOME/.pentadactylrc"
     echo ".pentadactylrc installed"
 
     if [ -e "$HOME/.profile" ] && [ ! -L "$HOME/.profile" ]; then
         rm -rf "$HOME/.profile.bak"
         mv "$HOME/.profile" "$HOME/.profile.bak"
     fi
-    ln -fs "$script_dir"/.profile "$HOME/.profile"
+    ln -fs "$script_dir"/home/.profile "$HOME/.profile"
     echo ".profile installed"
 
     if [ -e "$HOME/.tmux" ] && [ ! -L "$HOME/.tmux" ]; then
         rm -rf "$HOME/.tmux.bak"
         mv "$HOME/.tmux" "$HOME/.tmux.bak"
     fi
-    ln -fs "$script_dir"/.tmux "$HOME/.tmux"
+    ln -fs "$script_dir"/home/.tmux "$HOME/.tmux"
     echo ".tmux installed"
 
     if [ -e "$HOME/.tmux.conf" ] && [ ! -L "$HOME/.tmux.conf" ]; then
         rm -rf "$HOME/.tmux.conf.bak"
         mv "$HOME/.tmux.conf" "$HOME/.tmux.conf.bak"
     fi
-    ln -fs "$script_dir"/.tmux.conf "$HOME/.tmux.conf"
+    ln -fs "$script_dir"/home/.tmux.conf "$HOME/.tmux.conf"
     if [[ "${OSTYPE,,}" == darwin* ]]; then
       if [ -e "$HOME/.tmux.darwin.conf" ] && [ ! -L "$HOME/.tmux.darwin.conf" ]; then
           rm -rf "$HOME/.tmux.darwin.conf.bak"
           mv "$HOME/.tmux.darwin.conf" "$HOME/.tmux.darwin.conf.bak"
       fi
-      ln -fs "$script_dir"/.tmux.darwin.conf "$HOME/.tmux.darwin.conf"
+      ln -fs "$script_dir"/home/.tmux.darwin.conf "$HOME/.tmux.darwin.conf"
     fi
     echo ".tmux.conf installed"
 
@@ -92,21 +92,21 @@ install() {
         rm -rf "$HOME/.vim.bak"
         mv "$HOME/.vim" "$HOME/.vim.bak"
     fi
-    ln -fs "$script_dir"/.vim "$HOME/.vim"
+    ln -fs "$script_dir"/home/.vim "$HOME/.vim"
     echo ".vim installed"
 
     if [ -e "$HOME/.vimrc" ] && [ ! -L "$HOME/.vimrc" ]; then
         rm -rf "$HOME/.vimrc.bak"
         mv "$HOME/.vimrc" "$HOME/.vimrc.bak"
     fi
-    ln -fs "$script_dir"/.vimrc "$HOME/.vimrc"
+    ln -fs "$script_dir"/home/.vimrc "$HOME/.vimrc"
     echo ".vimrc installed"
 
     if [ -e "$HOME/.vimperatorrc" ] && [ ! -L "$HOME/.vimperatorrc" ]; then
         rm -rf "$HOME/.vimperatorrc.bak"
         mv "$HOME/.vimperatorrc" "$HOME/.vimperatorrc.bak"
     fi
-    ln -fs "$script_dir"/.vimperatorrc "$HOME/.vimperatorrc"
+    ln -fs "$script_dir"/home/.vimperatorrc "$HOME/.vimperatorrc"
     echo ".vimperatorrc installed"
 
     if [ ! -e "$HOME/.config" ]; then
@@ -143,7 +143,7 @@ install() {
             rm -rf "$HOME/.dircolors.bak"
             mv "$HOME/.dircolors" "$HOME/.dircolors.bak"
         fi
-        ln -fs "$script_dir"/bundle/dircolors-solarized/dircolors.ansi-light "$HOME/.dircolors"
+        ln -fs "$script_dir"/home/.dircolors "$HOME/.dircolors"
         echo ".dircolorsdb installed"
     fi
 
@@ -156,19 +156,19 @@ install() {
             mkdir -p "$HOME/.config/fontconfig/conf.d"
         fi
 
-        ln -fs "$script_dir"/.local/share/fonts/PowerlineSymbols.otf "$HOME/.local/share/fonts"
-        ln -fs "$script_dir"/.config/fontconfig/conf.d/10-powerline-symbols.conf "$HOME/.config/fontconfig/conf.d"
+        ln -fs "$script_dir"/home/.local/share/fonts/PowerlineSymbols.otf "$HOME/.local/share/fonts"
+        ln -fs "$script_dir"/home/.config/fontconfig/conf.d/10-powerline-symbols.conf "$HOME/.config/fontconfig/conf.d"
         echo "Powerline's font installed"
 
-        ln -fs "$script_dir"/.config/fontconfig/conf.d/20-noto-cjk.conf "$HOME/.config/fontconfig/conf.d"
+        ln -fs "$script_dir"/home/.config/fontconfig/conf.d/20-noto-cjk.conf "$HOME/.config/fontconfig/conf.d"
         echo "Noto Sans' fontconfig installed"
 
-        ln -fs "$script_dir"/.local/share/fonts/jf-openhuninn-1.1.ttf "$HOME/.local/share/fonts"
-        ln -fs "$script_dir"/.config/fontconfig/conf.d/30-jf-openhuninn.conf "$HOME/.config/fontconfig/conf.d"
+        ln -fs "$script_dir"/home/.local/share/fonts/jf-openhuninn-1.1.ttf "$HOME/.local/share/fonts"
+        ln -fs "$script_dir"/home/.config/fontconfig/conf.d/30-jf-openhuninn.conf "$HOME/.config/fontconfig/conf.d"
         echo "justfont open 粉圓 installed"
     elif [[ "${OSTYPE,,}" == darwin* ]]; then
         if [ -d "$HOME/Library/Fonts" ]; then
-            ln -fs "$script_dir/.local/share/fonts/Monaco for Powerline.otf" "$HOME/Library/Fonts"
+            ln -fs "$script_dir/home/.local/share/fonts/Monaco for Powerline.otf" "$HOME/Library/Fonts"
             echo "font \"Monaco for Powerline.otf\" installed"
         fi
     fi
@@ -177,7 +177,7 @@ install() {
         rm -rf "$HOME/.zshrc.bak"
         mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
     fi
-    ln -fs "$script_dir"/.zshrc "$HOME/.zshrc"
+    ln -fs "$script_dir"/home/.zshrc "$HOME/.zshrc"
     echo ".zshrc installed"
 
     local f
@@ -188,7 +188,7 @@ install() {
         if [ ! -e "$HOME/bin.d" ]; then
             mkdir "$HOME/bin.d"
         fi
-        ln -fs "$script_dir/bin" "$HOME/bin.d/changyuheng"
+        ln -fs "$script_dir/home/bin" "$HOME/bin.d/changyuheng"
         echo "custom bin folder installed"
     fi
 
