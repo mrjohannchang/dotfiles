@@ -2,375 +2,239 @@
 
 set -e
 
-script_dir=$(cd -P -- "$(dirname -- "$(command -v -- "$0")")" && pwd -P)
+DOTFILES_DIR=$(cd -P -- "$(dirname -- "$(command -v -- "$0")")" && pwd -P)
+
+entry_point="$0"
 
 COLOR_RESET=$(tput sgr0)
 COLOR_RED=$(tput setaf 124)
 COLOR_BOLD=$(tput bold)
 
-user_terminal_bg=dark
-
 ERR() {
-    echo -e ${COLOR_BOLD}${COLOR_RED}ERROR${COLOR_RESET} "$@" >&2
+    echo -e ${COLOR_BOLD}${COLOR_RED}ERROR:${COLOR_RESET} "$@" >&2
     exit 2
 }
 
 INFO() {
-    echo -e ${COLOR_BOLD}INFO${COLOR_RESET} "$@"
+    echo -e ${COLOR_BOLD}INFO:${COLOR_RESET} "$@"
 }
 
-entry_point="$0"
-
-if [[ "$entry_point" = *bash ]]; then
-    ERR "file sourced by shell not executed"
-fi
-
-if [[ $(basename "$BASH_SOURCE") = "install"* ]]; then
-    install=1
-elif [[ $(basename "$BASH_SOURCE") = "uninstall"* ]]; then
-    uninstall=1
-fi
+WARN() {
+    echo -e ${COLOR_BOLD}${COLOR_RED}WARNING:${COLOR_RESET} "$@" >&2
+}
 
 ln() {
     if [[ "${OSTYPE,,}" == msys* ]]; then
-        "$script_dir/bin/win/ln.exe" "$@"
+        "${DOTFILES_DIR}/bin/win/ln.exe" "$@"
     else
         command ln "$@"
     fi
 }
 
-install() {
-    INFO "begin to install"
+mkdir_and_check() {
+    local d="$1"
 
-    echo -n "Is your terimnal background light [y/N]? "
-    read ans
-    if [ "${ans,,}" = "y" ]; then
-        user_terminal_bg=light
+    if [ ! -d "$d" ]; then
+        mkdir -p "$d"
+        if [ ! -d "$d" ]; then
+            ERR "$d should be a folder"
+        fi
+        echo "$d created"
+    fi
+}
+
+yes_or_no_question() {
+    # assign local variable from function in linux bash a new value
+    # https://stackoverflow.com/questions/22527325/assign-local-variable-from-function-in-linux-bash-a-new-value
+    local question="$1"
+    local default=n
+    local hint="[y/N]"
+
+    if [[ "${2,,}" == y* ]]; then
+        default=y
+        hint="[Y/n]"
     fi
 
-    if [ -e "$HOME/.bash_completion.d" ] && [ ! -L "$HOME/.bash_completion.d" ]; then
-        rm -rf "$HOME/.bash_completion.d.bak"
-        mv "$HOME/.bash_completion.d" "$HOME/.bash_completion.d.bak"
+    echo -en "${COLOR_BOLD}Q:${COLOR_RESET} $question $hint "
+    local input
+    read input
+    if [ -z "$input" ]; then
+        input="$default"
     fi
-    ln -fs "$script_dir"/home/.bash_completion.d "$HOME/.bash_completion.d"
-    echo ".bash_completion.d installed"
-
-    if [ -e "$HOME/.bashrc" ] && [ ! -L "$HOME/.bashrc" ]; then
-        rm -rf "$HOME/.bashrc.bak"
-        mv "$HOME/.bashrc" "$HOME/.bashrc.bak"
-    fi
-    ln -fs "$script_dir"/home/.bashrc "$HOME/.bashrc"
-    echo ".bashrc installed"
-
-    if [ -e "$HOME/.ideavimrc" ] && [ ! -L "$HOME/.ideavimrc" ]; then
-        rm -rf "$HOME/.ideavimrc.bak"
-        mv "$HOME/.ideavimrc" "$HOME/.ideavimrc.bak"
-    fi
-    ln -fs "$script_dir"/home/.ideavimrc "$HOME/.ideavimrc"
-    echo ".ideavimrc installed"
-
-    if [ -e "$HOME/.pentadactylrc" ] && [ ! -L "$HOME/.pentadactylrc" ]; then
-        rm -rf "$HOME/.pentadactylrc.bak"
-        mv "$HOME/.pentadactylrc" "$HOME/.pentadactylrc.bak"
-    fi
-    ln -fs "$script_dir"/home/.pentadactylrc "$HOME/.pentadactylrc"
-    echo ".pentadactylrc installed"
-
-    if [ -e "$HOME/.profile" ] && [ ! -L "$HOME/.profile" ]; then
-        rm -rf "$HOME/.profile.bak"
-        mv "$HOME/.profile" "$HOME/.profile.bak"
-    fi
-    ln -fs "$script_dir"/home/.profile "$HOME/.profile"
-    echo ".profile installed"
-
-    if [ -e "$HOME/.tmux" ] && [ ! -L "$HOME/.tmux" ]; then
-        rm -rf "$HOME/.tmux.bak"
-        mv "$HOME/.tmux" "$HOME/.tmux.bak"
-    fi
-    ln -fs "$script_dir"/home/.tmux "$HOME/.tmux"
-    echo ".tmux installed"
-
-    if [ -e "$HOME/.tmux.conf" ] && [ ! -L "$HOME/.tmux.conf" ]; then
-        rm -rf "$HOME/.tmux.conf.bak"
-        mv "$HOME/.tmux.conf" "$HOME/.tmux.conf.bak"
-    fi
-    ln -fs "$script_dir"/home/.tmux.conf "$HOME/.tmux.conf"
-    if [[ "${OSTYPE,,}" == darwin* ]]; then
-      if [ -e "$HOME/.tmux.darwin.conf" ] && [ ! -L "$HOME/.tmux.darwin.conf" ]; then
-          rm -rf "$HOME/.tmux.darwin.conf.bak"
-          mv "$HOME/.tmux.darwin.conf" "$HOME/.tmux.darwin.conf.bak"
-      fi
-      ln -fs "$script_dir"/home/.tmux.darwin.conf "$HOME/.tmux.darwin.conf"
-    fi
-    echo ".tmux.conf installed"
-
-    if [ -e "$HOME/.vim" ] && [ ! -L "$HOME/.vim" ]; then
-        rm -rf "$HOME/.vim.bak"
-        mv "$HOME/.vim" "$HOME/.vim.bak"
-    fi
-    ln -fs "$script_dir"/home/.vim "$HOME/.vim"
-    echo ".vim installed"
-
-    if [ -e "$HOME/.vimrc" ] && [ ! -L "$HOME/.vimrc" ]; then
-        rm -rf "$HOME/.vimrc.bak"
-        mv "$HOME/.vimrc" "$HOME/.vimrc.bak"
-    fi
-    if [ $user_terminal_bg = light ]; then
-        ln -fs "$script_dir"/home/.vimrc "$HOME/.vimrc"
+    if [[ "${input,,}" == "y" ]]; then
+        return 0
     else
-        ln -fs "$script_dir"/home/.vimrc.dark "$HOME/.vimrc"
+        return 1
     fi
-    echo ".vimrc installed"
+}
 
-    if [ -e "$HOME/.vimperatorrc" ] && [ ! -L "$HOME/.vimperatorrc" ]; then
-        rm -rf "$HOME/.vimperatorrc.bak"
-        mv "$HOME/.vimperatorrc" "$HOME/.vimperatorrc.bak"
+install_target() {
+    local src="$1"
+    local dest="$2"
+
+    local category="${src%%/*}"
+    local stripped_src="${src#$category/}"
+
+    case "$category" in
+        home)
+            local prefix="${HOME}/"
+            ;;
+        root)
+            local prefix="/"
+            ;;
+        *)
+            WARN "target $src is not supported"
+            return 1
+            ;;
+    esac
+
+    if [ -z "$dest" ]; then
+        dest="${prefix}${stripped_src}"
     fi
-    ln -fs "$script_dir"/home/.vimperatorrc "$HOME/.vimperatorrc"
-    echo ".vimperatorrc installed"
 
-    if [ ! -e "$HOME/.config" ]; then
-        mkdir "$HOME/.config"
-    fi
-
-    echo -n "Install Git configurations (cannot be undone) [y/N]? "
-    read ans
-    if [ "${ans,,}" = "y" ]; then
-         git config --global color.ui auto
-         git config --global core.quotePath false
-         git config --global diff.algorithm patience
-         git config --global pull.ff only
-         git config --global push.default simple
-         git config --global alias.show-tracked-ignored "ls-files -i --exclude-standard"
-    fi
-
-    # echo -n "Install fisherman configurations (cannot be undone) [y/N]? "
-    # read ans
-    # if [ "${ans,,}" = "y" ]; then
-        # echo -n "fisher update" | fish || true
-        # echo -n "fisher install changyuheng/myfishconfig" | fish || true
-        # echo -n "fisher install changyuheng/theme-plain" | fish || true
-        # echo -n "fisher install edc/bass" | fish || true
-        # echo -n "fisher install nvm" | fish || true
-        # echo -n "fisher install pyenv" | fish || true
-        # echo -n "fisher install z" | fish || true
-    # fi
-
-    if [ $user_terminal_bg = light ]; then
-        echo -n "Install Solaried dircolorsdb [y/N]? "
-        read ans
-        if [ "${ans,,}" = "y" ]; then
-            if [ -e "$HOME/.dircolors" ] && [ ! -L "$HOME/.dircolors" ]; then
-                rm -rf "$HOME/.dircolors.bak"
-                mv "$HOME/.dircolors" "$HOME/.dircolors.bak"
-            fi
-            ln -fs "$script_dir"/home/.dircolors "$HOME/.dircolors"
-            echo ".dircolorsdb installed"
+    if [ -e "$dest" ] && [ ! -L "$dest" ]; then
+        if [ -e "${dest}.bak" ]; then
+            ERR "backup of $dest is already exists"
         fi
+        mv "$dest" "${dest}.bak"
+        echo "$dest was backed up"
     fi
 
-    if [[ "${OSTYPE,,}" == linux* ]]; then
-        if [ ! -d "$HOME/.local/share/fonts" ]; then
-            mkdir -p "$HOME/.local/share/fonts"
-        fi
+    ln -s "${DOTFILES_DIR}/${src}" "$dest"
+    echo "$dest was installed"
+}
 
-        if [ ! -d "$HOME/.config/fontconfig/conf.d" ]; then
-            mkdir -p "$HOME/.config/fontconfig/conf.d"
-        fi
-
-        ln -fs "$script_dir"/home/.local/share/fonts/PowerlineSymbols.otf "$HOME/.local/share/fonts"
-        ln -fs "$script_dir"/home/.config/fontconfig/conf.d/10-powerline-symbols.conf "$HOME/.config/fontconfig/conf.d"
-        echo "Powerline's font installed"
-
-        ln -fs "$script_dir"/home/.config/fontconfig/conf.d/20-noto-cjk.conf "$HOME/.config/fontconfig/conf.d"
-        echo "Noto Sans' fontconfig installed"
-
-        ln -fs "$script_dir"/home/.local/share/fonts/jf-openhuninn-1.1.ttf "$HOME/.local/share/fonts"
-        ln -fs "$script_dir"/home/.config/fontconfig/conf.d/30-jf-openhuninn.conf "$HOME/.config/fontconfig/conf.d"
-        echo "justfont open 粉圓 installed"
-    elif [[ "${OSTYPE,,}" == darwin* ]]; then
-        if [ -d "$HOME/Library/Fonts" ]; then
-            ln -fs "$script_dir/home/.local/share/fonts/Monaco for Powerline.otf" "$HOME/Library/Fonts"
-            echo "font \"Monaco for Powerline.otf\" installed"
-        fi
+install() {
+    local bg=dark
+    if yes_or_no_question "Is your terimnal background \"light\"?" ; then
+        bg=light
     fi
 
-    if [ -e "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
-        rm -rf "$HOME/.zshrc.bak"
-        mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
+    mkdir_and_check "${HOME}/.config"
+    mkdir_and_check "${HOME}/bin.d"
+    case "${OSTYPE,,}" in
+        darwin*)
+            mkdir_and_check "${HOME}/Library/Fonts"
+            ;;
+        linux*)
+            mkdir_and_check "${HOME}/.local/share/fonts"
+            mkdir_and_check "${HOME}/.config/fontconfig/conf.d"
+            ;;
+    esac
+
+    install_target "home/bin" "${HOME}/bin.d/changyuheng"
+    install_target "home/.zshrc"
+
+    yes_or_no_question "Install dircolors?"
+    if [ "$bg" = "light" ]; then
+        install_target "home/.dircolors.light" "${HOME}/.dircolors"
+    else
+        install_target "home/.dircolors"
     fi
-    ln -fs "$script_dir"/home/.zshrc "$HOME/.zshrc"
-    echo ".zshrc installed"
 
-    local f
+    install_target "home/.tmux"
+    install_target "home/.tmux.conf"
 
-    echo -n "Install custom bin folder into $HOME/bin.d [y/N]? "
-    read ans
-    if [ "${ans,,}" = "y" ]; then
-        if [ ! -e "$HOME/bin.d" ]; then
-            mkdir "$HOME/bin.d"
-        fi
-        ln -fs "$script_dir/home/bin" "$HOME/bin.d/changyuheng"
-        echo "custom bin folder installed"
+    install_target "home/.ideavimrc"
+
+    if yes_or_no_question "Install Git configurations (cannot be undone)?"; then
+        git config --global color.ui auto
+        echo "color.ui = auto"
+
+        git config --global core.quotePath false
+        echo "core.quotePath = false"
+
+        git config --global diff.algorithm patience
+        echo "diff.algorithm = patience"
+
+        git config --global pull.ff only
+        echo "pull.ff = only"
+
+        git config --global push.default simple
+        echo "push.default = simple"
+
+        git config --global alias.show-tracked-ignored "ls-files -i --exclude-standard"
+        echo "alias.show-tracked-ignored = \"ls-files -i --exclude-standard\""
     fi
 
-    INFO "installation completed"
+    case "${OSTYPE,,}" in
+        darwin*)
+            install_target "home/.tmux.darwin.conf"
+
+            install_target "home/Library/Fonts/Monaco for Powerline.otf"
+            ;;
+
+        linux*)
+            install_target "home/.local/share/fonts/PowerlineSymbols.otf"
+            install_target "home/.config/fontconfig/conf.d/10-powerline-symbols.conf"
+            install_target "home/.config/fontconfig/conf.d/20-noto-cjk.conf"
+            install_target "home/.local/share/fonts/jf-openhuninn-1.1.ttf"
+            install_target "home/.config/fontconfig/conf.d/30-jf-openhuninn.conf"
+            ;;
+    esac
+
+    INFO "Installation has been completed"
+}
+
+uninstall_target() {
+    local f="$1"
+
+    if [[ ! -e "$f" && ! -L "$f" ]]; then
+        return
+    fi
+
+    if [ ! -L "$f" ] || [[ "$(readlink -f "$f")" != "${DOTFILES_DIR}/"* ]]; then
+        WARN "$f skipped"
+        return
+    fi
+
+    unlink "$f"
+    echo "$f was uninstalled"
+
+    if [ -e "${f}.bak" ]; then
+        mv "${f}.bak" "$f"
+        echo "backup of ${f} was restored"
+    fi
 }
 
 uninstall() {
-    INFO "begin to uninstall"
+    uninstall_target "${HOME}/bin.d/changyuheng"
+    uninstall_target "${HOME}/.zshrc"
 
-    if [ -L "$HOME/.bash_completion.d" ]; then
-        unlink "$HOME/.bash_completion.d"
-        if [ -e "$HOME/.bash_completion.d.bak" ]; then
-            mv "$HOME/.bash_completion.d.bak" "$HOME/.bash_completion.d"
-        fi
-        echo ".bash_completion.d uninstalled"
-    fi
+    uninstall_target "${HOME}/.dircolors"
 
-    if [ -L "$HOME/.bashrc" ]; then
-        unlink "$HOME/.bashrc"
-        if [ -e "$HOME/.bashrc.bak" ]; then
-            mv "$HOME/.bashrc.bak" "$HOME/.bashrc"
-        fi
-        echo ".bashrc uninstalled"
-    fi
+    uninstall_target "${HOME}/.tmux"
+    uninstall_target "${HOME}/.tmux.conf"
+    uninstall_target "${HOME}/.tmux.darwin.conf"
 
-    if [ -L "$HOME/.ideavimrc" ]; then
-        unlink "$HOME/.ideavimrc"
-        if [ -e "$HOME/.ideavimrc.bak" ]; then
-            mv "$HOME/.ideavimrc.bak" "$HOME/.ideavimrc"
-        fi
-        echo ".ideavimrc uninstalled"
-    fi
+    uninstall_target "${HOME}/.vim"
+    uninstall_target "${HOME}/.vimrc"
+    uninstall_target "${HOME}/.ideavimrc"
+    uninstall_target "${HOME}/.pentadactylrc"
+    uninstall_target "${HOME}/.vimperatorrc"
 
-    if [ -L "$HOME/.pentadactylrc" ]; then
-        unlink "$HOME/.pentadactylrc"
-        if [ -e "$HOME/.pentadactylrc.bak" ]; then
-            mv "$HOME/.pentadactylrc.bak" "$HOME/.pentadactylrc"
-        fi
-        echo ".pentadactylrc uninstalled"
-    fi
+    uninstall_target "${HOME}/Library/Fonts/Monaco for Powerline.otf"
+    uninstall_target "${HOME}/.local/share/fonts/PowerlineSymbols.otf"
+    uninstall_target "${HOME}/.config/fontconfig/conf.d/10-powerline-symbols.conf"
+    uninstall_target "${HOME}/.config/fontconfig/conf.d/20-noto-cjk.conf"
+    uninstall_target "${HOME}/.local/share/fonts/jf-openhuninn-1.1.ttf"
+    uninstall_target "${HOME}/.config/fontconfig/conf.d/30-jf-openhuninn.conf"
 
-    if [ -L "$HOME/.profile" ]; then
-        unlink "$HOME/.profile"
-        if [ -e "$HOME/.profile.bak" ]; then
-            mv "$HOME/.profile.bak" "$HOME/.profile"
-        fi
-        echo ".profile uninstalled"
-    fi
-
-    if [ -L "$HOME/.tmux" ]; then
-        unlink "$HOME/.tmux"
-        if [ -e "$HOME/.tmux.bak" ]; then
-            mv "$HOME/.tmux.bak" "$HOME/.tmux"
-        fi
-        echo ".tmux uninstalled"
-    fi
-
-    if [ -L "$HOME/.tmux.conf" ]; then
-        unlink "$HOME/.tmux.conf"
-        if [ -e "$HOME/.tmux.conf.bak" ]; then
-            mv "$HOME/.tmux.conf.bak" "$HOME/.tmux.conf"
-        fi
-        echo ".tmux.conf uninstalled"
-    fi
-
-    if [ -L "$HOME/.tmux.darwin.conf" ]; then
-        unlink "$HOME/.tmux.darwin.conf"
-        if [ -e "$HOME/.tmux.darwin.conf.bak" ]; then
-            mv "$HOME/.tmux.darwin.conf.bak" "$HOME/.tmux.darwin.conf"
-        fi
-        echo ".tmux.darwin.conf uninstalled"
-    fi
-
-    if [ -L "$HOME/.vim" ]; then
-        unlink "$HOME/.vim"
-        if [ -e "$HOME/.vim.bak" ]; then
-            mv "$HOME/.vim.bak" "$HOME/.vim"
-        fi
-        echo ".vim uninstalled"
-    fi
-
-    if [ -L "$HOME/.vimrc" ]; then
-        unlink "$HOME/.vimrc"
-        if [ -e "$HOME/.vimrc.bak" ]; then
-            mv "$HOME/.vimrc.bak" "$HOME/.vimrc"
-        fi
-        echo ".vimrc uninstalled"
-    fi
-
-    if [ -L "$HOME/.vimperatorrc" ]; then
-        unlink "$HOME/.vimperatorrc"
-        if [ -e "$HOME/.vimperatorrc.bak" ]; then
-            mv "$HOME/.vimperatorrc.bak" "$HOME/.vimperatorrc"
-        fi
-        echo ".vimperatorrc uninstalled"
-    fi
-
-    if [ -L "$HOME/.dircolors" ]; then
-        unlink "$HOME/.dircolors"
-        echo "dircolorsdb uninstalled"
-    fi
-
-    if [[ "${OSTYPE,,}" == linux* ]]; then
-        if [ -L "$HOME/.local/share/fonts/PowerlineSymbols.otf" ] ||
-            [ -L "$HOME/.config/fontconfig/conf.d/10-powerline-symbols.conf" ]; then
-            if [ -L "$HOME/.local/share/fonts/PowerlineSymbols.otf" ]; then
-                unlink "$HOME/.local/share/fonts/PowerlineSymbols.otf"
-            fi
-            if [ -L "$HOME/.config/fontconfig/conf.d/10-powerline-symbols.conf" ]; then
-                unlink "$HOME/.config/fontconfig/conf.d/10-powerline-symbols.conf"
-            fi
-            echo "Powerline's font uninstalled"
-        fi
-
-        if [ -L "$HOME/.config/fontconfig/conf.d/20-noto-cjk.conf" ]; then
-            unlink "$HOME/.config/fontconfig/conf.d/20-noto-cjk.conf"
-            echo "Noto Sans' fontconfig uninstalled"
-        fi
-
-        if [ -L "$HOME/.local/share/fonts/jf-openhuninn-1.1.ttf" ] ||
-            [ -L "$HOME/.config/fontconfig/conf.d/30-jf-openhuninn.conf" ]; then
-            if [ -L "$HOME/.local/share/fonts/jf-openhuninn-1.1.ttf" ]; then
-                unlink "$HOME/.local/share/fonts/jf-openhuninn-1.1.ttf"
-            fi
-            if [ -L "$HOME/.config/fontconfig/conf.d/30-jf-openhuninn.conf" ]; then
-                unlink "$HOME/.config/fontconfig/conf.d/30-jf-openhuninn.conf"
-            fi
-            echo "justfont open 粉圓 uninstalled"
-        fi
-    elif [[ "${OSTYPE,,}" == darwin* ]]; then
-        if [ -L "$HOME/Library/Fonts/Monaco for Powerline.otf" ]; then
-            unlink "$HOME/Library/Fonts/Monaco for Powerline.otf"
-            echo "font \"Monaco for Powerline.otf\" uninstalled"
-        fi
-    fi
-
-    if [ -L "$HOME/.zshrc" ]; then
-        unlink "$HOME/.zshrc"
-        if [ -e "$HOME/.zshrc.bak" ]; then
-            mv "$HOME/.zshrc.bak" "$HOME/.zshrc"
-        fi
-        echo ".zshrc uninstalled"
-    fi
-
-    local f
-    local executable_uninstalled
-
-    if [ -L "$HOME/bin.d/changyuheng" ]; then
-        unlink "$HOME/bin.d/changyuheng"
-        echo "custom bin folder uninstalled"
-    fi
-
-    INFO "uninstallation completed"
+    INFO "Uninstallation has been completed"
 }
 
-cd "$script_dir"
+if [[ "$entry_point" == *bash ]]; then
+    ERR "File was sourced but not executed"
+fi
 
-if [[ $install ]]; then
+cd "$DOTFILES_DIR"
+
+if yes_or_no_question "Continue to uninstall?"; then
     uninstall
-    install
-elif [[ $uninstall ]]; then
-    uninstall
+fi
+
+if [[ $(basename "$BASH_SOURCE") == "install"* ]]; then
+    if yes_or_no_question "Continue to install?"; then
+        install
+    fi
 fi
