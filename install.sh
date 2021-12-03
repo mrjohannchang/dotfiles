@@ -11,16 +11,16 @@ COLOR_RED=$(tput setaf 124)
 COLOR_BOLD=$(tput bold)
 
 ERR() {
-    echo -e ${COLOR_BOLD}${COLOR_RED}ERROR:${COLOR_RESET} "$@" >&2
+    echo -e [${COLOR_BOLD}${COLOR_RED}ERROR${COLOR_RESET}] "$@" >&2
     exit 2
 }
 
 INFO() {
-    echo -e ${COLOR_BOLD}INFO:${COLOR_RESET} "$@"
+    echo -e [${COLOR_BOLD}INFO${COLOR_RESET}] "$@"
 }
 
 WARN() {
-    echo -e ${COLOR_BOLD}${COLOR_RED}WARNING:${COLOR_RESET} "$@" >&2
+    echo -e [${COLOR_BOLD}${COLOR_RED}WARNING${COLOR_RESET}] "$@" >&2
 }
 
 ln() {
@@ -55,7 +55,7 @@ yes_or_no_question() {
         hint="[Y/n]"
     fi
 
-    echo -en "${COLOR_BOLD}Q:${COLOR_RESET} $question $hint "
+    echo -en [${COLOR_BOLD}Q${COLOR_RESET}] "$question $hint "
     local input
     read input
     if [ -z "$input" ]; then
