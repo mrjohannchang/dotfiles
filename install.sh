@@ -199,10 +199,15 @@ uninstall_target() {
 
 uninstall() {
     uninstall_target "${HOME}/bin.d/changyuheng"
+    uninstall_target "${HOME}/.bash_aliases"
+    uninstall_target "${HOME}/.bash_completion.d"
+    uninstall_target "${HOME}/.bashrc"
+    uninstall_target "${HOME}/.profile"
     uninstall_target "${HOME}/.zshrc"
 
     uninstall_target "${HOME}/.dircolors"
 
+    uninstall_target "${HOME}/.screenrc"
     uninstall_target "${HOME}/.tmux"
     uninstall_target "${HOME}/.tmux.conf"
     uninstall_target "${HOME}/.tmux.darwin.conf"
