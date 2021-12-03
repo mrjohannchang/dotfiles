@@ -98,12 +98,8 @@ set background=dark
 if ($TERM == "screen-256color" || $TERM == "xterm-256color")
     set t_Co=256
 endif
-
 if (&t_Co > 255 || has("gui_running"))
-    let g:solarized_termcolors = 256
-    let g:solarized_termtrans = 1
-    set background=light
-    colorscheme solarized
+    colorscheme holokai
 endif
 
 set number        " always show line numbers
@@ -333,3 +329,7 @@ endif
 " Highligh the current line {{{
 set cursorline
 " }}}
+
+if filereadable(expand('~/.vimrc.light'))
+    source $HOME/.vimrc.light
+endif
