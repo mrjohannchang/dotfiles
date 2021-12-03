@@ -1,11 +1,18 @@
+[submodule "bin"]
+	path = 3rdparty/bin-changyuheng
+	url = git@github.com:changyuheng/bin.git
 [submodule "dircolors-solarized"]
-	path = home/dircolors-solarized
+	path = 3rdparty/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
 	branch = master
 [submodule "tpm"]
-	path = home/.tmux/plugins/tpm
+	path = 3rdparty/tpm
 	url = https://github.com/tmux-plugins/tpm.git
 	branch = master
-[submodule "bin"]
-	path = home/bin
-	url = git@github.com:changyuheng/bin.git
+[submodule "open-huninn-font"]
+	path = 3rdparty/open-huninn-font
+	url = git@github.com:justfont/open-huninn-font.git
+[submodule "nerd-fonts"]
+	path = 3rdparty/nerd-fonts
+	url = git@github.com:ryanoasis/nerd-fonts.git
+	shallow = true

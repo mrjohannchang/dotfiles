@@ -3,9 +3,6 @@
 
 .DS_Store
 
-/home/.tmux/plugins
-/home/.tmux/resurrect
-
 /home/.vim/.netrwhist
 /home/.vim/.VimballRecord
 /home/.vim/bundle

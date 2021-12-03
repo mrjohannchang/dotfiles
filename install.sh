@@ -122,7 +122,7 @@ install() {
             ;;
     esac
 
-    install_target "home/bin" "${HOME}/bin.d/changyuheng"
+    install_target "home/bin.d/changyuheng"
     install_target "home/.zshrc"
 
     yes_or_no_question "Install dircolors?"
@@ -165,11 +165,21 @@ install() {
             ;;
 
         linux*)
-            install_target "home/.local/share/fonts/PowerlineSymbols.otf"
-            install_target "home/.config/fontconfig/conf.d/10-powerline-symbols.conf"
             install_target "home/.config/fontconfig/conf.d/20-noto-cjk.conf"
+
             install_target "home/.local/share/fonts/jf-openhuninn-1.1.ttf"
             install_target "home/.config/fontconfig/conf.d/30-jf-openhuninn.conf"
+
+            install_target "home/.local/share/fonts/Hack Bold Italic Nerd Font Complete Mono.ttf"
+            install_target "home/.local/share/fonts/Hack Bold Italic Nerd Font Complete.ttf"
+            install_target "home/.local/share/fonts/Hack Bold Nerd Font Complete Mono.ttf"
+            install_target "home/.local/share/fonts/Hack Bold Nerd Font Complete.ttf"
+            install_target "home/.local/share/fonts/Hack Italic Nerd Font Complete Mono.ttf"
+            install_target "home/.local/share/fonts/Hack Italic Nerd Font Complete.ttf"
+            install_target "home/.local/share/fonts/Hack Regular Nerd Font Complete Mono.ttf"
+            install_target "home/.local/share/fonts/Hack Regular Nerd Font Complete.ttf"
+
+            fc-cache -fv
             ;;
     esac
 
@@ -224,6 +234,14 @@ uninstall() {
     uninstall_target "${HOME}/.config/fontconfig/conf.d/20-noto-cjk.conf"
     uninstall_target "${HOME}/.local/share/fonts/jf-openhuninn-1.1.ttf"
     uninstall_target "${HOME}/.config/fontconfig/conf.d/30-jf-openhuninn.conf"
+    uninstall_target "${HOME}/.local/share/fonts/Hack Bold Italic Nerd Font Complete Mono.ttf"
+    uninstall_target "${HOME}/.local/share/fonts/Hack Bold Italic Nerd Font Complete.ttf"
+    uninstall_target "${HOME}/.local/share/fonts/Hack Bold Nerd Font Complete Mono.ttf"
+    uninstall_target "${HOME}/.local/share/fonts/Hack Bold Nerd Font Complete.ttf"
+    uninstall_target "${HOME}/.local/share/fonts/Hack Italic Nerd Font Complete Mono.ttf"
+    uninstall_target "${HOME}/.local/share/fonts/Hack Italic Nerd Font Complete.ttf"
+    uninstall_target "${HOME}/.local/share/fonts/Hack Regular Nerd Font Complete Mono.ttf"
+    uninstall_target "${HOME}/.local/share/fonts/Hack Regular Nerd Font Complete.ttf"
 
     INFO "Uninstallation has been completed"
 }
