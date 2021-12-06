@@ -23,14 +23,6 @@ WARN() {
   echo -e [${COLOR_BOLD}${COLOR_RED}WARNING${COLOR_RESET}] "$@" >&2
 }
 
-ln() {
-  if [[ "${OSTYPE,,}" == msys* ]]; then
-    "${DOTFILES_DIR}/bin/win/ln.exe" "$@"
-  else
-    command ln "$@"
-  fi
-}
-
 mkdir_and_check() {
   local d="$1"
 
@@ -250,6 +242,13 @@ uninstall() {
 
   INFO "Uninstallation has been completed"
 }
+
+case "${OSTYPE,,}" in
+  cygwin*|msys*)
+    # Enable the symbolic link support on Windows
+    export MSYS=winsymlinks:nativestrict
+    ;;
+esac
 
 if [[ "$entry_point" == *bash ]]; then
   ERR "File was sourced but not executed"
