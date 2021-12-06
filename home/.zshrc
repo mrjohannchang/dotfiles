@@ -1,8 +1,26 @@
 # misc {
 export CASE_SENSITIVE=true
-if [[ "${OSTYPE:l}" == msys* ]]; then
-  export CASE_SENSITIVE=false
-fi
+case "${OSTYPE:l}" in
+  cygwin*|msys*)
+    export CASE_SENSITIVE=false
+    # Enable the symbolic link support on Windows
+    # https://github.com/msys2/MSYS2-packages/issues/2147
+    export MSYS=winsymlinks:nativestrict
+    ;;
+
+  darwin*)
+    # ls color
+    if command -v gdircolors &>/dev/null; then
+      if [ -r "${HOME}/.dircolors" ]; then
+        eval "$(gdircolors -b "${HOME}/.dircolors" 2>/dev/null)" || eval "$(gdircolors -b)"
+        alias ls="gls --quoting-style=literal --color=auto"
+      fi
+    fi
+
+    # updatedb
+    alias updatedb="sudo /usr/libexec/locate.updatedb"
+    ;;
+esac
 
 # disable ctrl-d
 setopt IGNORE_EOF
@@ -11,6 +29,11 @@ setopt IGNORE_EOF
 # duplicates an older one, the older command is removed from the list (even if
 # it is not the previous event).
 setopt HIST_IGNORE_ALL_DUPS
+
+# Snappy binary dir
+if [ -d "/snap/bin" ]; then
+  export PATH="/snap/bin:${PATH}"
+fi
 
 PATH="${HOME}/bin:${PATH}"
 
@@ -29,14 +52,23 @@ PATH="${HOME}/.local/bin:${PATH}"
 setopt INTERACTIVE_COMMENTS
 
 bindkey "^T" history-incremental-search-forward
+
+# locale
+[[ -n "$LANG" ]] || export LANG=en_US.UTF-8
+[[ -n "$LC_ALL" ]] || export LC_ALL=en_US.UTF-8
+
+# fd-find
+if command -v fdfind &>/dev/null; then
+  alias fd=fdfind
+fi
 # }
 
 
-# Powerlevel9k {
+# Powerlevel10k (Powerlevel9k) {
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_DISABLE_RPROMPT=true
-POWERLEVEL9K_COLOR_SCHEME="light"
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\e[1;97;47m\e[0m"
+POWERLEVEL9K_COLOR_SCHEME="dark"
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\e[1;244m\e[0m"
 if [ "$UID" -eq 0 ]; then
   POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="# "
 else
@@ -55,12 +87,6 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( \
   background_jobs \
   time \
 )
-# }
-
-
-# zsh-history-substring-search {
-bindkey -M emacs "^P" history-substring-search-up
-bindkey -M emacs "^N" history-substring-search-down
 # }
 
 
@@ -90,97 +116,25 @@ if [ -r "${HOME}/dotfiles/3rdparty/zsh-snap/znap.zsh" ]; then
   zstyle ':znap:*' repos-dir "${HOME}/dotfiles/3rdparty/zsh-snap-plugins"
   source "${HOME}/dotfiles/3rdparty/zsh-snap/znap.zsh"
 
-  znap source zsh-users/zsh-syntax-highlighting
+  znap prompt romkatv/powerlevel10k
+
+  znap source changyuheng/fz
+  znap source ohmyzsh/ohmyzsh lib/{completion,history,key-bindings}
+  znap source ohmyzsh/ohmyzsh {docker,docker-compose,nvm,pyenv,rvm}
+  znap source rupa/z z.sh
+  znap source zdharma-continuum/fast-syntax-highlighting
+  znap source zsh-users/zsh-autosuggestions
+  znap source zsh-users/zsh-completions
 fi
 # }
 
 
-# # { zplug
-# source ~/.zplug/init.zsh
-# 
-# zplug "bhilburn/powerlevel9k", as:theme
-# zplug "changyuheng/fz", defer:1
-# # zplug "changyuheng/zsh-interactive-cd"
-# zplug "rupa/z", use:z.sh
-# zplug "supercrabtree/k"
-# zplug "Tarrasch/zsh-bd"
-# # zplug "zdharma/fast-syntax-highlighting", defer:2
-# # zplug "zsh-users/zsh-autosuggestions"
-# zplug "zsh-users/zsh-completions"
-# zplug "zsh-users/zsh-history-substring-search", defer:3
-# zplug "zsh-users/zsh-syntax-highlighting", defer:2
-# 
-# # Enable specific oh-my-zsh's features
-# zplug "lib/bzr", from:oh-my-zsh
-# zplug "lib/clipboard", from:oh-my-zsh
-# zplug "lib/compfix", from:oh-my-zsh
-# zplug "lib/completion", from:oh-my-zsh
-# zplug "lib/correction", from:oh-my-zsh
-# zplug "lib/functions", from:oh-my-zsh
-# zplug "lib/history", from:oh-my-zsh
-# zplug "lib/key-bindings", from:oh-my-zsh
-# zplug "lib/nvm", from:oh-my-zsh
-# zplug "lib/prompt_info_functions", from:oh-my-zsh
-# zplug "lib/spectrum", from:oh-my-zsh
-# zplug "plugins/docker", from:oh-my-zsh
-# zplug "plugins/docker-compose", from:oh-my-zsh
-# # zplug "plugins/gpg-agent", from:oh-my-zsh
-# zplug "plugins/nvm", from:oh-my-zsh
-# zplug "plugins/pyenv", from:oh-my-zsh
-# zplug "plugins/rvm", from:oh-my-zsh
-# 
-# # Install plugins if there are plugins that have not been installed
-# if ! zplug check --verbose; then
-#     printf "Install? [y/N]: "
-#     if read -q; then
-#         echo; zplug install
-#     fi
-# fi
-# 
-# # Then, source plugins and add commands to $PATH
-# zplug load
-# # }
+# zsh-autosuggestions {
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#93a1a1"
 
-
-# autosuggestions {
-# this has to be done after the plugin being loaded
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(
-  beginning-of-line
-  backward-delete-char
-  backward-delete-word
-  backward-kill-word
-  history-search-forward
-  history-search-backward
-  history-beginning-search-forward
-  history-beginning-search-backward
-  history-substring-search-up
-  history-substring-search-down
-  up-line-or-history
-  down-line-or-history
-  accept-line
-)
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=black,bold,underline"
-# }
-
-# macOS {
-if [[ "${OSTYPE:l}" == darwin* ]]; then
-  # ls color
-  if command -v gdircolors &>/dev/null; then
-    if [ -r "${HOME}/.dircolors" ]; then
-      eval "$(gdircolors -b "${HOME}/.dircolors" 2>/dev/null)" || eval "$(gdircolors -b)"
-      alias ls="gls --quoting-style=literal --color=auto"
-    fi
-  fi
-
-  # updatedb
-  alias updatedb="sudo /usr/libexec/locate.updatedb"
-fi
-# }
-
-
-# fast-syntax-highlighting {
-# FAST_HIGHLIGHT_STYLES[variable]="fg=blue"
-zle_highlight+=(paste:none)
+# Workaround for Random ←[?1h is showing
+# https://github.com/zsh-users/zsh-autosuggestions/issues/614
+unset ZSH_AUTOSUGGEST_USE_ASYNC
 # }
 
 
@@ -191,29 +145,9 @@ fi
 # }
 
 
-# locale {
-[[ -n "$LANG" ]] || export LANG=en_US.UTF-8
-[[ -n "$LC_ALL" ]] || export LC_ALL=en_US.UTF-8
-# }
-
-
-# Snappy binary dir {
-if [ -d "/snap/bin" ]; then
-  export PATH="/snap/bin:${PATH}"
-fi
-# }
-
-
 # Python Poetry executables {
 if [ -d "${HOME}/.poetry/bin" ]; then
   export PATH="${HOME}/.poetry/bin:${PATH}"
-fi
-# }
-
-
-# fd-find {
-if command -v fdfind &>/dev/null; then
-  alias fd=fdfind
 fi
 # }
 

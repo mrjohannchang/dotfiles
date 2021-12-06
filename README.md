@@ -258,6 +258,12 @@ WIP.
     pacman -S man
     ```
 
+15. Enable the symbolic link support on Windows:
+
+    ```
+    export MSYS=winsymlinks:nativestrict
+    ```
+
 ##### TODO
 
 1. pyenv
