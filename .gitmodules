@@ -1,7 +1,7 @@
 [submodule "bin"]
 	path = 3rdparty/bin-changyuheng
 	url = git@github.com:changyuheng/bin.git
-	branch = master
+	shallow = true
 [submodule "dircolors-solarized"]
 	path = 3rdparty/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
@@ -21,4 +21,4 @@
 [submodule "zsh-snap"]
 	path = 3rdparty/zsh-snap
 	url = git@github.com:marlonrichert/zsh-snap.git
-	branch = master
+	shallow = true
