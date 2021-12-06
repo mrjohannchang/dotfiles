@@ -2,10 +2,7 @@
 
 ## About
 
-![](screenshots/git.png)
-![](screenshots/root.png)
-![](screenshots/vim-ctrl-p.png)
-![](screenshots/vim.png)
+![](screenshots/zsh-prompt.png)
 
 * **Cross-platform** - Support [Linux](https://en.wikipedia.org/wiki/Linux), [macOS](https://en.wikipedia.org/wiki/MacOS), and [Microsoft Windows](https://en.wikipedia.org/wiki/Microsoft_Windows).
 * **Modern** - Prefer:
@@ -137,14 +134,14 @@ WIP.
        "list":
        [
          // ...
-                 {
-                     "bellStyle": "none",
-                     "guid": "{6e84d515-55a8-4d89-b9c5-9b2f52914fdc}",
-                     "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -clang64 -use-full-path",
-                     "icon": "C:/msys64/clang64.ico",
-                     "name": "CLANG64 / MSYS2",
-                     "startingDirectory": "C:/msys64/home/%USERNAME%"
-                 },
+            {
+                "bellStyle": "none",
+                "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path",
+                "guid": "{7e049a6e-6aea-4e66-9bd3-a4bd49a49bab}",
+                "icon": "C:/msys64/mingw64.ico",
+                "name": "MINGW64 / MSYS2 - Zsh",
+                "startingDirectory": "C:/msys64/home/%USERNAME%"
+            },
          // ...
        ]
      }
@@ -153,7 +150,7 @@ WIP.
    * [Make MSYS2 read Windows environment variables](https://stackoverflow.com/a/50992294/1592410).
 
      1. Add option `-use-full-path` to the `commandline` in MSYS2 profile in Windows Terminal `settings.json`. (It's already done in the previous step.)
-     2. Uncomment `MSYS2_PATH_TYPE=inherit` in `C:\msys64\clang64.ini`.
+     2. Uncomment `MSYS2_PATH_TYPE=inherit` in `C:\msys64\mingw64.ini`.
 
    * Fix chocolatey not able to read the tmp folder on MSYS2 issue by commenting out the following lines in `/etc/profile`.
 
@@ -187,7 +184,7 @@ WIP.
 9. [Change default shell](https://superuser.com/questions/961699/change-default-shell-on-msys2) of MSYS2 to [Zsh](https://www.zsh.org/) by adding `-shell zsh` to the cmdline of MSYS2 in Windows Terminal `settings.json`.
 
    ```
-   "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -clang64 -use-full-path -shell zsh"
+   "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path -shell zsh"
    ```
 
 10. Set Windows `%USERPROFILE%` folder as the `$HOME` folder by adding the following contents to `/etc/fstab`. Ref: [How to change HOME directory and start directory on MSYS2?](https://stackoverflow.com/a/66946901/1592410).
