@@ -1,8 +1,13 @@
+# Python
 *.pyc
-.*.swp
 
+# macOS
 .DS_Store
 
+# Vim
+.*.swp
+
+# Vim config
 /home/.vim/.netrwhist
 /home/.vim/.VimballRecord
 /home/.vim/bundle
@@ -10,3 +15,6 @@
 /home/.vim/eclim
 /home/.vim/plugged
 /home/.vim/plugin/eclim.vim
+
+# Znap plugins
+/3rdparty/zsh-snap-plugins/
