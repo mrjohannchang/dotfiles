@@ -272,25 +272,21 @@ WIP.
 
 ### Installation
 
-1. `git clone` and `cd` into this repo.
+1. `git clone` and `cd` into the cloned repo.
 
-2. Install the configurations:
+2. Clone sub-modules.
     ```
     git submodule update --init --recursive --remote
+    ```
+
+3. Install.
+    ```
     ./install.sh
     ```
 
-3. Install [zplug](https://github.com/zplug/zplug) with:
+4. Execute `tmux` and press `C-s I` to install the plugins of it.
 
-    ```
-    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-    ```
-
-4. Open a new zsh shell to install the plugins of `zplug`.
-
-5. Execute `tmux` and press `C-s I` to install the plugins of it.
-
-6. Execute `vim` and then `:PlugInstall` to install the plugins of it.
+5. Execute `vim` and then `:PlugInstall` to install the plugins of it.
 
 ### Uninstallation
 

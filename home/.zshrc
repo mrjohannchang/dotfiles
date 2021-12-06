@@ -64,32 +64,6 @@ fi
 # }
 
 
-# Powerlevel10k (Powerlevel9k) {
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_DISABLE_RPROMPT=true
-POWERLEVEL9K_COLOR_SCHEME="dark"
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\e[1;244m\e[0m"
-if [ "$UID" -eq 0 ]; then
-  POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="# "
-else
-  POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="$ "
-fi
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( \
-  ssh \
-  context \
-  virtualenv \
-  rbenv \
-  dir_writable \
-  dir \
-  vcs \
-  status \
-  root_indicator \
-  background_jobs \
-  time \
-)
-# }
-
-
 # enable the color support of ls {
 if command -v dircolors &>/dev/null; then
   if [ -r "${HOME}/.dircolors" ]; then
@@ -126,6 +100,32 @@ if [ -r "${HOME}/dotfiles/3rdparty/zsh-snap/znap.zsh" ]; then
   znap source zsh-users/zsh-autosuggestions
   znap source zsh-users/zsh-completions
 fi
+# }
+
+
+# Powerlevel10k (Powerlevel9k) {
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_DISABLE_RPROMPT=true
+POWERLEVEL9K_COLOR_SCHEME="powerlevel10k"
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\e[1;244m\e[0m"
+if [ "$UID" -eq 0 ]; then
+  POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="# "
+else
+  POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="$ "
+fi
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( \
+  ssh \
+  context \
+  virtualenv \
+  rbenv \
+  dir_writable \
+  dir \
+  vcs \
+  status \
+  root_indicator \
+  background_jobs \
+  time \
+)
 # }
 
 
