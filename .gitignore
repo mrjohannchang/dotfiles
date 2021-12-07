@@ -8,7 +8,7 @@
 .*.swp
 
 # tmux config
-/home/.tmux
+/home/.tmux/plugins
 
 # Vim config
 /home/.vim/.netrwhist
