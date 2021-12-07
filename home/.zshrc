@@ -3,9 +3,6 @@ export CASE_SENSITIVE=true
 case "${OSTYPE:l}" in
   cygwin*|msys*)
     export CASE_SENSITIVE=false
-    # Enable the symbolic link support on Windows
-    # https://github.com/msys2/MSYS2-packages/issues/2147
-    export MSYS=winsymlinks:nativestrict
     ;;
 
   darwin*)

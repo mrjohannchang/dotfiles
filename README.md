@@ -150,9 +150,9 @@ WIP.
    * [Make MSYS2 read Windows environment variables](https://stackoverflow.com/a/50992294/1592410).
 
      1. Add option `-use-full-path` to the `commandline` in MSYS2 profile in Windows Terminal `settings.json`. (It's already done in the previous step.)
-     2. Uncomment `MSYS2_PATH_TYPE=inherit` in `C:\msys64\mingw64.ini`.
+     2. If the above parameter doesn't take effect, uncomment `set MSYS2_PATH_TYPE=inherit` in `C:\msys64\msys2_shell.cmd` and `MSYS2_PATH_TYPE=inherit` in `C:\msys64\mingw64.ini`.
 
-   * Fix chocolatey not able to read the tmp folder on MSYS2 issue by commenting out the following lines in `/etc/profile`.
+   * Fix chocolatey not able to read the `tmp` folder on MSYS2 issue by commenting out the following lines in `/etc/profile`.
 
      ```
      unset TMP TEMP
@@ -161,6 +161,18 @@ WIP.
      TMP="/tmp"
      TEMP="/tmp"
      ```
+
+6. Enable the symbolic link support in MSYS2. Uncomment the following line in `C:\msys64\msys2_shell.cmd`
+
+   ```
+   set MSYS=winsymlinks:nativestrict
+   ```
+
+   and the following line in `C:\msys64\mingw64.ini`.
+
+   ```
+   MSYS=winsymlinks:nativestrict
+   ```
 
 6. Install [Git for Windows](https://github.com/git-for-windows/git/releases) with the following features enabled.
 
@@ -189,13 +201,13 @@ WIP.
 
 10. Set Windows `%USERPROFILE%` folder as the `$HOME` folder by adding the following contents to `/etc/fstab`. Ref: [How to change HOME directory and start directory on MSYS2?](https://stackoverflow.com/a/66946901/1592410).
 
-   ```
-   ##################################################################
-   # Canonicalize the two home directories by mounting the windows  #
-   # user home with the same path mapping as unix.                  #
-   ##################################################################
-   C:/Users /home ntfs binary,posix=0,noacl,user 0 0
-   ```
+    ```
+    ##################################################################
+    # Canonicalize the two home directories by mounting the windows  #
+    # user home with the same path mapping as unix.                  #
+    ##################################################################
+    C:/Users /home ntfs binary,posix=0,noacl,user 0 0
+    ```
 
 11. [Make MSYS2 shell compatible with Git for Windows](https://github.com/git-for-windows/git/wiki/Install-inside-MSYS2-proper).
 
@@ -234,13 +246,10 @@ WIP.
 
        It might happen that some packages are downgraded, this is expected.
 
-12. Borrow useful shell input config from Git for Windows.
+13. Borrow useful shell input config from Git for Windows.
 
     ```
-    cd /etc
-    cmd /c
-    mklink inputrc "C:\Program Files\Git\etc\inputrc"
-    exit
+    ln -s "/c/Program Files/Git/etc/inputrc" /etc
     ```
 
 13. Disable the terminal bell from `/etc/inputrc` by changing the bell-style from visual to none. Ref: [Disable beep in WSL terminal on Windows 10](https://stackoverflow.com/questions/36724209/disable-beep-in-wsl-terminal-on-windows-10)
@@ -249,16 +258,10 @@ WIP.
     set bell-style none
     ```
 
-14. Install necessary packages with pacman.
+15. Install necessary packages with pacman.
 
     ```
     pacman -S man
-    ```
-
-15. Enable the symbolic link support on Windows:
-
-    ```
-    export MSYS=winsymlinks:nativestrict
     ```
 
 ##### TODO
