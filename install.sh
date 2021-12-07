@@ -130,6 +130,14 @@ install() {
 
   install_target "home/.tmux"
   install_target "home/.tmux.conf"
+  if [ "$bg" = "light" ]; then
+    install_target "home/.tmux.light.conf"
+  fi
+  case "${OSTYPE,,}" in
+    darwin*)
+      install_target "home/.tmux.darwin.conf"
+      ;;
+  esac
 
   install_target "home/.ideavimrc"
 
@@ -176,8 +184,6 @@ install() {
 
   case "${OSTYPE,,}" in
     darwin*)
-      install_target "home/.tmux.darwin.conf"
-
       install_target "home/Library/Fonts/Monaco for Powerline.otf"
       ;;
 
@@ -239,6 +245,7 @@ uninstall() {
   uninstall_target "${HOME}/.tmux"
   uninstall_target "${HOME}/.tmux.conf"
   uninstall_target "${HOME}/.tmux.darwin.conf"
+  uninstall_target "${HOME}/.tmux.light.conf"
 
   uninstall_target "${HOME}/.vim"
   uninstall_target "${HOME}/.vimrc"

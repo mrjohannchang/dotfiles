@@ -7,6 +7,9 @@
 # Vim
 .*.swp
 
+# tmux config
+/home/.tmux
+
 # Vim config
 /home/.vim/.netrwhist
 /home/.vim/.VimballRecord
