@@ -134,23 +134,44 @@ install() {
   install_target "home/.ideavimrc"
 
   if yes_or_no_question "Install Git configurations (cannot be undone)?"; then
-    git config --global color.ui auto
-    echo "color.ui = auto"
+    git config --global alias.show-tracked-ignored "ls-files -i --exclude-standard"
+    echo 'alias.show-tracked-ignored = "ls-files -i --exclude-standard"'
+
+    git config --global core.editor nvim
+    echo "core.editor = nvim"
 
     git config --global core.quotePath false
     echo "core.quotePath = false"
 
+    git config --global color.ui auto
+    echo "color.ui = auto"
+
     git config --global diff.algorithm patience
     echo "diff.algorithm = patience"
+
+    git config --global diff.tool nvimdiff
+    echo "diff.tool = nvimdiff"
+
+    git config --global difftool.prompt false
+    echo "difftool.prompt = false"
+
+    git config --global difftool.nvimdiff.cmd 'nvim -d "$LOCAL" "$REMOTE" -c "wincmd w" -c "wincmd L"'
+    echo 'difftool.nvimdiff.cmd = nvim -d "$LOCAL" "$REMOTE" -c "wincmd w" -c "wincmd L"'
+
+    git config --global merge.tool nvimdiff
+    echo "merge.tool = nvimdiff"
+
+    git config --global mergetool.prompt true
+    echo "mergetool.prompt = true"
+
+    git config --global mergetool.nvimdiff.cmd 'nvim -d "$LOCAL" "$REMOTE" "$MERGED" -c "wincmd w" -c "wincmd J"'
+    echo 'mergetool.nvimdiff.cmd nvim -d "$LOCAL" "$REMOTE" "$MERGED" -c "wincmd w" -c "wincmd J"'
 
     git config --global pull.ff only
     echo "pull.ff = only"
 
     git config --global push.default simple
     echo "push.default = simple"
-
-    git config --global alias.show-tracked-ignored "ls-files -i --exclude-standard"
-    echo "alias.show-tracked-ignored = \"ls-files -i --exclude-standard\""
   fi
 
   case "${OSTYPE,,}" in

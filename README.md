@@ -88,7 +88,7 @@ WIP.
 
    ```
    brew install bash zsh cmake ctags go nvm pyenv python3 coreutils fd ripgrep tmux trash fzf vim gotags
-   
+
    brew tap homebrew/cask-fonts
    brew install font-hack
    brew install font-hack-nerd-font
@@ -152,54 +152,54 @@ WIP.
      1. Add option `-use-full-path` to the `commandline` in MSYS2 profile in Windows Terminal `settings.json`. (It's already done in the previous step.)
      2. If the above parameter doesn't take effect, uncomment `set MSYS2_PATH_TYPE=inherit` in `C:\msys64\msys2_shell.cmd` and `MSYS2_PATH_TYPE=inherit` in `C:\msys64\mingw64.ini`.
 
-   * Fix chocolatey not able to read the `tmp` folder on MSYS2 issue by commenting out the following lines in `/etc/profile`.
-
-     ```
-     unset TMP TEMP
-     tmp=$(exec cygpath -w "$ORIGINAL_TMP" 2> /dev/null)
-     temp=$(exec cygpath -w "$ORIGINAL_TEMP" 2> /dev/null)
-     TMP="/tmp"
-     TEMP="/tmp"
-     ```
-
 6. Enable the symbolic link support in MSYS2. Uncomment the following line in `C:\msys64\msys2_shell.cmd`
 
+  ```
+  set MSYS=winsymlinks:nativestrict
+  ```
+
+  and the following line in `C:\msys64\mingw64.ini`.
+
+  ```
+  MSYS=winsymlinks:nativestrict
+  ```
+
+7. Fix chocolatey not able to read the `tmp` folder on MSYS2 issue by commenting out the following lines in `/etc/profile`.
+
    ```
-   set MSYS=winsymlinks:nativestrict
+   unset TMP TEMP
+   tmp=$(exec cygpath -w "$ORIGINAL_TMP" 2> /dev/null)
+   temp=$(exec cygpath -w "$ORIGINAL_TEMP" 2> /dev/null)
+   TMP="/tmp"
+   TEMP="/tmp"
    ```
 
-   and the following line in `C:\msys64\mingw64.ini`.
+8. Install necessary packages with chocolatey in an elevated terminal.
 
    ```
-   MSYS=winsymlinks:nativestrict
+   choco install neovim nerdfont-hack fd ripgrep universal-ctags fzf
    ```
 
-6. Install [Git for Windows](https://github.com/git-for-windows/git/releases) with the following features enabled.
+9. Install [Git for Windows](https://github.com/git-for-windows/git/releases) with the following features enabled.
 
    * Git LFS
    * File system caching
    * Symbolic links
    * Built-in file system monitor
 
-7. Install necessary packages with chocolatey in an elevated terminal.
+10. Install [Zsh](https://www.zsh.org/) on MSYS2's shell. Other commands in the following steps should all be executed in MSYS2's shell.
 
-   ```
-   choco install neovim nerdfont-hack fd ripgrep universal-ctags fzf
-   ```
+    ```
+    pacman -S zsh
+    ```
 
-8. Install [Zsh](https://www.zsh.org/) on MSYS2's shell. Other commands in the following steps should all be executed in MSYS2's shell.
+11. [Change default shell](https://superuser.com/questions/961699/change-default-shell-on-msys2) of MSYS2 to [Zsh](https://www.zsh.org/) by adding `-shell zsh` to the cmdline of MSYS2 in Windows Terminal `settings.json`.
 
-   ```
-   pacman -S zsh
-   ```
+    ```
+    "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path -shell zsh"
+    ```
 
-9. [Change default shell](https://superuser.com/questions/961699/change-default-shell-on-msys2) of MSYS2 to [Zsh](https://www.zsh.org/) by adding `-shell zsh` to the cmdline of MSYS2 in Windows Terminal `settings.json`.
-
-   ```
-   "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path -shell zsh"
-   ```
-
-10. Set Windows `%USERPROFILE%` folder as the `$HOME` folder by adding the following contents to `/etc/fstab`. Ref: [How to change HOME directory and start directory on MSYS2?](https://stackoverflow.com/a/66946901/1592410).
+12. Set Windows `%USERPROFILE%` folder (`C:\Users\<user name>`) as the `$HOME` folder by adding the following contents to `/etc/fstab`. Ref: [How to change HOME directory and start directory on MSYS2?](https://stackoverflow.com/a/66946901/1592410).
 
     ```
     ##################################################################
@@ -209,14 +209,14 @@ WIP.
     C:/Users /home ntfs binary,posix=0,noacl,user 0 0
     ```
 
-11. [Make MSYS2 shell compatible with Git for Windows](https://github.com/git-for-windows/git/wiki/Install-inside-MSYS2-proper).
+13. [Make MSYS2 shell compatible with Git for Windows](https://github.com/git-for-windows/git/wiki/Install-inside-MSYS2-proper).
 
-    1. Edit `/etc/pacman.conf` and add the Git for Windows package repositories above any others (i.e. just before `[mingw32]` on line #71 as of this writing):
+    1. Edit `/etc/pacman.conf` with `nvim` and add the Git for Windows package repositories above any others (i.e. just before `[mingw32]` on line #71 as of this writing):
 
        ```
        [git-for-windows]
        Server = https://wingit.blob.core.windows.net/x86-64
-       
+
        [git-for-windows-mingw32]
        Server = https://wingit.blob.core.windows.net/i686
        ```
@@ -246,19 +246,19 @@ WIP.
 
        It might happen that some packages are downgraded, this is expected.
 
-13. Borrow useful shell input config from Git for Windows.
+14. Borrow useful shell input config from Git for Windows.
 
     ```
     ln -s "/c/Program Files/Git/etc/inputrc" /etc
     ```
 
-13. Disable the terminal bell from `/etc/inputrc` by changing the bell-style from visual to none. Ref: [Disable beep in WSL terminal on Windows 10](https://stackoverflow.com/questions/36724209/disable-beep-in-wsl-terminal-on-windows-10)
+15. Disable the terminal bell from `/etc/inputrc` by changing the bell-style from `visual` to `none`. Ref: [Disable beep in WSL terminal on Windows 10](https://stackoverflow.com/questions/36724209/disable-beep-in-wsl-terminal-on-windows-10)
 
     ```
     set bell-style none
     ```
 
-15. Install necessary packages with pacman.
+16. Install necessary packages with pacman.
 
     ```
     pacman -S man
