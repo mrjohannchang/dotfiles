@@ -94,9 +94,9 @@ if [ -r "${HOME}/dotfiles/3rdparty/zsh-snap/znap.zsh" ]; then
     lib/{completion,history,key-bindings} \
     plugins/{docker-compose,nvm,pyenv,rvm}
   znap source rupa/z z.sh
-  znap source zdharma-continuum/fast-syntax-highlighting
   znap source zsh-users/zsh-autosuggestions
   znap source zsh-users/zsh-completions
+  znap source zsh-users/zsh-syntax-highlighting
 fi
 # }
 
