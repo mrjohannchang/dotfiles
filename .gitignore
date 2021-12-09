@@ -7,17 +7,11 @@
 # Vim
 .*.swp
 
-# tmux config
-/home/.tmux/plugins
+# tmux plugins
+/home/.tmux/plugins/
 
-# Vim config
-/home/.vim/.netrwhist
-/home/.vim/.VimballRecord
-/home/.vim/bundle
-/home/.vim/doc/tags
-/home/.vim/eclim
-/home/.vim/plugged
-/home/.vim/plugin/eclim.vim
+# Vim config folder
+/home/.vim/
 
 # Znap plugins
 /3rdparty/zsh-snap-plugins/
