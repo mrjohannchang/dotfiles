@@ -54,9 +54,12 @@ bindkey "^T" history-incremental-search-forward
 [[ -n "$LANG" ]] || export LANG=en_US.UTF-8
 [[ -n "$LC_ALL" ]] || export LC_ALL=en_US.UTF-8
 
-# fd-find
-if command -v fdfind &>/dev/null; then
-  alias fd=fdfind
+# Neovim
+# VISUAL vs. EDITOR – what’s the difference?
+# https://unix.stackexchange.com/questions/4859/visual-vs-editor-what-s-the-difference
+if command -v nvim &>/dev/null; then
+  export EDITOR=nvim
+  export VISUAL=nvim
 fi
 # }
 
@@ -152,5 +155,12 @@ fi
 # .zshrc.light (configs for light background terminals) {
 if [ -r "${HOME}/.zshrc.light" ]; then
   source "${HOME}/.zshrc.light"
+fi
+# }
+
+
+# fd-find {
+if command -v fdfind &>/dev/null; then
+  alias fd=fdfind
 fi
 # }
