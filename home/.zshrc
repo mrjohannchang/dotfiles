@@ -96,7 +96,7 @@ if [ -r "${HOME}/dotfiles/3rdparty/zsh-snap/znap.zsh" ]; then
   znap source rupa/z z.sh
   znap source zsh-users/zsh-autosuggestions
   znap source zsh-users/zsh-completions
-#  znap source zsh-users/zsh-syntax-highlighting
+  znap source zsh-users/zsh-syntax-highlighting
 fi
 # }
 
