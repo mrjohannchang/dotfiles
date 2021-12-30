@@ -216,7 +216,14 @@ uninstall_target() {
     return
   fi
 
-  if [ ! -L "$f" ] || [[ "$(readlink -f "$f")" != "${DOTFILES_DIR}/"* ]]; then
+  local readlink=readlink
+  case "${OSTYPE,,}" in
+    darwin*)
+      readlink=greadlink
+      ;;
+  esac
+
+  if [ ! -L "$f" ] || [[ "$($readlink -f "$f")" != "${DOTFILES_DIR}/"* ]]; then
     WARN "$f skipped"
     return
   fi
