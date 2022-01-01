@@ -130,8 +130,6 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( \
 
 
 # zsh-autosuggestions {
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#93a1a1"
-
 # Workaround for Random ←[?1h is showing
 # https://github.com/zsh-users/zsh-autosuggestions/issues/614
 unset ZSH_AUTOSUGGEST_USE_ASYNC
