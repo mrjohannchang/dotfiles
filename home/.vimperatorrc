@@ -1,0 +1,13 @@
+set cpt=l
+set tabnumbers
+
+noremap <C-a> <Insert><C-a><Insert>
+
+noremap <C-c> <C-v><C-c>
+noremap <C-v> <C-v><C-v>
+noremap <C-x> <C-v><C-x>
+
+nnoremap <C-s> :stop<CR>
+
+autocmd LocationChange .*                  js modes.passAllKeys = false
+autocmd LocationChange mail\\.google\\.com js modes.passAllKeys = true

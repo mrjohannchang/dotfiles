@@ -1,0 +1,17 @@
+# Python
+*.pyc
+
+# macOS
+.DS_Store
+
+# Vim
+.*.swp
+
+# tmux plugins
+/home/.tmux/plugins/
+
+# Vim config folder
+/home/.vim/
+
+# Znap plugins
+/3rdparty/zsh-snap-plugins/

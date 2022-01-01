@@ -1,0 +1,11 @@
+caption always "%{= wk} %{= KY} [%n]%t @ %H %{-} %= %{= KR} %l %{-} | %{= KG} %Y-%m-%d %{-} "
+hardstatus alwayslastline " %-Lw%{= Bw}%n%f %t%{-}%+Lw %=| %0c:%s "
+w
+defscrollback 5000
+vbell_msg "bell: window ~%" # Message for visual bell
+vbellwait 2 # Seconds to pause the screen for visual bell
+vbell off # Turns visual bell off
+
+term xterm # fix notify-send, d-bus connection refused
+
+#shelltitle '] |bash'
