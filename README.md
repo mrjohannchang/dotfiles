@@ -48,7 +48,7 @@ WIP.
    sudo apt install flatpak
    ```
 
-3. Install [Neovim](https://neovim.io/).
+4. Install [Neovim](https://neovim.io/).
 
    ```
    flatpak install flathub io.neovim.nvim
@@ -154,15 +154,15 @@ WIP.
 
 6. Enable the symbolic link support in MSYS2. Uncomment the following line in `C:\msys64\msys2_shell.cmd`
 
-  ```
-  set MSYS=winsymlinks:nativestrict
-  ```
-
-  and the following line in `C:\msys64\mingw64.ini`.
-
-  ```
-  MSYS=winsymlinks:nativestrict
-  ```
+   ```
+   set MSYS=winsymlinks:nativestrict
+   ```
+ 
+   and the following line in `C:\msys64\mingw64.ini`.
+ 
+   ```
+   MSYS=winsymlinks:nativestrict
+   ```
 
 7. Fix chocolatey not able to read the `tmp` folder on MSYS2 issue by commenting out the following lines in `/etc/profile`.
 
@@ -272,21 +272,22 @@ WIP.
 
 ### Installation
 
-1. `git clone` and `cd` into the cloned repo.
+1. `git clone` this repo in `$HOME` and `cd` into it.
 
-2. Clone sub-modules.
-    ```
-    git submodule update --init --recursive --remote
-    ```
+   ```
+   cd $HOME
+   git clone --branch main --recurse-submodules git@github.com:changyuheng/dotfiles.git
+   ```
 
-3. Install.
-    ```
-    ./install.sh
-    ```
+2. Install.
 
-4. Execute `tmux` and press `C-s I` to install the plugins of it.
+   ```
+   ./install.sh
+   ```
 
-5. Execute `vim` and then `:PlugInstall` to install the plugins of it.
+3. Execute `tmux` and press `C-s I` to install the plugins of it.
+
+4. Execute `vim` and then `:PlugInstall` to install the plugins of it.
 
 ### Uninstallation
 
@@ -301,20 +302,21 @@ WIP.
 1. Key remapping for REALFORCE for Mac:
 
     a. Config udev:
-    ```
-    sudo cp ubuntu/etc/udev/rules.d/1000-key-remapping-for-realforce-for-mac.rules /etc/udev/rules.d
-    sudo udevadm control --reload
-    ```
+
+       ```
+       sudo cp ubuntu/etc/udev/rules.d/1000-key-remapping-for-realforce-for-mac.rules /etc/udev/rules.d
+       sudo udevadm control --reload
+       ```
+
     b. In `Startup Applications Preferences`, add an item that executes "$HOME/dotfiles/scripts/ubuntu/swap-option-and-command-for-realforce-for-mac.sh"
 
 ##### Traditional Chinese input methods
 
 1. Install fcitx to replace iBus.
 
-    a.
-    ```
-    sudo apt install fcitx-chewing fcitx-table-boshiamy
-    ```
+    a. ```
+       sudo apt install fcitx-chewing fcitx-table-boshiamy
+       ```
     b. Choose `fcitx` as the keyboard input method system in `gnome-language-selector`.
     c. Remove keyboard layouts if there are more than 1 from Input Source in `gnome-control-center` > Region & Language.
     d. Remove the hotkey for switching input source in `gnome-control-center` > Keyboard Shortcuts > Typing.
