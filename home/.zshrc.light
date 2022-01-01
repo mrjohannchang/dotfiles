@@ -34,12 +34,5 @@ POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\e[1;97;47m\e[0m"
 
 
 # zsh-autosuggestions {
-case "${OSTYPE:l}" in
-  darwin*)
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#a8b3b3"
-    ;;
-  *)
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#93a1a1"
-    ;;
-esac
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#a8b3b3"
 # }
