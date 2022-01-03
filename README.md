@@ -276,18 +276,31 @@ WIP.
 
    ```
    cd $HOME
-   git clone --branch main --recurse-submodules https://github.com/changyuheng/dotfiles.git
+   git clone --branch main https://github.com/changyuheng/dotfiles.git
    ```
 
-2. Install.
+2. [Windows only] Enable case sensitive support in PowerShell.
+
+   ```
+   cd dotfiles
+   fsutil.exe file SetCaseSensitiveInfo . enable
+   ```
+
+3. Clone sub-modules.
+
+   ```
+   git submodule update --init --recursive --remote
+   ```
+
+4. Install.
 
    ```
    ./install.sh
    ```
 
-3. Execute `tmux` and press `C-s I` to install the plugins of it.
+5. Execute `tmux` and press `C-s I` to install the plugins of it.
 
-4. Execute `vim` and then `:PlugInstall` to install the plugins of it.
+6. Execute `vim` and then `:PlugInstall` to install the plugins of it.
 
 ### Uninstallation
 
