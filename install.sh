@@ -105,6 +105,8 @@ install() {
   mkdir_and_check "${DOTFILES_DIR}/3rdparty/zsh-snap-plugins"
   mkdir_and_check "${HOME}/.config"
   mkdir_and_check "${HOME}/bin.d"
+  mkdir_and_check "${HOME}/.config/nvim"
+  mkdir_and_check "${HOME}/.config/nvim/lua"
   case "${OSTYPE,,}" in
     darwin*)
       mkdir_and_check "${HOME}/Library/Fonts"
@@ -207,6 +209,11 @@ install() {
       ;;
   esac
 
+  install_target "home/.config/nvim/init.lua"
+  if [ "$bg" = "light" ]; then
+    install_target "home/.config/nvim/lua/init-light.lua"
+  fi
+
   INFO "Installation has been completed"
 }
 
@@ -276,6 +283,9 @@ uninstall() {
   uninstall_target "${HOME}/.local/share/fonts/Hack Italic Nerd Font Complete.ttf"
   uninstall_target "${HOME}/.local/share/fonts/Hack Regular Nerd Font Complete Mono.ttf"
   uninstall_target "${HOME}/.local/share/fonts/Hack Regular Nerd Font Complete.ttf"
+
+  uninstall_target "${HOME}/.config/nvim/init.lua"
+  uninstall_target "${HOME}/.config/nvim/lua/init-light.lua"
 
   INFO "Uninstallation has been completed"
 }
