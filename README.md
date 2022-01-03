@@ -130,7 +130,7 @@
    Note: zoxide only exists in 21.04+
 
    ```
-   sudo apt install build-essential cmake git golang tmux python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf fonts-hack-ttf xsel zoxide
+   sudo apt install build-essential cmake git golang tmux python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf xsel zoxide
    ```
 
 2. Change default shell to [Zsh](https://www.zsh.org/).
@@ -163,15 +163,9 @@
    curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
    ```
 
-7. Install [Nerd Font](https://www.nerdfonts.com/) - [Hack](https://sourcefoundry.org/hack/).
+7. Install [Nerd Font](https://www.nerdfonts.com/) - [Hack](https://sourcefoundry.org/hack/) by following the [installation instruction](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack#linux).
 
-   ```
-   mkdir -p ~/.local/share/fonts
-   curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
-   fc-cache -fv
-   ```
-
-7. Config the terminal to use font [Hack](https://sourcefoundry.org/hack/) that's installed in #1.
+8. Config the terminal to use the font Nerd Font - Hack that's installed in #1.
 
 #### macOS
 
@@ -187,7 +181,6 @@
    brew install bash zsh cmake ctags go nvm pyenv python3 coreutils fd ripgrep tmux trash fzf neovim gotags zoxide
 
    brew tap homebrew/cask-fonts
-   brew install font-hack
    brew install font-hack-nerd-font
    ```
 
@@ -198,7 +191,7 @@
       chsh -s $(which zsh)
       ```
 
-4. Config the terminal to use font [Hack](https://sourcefoundry.org/hack/) that's installed in #2.
+4. Config the terminal to use the font Nerd Font - Hack that's installed in #2.
 
 #### Microsoft Windows (tested on Windows 10)
 
@@ -277,26 +270,34 @@
    choco install neovim nerdfont-hack fd ripgrep universal-ctags fzf zoxide
    ```
 
-9. Install [Git for Windows](https://github.com/git-for-windows/git/releases) with the following features enabled.
+9. Config the terminal to use the font Nerd Font - Hack.
 
-   * Git LFS
-   * File system caching
-   * Symbolic links
-   * Built-in file system monitor
+10. Install [Git for Windows](https://github.com/git-for-windows/git/releases) with the following features enabled.
 
-10. Install [Zsh](https://www.zsh.org/) on MSYS2's shell. Other commands in the following steps should all be executed in MSYS2's shell.
+    * Git LFS
+    * File system caching
+    * Symbolic links
+    * Built-in file system monitor
+
+11. Install [Zsh](https://www.zsh.org/) on MSYS2's shell. Other commands in the following steps should all be executed in MSYS2's shell.
 
     ```
     pacman -S zsh
     ```
 
-11. [Change default shell](https://superuser.com/questions/961699/change-default-shell-on-msys2) of MSYS2 to [Zsh](https://www.zsh.org/) by adding `-shell zsh` to the cmdline of MSYS2 in Windows Terminal `settings.json`.
+12. [Change default shell](https://superuser.com/questions/961699/change-default-shell-on-msys2) of MSYS2 to [Zsh](https://www.zsh.org/) by adding `-shell zsh` to the cmdline of MSYS2 in Windows Terminal `settings.json`.
 
     ```
     "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path -shell zsh"
     ```
 
-12. Set Windows `%USERPROFILE%` folder (`C:\Users\<user name>`) as the `$HOME` folder by adding the following contents to `/etc/fstab`. Ref: [How to change HOME directory and start directory on MSYS2?](https://stackoverflow.com/a/66946901/1592410).
+13. Make `%TMEP%` be mounted at `/tmp` by adding the following contents to `/etc/fstab`.
+
+    ```
+    none /tmp usertemp binary,posix=0,noacl 0 0
+    ```
+
+14. Set Windows `%USERPROFILE%` folder (`C:\Users\<user name>`) as the `$HOME` folder by adding the following contents to `/etc/fstab`. Ref: [How to change HOME directory and start directory on MSYS2?](https://stackoverflow.com/a/66946901/1592410).
 
     ```
     ##################################################################
@@ -306,7 +307,7 @@
     C:/Users /home ntfs binary,posix=0,noacl,user 0 0
     ```
 
-13. [Make MSYS2 shell compatible with Git for Windows](https://github.com/git-for-windows/git/wiki/Install-inside-MSYS2-proper).
+15. [Make MSYS2 shell compatible with Git for Windows](https://github.com/git-for-windows/git/wiki/Install-inside-MSYS2-proper).
 
     1. Edit `/etc/pacman.conf` with `nvim` and add the Git for Windows package repositories above any others (i.e. just before `[mingw32]` on line #71 as of this writing):
 
@@ -343,19 +344,19 @@
 
        It might happen that some packages are downgraded, this is expected.
 
-14. Borrow useful shell input config from Git for Windows.
+16. Borrow useful shell input config from Git for Windows.
 
     ```
     ln -s "/c/Program Files/Git/etc/inputrc" /etc
     ```
 
-15. Disable the terminal bell from `/etc/inputrc` by changing the bell-style from `visual` to `none`. Ref: [Disable beep in WSL terminal on Windows 10](https://stackoverflow.com/questions/36724209/disable-beep-in-wsl-terminal-on-windows-10)
+17. Disable the terminal bell from `/etc/inputrc` by changing the bell-style from `visual` to `none`. Ref: [Disable beep in WSL terminal on Windows 10](https://stackoverflow.com/questions/36724209/disable-beep-in-wsl-terminal-on-windows-10)
 
     ```
     set bell-style none
     ```
 
-16. Install necessary packages with pacman.
+18. Install necessary packages with pacman.
 
     ```
     pacman -S man
