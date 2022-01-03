@@ -108,12 +108,17 @@ install() {
   mkdir_and_check "${HOME}/.config/nvim"
   mkdir_and_check "${HOME}/.config/nvim/lua"
   case "${OSTYPE,,}" in
+    cygwin*|msys*)
+      mkdir_and_check "${HOME}/.local/share/nvim-data/site/pack/paqs/start"
+      ;;
     darwin*)
       mkdir_and_check "${HOME}/Library/Fonts"
+      mkdir_and_check "${HOME}/.local/share/nvim/site/pack/paqs/start"
       ;;
     linux*)
       mkdir_and_check "${HOME}/.local/share/fonts"
       mkdir_and_check "${HOME}/.config/fontconfig/conf.d"
+      mkdir_and_check "${HOME}/.local/share/nvim/site/pack/paqs/start"
       ;;
   esac
 
@@ -213,6 +218,14 @@ install() {
   if [ "$bg" = "light" ]; then
     install_target "home/.config/nvim/lua/init-light.lua"
   fi
+  case "${OSTYPE,,}" in
+    cygwin*|msys*)
+      install_target "home/.local/share/nvim-data/site/pack/paqs/start/paq-nvim"
+      ;;
+    *)
+      install_target "home/.local/share/nvim/site/pack/paqs/start/paq-nvim"
+      ;;
+  esac
 
   INFO "Installation has been completed"
 }
@@ -286,6 +299,8 @@ uninstall() {
 
   uninstall_target "${HOME}/.config/nvim/init.lua"
   uninstall_target "${HOME}/.config/nvim/lua/init-light.lua"
+  uninstall_target "${HOME}/.local/share/nvim/site/pack/paqs/start/paq-nvim"
+  uninstall_target "${HOME}/.local/share/nvim-data/site/pack/paqs/start/paq-nvim"
 
   INFO "Uninstallation has been completed"
 }
