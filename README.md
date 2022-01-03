@@ -276,7 +276,7 @@ WIP.
 
    ```
    cd $HOME
-   git clone --branch main --recurse-submodules git@github.com:changyuheng/dotfiles.git
+   git clone --branch main --recurse-submodules https://github.com/changyuheng/dotfiles.git
    ```
 
 2. Install.
