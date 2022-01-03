@@ -92,14 +92,11 @@ if [ -r "${HOME}/dotfiles/3rdparty/zsh-snap/znap.zsh" ]; then
 
   znap prompt romkatv/powerlevel10k
 
-  znap source changyuheng/fz
   znap source ohmyzsh/ohmyzsh \
     lib/{completion,history,key-bindings} \
     plugins/{docker-compose,nvm,pyenv,rvm}
-  znap source rupa/z z.sh
   znap source zsh-users/zsh-autosuggestions
   znap source zsh-users/zsh-completions
-#  znap source zsh-users/zsh-syntax-highlighting
 fi
 # }
 

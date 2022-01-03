@@ -1,8 +1,29 @@
+![screenshots/zsh-prompt.png](screenshots/zsh-prompt.png)
+
 # changyuheng’s dotfiles
 
-## About
+- [About](#about)
+- [Feature](#feature)
+  * [Z Shell (zsh)](#z-shell--zsh-)
+    + [Z Shell Plugins](#z-shell-plugins)
+  * [Neovim (nvim)](#neovim--nvim-)
+    + [Neovim Plugins](#neovim-plugins)
+  * [Tmux](#tmux)
+    + [Tmux Plugins](#tmux-plugins)
+  * [Supported Virtual Environments](#supported-virtual-environments)
+- [Setup](#setup)
+  * [Prerequisites](#prerequisites)
+    + [Linux (tested on Ubuntu 20.04 Focal Fossa Desktop)](#linux--tested-on-ubuntu-2004-focal-fossa-desktop-)
+    + [macOS](#macos)
+    + [Microsoft Windows (tested on Windows 10)](#microsoft-windows--tested-on-windows-10-)
+      - [TODO](#todo)
+  * [Installation](#installation)
+  * [Uninstallation](#uninstallation)
+  * [Tweak](#tweak)
+    + [Ubuntu](#ubuntu)
+      - [Traditional Chinese input methods](#traditional-chinese-input-methods)
 
-![](screenshots/zsh-prompt.png)
+## About
 
 * **Cross-platform** - Support [Linux](https://en.wikipedia.org/wiki/Linux), [macOS](https://en.wikipedia.org/wiki/MacOS), and [Microsoft Windows](https://en.wikipedia.org/wiki/Microsoft_Windows).
 * **Modern** - Prefer:
@@ -22,9 +43,68 @@
 
 ## Feature
 
-WIP.
+### Z Shell (zsh)
 
-## Installation
+#### Z Shell Plugins
+
+1. [romkatv/powerlevel10k](https://github.com/romkatv/powerlevel10k)
+2. [ohmyzsh/ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
+   1. [lib/completion](https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/completion.zsh)
+   2. [lib/history](https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/history.zsh)
+   3. [lib/key-bindings](https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/key-bindings.zsh)
+   4. [plugins/docker-compose](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose)
+   5. [plugins/nvm](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/nvm)
+   6. [plugins/pyenv](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/pyenv)
+   7. [plugins/rvm](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/rvm)
+3. [zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+4. [zsh-users/zsh-completions](https://github.com/zsh-users/zsh-completions)
+
+### Neovim (nvim)
+
+1. Reselect visual block after indent/outdent.
+2. Enable moving up and down with j and k in wrapped lines.
+3. Clear the search highlight with `<LEADER> + /`.
+4. Saving files as root with `w!!`.
+5. Better command-line editing.
+   1. `CTRL + j` and `CTRL + k` move to lines that have identical prefixes.
+   2. `CTRL + a` and `CTRL + e` move to the beginning and the end of the line.
+6. Toggle paste mode with `<LEADER> + v`.
+   1. Leave paste mode on leaving insert mode
+
+#### Neovim Plugins
+
+1. [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+
+### Tmux
+
+1. Tmux prefix key: `CTRL + s`.
+2. Switch to the last window: `CTRL + s`.
+3. Send prefix: `CTRL + a`.
+4. Selection:
+   1. Select: `v`
+   2. Block select: `V`
+5. Tmux Resurrect key bindings:
+   1. Save: `s`
+   2. Restore: `r`
+
+#### Tmux Plugins
+
+1. [tmux-colors-solarized](https://github.com/seebi/tmux-colors-solarized)
+2. [tmux-continuum](https://github.com/tmux-plugins/tmux-continuum)
+3. [tmux-open](https://github.com/tmux-plugins/tmux-open)
+4. [tmux-pain-control](https://github.com/tmux-plugins/tmux-pain-control)
+5. [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect)
+6. [tmux-sidebar](https://github.com/tmux-plugins/tmux-sidebar)
+7. [tmux-yank](https://github.com/tmux-plugins/tmux-yank)
+8. [Tmux Plugin Manager (tpm)](https://github.com/tmux-plugins/tpm)
+
+### Supported Virtual Environments
+
+1. [Node Version Manager - nvm](https://github.com/nvm-sh/nvm)
+2. [Simple Python version management: pyenv](https://github.com/pyenv/pyenv)
+3. [Ruby enVironment Manager (RVM)](https://github.com/rvm/rvm)
+
+## Setup
 
 ### Prerequisites
 
@@ -33,7 +113,7 @@ WIP.
 1. Install necessary packages.
 
    ```
-   sudo apt install build-essential cmake git golang tmux python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf fonts-hack-ttf xsel
+   sudo apt install build-essential cmake git golang tmux python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf fonts-hack-ttf xsel zoxide
    ```
 
 2. Change default shell to [Zsh](https://www.zsh.org/).
@@ -87,7 +167,7 @@ WIP.
 2. Install necessary packages.
 
    ```
-   brew install bash zsh cmake ctags go nvm pyenv python3 coreutils fd ripgrep tmux trash fzf neovim gotags
+   brew install bash zsh cmake ctags go nvm pyenv python3 coreutils fd ripgrep tmux trash fzf neovim gotags zoxide
 
    brew tap homebrew/cask-fonts
    brew install font-hack
@@ -177,7 +257,7 @@ WIP.
 8. Install necessary packages with chocolatey in an elevated terminal.
 
    ```
-   choco install neovim nerdfont-hack fd ripgrep universal-ctags fzf
+   choco install neovim nerdfont-hack fd ripgrep universal-ctags fzf zoxide
    ```
 
 9. Install [Git for Windows](https://github.com/git-for-windows/git/releases) with the following features enabled.
@@ -279,9 +359,10 @@ WIP.
    git clone --branch main https://github.com/changyuheng/dotfiles.git
    ```
 
-2. [Windows only] Enable case sensitive support in PowerShell.
+2. [Windows only] Enable case sensitive support from PowerShell.
 
    ```
+   # Execute the following lines in PowerShell
    cd dotfiles
    fsutil.exe file SetCaseSensitiveInfo . enable
    ```
@@ -305,7 +386,10 @@ WIP.
 ### Uninstallation
 
 ```
+cd ~/dotfiles
 ./uninstall.sh
+cd ..
+rm -rf dotfiles
 ```
 
 ### Tweak
