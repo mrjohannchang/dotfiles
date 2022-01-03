@@ -2,26 +2,28 @@
 
 # changyuheng’s dotfiles
 
+<!-- TOC generated with https://derlin.github.io/bitdowntoc/ -->
 - [About](#about)
-- [Feature](#feature)
-  * [Z Shell (zsh)](#z-shell--zsh-)
+- [Features](#features)
+  * [Programs and Fonts](#programs-and-fonts)
+  * [Z Shell (zsh)](#z-shell-zsh)
     + [Z Shell Plugins](#z-shell-plugins)
-  * [Neovim (nvim)](#neovim--nvim-)
+  * [Neovim (nvim)](#neovim-nvim)
     + [Neovim Plugins](#neovim-plugins)
   * [Tmux](#tmux)
     + [Tmux Plugins](#tmux-plugins)
   * [Supported Virtual Environments](#supported-virtual-environments)
 - [Setup](#setup)
   * [Prerequisites](#prerequisites)
-    + [Linux (tested on Ubuntu 20.04 Focal Fossa Desktop)](#linux--tested-on-ubuntu-2004-focal-fossa-desktop-)
+    + [Linux (tested on Ubuntu 20.04 Focal Fossa Desktop)](#linux-tested-on-ubuntu-2004-focal-fossa-desktop)
     + [macOS](#macos)
-    + [Microsoft Windows (tested on Windows 10)](#microsoft-windows--tested-on-windows-10-)
+    + [Microsoft Windows (tested on Windows 10)](#microsoft-windows-tested-on-windows-10)
       - [TODO](#todo)
   * [Installation](#installation)
-  * [Uninstallation](#uninstallation)
   * [Tweak](#tweak)
     + [Ubuntu](#ubuntu)
       - [Traditional Chinese input methods](#traditional-chinese-input-methods)
+  * [Uninstallation](#uninstallation)
 
 ## About
 
@@ -41,7 +43,15 @@
 * **Minimal Pollution** - Prefer adding config files instead of replacing them when it's possible.
 * **Removable** - Has a built-in uninstaller.
 
-## Feature
+## Features
+
+### Programs and Fonts
+
+1. [fd](https://github.com/sharkdp/fd)
+2. [jf open 粉圓](https://github.com/justfont/open-huninn-font)
+3. [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
+4. [ripgrep](https://github.com/BurntSushi/ripgrep)
+5. [zoxide](https://github.com/ajeetdsouza/zoxide)
 
 ### Z Shell (zsh)
 
@@ -56,8 +66,9 @@
    5. [plugins/nvm](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/nvm)
    6. [plugins/pyenv](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/pyenv)
    7. [plugins/rvm](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/rvm)
-3. [zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-4. [zsh-users/zsh-completions](https://github.com/zsh-users/zsh-completions)
+3. [Znap](https://github.com/marlonrichert/zsh-snap)
+4. [zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+5. [zsh-users/zsh-completions](https://github.com/zsh-users/zsh-completions)
 
 ### Neovim (nvim)
 
@@ -74,6 +85,7 @@
 #### Neovim Plugins
 
 1. [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+2. [paq](https://github.com/savq/paq-nvim)
 
 ### Tmux
 
@@ -108,9 +120,14 @@
 
 ### Prerequisites
 
+<details>
+  <summary>Click to expand</summary>
+
 #### Linux (tested on Ubuntu 20.04 Focal Fossa Desktop)
 
 1. Install necessary packages.
+
+   Note: zoxide only exists in 21.04+
 
    ```
    sudo apt install build-essential cmake git golang tmux python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf fonts-hack-ttf xsel zoxide
@@ -350,6 +367,8 @@
 2. nvm
 3. tmux
 
+</details>
+
 ### Installation
 
 1. `git clone` this repo in `$HOME` and `cd` into it.
@@ -359,7 +378,7 @@
    git clone --branch main https://github.com/changyuheng/dotfiles.git
    ```
 
-2. [Windows only] Enable case sensitive support from PowerShell.
+2. [**Windows Only**] Enable case sensitive support from PowerShell.
 
    ```
    # Execute the following lines in PowerShell
@@ -383,16 +402,10 @@
 
 6. Execute `vim` and then `:PlugInstall` to install the plugins of it.
 
-### Uninstallation
-
-```
-cd ~/dotfiles
-./uninstall.sh
-cd ..
-rm -rf dotfiles
-```
-
 ### Tweak
+
+<details>
+  <summary>Click to expand</summary>
 
 #### Ubuntu
 
@@ -418,3 +431,14 @@ rm -rf dotfiles
     c. Remove keyboard layouts if there are more than 1 from Input Source in `gnome-control-center` > Region & Language.
     d. Remove the hotkey for switching input source in `gnome-control-center` > Keyboard Shortcuts > Typing.
     e. Replace the hotkey for Trigger Input Method to Super + Space in `fcitx-configtool` > Global Config > Hotkey > Trigger Input Method.
+
+</details>
+
+### Uninstallation
+
+```
+cd ~/dotfiles
+./uninstall.sh
+cd ..
+rm -rf dotfiles
+```

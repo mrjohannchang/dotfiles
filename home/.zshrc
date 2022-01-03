@@ -159,3 +159,8 @@ if command -v fdfind &>/dev/null; then
   alias fd=fdfind
 fi
 # }
+
+
+# zoxide {
+eval "$(zoxide init zsh)"
+# }
