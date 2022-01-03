@@ -1,6 +1,6 @@
 [submodule "bin"]
 	path = 3rdparty/bin-changyuheng
-	url = git@github.com:changyuheng/bin.git
+	url = https://github.com/changyuheng/bin.git
 	shallow = true
 [submodule "dircolors-solarized"]
 	path = 3rdparty/dircolors-solarized
@@ -8,15 +8,11 @@
 	shallow = true
 [submodule "nerd-fonts"]
 	path = 3rdparty/nerd-fonts
-	url = git@github.com:ryanoasis/nerd-fonts.git
+	url = https://github.com/ryanoasis/nerd-fonts.git
 	shallow = true
 [submodule "open-huninn-font"]
 	path = 3rdparty/open-huninn-font
-	url = git@github.com:justfont/open-huninn-font.git
-	shallow = true
-[submodule "packer.nvim"]
-	path = 3rdparty/packer.nvim
-	url = git@github.com:wbthomason/packer.nvim.git
+	url = https://github.com/justfont/open-huninn-font.git
 	shallow = true
 [submodule "tpm"]
 	path = 3rdparty/tpm
@@ -24,5 +20,5 @@
 	shallow = true
 [submodule "zsh-snap"]
 	path = 3rdparty/zsh-snap
-	url = git@github.com:marlonrichert/zsh-snap.git
+	url = https://github.com/marlonrichert/zsh-snap.git
 	shallow = true
