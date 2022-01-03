@@ -191,10 +191,6 @@ install() {
   fi
 
   case "${OSTYPE,,}" in
-    darwin*)
-      install_target "home/Library/Fonts/Monaco for Powerline.otf"
-      ;;
-
     linux*)
       install_target "home/.config/fontconfig/conf.d/20-noto-cjk.conf"
 
@@ -251,31 +247,19 @@ uninstall_target() {
 
 uninstall() {
   uninstall_target "${HOME}/bin.d/changyuheng"
-  uninstall_target "${HOME}/.bash_aliases"
-  uninstall_target "${HOME}/.bash_completion.d"
-  uninstall_target "${HOME}/.bashrc"
-  uninstall_target "${HOME}/.profile"
   uninstall_target "${HOME}/.zprofile"
   uninstall_target "${HOME}/.zshrc"
   uninstall_target "${HOME}/.zshrc.light"
 
   uninstall_target "${HOME}/.dircolors"
 
-  uninstall_target "${HOME}/.screenrc"
   uninstall_target "${HOME}/.tmux"
   uninstall_target "${HOME}/.tmux.conf"
   uninstall_target "${HOME}/.tmux.darwin.conf"
   uninstall_target "${HOME}/.tmux.light.conf"
 
-  uninstall_target "${HOME}/.vim"
-  uninstall_target "${HOME}/.vimrc"
   uninstall_target "${HOME}/.ideavimrc"
-  uninstall_target "${HOME}/.pentadactylrc"
-  uninstall_target "${HOME}/.vimperatorrc"
 
-  uninstall_target "${HOME}/Library/Fonts/Monaco for Powerline.otf"
-  uninstall_target "${HOME}/.local/share/fonts/PowerlineSymbols.otf"
-  uninstall_target "${HOME}/.config/fontconfig/conf.d/10-powerline-symbols.conf"
   uninstall_target "${HOME}/.config/fontconfig/conf.d/20-noto-cjk.conf"
   uninstall_target "${HOME}/.local/share/fonts/jf-openhuninn-1.1.ttf"
   uninstall_target "${HOME}/.config/fontconfig/conf.d/30-jf-openhuninn.conf"
