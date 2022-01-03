@@ -14,6 +14,9 @@
 	path = 3rdparty/open-huninn-font
 	url = https://github.com/justfont/open-huninn-font.git
 	shallow = true
+[submodule "paq-nvim"]
+	path = 3rdparty/paq-nvim
+	url = https://github.com/savq/paq-nvim.git
 [submodule "tpm"]
 	path = 3rdparty/tpm
 	url = https://github.com/tmux-plugins/tpm.git
