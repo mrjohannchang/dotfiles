@@ -399,9 +399,9 @@
    ./install.sh
    ```
 
-5. Execute `tmux` and press `C-s I` to install the plugins of it.
+5. Execute `tmux` and press `C-s I` to install plugins of tmux.
 
-6. Execute `vim` and then `:PlugInstall` to install the plugins of it.
+6. Execute `nvim` and then `:PaqInstall` to install plugins of Neovim.
 
 ### Tweak
 
