@@ -6,10 +6,6 @@
 	path = 3rdparty/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
 	shallow = true
-[submodule "nerd-fonts"]
-	path = 3rdparty/nerd-fonts
-	url = https://github.com/ryanoasis/nerd-fonts.git
-	shallow = true
 [submodule "open-huninn-font"]
 	path = 3rdparty/open-huninn-font
 	url = https://github.com/justfont/open-huninn-font.git

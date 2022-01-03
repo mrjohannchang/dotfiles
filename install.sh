@@ -201,15 +201,6 @@ install() {
       install_target "home/.local/share/fonts/jf-openhuninn-1.1.ttf"
       install_target "home/.config/fontconfig/conf.d/30-jf-openhuninn.conf"
 
-      install_target "home/.local/share/fonts/Hack Bold Italic Nerd Font Complete Mono.ttf"
-      install_target "home/.local/share/fonts/Hack Bold Italic Nerd Font Complete.ttf"
-      install_target "home/.local/share/fonts/Hack Bold Nerd Font Complete Mono.ttf"
-      install_target "home/.local/share/fonts/Hack Bold Nerd Font Complete.ttf"
-      install_target "home/.local/share/fonts/Hack Italic Nerd Font Complete Mono.ttf"
-      install_target "home/.local/share/fonts/Hack Italic Nerd Font Complete.ttf"
-      install_target "home/.local/share/fonts/Hack Regular Nerd Font Complete Mono.ttf"
-      install_target "home/.local/share/fonts/Hack Regular Nerd Font Complete.ttf"
-
       fc-cache -fv
       ;;
   esac
@@ -288,14 +279,6 @@ uninstall() {
   uninstall_target "${HOME}/.config/fontconfig/conf.d/20-noto-cjk.conf"
   uninstall_target "${HOME}/.local/share/fonts/jf-openhuninn-1.1.ttf"
   uninstall_target "${HOME}/.config/fontconfig/conf.d/30-jf-openhuninn.conf"
-  uninstall_target "${HOME}/.local/share/fonts/Hack Bold Italic Nerd Font Complete Mono.ttf"
-  uninstall_target "${HOME}/.local/share/fonts/Hack Bold Italic Nerd Font Complete.ttf"
-  uninstall_target "${HOME}/.local/share/fonts/Hack Bold Nerd Font Complete Mono.ttf"
-  uninstall_target "${HOME}/.local/share/fonts/Hack Bold Nerd Font Complete.ttf"
-  uninstall_target "${HOME}/.local/share/fonts/Hack Italic Nerd Font Complete Mono.ttf"
-  uninstall_target "${HOME}/.local/share/fonts/Hack Italic Nerd Font Complete.ttf"
-  uninstall_target "${HOME}/.local/share/fonts/Hack Regular Nerd Font Complete Mono.ttf"
-  uninstall_target "${HOME}/.local/share/fonts/Hack Regular Nerd Font Complete.ttf"
 
   uninstall_target "${HOME}/.config/nvim/init.lua"
   uninstall_target "${HOME}/.config/nvim/lua/init-light.lua"
