@@ -18,3 +18,6 @@
 	path = 3rdparty/zsh-snap
 	url = https://github.com/marlonrichert/zsh-snap.git
 	shallow = true
+[submodule "packer.nvim"]
+	path = 3rdparty/packer.nvim
+	url = https://github.com/wbthomason/packer.nvim.git
