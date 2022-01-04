@@ -33,6 +33,9 @@ end
 require "paq" {
   "nvim-lualine/lualine.nvim";
   "kyazdani42/nvim-web-devicons";  -- requried by "nvim-lualine/lualine.nvim"
+
+  "nvim-telescope/telescope.nvim";
+  "nvim-lua/plenary.nvim";  -- requried by "nvim-telescope/telescope.nvim"
 }
 -- }
 

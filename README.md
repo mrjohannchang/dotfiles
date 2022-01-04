@@ -74,18 +74,24 @@
 
 1. Reselect visual block after indent/outdent.
 2. Enable moving up and down with j and k in wrapped lines.
-3. Clear the search highlight with `<LEADER> + /`.
+3. Clear the search highlight with `<LEADER>/`.
 4. Saving files as root with `w!!`.
 5. Better command-line editing.
    1. `CTRL + j` and `CTRL + k` move to lines that have identical prefixes.
    2. `CTRL + a` and `CTRL + e` move to the beginning and the end of the line.
 6. Toggle paste mode with `<F2>`.
    1. Leave paste mode on leaving insert mode
+7. Telescope
+   1. Find: `<LEADER>ff`
+   2. Grep: `<LEADER>fg`
+   3. Buffers: `<LEADER>fb`
+   4. Help tags: `<LEADER>fh`
 
 #### Neovim Plugins
 
 1. [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 2. [paq](https://github.com/savq/paq-nvim)
+3. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 
 ### Tmux
 
