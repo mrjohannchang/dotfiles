@@ -207,10 +207,18 @@ install() {
   fi
   case "${OSTYPE,,}" in
     cygwin*|msys*)
-      install_target "home/.local/share/nvim-data/site/pack/paqs/start/paq-nvim"
+      # FIXME: this is a workaround as Neovim doesn't take 2 symlinks (
+      # ~/.local/share/nvim-data/site/pack/paqs/start/paq-nvim ->
+      # ~/dotfiles/home/.local/share/nvim-data/site/pack/paqs/start/paq-nvim ->
+      # ~/dotfiles/3rdparty/paq-nvim
+      ln -s "${DOTFILES_DIR}/3rdparty/paq-nvim" "${HOME}/.local/share/nvim-data/site/pack/paqs/start/paq-nvim"
       ;;
     *)
-      install_target "home/.local/share/nvim/site/pack/paqs/start/paq-nvim"
+      # FIXME: this is a workaround as Neovim doesn't take 2 symlinks (
+      # ~/.local/share/nvim/site/pack/paqs/start/paq-nvim ->
+      # ~/dotfiles/home/.local/share/nvim/site/pack/paqs/start/paq-nvim ->
+      # ~/dotfiles/3rdparty/paq-nvim
+      ln -s "${DOTFILES_DIR}/3rdparty/paq-nvim" "${HOME}/.local/share/nvim/site/pack/paqs/start/paq-nvim"
       ;;
   esac
 
