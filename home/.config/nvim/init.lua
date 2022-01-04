@@ -30,13 +30,22 @@ end
 
 
 -- Plugins {
-require "paq" {
-  "nvim-lualine/lualine.nvim";
-  "kyazdani42/nvim-web-devicons";  -- requried by "nvim-lualine/lualine.nvim"
+require('packer').startup(function(use)
+  -- use 'foo1/bar1.nvim'
+  -- use 'foo2/bar2.nvim'
 
-  "nvim-telescope/telescope.nvim";
-  "nvim-lua/plenary.nvim";  -- requried by "nvim-telescope/telescope.nvim"
-}
+  use "nvim-lualine/lualine.nvim"
+  use "kyazdani42/nvim-web-devicons"  -- requried by "nvim-lualine/lualine.nvim"
+
+  use "nvim-telescope/telescope.nvim"
+  use "nvim-lua/plenary.nvim"  -- requried by "nvim-telescope/telescope.nvim"
+
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if packer_bootstrap then
+    require('packer').sync()
+  end
+end)
 -- }
 
 

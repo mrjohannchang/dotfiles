@@ -90,7 +90,7 @@
 #### Neovim Plugins
 
 1. [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-2. [paq](https://github.com/savq/paq-nvim)
+2. [packer.nvim](https://github.com/wbthomason/packer.nvim)
 3. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 
 ### Tmux
@@ -407,7 +407,7 @@
 
 5. Execute `tmux` and press `C-s I` to install plugins of tmux.
 
-6. Execute `nvim` and then `:PaqInstall` to install plugins of Neovim.
+6. Execute `nvim` and then `:PackerInstall` to install plugins of Neovim.
 
 ### Tweak
 

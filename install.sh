@@ -109,16 +109,16 @@ install() {
   mkdir_and_check "${HOME}/.config/nvim/lua"
   case "${OSTYPE,,}" in
     cygwin*|msys*)
-      mkdir_and_check "${HOME}/.local/share/nvim-data/site/pack/paqs/start"
+      mkdir_and_check "${HOME}/.local/share/nvim-data/site/pack/packer/start"
       ;;
     darwin*)
       mkdir_and_check "${HOME}/Library/Fonts"
-      mkdir_and_check "${HOME}/.local/share/nvim/site/pack/paqs/start"
+      mkdir_and_check "${HOME}/.local/share/nvim/site/pack/packer/start"
       ;;
     linux*)
       mkdir_and_check "${HOME}/.local/share/fonts"
       mkdir_and_check "${HOME}/.config/fontconfig/conf.d"
-      mkdir_and_check "${HOME}/.local/share/nvim/site/pack/paqs/start"
+      mkdir_and_check "${HOME}/.local/share/nvim/site/pack/packer/start"
       ;;
   esac
 
@@ -207,18 +207,18 @@ install() {
   fi
   case "${OSTYPE,,}" in
     cygwin*|msys*)
-      # FIXME: this is a workaround as Neovim doesn't take 2 symlinks (
-      # ~/.local/share/nvim-data/site/pack/paqs/start/paq-nvim ->
-      # ~/dotfiles/home/.local/share/nvim-data/site/pack/paqs/start/paq-nvim ->
-      # ~/dotfiles/3rdparty/paq-nvim
-      ln -s "${DOTFILES_DIR}/3rdparty/paq-nvim" "${HOME}/.local/share/nvim-data/site/pack/paqs/start/paq-nvim"
+      # FIXME: this workaround exists as Neovim doesn't take 2-level symlinks (
+      #        ~/.local/share/nvim-data/site/pack/packer/start/packer.nvim ->
+      #          ~/dotfiles/home/.local/share/nvim-data/site/pack/packer/start/packer.nvim ->
+      #            ~/dotfiles/3rdparty/packer.nvim)
+      ln -s "${DOTFILES_DIR}/3rdparty/packer.nvim" "${HOME}/.local/share/nvim-data/site/pack/packer/start/packer.nvim"
       ;;
     *)
-      # FIXME: this is a workaround as Neovim doesn't take 2 symlinks (
-      # ~/.local/share/nvim/site/pack/paqs/start/paq-nvim ->
-      # ~/dotfiles/home/.local/share/nvim/site/pack/paqs/start/paq-nvim ->
-      # ~/dotfiles/3rdparty/paq-nvim
-      ln -s "${DOTFILES_DIR}/3rdparty/paq-nvim" "${HOME}/.local/share/nvim/site/pack/paqs/start/paq-nvim"
+      # FIXME: this workaround exists as Neovim doesn't take 2-level symlinks (
+      #        ~/.local/share/nvim/site/pack/packer/start/packer.nvim ->
+      #          ~/dotfiles/home/.local/share/nvim/site/pack/packer/start/packer.nvim ->
+      #            ~/dotfiles/3rdparty/packer.nvim)
+      ln -s "${DOTFILES_DIR}/3rdparty/packer.nvim" "${HOME}/.local/share/nvim/site/pack/packer/start/packer.nvim"
       ;;
   esac
 
@@ -274,8 +274,8 @@ uninstall() {
 
   uninstall_target "${HOME}/.config/nvim/init.lua"
   uninstall_target "${HOME}/.config/nvim/lua/init-light.lua"
-  uninstall_target "${HOME}/.local/share/nvim/site/pack/paqs/start/paq-nvim"
-  uninstall_target "${HOME}/.local/share/nvim-data/site/pack/paqs/start/paq-nvim"
+  uninstall_target "${HOME}/.local/share/nvim/site/pack/packer/start/packer.nvim"
+  uninstall_target "${HOME}/.local/share/nvim-data/site/pack/packer/start/packer.nvim"
 
   INFO "Uninstallation has been completed"
 }
