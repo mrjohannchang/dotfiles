@@ -79,7 +79,7 @@
 5. Better command-line editing.
    1. `CTRL + j` and `CTRL + k` move to lines that have identical prefixes.
    2. `CTRL + a` and `CTRL + e` move to the beginning and the end of the line.
-6. Toggle paste mode with `<LEADER> + v`.
+6. Toggle paste mode with `<F2>`.
    1. Leave paste mode on leaving insert mode
 
 #### Neovim Plugins

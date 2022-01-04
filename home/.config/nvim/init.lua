@@ -62,8 +62,10 @@ vim.api.nvim_set_keymap("c", "<C-e>", "<END>", { noremap = true })
 -- }
 
 
--- Toggle paste mode with <LEADER> + v {
-vim.api.nvim_set_keymap("n", "<LEADER>v", ":set invpaste<CR>:set paste?<CR>", { noremap = true })
+-- Toggle paste mode with <F2> {
+-- https://vim.fandom.com/wiki/Toggle_auto-indenting_for_code_paste
+vim.api.nvim_set_keymap("n", "<F2>", ":set invpaste paste?<CR>", { noremap = true })
+vim.opt.pastetoggle="<F2>"
 
 -- Leave paste mode on leaving insert mode
 vim.api.nvim_command("autocmd InsertLeave * set nopaste")
