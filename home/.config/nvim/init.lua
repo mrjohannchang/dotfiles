@@ -21,6 +21,14 @@ vim.opt.wrap = false
 -- }
 
 
+-- Workarounds {
+-- https://github.com/neovim/neovim/issues/6660
+if vim.fn.has("win32") then
+  vim.api.nvim_set_keymap("", "<C-z>", "", { noremap = true })
+end
+-- }
+
+
 -- Plugins {
 require "paq" {
   "nvim-lualine/lualine.nvim";
@@ -74,4 +82,10 @@ vim.api.nvim_command("autocmd InsertLeave * set nopaste")
 
 -- Load config for light background if needed {
 pcall(require, "init-light")
+-- }
+
+
+-- Reference {
+-- nvim/options.lua https://github.com/neovim/neovim/blob/master/src/nvim/options.lua
+-- nvim-lua-guide https://github.com/nanotee/nvim-lua-guide
 -- }
