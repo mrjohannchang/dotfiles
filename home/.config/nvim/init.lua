@@ -34,11 +34,15 @@ require('packer').startup(function(use)
   -- use 'foo1/bar1.nvim'
   -- use 'foo2/bar2.nvim'
 
-  use "nvim-lualine/lualine.nvim"
-  use "kyazdani42/nvim-web-devicons"  -- requried by "nvim-lualine/lualine.nvim"
+  use {
+    "nvim-lualine/lualine.nvim",
+    requires = { { "kyazdani42/nvim-web-devicons" } },
+  }
 
-  use "nvim-telescope/telescope.nvim"
-  use "nvim-lua/plenary.nvim"  -- requried by "nvim-telescope/telescope.nvim"
+  use {
+    "nvim-telescope/telescope.nvim",
+    requires = { { "nvim-lua/plenary.nvim" } },
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
@@ -61,7 +65,7 @@ vim.api.nvim_set_keymap("n", "k", "gk", { noremap = true })
 -- }
 
 
--- Clear the search highlight with <LEADER> + / {
+-- Clear the search highlight with <LEADER>/ {
 vim.api.nvim_set_keymap("n", "<LEADER>/", ":nohlsearch<CR>", { noremap = true, silent = true })
 -- }
 
@@ -92,7 +96,15 @@ vim.api.nvim_command("autocmd InsertLeave * set nopaste")
 -- }
 
 
--- Load config for light background if needed {
+-- telescope.nvim {
+vim.api.nvim_set_keymap("n", "<LEADER>ff", "<CMD>lua require('telescope.builtin').find_files()<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<LEADER>fg", "<CMD>lua require('telescope.builtin').live_grep()<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<LEADER>fb", "<CMD>lua require('telescope.builtin').buffers()<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<LEADER>fh", "<CMD>lua require('telescope.builtin').help_tags()<CR>", { noremap = true })
+-- }
+
+
+-- Load config for light background if available {
 pcall(require, "init-light")
 -- }
 
