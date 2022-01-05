@@ -171,7 +171,7 @@
 
 7. Install [Nerd Font](https://www.nerdfonts.com/) - [Hack](https://sourcefoundry.org/hack/) by following the [installation instruction](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack#linux).
 
-8. Config the terminal to use the font Nerd Font - Hack that's installed in #1.
+8. Config the terminal to use the font Hack Nerd Font that's installed in #1.
 
 #### macOS
 
@@ -197,7 +197,7 @@
       chsh -s $(which zsh)
       ```
 
-4. Config the terminal to use the font Nerd Font - Hack that's installed in #2.
+4. Config the terminal to use the font Hack Nerd Font that's installed in #2.
 
 #### Microsoft Windows (tested on Windows 10)
 
@@ -217,9 +217,49 @@
 
    * If the installation is stuck at `Updating trust database`, just cancel the installation process and launch the installer again.
 
-5. Install [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/) from Windows Store.
+   * Enable the symbolic link support in MSYS2 by uncommenting the following line in `C:\msys64\msys2_shell.cmd`
 
-   * Disable copy & paste mappings to `ctrl + c` and `ctrl + v`. It can be deleted by editing the `settings.json`, which can be opened from settings.
+     ```
+     set MSYS=winsymlinks:nativestrict
+     ```
+
+     and the following line in `C:\msys64\mingw64.ini`.
+
+     ```
+     MSYS=winsymlinks:nativestrict
+     ```
+
+5. Install [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/) from Windows Store. Configs:
+
+   * Disable copy & paste mappings to `ctrl + c` and `ctrl + v` by deleting related config in `settings.json` which can be opened from settings.
+
+   * Prevent from window being closed when pressing `ctrl + shfit + w` by add the following content to `settings.json`.
+
+     ```
+         "actions":
+         [
+             ...
+             {
+                 "command": null,
+                 "keys": "ctrl+shift+w"
+             },
+             ...
+         ],
+     ```
+
+   * Resolve the key mapping conflict of `ctrl + shfit + 6` in Neovim by add the following content to `settings.json`.
+
+     ```
+         "actions":
+         [
+             ...
+             {
+                 "command" : null,
+                 "keys": "ctrl+shift+6"
+             },
+             ...
+         ],
+     ```
 
    * Make `ctrl + tab` switching tabs in the MRU order.
 
@@ -248,19 +288,7 @@
      1. Add option `-use-full-path` to the `commandline` in MSYS2 profile in Windows Terminal `settings.json`. (It's already done in the previous step.)
      2. If the above parameter doesn't take effect, uncomment `set MSYS2_PATH_TYPE=inherit` in `C:\msys64\msys2_shell.cmd` and `MSYS2_PATH_TYPE=inherit` in `C:\msys64\mingw64.ini`.
 
-6. Enable the symbolic link support in MSYS2. Uncomment the following line in `C:\msys64\msys2_shell.cmd`
-
-   ```
-   set MSYS=winsymlinks:nativestrict
-   ```
- 
-   and the following line in `C:\msys64\mingw64.ini`.
- 
-   ```
-   MSYS=winsymlinks:nativestrict
-   ```
-
-7. Fix chocolatey not able to read the `tmp` folder on MSYS2 issue by commenting out the following lines in `/etc/profile`.
+6. Fix chocolatey not able to read the `tmp` folder on MSYS2 issue by commenting out the following lines in `/etc/profile`.
 
    ```
    unset TMP TEMP
@@ -276,7 +304,7 @@
    choco install neovim nerdfont-hack fd ripgrep universal-ctags fzf zoxide
    ```
 
-9. Config the terminal to use the font Nerd Font - Hack.
+9. Config the terminal to use the font Hack Nerd Font.
 
 10. Install [Git for Windows](https://github.com/git-for-windows/git/releases) with the following features enabled.
 
@@ -297,7 +325,7 @@
     "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path -shell zsh"
     ```
 
-13. Make `%TMEP%` be mounted at `/tmp` by adding the following contents to `/etc/fstab`.
+13. Make `%TMEP%` mounted at `/tmp` by adding the following contents to `/etc/fstab`.
 
     ```
     none /tmp usertemp binary,posix=0,noacl 0 0

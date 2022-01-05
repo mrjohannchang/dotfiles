@@ -27,12 +27,6 @@ __my_fzf_default_opts && unset __my_fzf_default_opts
 # }
 
 
-# Powerlevel10k (Powerlevel9k) {
-POWERLEVEL9K_COLOR_SCHEME="light"
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\e[1;97;47m\e[0m"
-# }
-
-
 # zsh-autosuggestions {
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#a8b3b3"
 # }

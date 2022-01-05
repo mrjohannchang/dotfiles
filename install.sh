@@ -124,6 +124,7 @@ install() {
   esac
 
   install_target "home/bin.d/changyuheng"
+  install_target "home/.p10k.zsh"
   install_target "home/.zprofile"
   install_target "home/.zshrc"
   if [ "$bg" = "light" ]; then
@@ -254,6 +255,7 @@ uninstall_target() {
 
 uninstall() {
   uninstall_target "${HOME}/bin.d/changyuheng"
+  uninstall_target "${HOME}/.p10k.zsh"
   uninstall_target "${HOME}/.zprofile"
   uninstall_target "${HOME}/.zshrc"
   uninstall_target "${HOME}/.zshrc.light"

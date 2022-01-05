@@ -1,3 +1,13 @@
+# Powerlevel10k 1/2 {
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+# }
+
+
 # General {
 export CASE_SENSITIVE=true
 case "${OSTYPE:l}" in
@@ -102,31 +112,6 @@ fi
 # }
 
 
-# Powerlevel10k (Powerlevel9k) {
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_DISABLE_RPROMPT=true
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\e[1;244m\e[0m"
-if [ "$UID" -eq 0 ]; then
-  POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="# "
-else
-  POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="$ "
-fi
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( \
-  ssh \
-  context \
-  virtualenv \
-  rbenv \
-  dir_writable \
-  dir \
-  vcs \
-  status \
-  root_indicator \
-  background_jobs \
-  time \
-)
-# }
-
-
 # zsh-autosuggestions {
 # Workaround for Random ←[?1h is showing
 # https://github.com/zsh-users/zsh-autosuggestions/issues/614
@@ -148,13 +133,6 @@ fi
 # }
 
 
-# .zshrc.light (configs for light background terminals) {
-if [ -r "${HOME}/.zshrc.light" ]; then
-  source "${HOME}/.zshrc.light"
-fi
-# }
-
-
 # fd-find {
 if command -v fdfind &>/dev/null; then
   alias fd=fdfind
@@ -163,7 +141,9 @@ fi
 
 
 # zoxide {
-eval "$(zoxide init zsh)"
+if command -v zoxide &>/dev/null; then
+  eval "$(zoxide init zsh)"
+fi
 # }
 
 
@@ -191,4 +171,17 @@ case "${OSTYPE:l}" in
     fi
     ;;
 esac
+# }
+
+
+# Powerlevel10k 2/2 {
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# }
+
+
+# .zshrc.light (configs for light background terminals) {
+if [ -r "${HOME}/.zshrc.light" ]; then
+  source "${HOME}/.zshrc.light"
+fi
 # }
