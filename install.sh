@@ -106,6 +106,7 @@ install() {
   mkdir_and_check "${HOME}/.config"
   mkdir_and_check "${HOME}/bin.d"
   mkdir_and_check "${HOME}/.config/nvim"
+  mkdir_and_check "${HOME}/.config/nvim/after/ftplugin"
   mkdir_and_check "${HOME}/.config/nvim/lua"
   case "${OSTYPE,,}" in
     cygwin*|msys*)
@@ -202,6 +203,8 @@ install() {
   esac
 
   install_target "home/.config/nvim/init.lua"
+  install_target "home/.config/nvim/after/ftplugin/gitcommit.lua"
+  install_target "home/.config/nvim/after/ftplugin/markdown.lua"
   if [ "$bg" = "light" ]; then
     install_target "home/.config/nvim/lua/init-light.lua"
   fi
@@ -269,6 +272,8 @@ uninstall() {
   uninstall_target "${HOME}/.config/fontconfig/conf.d/30-jf-openhuninn.conf"
 
   uninstall_target "${HOME}/.config/nvim/init.lua"
+  uninstall_target "${HOME}/.config/nvim/after/ftplugin/gitcommit.lua"
+  uninstall_target "${HOME}/.config/nvim/after/ftplugin/markdown.lua"
   uninstall_target "${HOME}/.config/nvim/lua/init-light.lua"
   uninstall_target "${HOME}/.local/share/nvim/site/pack/packer/start/packer.nvim"
   uninstall_target "${HOME}/.local/share/nvim-data/site/pack/packer/start/packer.nvim"
