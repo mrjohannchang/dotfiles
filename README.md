@@ -383,13 +383,12 @@
    ```
    cd $HOME
    git clone --branch main https://github.com/changyuheng/dotfiles.git
-   ```
-
-2. [**Windows Only**] Enable case sensitive support from PowerShell.
-
-   ```
-   # Execute the following lines in PowerShell
    cd dotfiles
+   ```
+
+2. [**Windows Only**] Enable case sensitive support.
+
+   ```
    fsutil.exe file SetCaseSensitiveInfo . enable
    ```
 
