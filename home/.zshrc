@@ -1,4 +1,4 @@
-# misc {
+# General {
 export CASE_SENSITIVE=true
 case "${OSTYPE:l}" in
   cygwin*|msys*)
@@ -164,4 +164,31 @@ fi
 
 # zoxide {
 eval "$(zoxide init zsh)"
+# }
+
+
+# Workaround {
+# Fix empty tmp env that causes CMake compiling failed on Windows
+case "${OSTYPE:l}" in
+  cygwin*|msys*)
+    [ -n "$tmp" ] || {
+      unset tmp
+    }
+    [ -n "$temp" ] || {
+      unset temp
+    }
+    [ -n "$TMP" ] || {
+      unset TMP
+    }
+    [ -n "$TEMP" ] || {
+      unset TEMP
+    }
+    if [ -n "$tmp" -a -n "TMP" ]; then
+      unset tmp
+    fi
+    if [ -n "$temp" -a -n "TEMP" ]; then
+      unset temp
+    fi
+    ;;
+esac
 # }
