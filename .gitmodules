@@ -10,6 +10,10 @@
 	path = 3rdparty/open-huninn-font
 	url = https://github.com/justfont/open-huninn-font.git
 	shallow = true
+[submodule "packer.nvim"]
+	path = 3rdparty/packer.nvim
+	url = https://github.com/wbthomason/packer.nvim.git
+	shallow = true
 [submodule "tpm"]
 	path = 3rdparty/tpm
 	url = https://github.com/tmux-plugins/tpm.git
@@ -18,6 +22,3 @@
 	path = 3rdparty/zsh-snap
 	url = https://github.com/marlonrichert/zsh-snap.git
 	shallow = true
-[submodule "packer.nvim"]
-	path = 3rdparty/packer.nvim
-	url = https://github.com/wbthomason/packer.nvim.git
