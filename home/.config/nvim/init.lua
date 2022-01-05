@@ -13,8 +13,6 @@ vim.opt.listchars = { tab = "» ", trail = "░" }
 
 vim.opt.number = true
 
-vim.opt.spell = true
-
 vim.opt.splitbelow = true
 
 vim.opt.wrap = false
