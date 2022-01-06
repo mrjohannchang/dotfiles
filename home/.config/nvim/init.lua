@@ -6,6 +6,8 @@ vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.tabstop = 2
 
+vim.opt.fileformats = "unix,dos"
+
 vim.opt.hlsearch = false
 
 vim.opt.list = true
