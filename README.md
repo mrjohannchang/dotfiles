@@ -321,7 +321,6 @@
     * Git LFS
     * File system caching
     * Symbolic links
-    * Built-in file system monitor
 
 11. Install [Zsh](https://www.zsh.org/) on MSYS2's shell. Other commands in the following steps should all be executed in MSYS2's shell.
 
