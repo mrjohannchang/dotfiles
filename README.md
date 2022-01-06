@@ -20,7 +20,7 @@
     + [Microsoft Windows (tested on Windows 10)](#microsoft-windows-tested-on-windows-10)
       - [TODO](#todo)
   * [Installation](#installation)
-  * [Tweak](#tweak)
+  * [Optional Tweak](#optional-tweak)
     + [Ubuntu](#ubuntu)
       - [Traditional Chinese input methods](#traditional-chinese-input-methods)
   * [Uninstallation](#uninstallation)
@@ -126,10 +126,10 @@
 
 ### Prerequisites
 
+#### Linux (tested on Ubuntu 20.04 Focal Fossa Desktop)
+
 <details>
   <summary>Click to expand</summary>
-
-#### Linux (tested on Ubuntu 20.04 Focal Fossa Desktop)
 
 1. Install necessary packages.
 
@@ -173,7 +173,12 @@
 
 8. Config the terminal to use the font Hack Nerd Font that's installed in #1.
 
+</details>
+
 #### macOS
+
+<details>
+  <summary>Click to expand</summary>
 
 1. Install [Homebrew](http://brew.sh/).
 
@@ -199,7 +204,12 @@
 
 4. Config the terminal to use the font Hack Nerd Font that's installed in #2.
 
+</details>
+
 #### Microsoft Windows (tested on Windows 10)
+
+<details>
+  <summary>Click to expand</summary>
 
 1. [Activate Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development) from: Start > Settings > Update & Security > For developers > Developer Mode
 
@@ -436,7 +446,7 @@
 
 6. Execute `nvim` and then `:PackerInstall` to install plugins of Neovim.
 
-### Tweak
+### Optional Tweak
 
 <details>
   <summary>Click to expand</summary>
