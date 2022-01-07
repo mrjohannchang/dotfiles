@@ -40,7 +40,6 @@ require('packer').startup(function(use)
     event = "VimEnter",
     config = "vim.cmd[[COQnow]]",
   }
-  use { "ms-jpq/coq.artifacts", branch = "artifacts" }
 
   use {
     "nvim-lualine/lualine.nvim",
