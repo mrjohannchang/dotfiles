@@ -81,7 +81,21 @@
    2. `CTRL + a` and `CTRL + e` move to the beginning and the end of the line.
 6. Toggle paste mode with `<F2>`.
    1. Leave paste mode on leaving insert mode
-7. Telescope
+7. Comment.nvim
+   * NORMAL mode
+     1. `gcc` - Toggles the current line using linewise comment
+     2. `gbc` - Toggles the current line using blockwise comment
+     3. `[count]gcc` - Toggles the number of line given as a prefix-count using linewise
+     4. `[count]gbc` - Toggles the number of line given as a prefix-count using blockwise
+     5. `gc[count]{motion}` - (Op-pending) Toggles the region using linewise comment
+     6. `gb[count]{motion}` - (Op-pending) Toggles the region using linewise comment
+     7. `gco` - Insert comment to the next line and enters INSERT mode
+     8. `gcO` - Insert comment to the previous line and enters INSERT mode
+     9. `gcA` - Insert comment to end of the current line and enters INSERT mode
+   * VISUAL mode
+     1. `gc` - Toggles the region using linewise comment
+     2. `gb` - Toggles the region using blockwise comment
+8. Telescope
    1. Find: `<LEADER>ff`
    2. Grep: `<LEADER>fg`
    3. Buffers: `<LEADER>fb`
@@ -89,9 +103,11 @@
 
 #### Neovim Plugins
 
-1. [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-2. [packer.nvim](https://github.com/wbthomason/packer.nvim)
-3. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+1. [Comment.nvim](https://github.com/numToStr/Comment.nvim)
+2. [coq_nvim](https://github.com/ms-jpq/coq_nvim)
+3. [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+4. [packer.nvim](https://github.com/wbthomason/packer.nvim)
+5. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 
 ### Tmux
 
