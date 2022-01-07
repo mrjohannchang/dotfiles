@@ -35,6 +35,13 @@ require('packer').startup(function(use)
   -- use 'foo2/bar2.nvim'
 
   use {
+    "numToStr/Comment.nvim",
+    config = function()
+        require("Comment").setup()
+    end
+  }
+
+  use {
     "ms-jpq/coq_nvim",
     branch = "coq",
     event = "VimEnter",
