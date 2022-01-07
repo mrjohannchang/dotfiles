@@ -387,19 +387,20 @@
 
        It might happen that some packages are downgraded, this is expected.
 
-16. Borrow useful shell input config from Git for Windows.
+    5. And finally install the packages containing Git, its documentation and some extra things:
 
-    ```
-    ln -s "/c/Program Files/Git/etc/inputrc" /etc
-    ```
+       ```
+       pacman -S mingw-w64-x86_64-{git,git-doc-html,git-doc-man} git-extra
 
-17. Disable the terminal bell from `/etc/inputrc` by changing the bell-style from `visual` to `none`. Ref: [Disable beep in WSL terminal on Windows 10](https://stackoverflow.com/questions/36724209/disable-beep-in-wsl-terminal-on-windows-10)
+       ```
 
-    ```
-    set bell-style none
-    ```
+    6. Disable the terminal bell from `/etc/inputrc` by changing the bell-style from `visual` to `none`. Ref: [Disable beep in WSL terminal on Windows 10](https://stackoverflow.com/questions/36724209/disable-beep-in-wsl-terminal-on-windows-10)
 
-18. Install necessary packages with pacman.
+       ```
+       set bell-style none
+       ```
+
+16. Install necessary packages with pacman.
 
     ```
     pacman -S man
