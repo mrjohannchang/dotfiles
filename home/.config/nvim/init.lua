@@ -35,6 +35,14 @@ require('packer').startup(function(use)
   -- use 'foo2/bar2.nvim'
 
   use {
+    "ms-jpq/coq_nvim",
+    branch = "coq",
+    event = "VimEnter",
+    config = "vim.cmd[[COQnow]]",
+  }
+  use { "ms-jpq/coq.artifacts", branch = "artifacts" }
+
+  use {
     "nvim-lualine/lualine.nvim",
     requires = { { "kyazdani42/nvim-web-devicons" } },
   }
