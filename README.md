@@ -424,7 +424,6 @@ Instructions for installing
    ```
    cd $HOME\dotfiles\3rdparty
    (Get-ChildItem -Recurse -Directory).FullName | ForEach-Object {fsutil.exe file setCaseSensitiveInfo $_ enable}
-
    ```
 
 3. Clone sub-modules.
