@@ -388,6 +388,14 @@
       rm ~/.zshrc
       ```
 
+   6. Unset empty `$tmp` and `$temp`
+
+      ```
+      unset tmp temp
+      ```
+
+   7. Go to [Installation](#installation)
+
 ##### TODO
 
 Instructions for installing
