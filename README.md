@@ -22,7 +22,7 @@
   * [Installation](#installation)
   * [Optional Tweak](#optional-tweak)
     + [Ubuntu](#ubuntu)
-      - [Traditional Chinese input methods](#traditional-chinese-input-methods)
+    + [Windows](#windows)
   * [Uninstallation](#uninstallation)
 
 ## About
@@ -480,9 +480,7 @@
 
     b. In `Startup Applications Preferences`, add an item that executes "$HOME/dotfiles/scripts/ubuntu/swap-option-and-command-for-realforce-for-mac.sh"
 
-##### Traditional Chinese input methods
-
-1. Install fcitx to replace iBus.
+2. Install fcitx to replace iBus.
 
     a. ```
        sudo apt install fcitx-chewing fcitx-table-boshiamy
@@ -491,6 +489,20 @@
     c. Remove keyboard layouts if there are more than 1 from Input Source in `gnome-control-center` > Region & Language.
     d. Remove the hotkey for switching input source in `gnome-control-center` > Keyboard Shortcuts > Typing.
     e. Replace the hotkey for Trigger Input Method to Super + Space in `fcitx-configtool` > Global Config > Hotkey > Trigger Input Method.
+
+#### Windows
+
+1. Swap caps lock and left control.
+
+   ```
+   Windows Registry Editor Version 5.00
+
+   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+   "Scancode Map"=hex:00,00,00,00,00,00,00,00,03,00,00,00,1d,00,3a,00,3a,00,1d,00,00,00,00,00
+
+   ; Refs:
+   ; https://superuser.com/a/1381836
+   ```
 
 </details>
 
