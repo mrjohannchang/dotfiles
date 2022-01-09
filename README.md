@@ -382,7 +382,9 @@
 
    4. Config the terminal to use the font Hack NF.
 
-6. Pre-installation
+6. Install **official** [Python3](https://www.python.org/downloads/)
+
+7. Pre-installation
 
    1. Open a `MINGW64 / MSYS2 - Zsh` tab in `Windows Terminal`.
 
