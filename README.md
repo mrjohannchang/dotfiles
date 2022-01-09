@@ -382,19 +382,23 @@
 
    4. Config the terminal to use the font Hack NF.
 
-   5. Open a MINGW64 / MSYS2 - Zsh tab in Windows Terminal. Select 0 to create an empty ~/.zshrc. Then remove `~/.zshrc` by
+6. Pre-installation
+
+   1. Open a `MINGW64 / MSYS2 - Zsh` tab in `Windows Terminal`.
+
+   2. Select 0 to create an empty ~/.zshrc. Then remove `~/.zshrc` by
 
       ```
       rm ~/.zshrc
       ```
 
-   6. Unset empty `$tmp` and `$temp`
+   3. Unset empty `$tmp` and `$temp`
 
       ```
       unset tmp temp
       ```
 
-   7. Go to [Installation](#installation)
+   4. Go to [Installation](#installation)
 
 ##### TODO
 
@@ -415,10 +419,12 @@ Instructions for installing
    cd dotfiles
    ```
 
-2. [**Windows Only**] Enable case sensitive support.
+2. [**Windows Only**] Enable case sensitive support for sub-modules from an elevated **PowerShell** session.
 
    ```
-   fsutil.exe file SetCaseSensitiveInfo . enable
+   cd $HOME\dotfiles\3rdparty
+   (Get-ChildItem -Recurse -Directory).FullName | ForEach-Object {fsutil.exe file setCaseSensitiveInfo $_ enable}
+
    ```
 
 3. Clone sub-modules.
