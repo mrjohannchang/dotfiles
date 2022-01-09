@@ -398,7 +398,13 @@
       unset tmp temp
       ```
 
-   4. Go to [Installation](#installation)
+   4. Enable symlink support for Git
+
+      ```
+      git config --global core.symlinks true
+      ```
+
+   5. Go to [Installation](#installation)
 
 ##### TODO
 
