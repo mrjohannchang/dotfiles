@@ -267,14 +267,11 @@
 
    5. [Install Git for Windows](https://github.com/git-for-windows/git/wiki/Install-inside-MSYS2-proper).
 
-      1. Add the Git for Windows package repositories above any others (i.e. just before `[mingw32]` on line #71 as of this writing) to `C:\msys64\etc\pacman.conf`:
+      1. Add the Git for Windows package repositories above any others (i.e. just before `[mingw32]` on line #68 as of this writing) to `C:\msys64\etc\pacman.conf`:
 
          ```
          [git-for-windows]
          Server = https://wingit.blob.core.windows.net/x86-64
-
-         [git-for-windows-mingw32]
-         Server = https://wingit.blob.core.windows.net/i686
          ```
 
       2. Open `MSYS2 MinGW x64`.
