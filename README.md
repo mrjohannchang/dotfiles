@@ -290,21 +290,21 @@
    * Make Windows Terminal support MSYS2's shell by adding the following config to `settings.json`:
 
      ```
-     "profiles": {
-       "list":
-       [
-         // ...
-            {
-                "bellStyle": "none",
-                "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path",
-                "guid": "{7e049a6e-6aea-4e66-9bd3-a4bd49a49bab}",
-                "icon": "C:/msys64/mingw64.ico",
-                "name": "MINGW64 / MSYS2 - Zsh",
-                "startingDirectory": "C:/msys64/home/%USERNAME%"
-            },
-         // ...
-       ]
-     }
+         "profiles": {
+             "list":
+             [
+                 // ...
+                 {
+                     "bellStyle": "none",
+                     "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path",
+                     "guid": "{7e049a6e-6aea-4e66-9bd3-a4bd49a49bab}",
+                     "icon": "C:/msys64/mingw64.ico",
+                     "name": "MINGW64 / MSYS2 - Zsh",
+                     "startingDirectory": "C:/msys64/home/%USERNAME%"
+                 },
+                 // ...
+             ]
+         }
      ```
 
    * [Make MSYS2 read Windows environment variables](https://stackoverflow.com/a/50992294/1592410).
