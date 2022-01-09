@@ -287,8 +287,6 @@
          ],
      ```
 
-   * Make `ctrl + tab` switching tabs in the MRU order.
-
    * Make Windows Terminal support MSYS2's shell by adding the following config to `settings.json`:
 
      ```
