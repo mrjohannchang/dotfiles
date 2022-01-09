@@ -330,60 +330,67 @@
 
 5. Install [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/) from Windows Store. Configs:
 
-   * Disable copy & paste mappings to `ctrl + c` and `ctrl + v` by deleting related config in `settings.json` which can be opened from settings.
+   1. Disable copy & paste mappings to `ctrl + c` and `ctrl + v` by deleting related config in `settings.json` which can be opened from settings.
 
-   * Prevent from window being closed when pressing `ctrl + shfit + w` by add the following content to `settings.json`.
+   2. Prevent from window being closed when pressing `ctrl + shfit + w` by add the following content to `settings.json`.
 
-     ```
-         "actions":
-         [
-             ...
-             {
-                 "command": null,
-                 "keys": "ctrl+shift+w"
-             },
-             ...
-         ],
-     ```
+      ```
+          "actions":
+          [
+              ...
+              {
+                  "command": null,
+                  "keys": "ctrl+shift+w"
+              },
+              ...
+          ],
+      ```
 
-   * Resolve the key mapping conflict of `ctrl + shfit + 6` in Neovim by add the following content to `settings.json`.
+   2. Resolve the key mapping conflict of `ctrl + shfit + 6` in Neovim by add the following content to `settings.json`.
 
-     ```
-         "actions":
-         [
-             ...
-             {
-                 "command" : null,
-                 "keys": "ctrl+shift+6"
-             },
-             ...
-         ],
-     ```
+      ```
+          "actions":
+          [
+              ...
+              {
+                  "command" : null,
+                  "keys": "ctrl+shift+6"
+              },
+              ...
+          ],
+      ```
 
-   * Make Windows Terminal support MSYS2's shell by adding the following config to `settings.json`:
+   3. Make Windows Terminal support MSYS2's shell by adding the following config to `settings.json`:
 
-     ```
-         "profiles": {
-             "list":
-             [
-                 // ...
-                 {
-                     "bellStyle": "none",
-                     "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path -shell zsh",
-                     "guid": "{7e049a6e-6aea-4e66-9bd3-a4bd49a49bab}",
-                     "icon": "C:/msys64/mingw64.ico",
-                     "name": "MINGW64 / MSYS2 - Zsh",
-                     "startingDirectory": "C:/msys64/home/%USERNAME%"
-                 },
-                 // ...
-             ]
-         }
-     ```
+      ```
+          "profiles": {
+              "list":
+              [
+                  // ...
+                  {
+                      "bellStyle": "none",
+                      "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path -shell zsh",
+                      "guid": "{7e049a6e-6aea-4e66-9bd3-a4bd49a49bab}",
+                      "icon": "C:/msys64/mingw64.ico",
+                      "name": "MINGW64 / MSYS2 - Zsh",
+                      "startingDirectory": "C:/msys64/home/%USERNAME%"
+                  },
+                  // ...
+              ]
+          }
+      ```
 
-   * Config the terminal to use the font Hack Nerd Font.
+   4. Config the terminal to use the font Hack NF.
+
+   5. Open a MINGW64 / MSYS2 - Zsh tab in Windows Terminal. Select 0 to create an empty ~/.zshrc. Then remove `~/.zshrc` by
+
+      ```
+      rm ~/.zshrc
+      ```
 
 ##### TODO
 
+Instructions for installing
 1. pyenv
 2. nvm
 3. tmux
