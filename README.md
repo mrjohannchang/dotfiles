@@ -382,7 +382,7 @@
 
    4. Config the terminal to use the font Hack NF.
 
-6. Install **official** [Python3](https://www.python.org/downloads/)
+6. Install **official** [Python3](https://www.python.org/downloads/) with **Add Python <version> to PATH** option checked.
 
 7. Pre-installation
 
