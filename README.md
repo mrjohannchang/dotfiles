@@ -310,7 +310,7 @@
    6. Install necessary packages in `MSYS2 MinGW x64`.
 
       ```
-      pacman -Sy man zsh
+      pacman -Sy man tmux zsh
       ```
 
 4. Install [Scoop](https://scoop.sh/). Execute the following command in a [PowerShell](https://en.wikipedia.org/wiki/PowerShell) Session.
@@ -388,11 +388,7 @@
 
    1. Open a `MINGW64 / MSYS2 - Zsh` tab in `Windows Terminal`.
 
-   2. Select 0 to create an empty ~/.zshrc. Then remove `~/.zshrc` by
-
-      ```
-      rm ~/.zshrc
-      ```
+   2. Select `0` to create an empty `~/.zshrc`
 
    3. Unset empty `$tmp` and `$temp`
 
@@ -446,7 +442,7 @@ Instructions for installing
    ./install.sh
    ```
 
-5. [**Not supported on Windows**] Execute `tmux` and press `C-s I` to install plugins of tmux.
+5. [**Not supported by Windows Terminal**] Execute `tmux` and press `C-s I` to install plugins of tmux.
 
 6. Execute `nvim` and then `:PackerInstall` to install plugins of Neovim.
 
