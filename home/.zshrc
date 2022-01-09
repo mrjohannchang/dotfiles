@@ -46,7 +46,7 @@ PATH="${HOME}/bin:${PATH}"
 
 [ ! -d "${HOME}/bin.d" ] || {
   for d in "${HOME}/bin.d/"*; do
-    if [ ! -d "$d" ] && [ ! -L "$d" && -d "$d" ]; then
+    if [ ! -d "$d" ] && [ ! -L "$d" -a -d "$d" ]; then
       continue
     fi
     PATH="${d}:${PATH}"
