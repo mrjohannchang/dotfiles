@@ -411,7 +411,7 @@ Instructions for installing
 
    ```
    cd $HOME
-   git clone --branch main https://github.com/changyuheng/dotfiles.git
+   git clone https://github.com/changyuheng/dotfiles.git
    cd dotfiles
    ```
 
