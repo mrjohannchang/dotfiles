@@ -313,10 +313,10 @@
          set bell-style none
          ```
 
-   6. Install necessary packages
+   6. Install necessary packages in `MSYS2 MinGW x64`.
 
       ```
-      pacman -S man zsh
+      pacman -Sy man zsh
       ```
 
 4. Install [Scoop](https://scoop.sh/). Execute the following command in a [PowerShell](https://en.wikipedia.org/wiki/PowerShell) Session.
@@ -326,7 +326,7 @@
    Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
    ```
 
-   * Install necessary packages with Scoop in `MSYS2 MinGW x64`.
+   * Install necessary packages via Scoop in `MSYS2 MinGW x64`.
 
      ```
      scoop bucket add extras
