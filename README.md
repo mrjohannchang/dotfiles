@@ -325,7 +325,7 @@
      ```
      scoop bucket add extras
      scoop bucket add nerd-fonts
-     scoop install neovim Hack-NF fd ripgrep universal-ctags fzf zoxide
+     scoop install vcredist2015 neovim Hack-NF fd ripgrep universal-ctags fzf zoxide
      ```
 
 5. Install [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/) from Windows Store. Configs:
