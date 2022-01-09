@@ -438,7 +438,7 @@ Instructions for installing
    ./install.sh
    ```
 
-5. Execute `tmux` and press `C-s I` to install plugins of tmux.
+5. [**Not supported on Windows**] Execute `tmux` and press `C-s I` to install plugins of tmux.
 
 6. Execute `nvim` and then `:PackerInstall` to install plugins of Neovim.
 
