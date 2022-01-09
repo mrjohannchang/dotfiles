@@ -307,12 +307,6 @@
          pacman -S mingw-w64-x86_64-{git,git-doc-html,git-doc-man} git-extra
          ```
 
-      7. Disable the terminal bell from `/etc/inputrc` by changing the bell-style from `visual` to `none`. Ref: [Disable beep in WSL terminal on Windows 10](https://stackoverflow.com/questions/36724209/disable-beep-in-wsl-terminal-on-windows-10)
-
-         ```
-         set bell-style none
-         ```
-
    6. Install necessary packages in `MSYS2 MinGW x64`.
 
       ```
@@ -387,12 +381,6 @@
      ```
 
    * Config the terminal to use the font Hack Nerd Font.
-
-8. Install [Git for Windows](https://github.com/git-for-windows/git/releases) with the following features enabled.
-
-   * Git LFS
-   * File system caching
-   * Symbolic links
 
 ##### TODO
 
