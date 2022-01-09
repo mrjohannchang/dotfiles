@@ -233,26 +233,108 @@
 
 2. Enable the [long file path support](https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=cmd) from: Start > Local Group Policy Editor > Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem > Enable Win32 long paths
 
-3. Install [Chocolatey](https://chocolatey.org/). Execute the following command in a [PowerShell](https://en.wikipedia.org/wiki/PowerShell) Session as administrator.
+3. Follow the official [doc](https://www.msys2.org/#installation) to download and install [MSYS2](https://en.wikipedia.org/wiki/MinGW#Fork) (msys2-x86_64).
+
+   1. Enable the symbolic link support in MSYS2 by uncommenting the following line in `C:\msys64\msys2_shell.cmd`
+
+      ```
+      set MSYS=winsymlinks:nativestrict
+      ```
+
+      and the following line in `C:\msys64\mingw64.ini`.
+
+      ```
+      MSYS=winsymlinks:nativestrict
+      ```
+
+   2. Uncomment `set MSYS2_PATH_TYPE=inherit` in `C:\msys64\msys2_shell.cmd` and `MSYS2_PATH_TYPE=inherit` in `C:\msys64\mingw64.ini`.
+
+   3. Make `%TMEP%` mounted at `/tmp` by adding the following contents to `C:\msys64\etc\fstab`.
+
+      ```
+      none /tmp usertemp binary,posix=0,noacl 0 0
+      ```
+
+   4. Set Windows `%USERPROFILE%` folder (`C:\Users\<user name>`) as the `$HOME` folder by adding the following contents to `C:\msys64\etc\fstab`. Ref: [How to change HOME directory and start directory on MSYS2?](https://stackoverflow.com/a/66946901/1592410).
+
+      ```
+      ##################################################################
+      # Canonicalize the two home directories by mounting the windows  #
+      # user home with the same path mapping as unix.                  #
+      ##################################################################
+      C:/Users /home ntfs binary,posix=0,noacl,user 0 0
+      ```
+
+   5. [Make MSYS2 shell compatible with Git for Windows](https://github.com/git-for-windows/git/wiki/Install-inside-MSYS2-proper).
+
+      1. Add the Git for Windows package repositories above any others (i.e. just before `[mingw32]` on line #71 as of this writing) to `C:\msys64\etc\pacman.conf`:
+
+         ```
+         [git-for-windows]
+         Server = https://wingit.blob.core.windows.net/x86-64
+
+         [git-for-windows-mingw32]
+         Server = https://wingit.blob.core.windows.net/i686
+         ```
+
+      2. Open `MSYS2 MinGW x64`.
+
+      3. Authorize the signing key with:
+
+         ```
+         curl -L https://raw.githubusercontent.com/git-for-windows/build-extra/HEAD/git-for-windows-keyring/git-for-windows.gpg |
+         pacman-key --add - &&
+         pacman-key --lsign-key E8325679DFFF09668AD8D7B67115A57376871B1C &&
+         pacman-key --lsign-key 3B6D86A1BA7701CD0F23AED888138B9E1A9F3986
+         ```
+
+      4. Then synchronize with new repositories with
+
+         ```
+         pacman -Syyuu
+         ```
+
+         This installs a new `msys2-runtime` and therefore will ask you to terminate all MSYS2 processes. Save what you need from other open MSYS2 shells and programs, exit them and confirm the Pacman prompt. Double-check Task Manager and kill `pacman.exe` if it's still running after the window is closed. Start a new MSYS2 terminal.
+
+      5. Then synchronize *again* to install the rest:
+
+         ```
+         pacman -Suu
+         ```
+
+         It might happen that some packages are downgraded, this is expected.
+
+      6. And finally install the packages containing Git, its documentation and some extra things:
+
+         ```
+         pacman -S mingw-w64-x86_64-{git,git-doc-html,git-doc-man} git-extra
+         ```
+
+      7. Disable the terminal bell from `/etc/inputrc` by changing the bell-style from `visual` to `none`. Ref: [Disable beep in WSL terminal on Windows 10](https://stackoverflow.com/questions/36724209/disable-beep-in-wsl-terminal-on-windows-10)
+
+         ```
+         set bell-style none
+         ```
+
+   6. Install necessary packages
+
+      ```
+      pacman -S man zsh
+      ```
+
+4. Install [Scoop](https://scoop.sh/). Execute the following command in a [PowerShell](https://en.wikipedia.org/wiki/PowerShell) Session.
 
    ```
-   Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+   Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+   Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
    ```
 
-4. Follow the official [doc](https://www.msys2.org/#installation) to download and install [MSYS2](https://en.wikipedia.org/wiki/MinGW#Fork) (msys2-x86_64).
-
-   * If the installation is stuck at `Updating trust database`, just cancel the installation process and launch the installer again.
-
-   * Enable the symbolic link support in MSYS2 by uncommenting the following line in `C:\msys64\msys2_shell.cmd`
+   * Install necessary packages with Scoop in `MSYS2 MinGW x64`.
 
      ```
-     set MSYS=winsymlinks:nativestrict
-     ```
-
-     and the following line in `C:\msys64\mingw64.ini`.
-
-     ```
-     MSYS=winsymlinks:nativestrict
+     scoop bucket add extras
+     scoop bucket add nerd-fonts
+     scoop install neovim Hack-NF fd ripgrep universal-ctags fzf zoxide
      ```
 
 5. Install [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/) from Windows Store. Configs:
@@ -296,7 +378,7 @@
                  // ...
                  {
                      "bellStyle": "none",
-                     "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path",
+                     "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path -shell zsh",
                      "guid": "{7e049a6e-6aea-4e66-9bd3-a4bd49a49bab}",
                      "icon": "C:/msys64/mingw64.ico",
                      "name": "MINGW64 / MSYS2 - Zsh",
@@ -307,118 +389,13 @@
          }
      ```
 
-   * [Make MSYS2 read Windows environment variables](https://stackoverflow.com/a/50992294/1592410).
+   * Config the terminal to use the font Hack Nerd Font.
 
-     1. Add option `-use-full-path` to the `commandline` in MSYS2 profile in Windows Terminal `settings.json`. (It's already done in the previous step.)
-     2. If the above parameter doesn't take effect, uncomment `set MSYS2_PATH_TYPE=inherit` in `C:\msys64\msys2_shell.cmd` and `MSYS2_PATH_TYPE=inherit` in `C:\msys64\mingw64.ini`.
+8. Install [Git for Windows](https://github.com/git-for-windows/git/releases) with the following features enabled.
 
-6. Fix chocolatey not able to read the `tmp` folder on MSYS2 issue by commenting out the following lines in `/etc/profile`.
-
-   ```
-   unset TMP TEMP
-   tmp=$(exec cygpath -w "$ORIGINAL_TMP" 2> /dev/null)
-   temp=$(exec cygpath -w "$ORIGINAL_TEMP" 2> /dev/null)
-   TMP="/tmp"
-   TEMP="/tmp"
-   ```
-
-8. Install necessary packages with chocolatey in an elevated terminal.
-
-   ```
-   choco install neovim nerdfont-hack fd ripgrep universal-ctags fzf zoxide
-   ```
-
-9. Config the terminal to use the font Hack Nerd Font.
-
-10. Install [Git for Windows](https://github.com/git-for-windows/git/releases) with the following features enabled.
-
-    * Git LFS
-    * File system caching
-    * Symbolic links
-
-11. Install [Zsh](https://www.zsh.org/) on MSYS2's shell. Other commands in the following steps should all be executed in MSYS2's shell.
-
-    ```
-    pacman -S zsh
-    ```
-
-12. [Change default shell](https://superuser.com/questions/961699/change-default-shell-on-msys2) of MSYS2 to [Zsh](https://www.zsh.org/) by adding `-shell zsh` to the cmdline of MSYS2 in Windows Terminal `settings.json`.
-
-    ```
-    "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path -shell zsh"
-    ```
-
-13. Make `%TMEP%` mounted at `/tmp` by adding the following contents to `/etc/fstab`.
-
-    ```
-    none /tmp usertemp binary,posix=0,noacl 0 0
-    ```
-
-14. Set Windows `%USERPROFILE%` folder (`C:\Users\<user name>`) as the `$HOME` folder by adding the following contents to `/etc/fstab`. Ref: [How to change HOME directory and start directory on MSYS2?](https://stackoverflow.com/a/66946901/1592410).
-
-    ```
-    ##################################################################
-    # Canonicalize the two home directories by mounting the windows  #
-    # user home with the same path mapping as unix.                  #
-    ##################################################################
-    C:/Users /home ntfs binary,posix=0,noacl,user 0 0
-    ```
-
-15. [Make MSYS2 shell compatible with Git for Windows](https://github.com/git-for-windows/git/wiki/Install-inside-MSYS2-proper).
-
-    1. Edit `/etc/pacman.conf` with `nvim` and add the Git for Windows package repositories above any others (i.e. just before `[mingw32]` on line #71 as of this writing):
-
-       ```
-       [git-for-windows]
-       Server = https://wingit.blob.core.windows.net/x86-64
-
-       [git-for-windows-mingw32]
-       Server = https://wingit.blob.core.windows.net/i686
-       ```
-
-    2. Authorize the signing key with:
-
-       ```
-       curl -L https://raw.githubusercontent.com/git-for-windows/build-extra/HEAD/git-for-windows-keyring/git-for-windows.gpg |
-       pacman-key --add - &&
-       pacman-key --lsign-key E8325679DFFF09668AD8D7B67115A57376871B1C &&
-       pacman-key --lsign-key 3B6D86A1BA7701CD0F23AED888138B9E1A9F3986
-       ```
-
-    3. Then synchronize with new repositories with
-
-       ```
-       pacman -Syyuu
-       ```
-
-       This installs a new `msys2-runtime` and therefore will ask you to terminate all MSYS2 processes. Save what you need from other open MSYS2 shells and programs, exit them and confirm the Pacman prompt. Double-check Task Manager and kill `pacman.exe` if it's still running after the window is closed. Start a new MSYS2 terminal.
-
-    4. Then synchronize *again* to install the rest:
-
-       ```
-       pacman -Suu
-       ```
-
-       It might happen that some packages are downgraded, this is expected.
-
-    5. And finally install the packages containing Git, its documentation and some extra things:
-
-       ```
-       pacman -S mingw-w64-x86_64-{git,git-doc-html,git-doc-man} git-extra
-
-       ```
-
-    6. Disable the terminal bell from `/etc/inputrc` by changing the bell-style from `visual` to `none`. Ref: [Disable beep in WSL terminal on Windows 10](https://stackoverflow.com/questions/36724209/disable-beep-in-wsl-terminal-on-windows-10)
-
-       ```
-       set bell-style none
-       ```
-
-16. Install necessary packages with pacman.
-
-    ```
-    pacman -S man
-    ```
+   * Git LFS
+   * File system caching
+   * Symbolic links
 
 ##### TODO
 
@@ -501,6 +478,8 @@
    ; Refs:
    ; https://superuser.com/a/1381836
    ```
+
+2. Make Windows Terminal tab switching order in `MRU`.
 
 </details>
 
