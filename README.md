@@ -369,7 +369,7 @@
                   // ...
                   {
                       "bellStyle": "none",
-                      "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path -shell zsh",
+                      "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -shell zsh",
                       "guid": "{7e049a6e-6aea-4e66-9bd3-a4bd49a49bab}",
                       "icon": "C:/msys64/mingw64.ico",
                       "name": "MINGW64 / MSYS2 - Zsh",
@@ -442,7 +442,10 @@ Instructions for installing
    ./install.sh
    ```
 
-5. [**Not supported by Windows Terminal**] Execute `tmux` and press `C-s I` to install plugins of tmux.
+5. Execute `tmux` and press `C-s I` to install plugins of tmux.
+
+   * On Windows, the command for launching tmux is `script -c "tmux -f ~/.tmux.conf" /dev/null`.
+   * Tmux Plugin Manager is not supported on MSYS2 on Windows (currently), so this step can be omitted if you're using Windows.
 
 6. Execute `nvim` and then `:PackerInstall` to install plugins of Neovim.
 
