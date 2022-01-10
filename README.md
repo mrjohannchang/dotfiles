@@ -420,7 +420,11 @@
       git config --global core.symlinks true
       ```
 
-   5. Go to [Installation](#installation)
+   5. Open an **elevated** (Run as administrator) **PowerShell** session and execute the following command. After the execution, you may need to restart your computer.
+
+      ```
+      Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+      ```
 
 ##### TODO
 
