@@ -229,8 +229,6 @@
 
 1. [Activate Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development) from: Start > Settings > Update & Security > For developers > Developer Mode
 
-   * [Symlinks support](https://blogs.windows.com/windowsdeveloper/2016/12/02/symlinks-windows-10/) for non-administrator users will be enabled automatically with the above step. If you still have issues, please turn on the `Create symbolic links` permission manually from Start > Local Security Policy > Security Settings > Local Policies > User Rights Assignment > Create symbolic links
-
 2. Enable the [long file path support](https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=cmd) from: Start > Local Group Policy Editor > Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem > Enable Win32 long paths
 
 3. Follow the official [doc](https://www.msys2.org/#installation) to download and install [MSYS2](https://en.wikipedia.org/wiki/MinGW#Fork) (msys2-x86_64).
