@@ -313,7 +313,7 @@
       pacman -Sy man tmux zsh
       ```
 
-4. Install [Scoop](https://scoop.sh/). Execute the following command in a [PowerShell](https://en.wikipedia.org/wiki/PowerShell) Session.
+4. Install [Scoop](https://scoop.sh/). Execute the following commands in a [PowerShell](https://en.wikipedia.org/wiki/PowerShell) Session.
 
    ```
    Set-ExecutionPolicy RemoteSigned -scope CurrentUser
