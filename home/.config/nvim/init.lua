@@ -110,6 +110,13 @@ vim.api.nvim_command("autocmd InsertLeave * set nopaste")
 -- }
 
 
+-- lualine.nvim {
+require "lualine".setup {
+  options = { theme  = "solarized_light" },
+}
+-- }
+
+
 -- telescope.nvim {
 vim.api.nvim_set_keymap("n", "<LEADER>ff", "<CMD>lua require('telescope.builtin').find_files()<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<LEADER>fg", "<CMD>lua require('telescope.builtin').live_grep()<CR>", { noremap = true })

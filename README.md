@@ -364,7 +364,7 @@
           ],
       ```
 
-   2. Resolve the key mapping conflict of `ctrl + shfit + 6` in Neovim by add the following content to `settings.json`.
+   3. Resolve the key mapping conflict of `ctrl + shfit + 6` in Neovim by add the following content to `settings.json`.
 
       ```
           "actions":
@@ -378,7 +378,7 @@
           ],
       ```
 
-   3. Make Windows Terminal support MSYS2's shell by adding the following config to `settings.json`:
+   4. Make Windows Terminal support MSYS2's shell by adding the following config to `settings.json`:
 
       ```
           "profiles": {
@@ -398,7 +398,7 @@
           }
       ```
 
-   4. Config the terminal to use the font Hack NF.
+   5. Config the terminal to use the font Hack NF.
 
 6. Install **official** [Python3](https://www.python.org/downloads/) with **Add Python <version> to PATH** option checked.
 
@@ -437,7 +437,7 @@ Instructions for installing
 
 ### Installation
 
-1. `git clone` this repo in `$HOME` and `cd` into it.
+1. `git clone` this repo in `$HOME` and `cd` into it. **Note**: The `dotfiles` folder has to be put at `${HOME}/dotfiles`.
 
    ```
    cd $HOME
@@ -458,18 +458,15 @@ Instructions for installing
    git submodule update --init --recursive --remote
    ```
 
-4. Install.
+4. Install. For **Windows** users, after executing `install.sh`, you'll need to exit the Windows Terminal and open it again before going to the next step.
 
    ```
    ./install.sh
    ```
 
-5. Execute `tmux` and press `C-s I` to install plugins of tmux.
+5. [**Not for Windows**] Execute `tmux` and press `C-s I` to install plugins of tmux.
 
-   * On Windows, the command for launching tmux is `script -c "tmux -f ~/.tmux.conf" /dev/null`.
-   * Known issue: Neovim cannot be lauched properly inside tmux that's launched with `script -c "tmux -f ~/.tmux.conf" /dev/null`.
-
-6. Execute `nvim` and then `:PackerInstall` to install plugins of Neovim.
+6. Execute `nvim` and then `:PackerInstall` to install plugins of Neovim. You may need to execute other commands for installing dependencies of some plugins. Please follow the hints you see in Neovim to do so.
 
    * You can use `:PackerSync` to update the installed plugins in the future. But please do **NOT** remove `<nvim-config>/site/pack/packer/start/packer.nvim` during syncing.
 
