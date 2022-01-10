@@ -330,7 +330,27 @@
 
 5. Install [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/) from Windows Store. Configs:
 
-   1. Disable copy & paste mappings to `ctrl + c` and `ctrl + v` by deleting related config in `settings.json` which can be opened from settings.
+   1. Disable copy & paste mappings to `ctrl + c` and `ctrl + v` by commenting out related config in `settings.json` which can be opened from settings.
+
+      ```
+          "actions": 
+          [
+              ...
+              {
+                  "command":
+                  {
+                      "action": "copy",
+                      "singleLine": false
+                  },
+                  "keys": "ctrl+c"
+              },
+              {
+                  "command": "paste",
+                  "keys": "ctrl+v"
+              },
+              ...
+          ],
+      ```
 
    2. Prevent from window being closed when pressing `ctrl + shfit + w` by add the following content to `settings.json`.
 
