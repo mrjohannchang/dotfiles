@@ -467,8 +467,7 @@ Instructions for installing
 5. Execute `tmux` and press `C-s I` to install plugins of tmux.
 
    * On Windows, the command for launching tmux is `script -c "tmux -f ~/.tmux.conf" /dev/null`.
-   * Tmux Plugin Manager is not supported on MSYS2 on Windows (currently), so this step can be omitted if you're using Windows.
-   * Known issue: Neovim cannot be lauched properly inside tmux launched with `script -c "tmux -f ~/.tmux.conf" /dev/null`.
+   * Known issue: Neovim cannot be lauched properly inside tmux that's launched with `script -c "tmux -f ~/.tmux.conf" /dev/null`.
 
 6. Execute `nvim` and then `:PackerInstall` to install plugins of Neovim.
 
