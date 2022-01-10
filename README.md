@@ -310,7 +310,7 @@
    6. Install necessary packages in `MSYS2 MinGW x64`.
 
       ```
-      pacman -Sy man tmux zsh
+      pacman -Sy mingw-w64-x86_64-connect man tmux zsh
       ```
 
 4. Install [Scoop](https://scoop.sh/). Execute the following commands in a [PowerShell](https://en.wikipedia.org/wiki/PowerShell) Session.
