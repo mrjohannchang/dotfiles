@@ -471,6 +471,8 @@ Instructions for installing
 
 6. Execute `nvim` and then `:PackerInstall` to install plugins of Neovim.
 
+   * You can use `:PackerSync` to update the installed plugins in the future. But please do **NOT** remove `<nvim-config>/site/pack/packer/start/packer.nvim` during syncing.
+
 ### Optional Tweak
 
 <details>
