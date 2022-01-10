@@ -535,3 +535,5 @@ rm -rf dotfiles
 ## Known Issues
 
 1. Neovim cannot be launched properly inside Windows tmux or MSYS2. Need to switch back to Vim for these environments. [#6751](https://github.com/neovim/neovim/issues/6751) [#8271](https://github.com/neovim/neovim/pull/8271) [#11112](https://github.com/neovim/neovim/issues/11112)
+
+2. Tmux cannot be launched in Windows Terminal directly. Need to use `script -c tmux /dev/null` as workaround ([source](https://github.com/csdvrx/sixel-tmux)). [#5132](https://github.com/microsoft/terminal/issues/5132)
