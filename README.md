@@ -229,7 +229,7 @@
 
 1. [Activate Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development) from: Start > Settings > Update & Security > For developers > Developer Mode
 
-   * [Symlinks support](https://blogs.windows.com/windowsdeveloper/2016/12/02/symlinks-windows-10/) for non-administrator users will be enabled automatically. If you still have issues, please turn on the `Create symbolic links` permission manually from Start > Local Security Policy > Security Settings > Local Policies > User Rights Assignment > Create symbolic links
+   * [Symlinks support](https://blogs.windows.com/windowsdeveloper/2016/12/02/symlinks-windows-10/) for non-administrator users will be enabled automatically with the above step. If you still have issues, please turn on the `Create symbolic links` permission manually from Start > Local Security Policy > Security Settings > Local Policies > User Rights Assignment > Create symbolic links
 
 2. Enable the [long file path support](https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=cmd) from: Start > Local Group Policy Editor > Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem > Enable Win32 long paths
 
@@ -238,16 +238,16 @@
    1. Enable the symbolic link support in MSYS2 by uncommenting the following line in `C:\msys64\msys2_shell.cmd`
 
       ```
-      set MSYS=winsymlinks:nativestrict
+      rem set MSYS=winsymlinks:nativestrict
       ```
 
       and the following line in `C:\msys64\mingw64.ini`.
 
       ```
-      MSYS=winsymlinks:nativestrict
+      #MSYS=winsymlinks:nativestrict
       ```
 
-   2. Uncomment `set MSYS2_PATH_TYPE=inherit` in `C:\msys64\msys2_shell.cmd` and `MSYS2_PATH_TYPE=inherit` in `C:\msys64\mingw64.ini`.
+   2. Uncomment `rem set MSYS2_PATH_TYPE=inherit` in `C:\msys64\msys2_shell.cmd` and `#MSYS2_PATH_TYPE=inherit` in `C:\msys64\mingw64.ini`.
 
    3. Make `%TMEP%` mounted at `/tmp` by adding the following contents to `C:\msys64\etc\fstab`.
 
