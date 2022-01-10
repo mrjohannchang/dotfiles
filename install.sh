@@ -295,12 +295,15 @@ fi
 
 cd "$DOTFILES_DIR"
 
-if yes_or_no_question "Continue to uninstall?"; then
-  uninstall
-fi
-
 if [[ $(basename "$BASH_SOURCE") == "install"* ]]; then
-  if yes_or_no_question "Continue to install?"; then
+  if yes_or_no_question "Continue to uninstall old dotfiles?" y; then
+    uninstall
+  fi
+  if yes_or_no_question "Continue to install?" y; then
     install
+  fi
+elif [[ $(basename "$BASH_SOURCE") == "uninstall"* ]]; then
+  if yes_or_no_question "Continue to uninstall?" y; then
+    uninstall
   fi
 fi
