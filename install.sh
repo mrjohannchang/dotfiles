@@ -131,7 +131,6 @@ install() {
     install_target "home/.zshrc.light"
   fi
 
-  yes_or_no_question "Install dircolors?"
   if [ "$bg" = "light" ]; then
     install_target "home/.dircolors.light" "${HOME}/.dircolors"
   else
@@ -151,7 +150,7 @@ install() {
 
   install_target "home/.ideavimrc"
 
-  if yes_or_no_question "Install Git configurations (cannot be undone)?"; then
+  if yes_or_no_question "Install Git configurations (cannot be undone)?" y; then
     git config --global alias.show-tracked-ignored "ls-files -i --exclude-standard"
     echo 'alias.show-tracked-ignored = "ls-files -i --exclude-standard"'
 
