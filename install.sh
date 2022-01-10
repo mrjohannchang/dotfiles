@@ -155,6 +155,8 @@ install() {
 alias.show-tracked-ignored = "ls-files -i --exclude-standard"
 core.editor = nvim
 core.quotePath = false
+core.autocrlf = input
+core.safecrlf = warn
 color.ui = auto
 diff.algorithm = patience
 diff.tool = nvimdiff
@@ -170,6 +172,8 @@ EOF
     git config --global alias.show-tracked-ignored "ls-files -i --exclude-standard"
     git config --global core.editor nvim
     git config --global core.quotePath false
+    git config --global core.autocrlf input
+    git config --global core.safecrlf warn
     git config --global color.ui auto
     git config --global diff.algorithm patience
     git config --global diff.tool nvimdiff

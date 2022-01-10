@@ -24,6 +24,7 @@
     + [Ubuntu](#ubuntu)
     + [Windows](#windows)
   * [Uninstallation](#uninstallation)
+- [Known Issues](#known-issues)
 
 ## About
 
@@ -419,8 +420,14 @@
       ```
       git config --global core.symlinks true
       ```
+   5. Text files inside dotfiles need to use `LF` as line endings. Don't let Git convert them to `CRLF` on Windows.
 
-   5. Open an **elevated** (Run as administrator) **PowerShell** session and execute the following command. After the execution, you may need to restart your computer.
+      ```
+      git config --global core.autocrlf input
+      git config --global core.safecrlf warn
+      ```
+
+   6. Open an **elevated** (Run as administrator) **PowerShell** session and execute the following command. After the execution, you may need to restart your computer.
 
       ```
       Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
@@ -464,7 +471,7 @@ Instructions for installing
    ./install.sh
    ```
 
-5. [**Not for Windows**] Execute `tmux` and press `C-s I` to install plugins of tmux.
+5. Execute `tmux` (or `script -c tmux /dev/null` on **Windows**) and press `C-s I` to install plugins of tmux.
 
 6. Execute `nvim` and then `:PackerInstall` to install plugins of Neovim. You may need to execute other commands for installing dependencies of some plugins. Please follow the hints you see in Neovim to do so.
 
@@ -524,3 +531,7 @@ cd ~/dotfiles
 cd ..
 rm -rf dotfiles
 ```
+
+## Known Issues
+
+1. Neovim cannot be launched properly inside Windows tmux or MSYS2. Need to switch back to Vim for these environments. [#6751](https://github.com/neovim/neovim/issues/6751) [#8271](https://github.com/neovim/neovim/pull/8271) [#11112](https://github.com/neovim/neovim/issues/11112)
