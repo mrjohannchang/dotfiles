@@ -263,7 +263,7 @@
       C:/Users /home ntfs binary,posix=0,noacl,user 0 0
       ```
 
-   5. [Install Git for Windows](https://github.com/git-for-windows/git/wiki/Install-inside-MSYS2-proper).
+   5. [Install Git for Windows](https://github.com/git-for-windows/git/wiki/Install-inside-MSYS2-proper) via MSYS2.
 
       1. Add the Git for Windows package repositories above any others (i.e. just before `[mingw32]` on line #68 as of this writing) to `C:\msys64\etc\pacman.conf`:
 
