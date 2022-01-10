@@ -441,7 +441,7 @@ Instructions for installing
    cd dotfiles
    ```
 
-2. [**Windows Only**] Enable case sensitive support for sub-modules from a **PowerShell** session.
+2. [**Windows Only**][**Optional**] Enable case sensitive support for sub-modules from a **PowerShell** session if this dotfiles is stored on an **NTFS** volume.
 
    ```
    cd $HOME\dotfiles\3rdparty
