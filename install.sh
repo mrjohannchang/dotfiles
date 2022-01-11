@@ -150,6 +150,7 @@ install() {
 
   install_target "home/.ideavimrc"
 
+  # TODO: Highlight modifications will be done on existing config
   INFO "Listing Git config that will be installed below:"
   cat << EOF
 alias.show-tracked-ignored = "ls-files -i --exclude-standard"
