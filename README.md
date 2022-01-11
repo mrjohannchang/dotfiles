@@ -75,7 +75,7 @@
 
 1. Reselect visual block after indent/outdent.
 2. Enable moving up and down with j and k in wrapped lines.
-3. Clear the search highlight with `<LEADER>/`.
+3. Clear the search highlight with `<LEADER>` `/`.
 4. Saving files as root with `w!!`.
 5. Better command-line editing.
    1. `<CTRL> + j` and `<CTRL> + k` move to lines that have identical prefixes.
