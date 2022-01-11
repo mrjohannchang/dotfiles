@@ -24,7 +24,7 @@
     + [Windows](#windows)
   * [Uninstallation](#uninstallation)
 - [Known Issues](#known-issues)
-- [TODO](#todo)
+- [To-Do](#to-do)
 
 ## About
 
@@ -532,7 +532,7 @@ rm -rf dotfiles
 2. Tmux cannot be launched in Windows Terminal directly. Need to use `script -c tmux /dev/null` as workaround ([source](https://github.com/csdvrx/sixel-tmux)). [#5132](https://github.com/microsoft/terminal/issues/5132)
 
 
-## TODO
+## To-Do
 
 1. Add instructions for installing pyenv, nvm on Windows.
 2. Add https://github.com/alacritty/alacritty support.
