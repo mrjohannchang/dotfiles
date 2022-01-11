@@ -78,29 +78,29 @@
 3. Clear the search highlight with `<LEADER>/`.
 4. Saving files as root with `w!!`.
 5. Better command-line editing.
-   1. `CTRL + j` and `CTRL + k` move to lines that have identical prefixes.
-   2. `CTRL + a` and `CTRL + e` move to the beginning and the end of the line.
+   1. `<CTRL> + j` and `<CTRL> + k` move to lines that have identical prefixes.
+   2. `<CTRL> + a` and `<CTRL> + e` move to the beginning and the end of the line.
 6. Toggle paste mode with `<F2>`.
    1. Leave paste mode on leaving insert mode
 7. Comment.nvim
    * NORMAL mode
-     1. `gcc` - Toggles the current line using linewise comment
-     2. `gbc` - Toggles the current line using blockwise comment
-     3. `[count]gcc` - Toggles the number of line given as a prefix-count using linewise
-     4. `[count]gbc` - Toggles the number of line given as a prefix-count using blockwise
-     5. `gc[count]{motion}` - (Op-pending) Toggles the region using linewise comment
-     6. `gb[count]{motion}` - (Op-pending) Toggles the region using linewise comment
-     7. `gco` - Insert comment to the next line and enters INSERT mode
-     8. `gcO` - Insert comment to the previous line and enters INSERT mode
-     9. `gcA` - Insert comment to end of the current line and enters INSERT mode
+     1. `g` `c` `c` - Toggles the current line using linewise comment
+     2. `g` `b` `c` - Toggles the current line using blockwise comment
+     3. `[count]` `g` `c` `c` - Toggles the number of line given as a prefix-count using linewise
+     4. `[count]` `g` `b` `c` - Toggles the number of line given as a prefix-count using blockwise
+     5. `g` `c` `[count]` `{motion}` - (Op-pending) Toggles the region using linewise comment
+     6. `g` `b` `[count]` `{motion}` - (Op-pending) Toggles the region using linewise comment
+     7. `g` `c` `o` - Insert comment to the next line and enters INSERT mode
+     8. `g` `c` `O` - Insert comment to the previous line and enters INSERT mode
+     9. `g` `c` `A` - Insert comment to end of the current line and enters INSERT mode
    * VISUAL mode
-     1. `gc` - Toggles the region using linewise comment
-     2. `gb` - Toggles the region using blockwise comment
+     1. `g` `c` - Toggles the region using linewise comment
+     2. `g` `b` - Toggles the region using blockwise comment
 8. Telescope
-   1. Find: `<LEADER>ff`
-   2. Grep: `<LEADER>fg`
-   3. Buffers: `<LEADER>fb`
-   4. Help tags: `<LEADER>fh`
+   1. Find: `<LEADER>` `f` `f`
+   2. Grep: `<LEADER>` `f` `g`
+   3. Buffers: `<LEADER>` `f` `b`
+   4. Help tags: `<LEADER>` `f` `h`
 
 #### Neovim Plugins
 
@@ -112,9 +112,9 @@
 
 ### Tmux
 
-1. Tmux prefix key: `CTRL + s`.
-2. Switch to the last window: `CTRL + s`.
-3. Send prefix: `CTRL + a`.
+1. Tmux prefix key: `<CTRL> + s`.
+2. Switch to the last window: `<CTRL> + s`.
+3. Send prefix: `<CTRL> + a`.
 4. Selection:
    1. Select: `v`
    2. Block select: `V`
@@ -329,7 +329,7 @@
 
 5. Install [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/) from Windows Store. Configs:
 
-   1. Disable copy & paste mappings to `ctrl + c` and `ctrl + v` by commenting out related config in `settings.json` which can be opened from settings.
+   1. Disable copy & paste mappings to `<CTRL> + c` and `<CTRL> + v` by commenting out related config in `settings.json` which can be opened from settings.
 
       ```
           "actions": 
@@ -351,7 +351,7 @@
           ],
       ```
 
-   2. Prevent from window being closed when pressing `ctrl + shfit + w` by add the following content to `settings.json`.
+   2. Prevent from window being closed when pressing `<CTRL> + <SHIFT> + w` by add the following content to `settings.json`.
 
       ```
           "actions":
@@ -365,7 +365,7 @@
           ],
       ```
 
-   3. Resolve the key mapping conflict of `ctrl + shfit + 6` in Neovim by add the following content to `settings.json`.
+   3. Resolve the key mapping conflict of `<CTRL> + <SHIFT> + 6` in Neovim by add the following content to `settings.json`.
 
       ```
           "actions":
@@ -471,7 +471,7 @@ Instructions for installing
    ./install.sh
    ```
 
-5. Execute `tmux` (`script -c tmux /dev/null` on **Windows**) and press `CTRL + s``I` to install plugins of tmux.
+5. Execute `tmux` (`script -c tmux /dev/null` on **Windows**) and press `<CTRL> + s` `I` to install plugins of tmux.
 
 6. Execute `nvim` and then `:PackerInstall` to install plugins of Neovim. You may need to execute other commands for installing dependencies of some plugins. Please follow the hints you see in Neovim.
 
