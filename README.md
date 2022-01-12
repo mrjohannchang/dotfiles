@@ -78,11 +78,11 @@
 1. The current setup is blazingly fast.
 2. Reselect visual block after indent/outdent.
 3. Enable moving up and down with j and k in wrapped lines.
-4. Clear the search highlight with `<LEADER>` `/`.
+4. Clear the search highlight with `<Leader>` `/`.
 5. Saving files as root with `w!!`.
 6. Better command-line editing.
-   1. `<CTRL> + j` and `<CTRL> + k` move to lines that have identical prefixes.
-   2. `<CTRL> + a` and `<CTRL> + e` move to the beginning and the end of the line.
+   1. `<Ctrl> + j` and `<Ctrl> + k` move to lines that have identical prefixes.
+   2. `<Ctrl> + a` and `<Ctrl> + e` move to the beginning and the end of the line.
 7. Toggle paste mode with `<F2>`.
    1. Leave paste mode on leaving insert mode
 8. Comment.nvim
@@ -100,10 +100,10 @@
      1. `g` `c` - Toggles the region using linewise comment
      2. `g` `b` - Toggles the region using blockwise comment
 9. Telescope
-   1. Find: `<LEADER>` `f` `f`
-   2. Grep: `<LEADER>` `f` `g`
-   3. Buffers: `<LEADER>` `f` `b`
-   4. Help tags: `<LEADER>` `f` `h`
+   1. Find: `<Leader>` `f` `f`
+   2. Grep: `<Leader>` `f` `g`
+   3. Buffers: `<Leader>` `f` `b`
+   4. Help tags: `<Leader>` `f` `h`
 
 #### Neovim Plugins
 
@@ -116,9 +116,9 @@
 
 ### Tmux
 
-1. Tmux prefix key: `<CTRL> + s`.
-2. Switch to the last window: `<CTRL> + s`.
-3. Send prefix: `<CTRL> + a`.
+1. Tmux prefix key: `<Ctrl> + s`.
+2. Switch to the last window: `<Ctrl> + s`.
+3. Send prefix: `<Ctrl> + a`.
 4. Selection:
    1. Select: `v`
    2. Block select: `V`
@@ -251,7 +251,9 @@
       #MSYS=winsymlinks:nativestrict
       ```
 
-   2. Uncomment `rem set MSYS2_PATH_TYPE=inherit` in `C:\msys64\msys2_shell.cmd` and `#MSYS2_PATH_TYPE=inherit` in `C:\msys64\mingw64.ini`.
+      Note: You can use VS Code to edit those files.
+
+   2. Uncomment `rem set MSYS2_PATH_TYPE=inherit` in `C:\msys64\msys2_shell.cmd` and `#MSYS2_PATH_TYPE=inherit` in `C:\msys64\mingw64.ini` to make MSYS2 inherit environmental variables from Windows.
 
    3. Make `%TMEP%` mounted at `/tmp` by adding the following contents to `C:\msys64\etc\fstab`.
 
@@ -278,7 +280,7 @@
          Server = https://wingit.blob.core.windows.net/x86-64
          ```
 
-      2. Open `MSYS2 MinGW x64`.
+      2. Open "MSYS2 MinGW x64" MinTTY (from Windows Start).
 
       3. Authorize the signing key with:
 
@@ -317,14 +319,7 @@
       pacman -Sy mingw-w64-x86_64-connect man tmux zsh
       ```
 
-   7. Remove unnecessary start-up scripts to speed up the shell launching.
-
-      ```
-      mv /etc/profile.d/git-prompt.sh{,.bak}
-      mv /etc/profile.d/git-sdk.sh{,.bak}
-      ```
-
-4. Install [Scoop](https://scoop.sh/). Execute the following commands in a [PowerShell](https://en.wikipedia.org/wiki/PowerShell) Session.
+4. Install [Scoop](https://scoop.sh/) package manager. Execute the following commands in a **regular** [PowerShell](https://en.wikipedia.org/wiki/PowerShell) Session.
 
    ```
    Set-ExecutionPolicy RemoteSigned -scope CurrentUser
@@ -339,9 +334,9 @@
      scoop install vcredist2015 neovim Hack-NF fd ripgrep universal-ctags fzf zoxide
      ```
 
-5. Install [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/) from Windows Store. Configs:
+5. Install [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/) from Windows Store. And then do the following configurations:
 
-   1. Disable copy & paste mappings to `<CTRL> + c` and `<CTRL> + v` by commenting out related config in `settings.json` which can be opened from settings.
+   1. Disable copy & paste mappings to `<Ctrl> + c` and `<Ctrl> + v` by commenting out related config in `settings.json` which can be opened from the buttom left gear icon of Windows Terminal Settings page. You will still be able to use `<Ctrl> + <Shift> + c` and `<Ctrl> + <Shift> + v` for copying and pasting.
 
       ```
           "actions": 
@@ -363,7 +358,7 @@
           ],
       ```
 
-   2. Prevent from window being closed when pressing `<CTRL> + <SHIFT> + w` by add the following content to `settings.json`.
+   2. Prevent from window being closed when pressing `<Ctrl> + <Shift> + w` by add the following content to `settings.json`.
 
       ```
           "actions":
@@ -377,7 +372,7 @@
           ],
       ```
 
-   3. Resolve the key mapping conflict of `<CTRL> + <SHIFT> + 6` in Neovim by add the following content to `settings.json`.
+   3. Resolve the key mapping conflict of `<Ctrl> + <Shift> + 6` in Neovim/Vim by adding the following contents to `settings.json`.
 
       ```
           "actions":
@@ -411,35 +406,47 @@
           }
       ```
 
-   5. Config the terminal to use the font Hack NF.
+   5. Set "MINGW64 / MSYS -Zsh" as the default profile from Startup > Default profile.
 
-6. Install **official** [Python3](https://www.python.org/downloads/) with **Add Python <version> to PATH** option checked.
+   6. Config the terminal to use the font "Hack NF" and set your prefered text color scheme in Profiles > MINGW64 / MSYS -Zsh.
+
+6. Install **official** [Python3](https://www.python.org/downloads/) (make sure you download the installer from the official Python website) with **Add Python <version> to PATH** option checked.
 
 7. Pre-installation
 
-   1. Open a `MINGW64 / MSYS2 - Zsh` tab in `Windows Terminal`.
+   1. Open a "MINGW64 / MSYS2 - Zsh" tab in Windows Terminal.
 
    2. Select `0` to create an empty `~/.zshrc`
 
-   3. Unset empty `$tmp` and `$temp`
+   3. Unset empty `$tmp` and `$temp`.
 
       ```
       unset tmp temp
       ```
 
-   4. Enable symlink support for Git
+      Note: Empty `$tmp` and `$temp` environment variables are extremely error-prone on Windows. And it's difficult to identify the inroduced errors.
+
+   4. Enable symlink support for Git. This is necessary for the installation of this dotfiles.
 
       ```
       git config --global core.symlinks true
       ```
-   5. Text files inside dotfiles need to use `LF` as line endings. Don't let Git convert them to `CRLF` on Windows.
+
+   5. Text files inside dotfiles need to use `LF` as line endings. Don't let Git convert line endings to `CRLF` on Windows.
 
       ```
       git config --global core.autocrlf input
       git config --global core.safecrlf warn
       ```
 
-   6. Open an **elevated** (Run as administrator) **PowerShell** session and execute the following command. After the execution, you may need to restart your computer.
+   6. Remove unnecessary start-up scripts to speed up the shell launching.
+
+      ```
+      mv /etc/profile.d/git-prompt.sh{,.bak}
+      mv /etc/profile.d/git-sdk.sh{,.bak}
+      ```
+
+   7. Open an **elevated** (Run as administrator) **PowerShell** session and execute the following command. So that you can use `fsutil` in the later process. After the execution, you may need to restart your computer.
 
       ```
       Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
@@ -449,7 +456,7 @@
 
 ### Installation
 
-1. `git clone` this repo in `$HOME` and `cd` into it. **Note**: The `dotfiles` folder has to be put at `${HOME}/dotfiles`.
+1. `git clone` this repo in `$HOME` and `cd` into it. **Note**: The `dotfiles` folder **has to** be put at `${HOME}/dotfiles`. Do not rename `dotfiles` or change the parent folders.
 
    ```
    cd $HOME
@@ -457,7 +464,7 @@
    cd dotfiles
    ```
 
-2. [**Windows Only**][**Optional**] Enable case sensitive support for sub-modules from a **PowerShell** session if this dotfiles is stored on an **NTFS** volume.
+2. [**Windows Only**|**Optional**] Enable case sensitive support for sub-modules from a **PowerShell** session if this dotfiles is stored on an **NTFS** volume.
 
    ```
    cd $HOME\dotfiles\3rdparty
@@ -470,17 +477,17 @@
    git submodule update --init --recursive --remote
    ```
 
-4. Install. For **Windows** users, after executing `install.sh`, you'll need to exit the Windows Terminal and open it again before going to the next step.
+4. Install. For **Windows** users, after executing `install.sh`, you'll need to terminate all the sessions and exit Windows Terminal. Then reopen it for the next step.
 
    ```
    ./install.sh
    ```
 
-5. Execute `tmux` (`script -c tmux /dev/null` in **Windows Terminal**) and press `<CTRL> + s` `I` to install plugins of tmux. (May take a few minutes.)
+5. Execute `tmux` (the command is `script -c tmux /dev/null` when using **Windows Terminal**) and press `<Ctrl> + s` `I` to install plugins of tmux. It may take a few minutes. Please expect `tmux` frozen during the installation.
 
 6. Execute `nvim` and then `:PackerInstall` to install plugins of Neovim. You may need to execute other commands for installing dependencies of some plugins. Please follow the hints you see in Neovim.
 
-   * You can use `:PackerSync` to update the installed plugins in the future. But please do **NOT** remove `<nvim-config>/site/pack/packer/start/packer.nvim` during syncing.
+   * You can use `:PackerSync` to update the installed plugins in the future. But please make sure you do **NOT** remove packer.nvim package manager (`<nvim-config>/site/pack/packer/start/packer.nvim`) during the syncing process.
 
 ### Optional Tweak
 
@@ -489,18 +496,7 @@
 
 #### Ubuntu
 
-1. Key remapping for REALFORCE for Mac:
-
-    a. Config udev:
-
-       ```
-       sudo cp ubuntu/etc/udev/rules.d/1000-key-remapping-for-realforce-for-mac.rules /etc/udev/rules.d
-       sudo udevadm control --reload
-       ```
-
-    b. In `Startup Applications Preferences`, add an item that executes "$HOME/dotfiles/scripts/ubuntu/swap-option-and-command-for-realforce-for-mac.sh"
-
-2. Install fcitx to replace iBus.
+1. Install fcitx to replace iBus:
 
     a. ```
        sudo apt install fcitx-chewing fcitx-table-boshiamy
@@ -510,9 +506,22 @@
     d. Remove the hotkey for switching input source in `gnome-control-center` > Keyboard Shortcuts > Typing.
     e. Replace the hotkey for Trigger Input Method to Super + Space in `fcitx-configtool` > Global Config > Hotkey > Trigger Input Method.
 
+2. Key remapping for REALFORCE for Mac keyboard:
+
+    a. Config udev:
+
+       ```
+       sudo cp ubuntu/etc/udev/rules.d/1000-key-remapping-for-realforce-for-mac.rules /etc/udev/rules.d
+       sudo udevadm control --reload
+       ```
+
+    b. In `Startup Applications Preferences`, add an item that executes "$HOME/dotfiles/bin/linux/swap-option-and-command-for-realforce-for-mac.sh"
+
 #### Windows
 
-1. Swap caps lock and left control.
+1. Make Windows Terminal tab switching in `MRU` order. Reference: [Open next tab](https://docs.microsoft.com/en-us/windows/terminal/customize-settings/actions#open-next-tab), [Open previous tab](https://docs.microsoft.com/en-us/windows/terminal/customize-settings/actions#open-previous-tab) and [#8025](https://github.com/microsoft/terminal/issues/8025).
+
+2. Swap caps lock and left control.
 
    ```
    Windows Registry Editor Version 5.00
@@ -523,8 +532,6 @@
    ; Refs:
    ; https://superuser.com/a/1381836
    ```
-
-2. Make Windows Terminal tab switching order in `MRU`.
 
 </details>
 
@@ -544,3 +551,5 @@ rm -rf dotfiles
 2. Tmux cannot be launched in Windows Terminal directly. Need to use `script -c tmux /dev/null` as workaround ([source](https://github.com/csdvrx/sixel-tmux)). [#5132](https://github.com/microsoft/terminal/issues/5132)
 
 ## To-Do
+
+1. Make dotfiles folder able to be put anywhere on the filesystem instead of only `${HOME}/dotfiles`.
