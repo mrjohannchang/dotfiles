@@ -34,8 +34,8 @@
   * [Neovim](https://en.wikipedia.org/wiki/Vim_(text_editor)#Neovim) over [Vi IMproved (Vim)](https://en.wikipedia.org/wiki/Vim_(text_editor)).
   * [ripgrep](https://github.com/BurntSushi/ripgrep) over [grep](https://en.wikipedia.org/wiki/Grep).
   * [fd](https://github.com/sharkdp/fd) over [find](https://en.wikipedia.org/wiki/Find_(Unix)).
-
 * **Lightweight** - Balanced between performance and numbers of features.
+  * Specifically, I don't want to make Neovim an IDE but just a text editor. There are already [JetBrains](https://www.jetbrains.com/) and [VS Code](https://code.visualstudio.com/). So I mainly choose plugins that help on text editing but not focus on adding semantic support.
 * **Pure** - Only putting symbolic links of config files to the system. No modification to existing system files.
 * **Configurable**
   * Support both light and dark background. Further reading: [Is Dark Mode Better for Your Eyes?](https://rxoptical.com/eye-health/is-dark-mode-better-for-your-eyes/)
@@ -56,6 +56,8 @@
 
 ### Z Shell (zsh)
 
+1. The current setup is blazingly fast.
+
 #### Z Shell Plugins
 
 1. [romkatv/powerlevel10k](https://github.com/romkatv/powerlevel10k)
@@ -73,16 +75,17 @@
 
 ### Neovim (nvim)
 
-1. Reselect visual block after indent/outdent.
-2. Enable moving up and down with j and k in wrapped lines.
-3. Clear the search highlight with `<LEADER>` `/`.
-4. Saving files as root with `w!!`.
-5. Better command-line editing.
+1. The current setup is blazingly fast.
+2. Reselect visual block after indent/outdent.
+3. Enable moving up and down with j and k in wrapped lines.
+4. Clear the search highlight with `<LEADER>` `/`.
+5. Saving files as root with `w!!`.
+6. Better command-line editing.
    1. `<CTRL> + j` and `<CTRL> + k` move to lines that have identical prefixes.
    2. `<CTRL> + a` and `<CTRL> + e` move to the beginning and the end of the line.
-6. Toggle paste mode with `<F2>`.
+7. Toggle paste mode with `<F2>`.
    1. Leave paste mode on leaving insert mode
-7. Comment.nvim
+8. Comment.nvim
    * NORMAL mode
      1. `g` `c` `c` - Toggles the current line using linewise comment
      2. `g` `b` `c` - Toggles the current line using blockwise comment
@@ -96,7 +99,7 @@
    * VISUAL mode
      1. `g` `c` - Toggles the region using linewise comment
      2. `g` `b` - Toggles the region using blockwise comment
-8. Telescope
+9. Telescope
    1. Find: `<LEADER>` `f` `f`
    2. Grep: `<LEADER>` `f` `g`
    3. Buffers: `<LEADER>` `f` `b`
@@ -122,6 +125,7 @@
 5. Tmux Resurrect key bindings:
    1. Save: `s`
    2. Restore: `r`
+6. Go through installed plugins for more features.
 
 #### Tmux Plugins
 
@@ -233,7 +237,7 @@
 
 2. Enable the [long file path support](https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=cmd) from: Start > Local Group Policy Editor > Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem > Enable Win32 long paths
 
-3. Follow the official [doc](https://www.msys2.org/#installation) to download and install [MSYS2](https://en.wikipedia.org/wiki/MinGW#Fork) (msys2-x86_64).
+3. Follow the official [doc](https://www.msys2.org/#installation) to download and install [MSYS2](https://en.wikipedia.org/wiki/MinGW#Fork) (msys2-x86_64). And then
 
    1. Enable the symbolic link support in MSYS2 by uncommenting the following line in `C:\msys64\msys2_shell.cmd`
 
@@ -265,7 +269,7 @@
       C:/Users /home ntfs binary,posix=0,noacl,user 0 0
       ```
 
-   5. [Install Git for Windows](https://github.com/git-for-windows/git/wiki/Install-inside-MSYS2-proper) via MSYS2.
+   5. [Install Git for Windows](https://github.com/git-for-windows/git/wiki/Install-inside-MSYS2-proper) via MSYS2 with the following instructions.
 
       1. Add the Git for Windows package repositories above any others (i.e. just before `[mingw32]` on line #68 as of this writing) to `C:\msys64\etc\pacman.conf`:
 
@@ -311,6 +315,13 @@
 
       ```
       pacman -Sy mingw-w64-x86_64-connect man tmux zsh
+      ```
+
+   7. Remove unnecessary start-up scripts to speed up the shell launching.
+
+      ```
+      mv /etc/profile.d/git-prompt.sh{,.bak}
+      mv /etc/profile.d/git-sdk.sh{,.bak}
       ```
 
 4. Install [Scoop](https://scoop.sh/). Execute the following commands in a [PowerShell](https://en.wikipedia.org/wiki/PowerShell) Session.
@@ -528,12 +539,8 @@ rm -rf dotfiles
 
 ## Known Issues
 
-1. Neovim cannot be launched properly inside Windows tmux or MSYS2. Need to switch back to Vim for these environments. [#6751](https://github.com/neovim/neovim/issues/6751) [#8271](https://github.com/neovim/neovim/pull/8271) [#11112](https://github.com/neovim/neovim/issues/11112)
+1. Neovim cannot be launched properly inside Windows tmux or MinTTY. Need to switch back to Vim for these environments. [#6751](https://github.com/neovim/neovim/issues/6751) [#8271](https://github.com/neovim/neovim/pull/8271) [#11112](https://github.com/neovim/neovim/issues/11112)
 
 2. Tmux cannot be launched in Windows Terminal directly. Need to use `script -c tmux /dev/null` as workaround ([source](https://github.com/csdvrx/sixel-tmux)). [#5132](https://github.com/microsoft/terminal/issues/5132)
 
-
 ## To-Do
-
-* [ ] Add https://github.com/alacritty/alacritty support.
-* [ ] Add instructions for installing pyenv, nvm on Windows.
