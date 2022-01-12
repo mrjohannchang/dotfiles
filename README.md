@@ -107,8 +107,9 @@
 1. [Comment.nvim](https://github.com/numToStr/Comment.nvim)
 2. [coq_nvim](https://github.com/ms-jpq/coq_nvim)
 3. [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-4. [packer.nvim](https://github.com/wbthomason/packer.nvim)
-5. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+4. [nvim-solarized-lua](https://github.com/ishan9299/nvim-solarized-lua)
+5. [packer.nvim](https://github.com/wbthomason/packer.nvim)
+6. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 
 ### Tmux
 
