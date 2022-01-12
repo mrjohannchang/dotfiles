@@ -459,7 +459,7 @@
 1. `git clone` this repo in `$HOME` and `cd` into it. **Note**: The `dotfiles` folder **has to** be put at `${HOME}/dotfiles`. Do not rename `dotfiles` or change the parent folders.
 
    ```
-   cd $HOME
+   cd ~
    git clone https://github.com/changyuheng/dotfiles.git
    cd dotfiles
    ```
@@ -467,7 +467,7 @@
 2. [**Windows Only**|**Optional**] Enable case sensitive support for sub-modules from a **PowerShell** session if this dotfiles is stored on an **NTFS** volume.
 
    ```
-   cd $HOME\dotfiles\3rdparty
+   cd ~\dotfiles\3rdparty
    (Get-ChildItem -Recurse -Directory).FullName | ForEach-Object {fsutil.exe file setCaseSensitiveInfo $_ enable}
    ```
 
@@ -515,7 +515,7 @@
        sudo udevadm control --reload
        ```
 
-    b. In `Startup Applications Preferences`, add an item that executes "$HOME/dotfiles/bin/linux/swap-option-and-command-for-realforce-for-mac.sh"
+    b. In `Startup Applications Preferences`, add an item that executes "${HOME}/dotfiles/bin/linux/swap-option-and-command-for-realforce-for-mac.sh"
 
 #### Windows
 
