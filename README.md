@@ -464,7 +464,7 @@
    ./install.sh
    ```
 
-5. Execute `tmux` (`script -c tmux /dev/null` on **Windows**) and press `<CTRL> + s` `I` to install plugins of tmux.
+5. Execute `tmux` (`script -c tmux /dev/null` in **Windows Terminal**) and press `<CTRL> + s` `I` to install plugins of tmux.
 
 6. Execute `nvim` and then `:PackerInstall` to install plugins of Neovim. You may need to execute other commands for installing dependencies of some plugins. Please follow the hints you see in Neovim.
 
