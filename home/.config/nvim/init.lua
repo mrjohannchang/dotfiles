@@ -17,6 +17,8 @@ vim.opt.number = true
 
 vim.opt.splitbelow = true
 
+vim.opt.termguicolors = true
+
 vim.opt.wrap = false
 -- }
 
@@ -51,6 +53,11 @@ require('packer').startup(function(use)
   use {
     "nvim-lualine/lualine.nvim",
     requires = { { "kyazdani42/nvim-web-devicons" } },
+  }
+
+  use {
+    "ishan9299/nvim-solarized-lua",
+    config = "vim.cmd[[colorscheme solarized]]"
   }
 
   use {
@@ -114,6 +121,11 @@ vim.api.nvim_command("autocmd InsertLeave * set nopaste")
 require "lualine".setup {
   options = { theme  = "solarized_light" },
 }
+-- }
+
+
+-- nvim-solarized-lua {
+vim.g.solarized_termtrans = 1
 -- }
 
 
