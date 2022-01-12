@@ -534,5 +534,5 @@ rm -rf dotfiles
 
 ## To-Do
 
-1. Add instructions for installing pyenv, nvm on Windows.
-2. Add https://github.com/alacritty/alacritty support.
+* [ ] Add https://github.com/alacritty/alacritty support.
+* [ ] Add instructions for installing pyenv, nvm on Windows.
