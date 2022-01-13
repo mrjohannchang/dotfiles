@@ -233,7 +233,7 @@
 <details>
   <summary>Click to expand</summary>
 
-1. `$HOME` (`%USERPROFILE%`) folder on an [NTFS](https://en.wikipedia.org/wiki/NTFS) volume.
+1. `$HOME` (`%USERPROFILE%`) folder **has to** be on an [NTFS](https://en.wikipedia.org/wiki/NTFS) volume.
 
 2. [Activate Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development) from: Start > Settings > Update & Security > For developers > Developer Mode. Enabling this feature will enable the symbolic link support.
 
