@@ -233,11 +233,13 @@
 <details>
   <summary>Click to expand</summary>
 
-1. [Activate Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development) from: Start > Settings > Update & Security > For developers > Developer Mode. Enabling this feature will enable the symbolic link support.
+1. `$HOME` folder (`%USERPROFILE%`) on an [NTFS](https://en.wikipedia.org/wiki/NTFS) volume.
 
-2. Enable the [long file path support](https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=cmd) from: Start > Local Group Policy Editor > Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem > Enable Win32 long paths
+2. [Activate Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development) from: Start > Settings > Update & Security > For developers > Developer Mode. Enabling this feature will enable the symbolic link support.
 
-3. Follow the official [doc](https://www.msys2.org/#installation) to download and install [MSYS2](https://en.wikipedia.org/wiki/MinGW#Fork) (msys2-x86_64). And then
+3. Enable the [long file path support](https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=cmd) from: Start > Local Group Policy Editor > Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem > Enable Win32 long paths
+
+4. Follow the official [doc](https://www.msys2.org/#installation) to download and install [MSYS2](https://en.wikipedia.org/wiki/MinGW#Fork) (msys2-x86_64). And then
 
    1. Enable the symbolic link support in MSYS2 by uncommenting the following line in `C:\msys64\msys2_shell.cmd`
 
@@ -319,7 +321,7 @@
       pacman -Sy mingw-w64-x86_64-connect man tmux zsh
       ```
 
-4. Install [Scoop](https://scoop.sh/) package manager. Execute the following commands in a **regular** [PowerShell](https://en.wikipedia.org/wiki/PowerShell) Session.
+5. Install [Scoop](https://scoop.sh/) package manager. Execute the following commands in a **regular** [PowerShell](https://en.wikipedia.org/wiki/PowerShell) Session.
 
    ```
    Set-ExecutionPolicy RemoteSigned -scope CurrentUser
@@ -334,7 +336,7 @@
      scoop install vcredist2015 neovim Hack-NF fd ripgrep universal-ctags fzf zoxide
      ```
 
-5. Install [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/) from Windows Store. And then do the following configurations:
+6. Install [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/) from Windows Store. And then do the following configurations:
 
    1. Disable copy & paste mappings to `<Ctrl> + c` and `<Ctrl> + v` by commenting out related config in `settings.json` which can be opened from the buttom left gear icon of Windows Terminal Settings page. You will still be able to use `<Ctrl> + <Shift> + c` and `<Ctrl> + <Shift> + v` for copying and pasting.
 
@@ -410,9 +412,9 @@
 
    6. Config the terminal to use the font "Hack NF" and set your prefered text color scheme in Profiles > MINGW64 / MSYS -Zsh.
 
-6. Install **official** [Python3](https://www.python.org/downloads/) (make sure you download the installer from the official Python website) with **Add Python <version> to PATH** option checked.
+7. Install **official** [Python3](https://www.python.org/downloads/) (make sure you download the installer from the official Python website) with **Add Python <version> to PATH** option checked.
 
-7. Pre-installation
+8. Pre-installation
 
    1. Open a "MINGW64 / MSYS2 - Zsh" tab in Windows Terminal.
 
@@ -464,7 +466,7 @@
    cd dotfiles
    ```
 
-2. [**Windows Only**|**Optional**] Enable case sensitive support for sub-modules from a **PowerShell** session if this dotfiles is stored on an **NTFS** volume.
+2. [**Windows Only**] Enable case sensitive support for sub-modules from a regular **PowerShell** session
 
    ```
    cd ~\dotfiles\3rdparty
