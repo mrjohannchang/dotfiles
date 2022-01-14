@@ -102,7 +102,7 @@ install() {
     bg=light
   fi
 
-  mkdir_and_check "${DOTFILES_DIR}/3rdparty/zsh-snap-plugins"
+  mkdir_and_check "${DOTFILES_DIR}/3rdparties/zsh-snap-plugins"
   mkdir_and_check "${HOME}/.config"
   mkdir_and_check "${HOME}/bin.d"
   mkdir_and_check "${HOME}/.config/nvim"
@@ -210,8 +210,8 @@ EOF
       # FIXME: this workaround exists as Neovim doesn't take 2-level symlinks (
       #        ~/.local/share/nvim-data/site/pack/packer/start/packer.nvim ->
       #          ~/dotfiles/home/.local/share/nvim-data/site/pack/packer/start/packer.nvim ->
-      #            ~/dotfiles/3rdparty/packer.nvim)
-      ln -s "${DOTFILES_DIR}/3rdparty/packer.nvim" "${HOME}/.local/share/nvim-data/site/pack/packer/start/packer.nvim"
+      #            ~/dotfiles/3rdparties/packer.nvim)
+      ln -s "${DOTFILES_DIR}/3rdparties/packer.nvim" "${HOME}/.local/share/nvim-data/site/pack/packer/start/packer.nvim"
       ;;
     *)
       install_target "home/.local/share/nvim/site/pack/packer/start/packer.nvim"

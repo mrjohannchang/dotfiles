@@ -469,7 +469,7 @@
 2. [**Windows Only**] Enable case sensitive support for sub-modules from a regular **PowerShell** session
 
    ```
-   cd ~\dotfiles\3rdparty
+   cd ~\dotfiles\3rdparties
    (Get-ChildItem -Recurse -Directory).FullName | ForEach-Object {fsutil.exe file setCaseSensitiveInfo $_ enable}
    ```
 

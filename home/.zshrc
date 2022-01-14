@@ -97,9 +97,9 @@ fi
 
 # Znap {
 # TODO: Remove the dependency on hard-coded path to ${HOME}/dotfiles
-if [ -r "${HOME}/dotfiles/3rdparty/zsh-snap/znap.zsh" ]; then
-  zstyle ':znap:*' repos-dir "${HOME}/dotfiles/3rdparty/zsh-snap-plugins"
-  source "${HOME}/dotfiles/3rdparty/zsh-snap/znap.zsh"
+if [ -r "${HOME}/dotfiles/3rdparties/zsh-snap/znap.zsh" ]; then
+  zstyle ':znap:*' repos-dir "${HOME}/dotfiles/3rdparties/zsh-snap-plugins"
+  source "${HOME}/dotfiles/3rdparties/zsh-snap/znap.zsh"
 
   znap prompt romkatv/powerlevel10k
 

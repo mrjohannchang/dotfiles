@@ -1,18 +1,18 @@
 [submodule "bin"]
-	path = 3rdparty/bin-changyuheng
+	path = 3rdparties/bin-changyuheng
 	url = https://github.com/changyuheng/bin.git
 [submodule "dircolors-solarized"]
-	path = 3rdparty/dircolors-solarized
+	path = 3rdparties/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
 [submodule "open-huninn-font"]
-	path = 3rdparty/open-huninn-font
+	path = 3rdparties/open-huninn-font
 	url = https://github.com/justfont/open-huninn-font.git
 [submodule "packer.nvim"]
-	path = 3rdparty/packer.nvim
+	path = 3rdparties/packer.nvim
 	url = https://github.com/wbthomason/packer.nvim.git
 [submodule "tpm"]
-	path = 3rdparty/tpm
+	path = 3rdparties/tpm
 	url = https://github.com/tmux-plugins/tpm.git
 [submodule "zsh-snap"]
-	path = 3rdparty/zsh-snap
+	path = 3rdparties/zsh-snap
 	url = https://github.com/marlonrichert/zsh-snap.git
