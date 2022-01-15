@@ -60,6 +60,8 @@ require('packer').startup(function(use)
     config = "vim.cmd[[colorscheme solarized]]"
   }
 
+  use { "tpope/vim-surround" }
+
   use {
     "nvim-telescope/telescope.nvim",
     requires = { { "nvim-lua/plenary.nvim" } },
