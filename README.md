@@ -422,11 +422,17 @@
 
 8. Pre-installation
 
-   1. Open a "MINGW64 / MSYS2 - Zsh" tab in Windows Terminal.
+   1. Open an **elevated** (Run as administrator) **PowerShell** session and execute the following command. So that you can use `fsutil` in the later process. After the execution, you may need to restart your computer.
 
-   2. Select `0` to create an empty `~/.zshrc`
+      ```
+      Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+      ```
 
-   3. Unset empty `$tmp` and `$temp`.
+   2. Open a "MINGW64 / MSYS2 - Zsh" tab in Windows Terminal.
+
+   3. Select `0` to create an empty `~/.zshrc`
+
+   4. Unset empty `$tmp` and `$temp`.
 
       ```
       unset tmp temp
@@ -434,31 +440,27 @@
 
       Note: Empty `$tmp` and `$temp` environment variables are extremely error-prone on Windows. And it's difficult to identify the inroduced errors.
 
-   4. Enable symlink support for Git. This is necessary for the installation of this dotfiles.
+   5. Enable symlink support for Git. This is necessary for the installation of this dotfiles.
 
       ```
       git config --global core.symlinks true
       ```
 
-   5. Text files inside dotfiles need to use `LF` as line endings. Don't let Git convert line endings to `CRLF` on Windows.
+   6. Text files inside dotfiles need to use `LF` as line endings. Don't let Git convert line endings to `CRLF` on Windows.
 
       ```
       git config --global core.autocrlf input
       git config --global core.safecrlf warn
       ```
 
-   6. Remove unnecessary start-up scripts to speed up the shell launching.
+   7. Remove unnecessary start-up scripts to speed up the shell launching.
 
       ```
       mv /etc/profile.d/git-prompt.sh{,.bak}
       mv /etc/profile.d/git-sdk.sh{,.bak}
       ```
 
-   7. Open an **elevated** (Run as administrator) **PowerShell** session and execute the following command. So that you can use `fsutil` in the later process. After the execution, you may need to restart your computer.
-
-      ```
-      Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-      ```
+   8. Go to [Installation](#installation)
 
 </details>
 
