@@ -91,8 +91,8 @@
      2. `g` `b` `c` - Toggles the current line using blockwise comment
      3. `[count]` `g` `c` `c` - Toggles the number of line given as a prefix-count using linewise
      4. `[count]` `g` `b` `c` - Toggles the number of line given as a prefix-count using blockwise
-     5. `g` `c` `[count]` `{motion}` - (Op-pending) Toggles the region using linewise comment
-     6. `g` `b` `[count]` `{motion}` - (Op-pending) Toggles the region using linewise comment
+     5. `g` `c` `[count]` `<motion>` - (Op-pending) Toggles the region using linewise comment
+     6. `g` `b` `[count]` `<motion>` - (Op-pending) Toggles the region using linewise comment
      7. `g` `c` `o` - Insert comment to the next line and enters INSERT mode
      8. `g` `c` `O` - Insert comment to the previous line and enters INSERT mode
      9. `g` `c` `A` - Insert comment to end of the current line and enters INSERT mode
@@ -104,6 +104,11 @@
    2. Grep: `<Leader>` `f` `g`
    3. Buffers: `<Leader>` `f` `b`
    4. Help tags: `<Leader>` `f` `h`
+10. surround.vim
+    1. `y` `s` `<motion>` `<desired>` - Add desired surround around text defined by `<motion>`
+    2. `d` `s` `<existing>` - Delete `<existing>` surround
+    3. `c` `s` `<existing>` `<desired>` - Change `<existing>` surround to `<desired>`
+    4. `S` `<desired>` - Surround when in visual modes (surrounds full selection)
 
 #### Neovim Plugins
 
@@ -112,7 +117,8 @@
 3. [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 4. [nvim-solarized-lua](https://github.com/ishan9299/nvim-solarized-lua)
 5. [packer.nvim](https://github.com/wbthomason/packer.nvim)
-6. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+6. [surround.vim](https://github.com/tpope/vim-surround)
+7. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 
 ### Tmux
 
