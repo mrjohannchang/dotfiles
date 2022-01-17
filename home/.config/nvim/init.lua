@@ -132,10 +132,27 @@ vim.g.solarized_termtrans = 1
 
 
 -- telescope.nvim {
-vim.api.nvim_set_keymap("n", "<LEADER>ff", "<CMD>lua require('telescope.builtin').find_files()<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<LEADER>fg", "<CMD>lua require('telescope.builtin').live_grep()<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<LEADER>fb", "<CMD>lua require('telescope.builtin').buffers({ sort_mru = true })<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<LEADER>fh", "<CMD>lua require('telescope.builtin').help_tags()<CR>", { noremap = true })
+vim.api.nvim_set_keymap(
+  "n", "<LEADER>ff", "<CMD>lua require('telescope.builtin').find_files()<CR>", { noremap = true })
+vim.api.nvim_set_keymap(
+  "n", "<LEADER>fg", "<CMD>lua require('telescope.builtin').live_grep()<CR>", { noremap = true })
+vim.api.nvim_set_keymap(
+  "n", "<LEADER>fb", "<CMD>lua require('telescope.builtin').buffers({ sort_mru = true })<CR>", { noremap = true })
+vim.api.nvim_set_keymap(
+  "n", "<LEADER>fh", "<CMD>lua require('telescope.builtin').help_tags()<CR>", { noremap = true })
+
+require('telescope').setup {
+  defaults = {
+    -- Default configuration for telescope goes here:
+    -- config_key = value,
+    -- ..
+    mappings = {
+      n = {
+        ['dd'] = require('telescope.actions').delete_buffer
+      }
+    }
+  }
+}
 -- }
 
 

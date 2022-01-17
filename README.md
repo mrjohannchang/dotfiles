@@ -104,6 +104,7 @@
    2. Grep: `<Leader>` `f` `g`
    3. Buffers: `<Leader>` `f` `b`
    4. Help tags: `<Leader>` `f` `h`
+   5. Delete the highlighted buffer: `d` `d` (in normal mode)
 10. surround.vim
     1. `y` `s` `<motion>` `<desired>` - Add desired surround around text defined by `<motion>`
     2. `d` `s` `<existing>` - Delete `<existing>` surround
