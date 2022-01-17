@@ -148,7 +148,9 @@ require('telescope').setup {
     -- ..
     mappings = {
       n = {
-        ['dd'] = require('telescope.actions').delete_buffer
+        ['<ESC>'] = false,
+        ['dd'] = require('telescope.actions').delete_buffer,
+        ['q'] = require('telescope.actions').close,
       }
     }
   }

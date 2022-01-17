@@ -100,11 +100,12 @@
      1. `g` `c` - Toggles the region using linewise comment
      2. `g` `b` - Toggles the region using blockwise comment
 9. Telescope
-   1. Find: `<Leader>` `f` `f`
-   2. Grep: `<Leader>` `f` `g`
-   3. Buffers: `<Leader>` `f` `b`
-   4. Help tags: `<Leader>` `f` `h`
-   5. Delete the highlighted buffer: `d` `d` (in normal mode)
+   1. Close the telescope window: `q`
+   2. Delete the highlighted buffer: `d` `d`
+   3. Find: `<Leader>` `f` `f`
+   4. Grep: `<Leader>` `f` `g`
+   5. Buffers: `<Leader>` `f` `b`
+   6. Help tags: `<Leader>` `f` `h`
 10. surround.vim
     1. `y` `s` `<motion>` `<desired>` - Add desired surround around text defined by `<motion>`
     2. `d` `s` `<existing>` - Delete `<existing>` surround
