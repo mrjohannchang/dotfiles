@@ -166,7 +166,7 @@
    Note: zoxide only exists in 21.04+
 
    ```
-   sudo apt install build-essential cmake git golang tmux python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf xsel zoxide
+   sudo apt install build-essential cmake git git-lfs golang tmux python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf xsel zoxide
    ```
 
 2. Change default shell to [Zsh](https://www.zsh.org/).
@@ -219,7 +219,7 @@
 2. Install necessary packages.
 
    ```
-   brew install bash zsh cmake ctags go nvm pyenv python3 coreutils fd ripgrep tmux trash fzf neovim gotags zoxide
+   brew install bash zsh git-lfs cmake ctags go nvm pyenv python3 coreutils fd ripgrep tmux trash fzf neovim gotags zoxide
 
    brew tap homebrew/cask-fonts
    brew install font-hack-nerd-font
@@ -320,7 +320,7 @@
       6. And finally install the packages containing Git, its documentation and some extra things:
 
          ```
-         pacman -S mingw-w64-x86_64-{git,git-doc-html,git-doc-man} git-extra
+         pacman -S mingw-w64-x86_64-{git,git-doc-html,git-doc-man,git-lfs} git-extra
          ```
 
    6. Install necessary packages in `MSYS2 MinGW x64`.
