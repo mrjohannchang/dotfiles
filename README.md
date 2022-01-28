@@ -500,7 +500,7 @@
 
 5. Execute `tmux` (the command is `script -c tmux /dev/null` when using **Windows Terminal**) and press `<Ctrl> + s` `I` (uppercase i) to install plugins of tmux. It may take a few minutes. Please expect `tmux` frozen during the installation.
 
-6. Execute `nvim` and then `:PackerInstall` to install plugins of Neovim. You may need to execute other commands for installing dependencies of some plugins. Please follow the hints you see in Neovim.
+6. Execute `nvim` and then `:PackerInstall` to install plugins of Neovim. Do **NOT** remove packer.nvim package manager (`<nvim-config>/site/pack/packer/start/packer.nvim`). You may need to execute other commands for installing dependencies of some plugins. Please follow the hints you see in Neovim.
 
    * You can use `:PackerSync` to update the installed plugins in the future. But please make sure you do **NOT** remove packer.nvim package manager (`<nvim-config>/site/pack/packer/start/packer.nvim`) during the syncing process.
 
