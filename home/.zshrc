@@ -148,9 +148,9 @@ fi
 
 
 # Workaround {
-# Fix empty tmp env that causes CMake compiling failed on Windows
 case "${OSTYPE:l}" in
   cygwin*|msys*)
+    # Fix empty tmp env that causes CMake compiling failed on Windows
     [ -n "$tmp" ] || {
       unset tmp
     }
@@ -169,6 +169,10 @@ case "${OSTYPE:l}" in
     if [ -n "$temp" -a -n "TEMP" ]; then
       unset temp
     fi
+
+    # Fix Home End key settings that stop them from acting as expected on Windows Terminal
+    bindkey "^[[1~" beginning-of-line
+    bindkey "^[[4~" end-of-line
     ;;
 esac
 # }
