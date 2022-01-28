@@ -245,7 +245,7 @@
 
 2. [Activate Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development) from: Start > Settings > Update & Security > For developers > Developer Mode. Enabling this feature will enable the symbolic link support.
 
-3. Install OpenSSH Client from: Start > Settings > Apps > Apps & Features > Optional Features
+3. Install [OpenSSH Client](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse) from: Start > Settings > Apps > Apps & Features > Optional Features
 
 4. Enable the [long file path support](https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=cmd) from: Start > Local Group Policy Editor > Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem > Enable Win32 long paths
 
