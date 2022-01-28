@@ -245,9 +245,11 @@
 
 2. [Activate Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development) from: Start > Settings > Update & Security > For developers > Developer Mode. Enabling this feature will enable the symbolic link support.
 
-3. Enable the [long file path support](https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=cmd) from: Start > Local Group Policy Editor > Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem > Enable Win32 long paths
+3. Install OpenSSH Client from: Start > Settings > Apps > Apps & Features > Optional Features
 
-4. Download and install [MSYS2](https://www.msys2.org/#installation), then:
+4. Enable the [long file path support](https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=cmd) from: Start > Local Group Policy Editor > Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem > Enable Win32 long paths
+
+5. Download and install [MSYS2](https://www.msys2.org/#installation), then:
 
    1. Enable the symbolic link support in MSYS2 by uncommenting the following line in `C:\msys64\msys2_shell.cmd`
 
@@ -329,10 +331,10 @@
    6. Install necessary packages in `MSYS2 MinGW x64`.
 
       ```
-      pacman -Sy mingw-w64-x86_64-connect man tmux zsh
+      pacman -Sy man tmux zsh
       ```
 
-5. Install [Scoop](https://scoop.sh/) package manager. Execute the following commands in a **regular** [PowerShell](https://en.wikipedia.org/wiki/PowerShell) Session.
+6. Install [Scoop](https://scoop.sh/) package manager. Execute the following commands in a **regular** [PowerShell](https://en.wikipedia.org/wiki/PowerShell) Session.
 
    ```
    Set-ExecutionPolicy RemoteSigned -scope CurrentUser
@@ -347,7 +349,7 @@
      scoop install vcredist2015 neovim Hack-NF fd ripgrep universal-ctags fzf zoxide
      ```
 
-6. Install [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/) from Windows Store. And then do the following configurations:
+7. Install [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/) from Windows Store. And then do the following configurations:
 
    1. Disable copy & paste mappings to `<Ctrl> + c` and `<Ctrl> + v` by commenting out related config in `settings.json` which can be opened from the buttom left gear icon of Windows Terminal Settings page. You will still be able to use `<Ctrl> + <Shift> + c` and `<Ctrl> + <Shift> + v` for copying and pasting.
 
@@ -423,9 +425,9 @@
 
    6. Config the terminal to use the font "Hack NF" and set your prefered text color scheme in Profiles > MINGW64 / MSYS -Zsh.
 
-7. Install **official** [Python3](https://www.python.org/downloads/) (make sure you download the installer from the official Python website) with **Add Python <version> to PATH** option checked.
+8. Install **official** [Python3](https://www.python.org/downloads/) (make sure you download the installer from the official Python website) with **Add Python <version> to PATH** option checked.
 
-8. Pre-installation
+9. Pre-installation
 
    1. Open an **elevated** (Run as administrator) **PowerShell** session and execute the following command. So that you can use `fsutil` in the later process. After the execution, you may need to restart your computer.
 
