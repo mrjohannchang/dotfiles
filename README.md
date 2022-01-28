@@ -288,6 +288,9 @@
          ```
          [git-for-windows]
          Server = https://wingit.blob.core.windows.net/x86-64
+
+         [git-for-windows-mingw32]
+         Server = https://wingit.blob.core.windows.net/i686
          ```
 
       2. Open "MSYS2 MinGW x64" MinTTY (from Windows Start).
