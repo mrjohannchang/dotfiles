@@ -171,6 +171,11 @@ case "${OSTYPE:l}" in
     fi
 
     # Fix Home End key settings that stop them from acting as expected on Windows Terminal
+    # Source: https://superuser.com/a/589629/270174
+    # Related:
+    #   https://stackoverflow.com/q/8638012
+    #   https://stackoverflow.com/q/12382499
+    #   https://stackoverflow.com/q/161676
     bindkey "^[[1~" beginning-of-line
     bindkey "^[[4~" end-of-line
     ;;
