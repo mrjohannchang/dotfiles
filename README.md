@@ -380,8 +380,22 @@
           [
               ...
               {
-                  "command": null,
+                  "command": "unbound",
                   "keys": "ctrl+shift+w"
+              },
+              ...
+          ],
+      ```
+
+      Make `<Ctrl> + <F4>` close the current pane:
+
+      ```
+          "actions":
+          [
+              ...
+              {
+                  "command": "closePane",
+                  "keys": "ctrl+f4"
               },
               ...
           ],
@@ -394,7 +408,7 @@
           [
               ...
               {
-                  "command" : null,
+                  "command" : "unbound",
                   "keys": "ctrl+shift+6"
               },
               ...
