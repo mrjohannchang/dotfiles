@@ -104,7 +104,7 @@ if [ -r "${HOME}/dotfiles/3rdparties/zsh-snap/znap.zsh" ]; then
   znap prompt romkatv/powerlevel10k
 
   znap source ohmyzsh/ohmyzsh \
-    lib/{completion,history,key-bindings} \
+    lib/{clipboard,completion,functions,history,key-bindings,misc} \
     plugins/{docker-compose,nvm,pyenv,rvm}
   znap source zsh-users/zsh-autosuggestions
   znap source zsh-users/zsh-completions
