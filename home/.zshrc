@@ -84,17 +84,6 @@ fi
 # }
 
 
-# TODO: Move SSH agent out as a standalone plugin
-# Refresh SSH agent in case it was dead {
-if [ ! -z "$SSH_AUTH_SOCK" \
-    -a "$SSH_AUTH_SOCK" != "${HOME}/.ssh/agent_sock" ] ; then
-  unlink "${HOME}/.ssh/agent_sock" 2>/dev/null
-  ln -s "$SSH_AUTH_SOCK" "${HOME}/.ssh/agent_sock"
-  export SSH_AUTH_SOCK="${HOME}/.ssh/agent_sock"
-fi
-# }
-
-
 # Znap {
 # TODO: Remove the dependency on hard-coded path to ${HOME}/dotfiles
 if [ -r "${HOME}/dotfiles/3rdparties/zsh-snap/znap.zsh" ]; then
@@ -112,16 +101,9 @@ fi
 # }
 
 
-# zsh-autosuggestions {
-# Workaround for Random ←[?1h is showing
-# https://github.com/zsh-users/zsh-autosuggestions/issues/614
-unset ZSH_AUTOSUGGEST_USE_ASYNC
-# }
-
-
-# rvm {
-if [ -s "${HOME}/.rvm/scripts/rvm" ]; then
-  source "${HOME}/.rvm/scripts/rvm"
+# fd-find {
+if command -v fdfind &>/dev/null; then
+  alias fd=fdfind
 fi
 # }
 
@@ -133,10 +115,28 @@ fi
 # }
 
 
-# fd-find {
-if command -v fdfind &>/dev/null; then
-  alias fd=fdfind
+# rvm {
+if [ -s "${HOME}/.rvm/scripts/rvm" ]; then
+  source "${HOME}/.rvm/scripts/rvm"
 fi
+# }
+
+
+# TODO: Move SSH agent out as a standalone plugin
+# Refresh SSH agent in case it was dead {
+if [ ! -z "$SSH_AUTH_SOCK" \
+    -a "$SSH_AUTH_SOCK" != "${HOME}/.ssh/agent_sock" ] ; then
+  unlink "${HOME}/.ssh/agent_sock" 2>/dev/null
+  ln -s "$SSH_AUTH_SOCK" "${HOME}/.ssh/agent_sock"
+  export SSH_AUTH_SOCK="${HOME}/.ssh/agent_sock"
+fi
+# }
+
+
+# zsh-autosuggestions {
+# Workaround for Random ←[?1h is showing
+# https://github.com/zsh-users/zsh-autosuggestions/issues/614
+unset ZSH_AUTOSUGGEST_USE_ASYNC
 # }
 
 
