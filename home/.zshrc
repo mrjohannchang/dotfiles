@@ -108,6 +108,11 @@ fi
 # }
 
 
+# less {
+export LESS="$LESS --quit-if-one-screen --ignore-case --RAW-CONTROL-CHARS"
+# }
+
+
 # Python Poetry executables {
 if [ -d "${HOME}/.poetry/bin" ]; then
   export PATH="${HOME}/.poetry/bin:${PATH}"
