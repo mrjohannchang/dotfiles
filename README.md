@@ -354,7 +354,7 @@
    1. Disable copy & paste mappings to `<Ctrl> + c` and `<Ctrl> + v` by commenting out related config in `settings.json` which can be opened from the buttom left gear icon of Windows Terminal Settings page. You will still be able to use `<Ctrl> + <Shift> + c` and `<Ctrl> + <Shift> + v` for copying and pasting.
 
       ```
-          "actions": 
+          "actions":
           [
               ...
               {
@@ -552,7 +552,90 @@
 
 1. Make Windows Terminal tab switching in `MRU` order. Reference: [Open next tab](https://docs.microsoft.com/en-us/windows/terminal/customize-settings/actions#open-next-tab), [Open previous tab](https://docs.microsoft.com/en-us/windows/terminal/customize-settings/actions#open-previous-tab) and [#8025](https://github.com/microsoft/terminal/issues/8025).
 
-2. Swap caps lock and left control.
+2. OpenSSH server.
+
+   1. Install
+
+      **Windows 11**
+
+      1. Go to *Apps > Optional features* and click on *View features*.
+      2. Locate *“OpenSSH server”* feature, select it, click *Next*, and then click *Install*.
+
+      **Windows 10 (version 1803 and newer)**
+
+      1. Go to *Apps > Apps & features > Optional features* and click on *Add a feature*.
+      2. Locate *“OpenSSH server”* feature, expand it, and select *Install*.
+
+      **Manual**
+
+      1. Download the latest [OpenSSH for Windows binaries](https://github.com/PowerShell/Win32-OpenSSH/releases) (package `OpenSSH-Win64.zip`)
+
+      2. As the Administrator, extract the package to `C:\Program Files\OpenSSH`
+
+      3. As the Administrator, install `sshd` and `ssh-agent` services:
+
+         ```
+         powershell.exe -ExecutionPolicy Bypass -File install-sshd.ps1
+         ```
+
+   2. Configuring SSH server
+
+      * Allow incoming connections to SSH server in Windows Firewall:
+
+        - When installed as an optional feature, the firewall rule *“OpenSSH SSH Server (sshd)”* should have been created automatically. If not, proceed to create and enable the rule as follows.
+
+        - Either run the following PowerShell command as the Administrator:
+
+          ```
+          New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH SSH Server' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22 -Program "C:\Windows\System32\OpenSSH\sshd.exe"
+          ```
+
+          Replace `C:\Windows\System32\OpenSSH\sshd.exe`
+          with the actual path to the `sshd.exe` (`C:\Program Files\OpenSSH\ssh.exe` , had you followed the manual installation instructions above).
+
+        - or go to *Control Panel > System and Security > Windows Defender Firewall*[1](https://winscp.net/eng/docs/guide_windows_openssh_server#fn1) *> Advanced Settings > Inbound Rules* and add a new rule for port 22.
+
+      * Start the service and/or configure automatic start:
+
+        - Go to *Control Panel > System and Security > Administrative Tools* and open *Services*. Locate *OpenSSH SSH Server* service.
+
+        - If you want the server to start automatically when your machine is started: Go to *Action > Properties*. In the Properties dialog, change *Startup type* to *Automatic* and confirm.
+
+        - Start the *OpenSSH SSH Server* service by clicking the *Start the service*.
+
+   3. Setting up SSH public key authentication
+
+      1. Method 1
+
+         Add authorized public keys to `%programdata%/ssh/administrators_authorized_keys`
+
+      2. Method 2
+
+         Follow a generic guide for [Setting up SSH public key authentication](https://winscp.net/eng/docs/guide_public_key) in *nix OpenSSH server, with the following difference:
+
+         - Create the `.ssh` folder (for the `authorized_keys` file) in your Windows account profile folder (typically in `C:\Users\username\.ssh`).
+
+      - For permissions to the `.ssh` folder and the `authorized_keys` file, what matters are Windows ACL permissions, not simple *nix permissions. Set the ACL so that the respective Windows account is the owner of the folder and the file and is the only account that has a write access to them. The account that runs *OpenSSH SSH Server* service (typically `SYSTEM` or `sshd`) needs to have read access to the file.
+
+         - Though, with the default Win32-OpenSSH configuration there is an exception set in `sshd_config` for accounts in `Administrators` group. For these, the server uses a different location for the authorized keys file: `%ALLUSERSPROFILE%\ssh\administrators_authorized_keys` (i.e. typically `C:\ProgramData\ssh\administrators_authorized_keys`).
+
+   4. Default SSH Shell
+
+      1. Create a CMD file
+
+         ```
+         cat << EOF > /c/msys64/sshd-default-shell.cmd
+         C:\msys64\msys2_shell.cmd -defterm -here -no-start -mingw64 -shell zsh
+         EOF
+         ```
+
+      2. Add the following content to Windows Registry > `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH` in the string value `DefaultShell`
+
+         ```
+         C:\msys64\sshd-default-shell.cmd
+         ```
+
+3. Swap keys caps lock and left control.
 
    ```
    Windows Registry Editor Version 5.00
