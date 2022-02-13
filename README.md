@@ -181,7 +181,9 @@
 4. Install [Neovim](https://neovim.io/).
 
    ```
-   flatpak install flathub io.neovim.nvim
+   sudo add-apt-repository ppa:neovim-ppa/stable
+   sudo apt update
+   sudo apt install neovim
    ```
 
 5. Install [Node Version Manager (nvm)](https://github.com/nvm-sh/nvm).
