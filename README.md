@@ -169,11 +169,7 @@
    sudo apt install build-essential cmake git git-lfs golang tmux python3 python3-dev curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf xsel zoxide
    ```
 
-2. Change default shell to [Zsh](https://www.zsh.org/).
-
-   ```
-   chsh zsh
-   ```
+2. Change default shell to [Zsh](https://www.zsh.org/) via `chsh`.
 
 3. Install [flatpak](https://flatpak.org/).
 
