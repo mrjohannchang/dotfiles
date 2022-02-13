@@ -16,3 +16,4 @@
 [submodule "zsh-snap"]
 	path = 3rdparties/zsh-snap
 	url = https://github.com/marlonrichert/zsh-snap.git
+	branch = main

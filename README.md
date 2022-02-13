@@ -175,6 +175,7 @@
 
    ```
    sudo apt install flatpak
+   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
    ```
 
 4. Install [Neovim](https://neovim.io/).
