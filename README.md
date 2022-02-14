@@ -264,15 +264,13 @@
 
       Note: You can use VS Code to edit those files.
 
-   2. Uncomment `rem set MSYS2_PATH_TYPE=inherit` in `C:\msys64\msys2_shell.cmd` and `#MSYS2_PATH_TYPE=inherit` in `C:\msys64\mingw64.ini` to make MSYS2 inherit environmental variables from Windows.
-
-   3. Make `%TMEP%` mounted at `/tmp` by adding the following contents to `C:\msys64\etc\fstab`.
+   2. Make `%TMEP%` mounted at `/tmp` by adding the following contents to `C:\msys64\etc\fstab`.
 
       ```
       none /tmp usertemp binary,posix=0,noacl 0 0
       ```
 
-   4. Set Windows `%USERPROFILE%` folder (`C:\Users\<user name>`) as the `$HOME` folder by adding the following contents to `C:\msys64\etc\fstab`. Ref: [How to change HOME directory and start directory on MSYS2?](https://stackoverflow.com/a/66946901).
+   3. Set Windows `%USERPROFILE%` folder (`C:\Users\<user name>`) as the `$HOME` folder by adding the following contents to `C:\msys64\etc\fstab`. Ref: [How to change HOME directory and start directory on MSYS2?](https://stackoverflow.com/a/66946901).
 
       ```
       ##################################################################
@@ -282,7 +280,7 @@
       C:/Users /home ntfs binary,posix=0,noacl,user 0 0
       ```
 
-   5. [Install Git for Windows](https://github.com/git-for-windows/git/wiki/Install-inside-MSYS2-proper) via MSYS2 with the following instructions.
+   4. [Install Git for Windows](https://github.com/git-for-windows/git/wiki/Install-inside-MSYS2-proper) via MSYS2 with the following instructions.
 
       1. Add the Git for Windows package repositories above any others (i.e. just before `[mingw32]` on line #68 as of this writing) to `C:\msys64\etc\pacman.conf`:
 
@@ -327,7 +325,7 @@
          pacman -S mingw-w64-x86_64-{git,git-doc-html,git-doc-man,git-lfs} git-extra
          ```
 
-      7. [**Experimental**] Comment out the following contents in `C:\msys64\etc\pacman.conf` that you added in #5.5.1, then do `pacman -Syyuu` again.
+      7. [**Experimental**] Comment out the following contents in `C:\msys64\etc\pacman.conf` that you added in #5.4.1, then do `pacman -Syyuu` again.
 
          ```
          [git-for-windows]
@@ -342,7 +340,7 @@
          1. Multi-line pasting feature not working
          2. `<Shift> + <Tab>` not functioning as `reverse-menu-complete` in Zsh menu-select
 
-   6. Install necessary packages in `MSYS2 MinGW x64`.
+   5. Install necessary packages in `MSYS2 MinGW x64`.
 
       ```
       pacman -Sy man tmux zsh
@@ -438,11 +436,11 @@
                   // ...
                   {
                       "bellStyle": "none",
-                      "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -shell zsh",
+                      "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path -shell zsh",
                       "guid": "{7e049a6e-6aea-4e66-9bd3-a4bd49a49bab}",
                       "icon": "C:/msys64/mingw64.ico",
                       "name": "MINGW64 / MSYS2 - Zsh",
-                      "startingDirectory": "C:/msys64/home/%USERNAME%"
+                      "startingDirectory": "C:\\Users\\%USERNAME%"
                   },
                   // ...
               ]
