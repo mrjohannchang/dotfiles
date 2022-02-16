@@ -105,6 +105,12 @@ fi
 if command -v fdfind &>/dev/null; then
   alias fd=fdfind
 fi
+
+case "${OSTYPE:l}" in
+  cygwin*|msys*)
+    alias fd='fd --path-separator="//"'
+    ;;
+esac
 # }
 
 
@@ -117,6 +123,15 @@ export LESS="$LESS --quit-if-one-screen --ignore-case --RAW-CONTROL-CHARS"
 if [ -d "${HOME}/.poetry/bin" ]; then
   export PATH="${HOME}/.poetry/bin:${PATH}"
 fi
+# }
+
+
+# ripgrep {
+case "${OSTYPE:l}" in
+  cygwin*|msys*)
+    alias rg='rg --path-separator="//"'
+    ;;
+esac
 # }
 
 
