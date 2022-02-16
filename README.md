@@ -287,9 +287,6 @@
          ```
          [git-for-windows]
          Server = https://wingit.blob.core.windows.net/x86-64
-
-         [git-for-windows-mingw32]
-         Server = https://wingit.blob.core.windows.net/i686
          ```
 
       2. Open "MSYS2 MinGW x64" MinTTY (from Windows Start).
@@ -324,21 +321,6 @@
          ```
          pacman -S mingw-w64-x86_64-{git,git-doc-html,git-doc-man,git-lfs} git-extra
          ```
-
-      7. [**Experimental**] Comment out the following contents in `C:\msys64\etc\pacman.conf` that you added in #5.4.1, then do `pacman -Syyuu` again.
-
-         ```
-         [git-for-windows]
-         Server = https://wingit.blob.core.windows.net/x86-64
-
-         [git-for-windows-mingw32]
-         Server = https://wingit.blob.core.windows.net/i686
-         ```
-
-         This step solves the following issues:
-
-         1. Multi-line pasting feature not working
-         2. `<Shift> + <Tab>` not functioning as `reverse-menu-complete` in Zsh menu-select
 
    5. Install necessary packages in `MSYS2 MinGW x64`.
 
@@ -669,6 +651,27 @@ cd ~/dotfiles
 cd ..
 rm -rf dotfiles
 ```
+
+## Troubleshooting
+
+<details>
+  <summary>Click to expand</summary>
+
+### Windows
+
+1. Issues related to MSYS2
+
+   1. Multi-line pasting feature not working
+   2. `<Shift> + <Tab>` not functioning as `reverse-menu-complete` in Zsh menu-select
+
+   Comment out the following contents in `C:\msys64\etc\pacman.conf` that you added in `Prerequisites`, then do `pacman -Syyuu` again.
+
+   ```
+   [git-for-windows]
+   Server = https://wingit.blob.core.windows.net/x86-64
+   ```
+
+</details>
 
 ## Known Issues
 
