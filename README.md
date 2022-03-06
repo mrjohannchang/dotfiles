@@ -425,7 +425,7 @@
                       "guid": "{7e049a6e-6aea-4e66-9bd3-a4bd49a49bab}",
                       "icon": "C:/msys64/mingw64.ico",
                       "name": "MINGW64 / MSYS2 - Zsh",
-                      "startingDirectory": "C:\\Users\\%USERNAME%"
+                      "startingDirectory": "%USERPROFILE%"
                   },
                   // ...
               ]
