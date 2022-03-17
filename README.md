@@ -287,6 +287,9 @@
          ```
          [git-for-windows]
          Server = https://wingit.blob.core.windows.net/x86-64
+
+         [git-for-windows-mingw32]
+         Server = https://wingit.blob.core.windows.net/i686
          ```
 
       2. Open "MSYS2 MinGW x64" MinTTY (from Windows Start).
@@ -664,11 +667,14 @@ rm -rf dotfiles
    1. Multi-line pasting feature not working
    2. `<Shift> + <Tab>` not functioning as `reverse-menu-complete` in Zsh menu-select
 
-   Comment out the following contents in `C:\msys64\etc\pacman.conf` that you added in `Prerequisites`, then do `pacman -Syyuu` again.
+   Comment out the following contents in `C:\msys64\etc\pacman.conf` that you added in `Prerequisites`, then do `pacman -Syyuu` again. Sometimes the runtime of Git for Windows is problematic.
 
    ```
    [git-for-windows]
    Server = https://wingit.blob.core.windows.net/x86-64
+
+   [git-for-windows-mingw32]
+   Server = https://wingit.blob.core.windows.net/i686
    ```
 
 </details>
