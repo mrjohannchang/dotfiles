@@ -115,7 +115,7 @@ esac
 
 
 # less {
-export LESS="$LESS --quit-if-one-screen --ignore-case --RAW-CONTROL-CHARS"
+export LESS="$LESS --ignore-case --no-init --quit-if-one-screen --RAW-CONTROL-CHARS"
 # }
 
 
