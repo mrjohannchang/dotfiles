@@ -166,7 +166,7 @@
    Note: zoxide only exists in 21.04+
 
    ```
-   sudo apt install build-essential cmake git git-lfs golang tmux python3 python3-dev python3-venv curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf xsel zoxide
+   sudo apt install build-essential cmake git git-lfs golang tmux fontconfig python3 python3-dev python3-venv curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf xsel zoxide
    ```
 
 2. Change default shell to [Zsh](https://www.zsh.org/) via `chsh`.
