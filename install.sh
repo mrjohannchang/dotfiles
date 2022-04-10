@@ -182,7 +182,7 @@ EOF
     git config --global difftool.nvimdiff.cmd 'nvim -d "$LOCAL" "$REMOTE" -c "wincmd w" -c "wincmd L"'
     git config --global merge.tool nvimdiff
     git config --global mergetool.prompt true
-    git config --global mergetool.nvimdiff.cmd 'nvim -d "$LOCAL" "$REMOTE" "$MERGED" -c "wincmd w" -c "wincmd J"'
+    git config --global mergetool.nvimdiff.cmd 'nvim -d "$LOCAL" "$MERGED" "$BASE" "$REMOTE" -c "wincmd w" -c "wincmd J"'
     git config --global pull.ff only
     git config --global push.default simple
     echo "Git config was installed"
