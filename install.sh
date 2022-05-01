@@ -102,7 +102,6 @@ install() {
     bg=light
   fi
 
-  mkdir_and_check "${DOTFILES_DIR}/3rdparties/zsh-snap-plugins"
   mkdir_and_check "${HOME}/.config"
   mkdir_and_check "${HOME}/bin.d"
   mkdir_and_check "${HOME}/.config/nvim"

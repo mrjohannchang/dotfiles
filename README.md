@@ -69,7 +69,7 @@
    5. [plugins/nvm](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/nvm)
    6. [plugins/pyenv](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/pyenv)
    7. [plugins/rvm](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/rvm)
-3. [Znap](https://github.com/marlonrichert/zsh-snap)
+3. [z-shell/zi](https://github.com/z-shell/zi)
 4. [zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 5. [zsh-users/zsh-completions](https://github.com/zsh-users/zsh-completions)
 
@@ -163,7 +163,7 @@
 
 1. Install necessary packages.
 
-   Note: zoxide only exists in 21.04+
+   Note: zoxide only exists in Ubuntu 21.04+
 
    ```
    sudo apt install build-essential cmake git git-lfs golang tmux fontconfig python3 python3-dev python3-venv curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf xsel zoxide

@@ -84,20 +84,39 @@ fi
 # }
 
 
-# Znap {
-# TODO: Remove the dependency on hard-coded path to ${HOME}/dotfiles
-if [ -r "${HOME}/dotfiles/3rdparties/zsh-snap/znap.zsh" ]; then
-  zstyle ':znap:*' repos-dir "${HOME}/dotfiles/3rdparties/zsh-snap-plugins"
-  source "${HOME}/dotfiles/3rdparties/zsh-snap/znap.zsh"
-
-  znap prompt romkatv/powerlevel10k
-
-  znap source ohmyzsh/ohmyzsh \
-    lib/{clipboard,completion,functions,history,key-bindings,misc} \
-    plugins/{docker-compose,nvm,pyenv,rvm}
-  znap source zsh-users/zsh-autosuggestions
-  znap source zsh-users/zsh-completions
+# ZI {
+if [[ ! -f ${HOME}/.zi/bin/zi.zsh ]]; then
+  print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
+  command mkdir -p "$HOME/.zi" && command chmod g-rwX "$HOME/.zi"
+  command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "$HOME/.zi/bin" && \
+    print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+    print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
+source "$HOME/.zi/bin/zi.zsh"
+autoload -Uz _zi
+(( ${+_comps} )) && _comps[zi]=_zi
+# examples here -> https://z.digitalclouds.dev/ecosystem/annexes
+zicompinit # <- https://z.digitalclouds.dev/docs/guides/commands
+
+zi ice depth"1"
+zi light romkatv/powerlevel10k
+
+zi snippet OMZ::lib/clipboard.zsh
+zi snippet OMZ::lib/completion.zsh
+zi snippet OMZ::lib/functions.zsh
+zi snippet OMZ::lib/history.zsh
+zi snippet OMZ::lib/key-bindings.zsh
+zi snippet OMZ::lib/misc.zsh
+zi snippet OMZ::plugins/docker-compose/docker-compose.plugin.zsh
+zi snippet OMZ::plugins/nvm/nvm.plugin.zsh
+zi snippet OMZ::plugins/pyenv/pyenv.plugin.zsh
+zi snippet OMZ::plugins/rvm/rvm.plugin.zsh
+
+zi ice wait lucid atload'_zsh_autosuggest_start'
+zi light zsh-users/zsh-autosuggestions
+
+zi ice blockf
+zi light zsh-users/zsh-completions
 # }
 
 
@@ -150,13 +169,6 @@ if [ ! -z "$SSH_AUTH_SOCK" \
   ln -s "$SSH_AUTH_SOCK" "${HOME}/.ssh/agent_sock"
   export SSH_AUTH_SOCK="${HOME}/.ssh/agent_sock"
 fi
-# }
-
-
-# zsh-autosuggestions {
-# Workaround for Random ←[?1h is showing
-# https://github.com/zsh-users/zsh-autosuggestions/issues/614
-unset ZSH_AUTOSUGGEST_USE_ASYNC
 # }
 
 
