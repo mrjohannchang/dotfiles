@@ -13,7 +13,3 @@
 [submodule "tpm"]
 	path = 3rdparties/tpm
 	url = https://github.com/tmux-plugins/tpm.git
-[submodule "zsh-snap"]
-	path = 3rdparties/zsh-snap
-	url = https://github.com/marlonrichert/zsh-snap.git
-	branch = main
