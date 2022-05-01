@@ -104,20 +104,26 @@ install() {
 
   mkdir_and_check "${HOME}/.config"
   mkdir_and_check "${HOME}/bin.d"
-  mkdir_and_check "${HOME}/.config/nvim"
-  mkdir_and_check "${HOME}/.config/nvim/after/ftplugin"
-  mkdir_and_check "${HOME}/.config/nvim/lua"
   case "${OSTYPE,,}" in
     cygwin*|msys*)
-      mkdir_and_check "${HOME}/.local/share/nvim-data/site/pack/packer/start"
+      mkdir_and_check "${HOME}/AppData/Local/nvim"
+      mkdir_and_check "${HOME}/AppData/Local/nvim/after/ftplugin"
+      mkdir_and_check "${HOME}/AppData/Local/nvim/lua"
+      mkdir_and_check "${HOME}/AppData/Local/nvim-data/site/pack/packer/start"
       ;;
     darwin*)
       mkdir_and_check "${HOME}/Library/Fonts"
+      mkdir_and_check "${HOME}/.config/nvim"
+      mkdir_and_check "${HOME}/.config/nvim/after/ftplugin"
+      mkdir_and_check "${HOME}/.config/nvim/lua"
       mkdir_and_check "${HOME}/.local/share/nvim/site/pack/packer/start"
       ;;
     linux*)
-      mkdir_and_check "${HOME}/.local/share/fonts"
       mkdir_and_check "${HOME}/.config/fontconfig/conf.d"
+      mkdir_and_check "${HOME}/.local/share/fonts"
+      mkdir_and_check "${HOME}/.config/nvim"
+      mkdir_and_check "${HOME}/.config/nvim/after/ftplugin"
+      mkdir_and_check "${HOME}/.config/nvim/lua"
       mkdir_and_check "${HOME}/.local/share/nvim/site/pack/packer/start"
       ;;
   esac
@@ -198,21 +204,27 @@ EOF
       ;;
   esac
 
-  install_target "home/.config/nvim/init.lua"
-  install_target "home/.config/nvim/after/ftplugin/gitcommit.lua"
-  install_target "home/.config/nvim/after/ftplugin/markdown.lua"
-  if [ "$bg" = "light" ]; then
-    install_target "home/.config/nvim/lua/init-light.lua"
-  fi
   case "${OSTYPE,,}" in
     cygwin*|msys*)
+      install_target "home/AppData/Local/nvim/init.lua"
+      if [ "$bg" = "light" ]; then
+        install_target "home/AppData/Local/nvim/lua/init-light.lua"
+      fi
+      install_target "home/AppData/Local/nvim/after/ftplugin/gitcommit.lua"
+      install_target "home/AppData/Local/nvim/after/ftplugin/markdown.lua"
       # FIXME: this workaround exists as Neovim doesn't take 2-level symlinks (
-      #        ~/.local/share/nvim-data/site/pack/packer/start/packer.nvim ->
-      #          ~/dotfiles/home/.local/share/nvim-data/site/pack/packer/start/packer.nvim ->
+      #        ~/AppData/Local/nvim-data/site/pack/packer/start/packer.nvim ->
+      #          ~/dotfiles/home/.local/share/nvim/site/pack/packer/start/packer.nvim ->
       #            ~/dotfiles/3rdparties/packer.nvim)
-      ln -s "${DOTFILES_DIR}/3rdparties/packer.nvim" "${HOME}/.local/share/nvim-data/site/pack/packer/start/packer.nvim"
+      ln -s "${DOTFILES_DIR}/3rdparties/packer.nvim" "${HOME}/AppData/Local/nvim-data/site/pack/packer/start/packer.nvim"
       ;;
     *)
+      install_target "home/.config/nvim/init.lua"
+      if [ "$bg" = "light" ]; then
+        install_target "home/.config/nvim/lua/init-light.lua"
+      fi
+      install_target "home/.config/nvim/after/ftplugin/gitcommit.lua"
+      install_target "home/.config/nvim/after/ftplugin/markdown.lua"
       install_target "home/.local/share/nvim/site/pack/packer/start/packer.nvim"
       ;;
   esac
@@ -273,7 +285,11 @@ uninstall() {
   uninstall_target "${HOME}/.config/nvim/after/ftplugin/markdown.lua"
   uninstall_target "${HOME}/.config/nvim/lua/init-light.lua"
   uninstall_target "${HOME}/.local/share/nvim/site/pack/packer/start/packer.nvim"
-  uninstall_target "${HOME}/.local/share/nvim-data/site/pack/packer/start/packer.nvim"
+  uninstall_target "${HOME}/Appdata/Local/nvim/init.lua"
+  uninstall_target "${HOME}/Appdata/Local/nvim/after/ftplugin/gitcommit.lua"
+  uninstall_target "${HOME}/Appdata/Local/nvim/after/ftplugin/markdown.lua"
+  uninstall_target "${HOME}/Appdata/Local/nvim/lua/init-light.lua"
+  uninstall_target "${HOME}/AppData/Local/nvim-data/site/pack/packer/start/packer.nvim"
 
   INFO "Uninstallation has been completed"
 }
