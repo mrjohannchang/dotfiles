@@ -98,7 +98,7 @@ install_target() {
 
 install() {
   local bg=dark
-  if yes_or_no_question "Is your terimnal background \"light\"?" ; then
+  if yes_or_no_question "Is your terimnal background \"light\"?"; then
     bg=light
   fi
 
@@ -130,6 +130,9 @@ install() {
 
   install_target "home/bin.d/changyuheng"
   install_target "home/.p10k.zsh"
+  if yes_or_no_question "Disable gitstatusd of Powerlevel10k (to avoid crashing in large git repositories)?"; then
+    install_target "home/.p10k-gitstatusd-disabled.zsh"
+  fi
   install_target "home/.zprofile"
   install_target "home/.zshrc"
   if [ "$bg" = "light" ]; then
@@ -263,6 +266,7 @@ uninstall_target() {
 uninstall() {
   uninstall_target "${HOME}/bin.d/changyuheng"
   uninstall_target "${HOME}/.p10k.zsh"
+  uninstall_target "${HOME}/.p10k-gitstatusd-disabled.zsh"
   uninstall_target "${HOME}/.zprofile"
   uninstall_target "${HOME}/.zshrc"
   uninstall_target "${HOME}/.zshrc.light"
