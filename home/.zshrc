@@ -223,6 +223,11 @@ esac
 # }
 
 
+# Neovide {
+alias neovide="neovide --multigrid"
+# }
+
+
 # .zshrc.light (configs for light background terminals) {
 if [ -r "${HOME}/.zshrc.light" ]; then
   source "${HOME}/.zshrc.light"
