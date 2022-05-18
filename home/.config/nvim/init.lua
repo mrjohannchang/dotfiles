@@ -57,7 +57,15 @@ require('packer').startup(function(use)
 
   use {
     "ishan9299/nvim-solarized-lua",
-    config = "vim.cmd[[colorscheme solarized]]"
+    config = function()
+      vim.cmd([[
+        colorscheme solarized
+        highlight Normal guibg=#002b36
+      ]])
+      if vim.o.background == 'light' then
+        vim.cmd("highlight Normal guibg=#fdf6e3")
+      end
+    end
   }
 
   use { "tpope/vim-surround" }
@@ -160,6 +168,11 @@ require('telescope').setup {
 
 -- Load config for light background if available {
 pcall(require, "init-light")
+-- }
+
+
+-- Neovide {
+vim.cmd("set guifont=Hack\\ NF:h10.2")
 -- }
 
 
