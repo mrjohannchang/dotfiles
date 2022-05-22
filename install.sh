@@ -98,7 +98,7 @@ install_target() {
 
 install() {
   local bg=dark
-  if yes_or_no_question "Is your terimnal background \"light\"?" ; then
+  if yes_or_no_question "Is your terimnal background \"light\"?"; then
     bg=light
   fi
 
