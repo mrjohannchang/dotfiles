@@ -218,8 +218,6 @@ esac
 # Powerlevel10k 2/2 {
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-# Any way to disable gitstatusd? https://github.com/romkatv/powerlevel10k/issues/246
-[[ ! -f ~/.p10k-gitstatusd-disabled.zsh ]] || source ~/.p10k-gitstatusd-disabled.zsh
 # }
 
 
