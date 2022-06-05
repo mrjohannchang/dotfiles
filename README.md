@@ -496,7 +496,7 @@
        git config --global core.safecrlf warn
        ```
 
-    8. Go to [Installation](#installation)
+    7. Go to [Installation](#installation)
 
 </details>
 
