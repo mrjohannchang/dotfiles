@@ -242,249 +242,267 @@
 
 1. `$HOME` (`%USERPROFILE%`) folder **has to** be on an [NTFS](https://en.wikipedia.org/wiki/NTFS) volume.
 
-2. [Activate Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development) from: Start > Settings > Update & Security > For developers > Developer Mode. Enabling this feature will enable the symbolic link support.
+2. Install [Git for Windows](https://gitforwindows.org/)
 
-3. Install [OpenSSH Client](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse) from: Start > Settings > Apps > Apps & Features > Optional Features
+   **Note**:
 
-4. Enable the [long file path support](https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=cmd) from: Start > Local Group Policy Editor > Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem > Enable Win32 long paths
+   1. **Uncheck** Git LFS (Large File Support)
+   2. Use external OpenSSH
+   3. Checkout as-is, commit Unix-style line endings
+   4. Only ever fast-forward
 
-5. Download and install [MSYS2](https://www.msys2.org/#installation), then:
+   **Optional tweak**:
 
-   1. Enable the symbolic link support in MSYS2 by uncommenting the following line in `C:\msys64\msys2_shell.cmd`
+   1. Disable bells: `/etc/inputrc` > `set bell-style none`
 
-      ```
-      rem set MSYS=winsymlinks:nativestrict
-      ```
+3. Install [OpenSSH Client](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse): Settings > Apps & features > Apps & features > Optional features > OpenSSH Client
 
-      and the following line in `C:\msys64\mingw64.ini`.
+4. Install [Git Large File Storage](https://git-lfs.github.com/)
 
-      ```
-      #MSYS=winsymlinks:nativestrict
-      ```
+5. Install [Python](https://www.python.org/downloads/)
 
-      Note: You can use VS Code to edit those files.
+   **Note**: Install Python that's from the official website but not Microsoft Store
 
-   2. Make `%TMEP%` mounted at `/tmp` by adding the following contents to `C:\msys64\etc\fstab`.
+   1. Add Python to PATH
+   2. Disable path length limit
 
-      ```
-      none /tmp usertemp binary,posix=0,noacl 0 0
-      ```
+6. Install [Scoop](https://scoop.sh/)
 
-   3. Set Windows `%USERPROFILE%` folder (`C:\Users\<user name>`) as the `$HOME` folder by adding the following contents to `C:\msys64\etc\fstab`. Ref: [How to change HOME directory and start directory on MSYS2?](https://stackoverflow.com/a/66946901).
-
-      ```
-      ##################################################################
-      # Canonicalize the two home directories by mounting the windows  #
-      # user home with the same path mapping as unix.                  #
-      ##################################################################
-      C:/Users /home ntfs binary,posix=0,noacl,user 0 0
-      ```
-
-   4. [Install Git for Windows](https://github.com/git-for-windows/git/wiki/Install-inside-MSYS2-proper) via MSYS2 with the following instructions.
-
-      1. Add the Git for Windows package repositories above any others (i.e. just before `[mingw32]` on line #68 as of this writing) to `C:\msys64\etc\pacman.conf`:
-
-         ```
-         [git-for-windows]
-         Server = https://wingit.blob.core.windows.net/x86-64
-
-         [git-for-windows-mingw32]
-         Server = https://wingit.blob.core.windows.net/i686
-         ```
-
-      2. Open "MSYS2 MinGW x64" MinTTY (from Windows Start).
-
-      3. Authorize the signing key with:
-
-         ```
-         curl -L https://raw.githubusercontent.com/git-for-windows/build-extra/HEAD/git-for-windows-keyring/git-for-windows.gpg |
-         pacman-key --add - &&
-         pacman-key --lsign-key E8325679DFFF09668AD8D7B67115A57376871B1C &&
-         pacman-key --lsign-key 3B6D86A1BA7701CD0F23AED888138B9E1A9F3986
-         ```
-
-      4. Then synchronize with new repositories with
-
-         ```
-         pacman -Syyuu
-         ```
-
-         This installs a new `msys2-runtime` and therefore will ask you to terminate all MSYS2 processes. Save what you need from other open MSYS2 shells and programs, exit them and confirm the Pacman prompt. Double-check Task Manager and kill `pacman.exe` if it's still running after the window is closed. Start a new MSYS2 terminal.
-
-      5. Then synchronize *again* to install the rest:
-
-         ```
-         pacman -Suu
-         ```
-
-         It might happen that some packages are downgraded, this is expected.
-
-      6. And finally install the packages containing Git, its documentation and some extra things:
-
-         ```
-         pacman -S mingw-w64-x86_64-{git,git-doc-html,git-doc-man,git-lfs} git-extra
-         ```
-
-   5. Install necessary packages in `MSYS2 MinGW x64`.
-
-      ```
-      pacman -Sy man tmux zsh
-      ```
-
-6. Install [Scoop](https://scoop.sh/) package manager. Execute the following commands in a **regular** [PowerShell](https://en.wikipedia.org/wiki/PowerShell) Session.
+   Install necessary and useful packages:
 
    ```
-   Set-ExecutionPolicy RemoteSigned -scope CurrentUser
-   Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+   scoop bucket add extras
+   scoop bucket add nerd-fonts
+   scoop install vcredist2015 vcredist2022 neovim Hack-NF fd ripgrep universal-ctags fzf zoxide
    ```
 
-   * Install necessary packages via Scoop in `MSYS2 MinGW x64`.
+7. Install [MSYS2](https://www.msys2.org/)
 
-     ```
-     scoop bucket add extras
-     scoop bucket add nerd-fonts
-     scoop install vcredist2015 neovim Hack-NF fd ripgrep universal-ctags fzf zoxide
-     ```
+   **Note**:
 
-7. Install [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/) from Windows Store. And then do the following configurations:
+   1. If you get stuck at "Installing MSYS2" with "Updating trust database...", just cancel the installation and install again
+   2. If you cannot run the installer due to existing installer, kill the installer process from **Task Manager** then try again
 
-   1. Disable copy & paste mappings to `<Ctrl> + c` and `<Ctrl> + v` by commenting out related config in `settings.json` which can be opened from the buttom left gear icon of Windows Terminal Settings page. You will still be able to use `<Ctrl> + <Shift> + c` and `<Ctrl> + <Shift> + v` for copying and pasting.
+8. Install [Windows Terminal](https://www.microsoft.com/p/windows-terminal/9n0dx20hk701)
 
-      ```
-          "actions":
-          [
-              ...
-              {
-                  "command":
-                  {
-                      "action": "copy",
-                      "singleLine": false
-                  },
-                  "keys": "ctrl+c"
-              },
-              {
-                  "command": "paste",
-                  "keys": "ctrl+v"
-              },
-              ...
-          ],
-      ```
+9. Enable **long file path support** from: Start > Local Group Policy Editor > Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem > Enable Win32 long paths
 
-   2. Prevent from window being closed when pressing `<Ctrl> + <Shift> + w` by add the following content to `settings.json`.
+10. Enable [Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development) from: Settings > Update & Security > For developers > Developer Mode
 
-      ```
-          "actions":
-          [
-              ...
-              {
-                  "command": "unbound",
-                  "keys": "ctrl+shift+w"
-              },
-              ...
-          ],
-      ```
+11. Enable **symlink creating support** by adding the current user to: Start > Local Security Policy > Security Settings > Local Policies > User Rights Assignment > Create symbolic links
 
-      Make `<Ctrl> + <F4>` close the current pane:
+    **Note**: This should be done automatically after enabling Developer Mode
 
-      ```
-          "actions":
-          [
-              ...
-              {
-                  "command": "closePane",
-                  "keys": "ctrl+f4"
-              },
-              ...
-          ],
-      ```
+12. Configure MSYS2
 
-   3. Resolve the key mapping conflict of `<Ctrl> + <Shift> + 6` in Neovim/Vim by adding the following contents to `settings.json`.
+    1. Enable the symbolic link support in MSYS2 by uncommenting the following line in `C:\msys64\msys2_shell.cmd`
 
-      ```
-          "actions":
-          [
-              ...
-              {
-                  "command" : "unbound",
-                  "keys": "ctrl+shift+6"
-              },
-              ...
-          ],
-      ```
+       ```
+       rem set MSYS=winsymlinks:nativestrict
+       ```
 
-   4. Make Windows Terminal support MSYS2's shell by adding the following config to `settings.json`:
+       and the following line in `C:\msys64\mingw64.ini`.
 
-      ```
-          "profiles": {
-              "list":
-              [
-                  // ...
-                  {
-                      "bellStyle": "none",
-                      "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path -shell zsh",
-                      "guid": "{7e049a6e-6aea-4e66-9bd3-a4bd49a49bab}",
-                      "icon": "C:/msys64/mingw64.ico",
-                      "name": "MINGW64 / MSYS2 - Zsh",
-                      "startingDirectory": "%USERPROFILE%"
-                  },
-                  // ...
-              ]
-          }
-      ```
+       ```
+       #MSYS=winsymlinks:nativestrict
+       ```
 
-   5. Set "MINGW64 / MSYS -Zsh" as the default profile from Startup > Default profile.
+       Note: You can use VS Code to edit those files.
 
-   6. Config the terminal to use the font "Hack NF" and set your prefered text color scheme in Profiles > MINGW64 / MSYS -Zsh.
+    2. Make `%TMEP%` mounted at `/tmp` by adding the following contents to `C:\msys64\etc\fstab`.
 
-8. Install **official** [Python3](https://www.python.org/downloads/) (make sure you download the installer from the official Python website) with **Add Python <version> to PATH** option checked.
+       ```
+       none /tmp usertemp binary,posix=0,noacl 0 0
+       ```
 
-9. Pre-installation
+    3. Set Windows `%USERPROFILE%` folder (`C:\Users\<user name>`) as the `$HOME` folder by adding the following contents to `C:\msys64\etc\fstab`. Ref: [How to change HOME directory and start directory on MSYS2?](https://stackoverflow.com/a/66946901).
 
-   1. Open an **elevated** (Run as administrator) **PowerShell** session and execute the following command. So that you can use `fsutil` in the later process. After the execution, you may need to restart your computer.
+       ```
+       ##################################################################
+       # Canonicalize the two home directories by mounting the windows  #
+       # user home with the same path mapping as unix.                  #
+       ##################################################################
+       C:/Users /home ntfs binary,posix=0,noacl,user 0 0
+       ```
 
-      ```
-      Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-      ```
+    4. Install necessary and useful packages in `MSYS2 MinGW x64`
 
-   2. Open a "MINGW64 / MSYS2 - Zsh" tab in Windows Terminal.
+       ```
+       pacman -Sy man tmux zsh
+       ```
 
-   3. Select `0` to create an empty `~/.zshrc`
+13. Configure Windows Terminal
 
-   4. Unset empty `$tmp` and `$temp`.
+    1. Disable copy & paste mappings to `<Ctrl> + c` and `<Ctrl> + v` by commenting out related config in `settings.json` which can be opened from the buttom left gear icon of Windows Terminal Settings page. You will still be able to use `<Ctrl> + <Shift> + c` and `<Ctrl> + <Shift> + v` for copying and pasting.
 
-      ```
-      unset tmp temp
-      ```
+       ```
+           "actions":
+           [
+               ...
+               {
+                   "command":
+                   {
+                       "action": "copy",
+                       "singleLine": false
+                   },
+                   "keys": "ctrl+c"
+               },
+               {
+                   "command": "paste",
+                   "keys": "ctrl+v"
+               },
+               ...
+           ],
+       ```
 
-      Note: Empty `$tmp` and `$temp` environment variables are extremely error-prone on Windows. And it's difficult to identify the inroduced errors.
+    2. Prevent from window being closed when pressing `<Ctrl> + <Shift> + w` by adding the following content to `settings.json`.
 
-   5. Enable symlink support for Git. This is necessary for the installation of this dotfiles.
+       ```
+           "actions":
+           [
+               ...
+               {
+                   "command": "unbound",
+                   "keys": "ctrl+shift+w"
+               },
+               ...
+           ],
+       ```
 
-      ```
-      git config --global core.symlinks true
-      ```
+    3. Make `<Ctrl> + <F4>` close the current pane by adding the following content to `settings.jso:
 
-   6. Text files inside dotfiles need to use `LF` as line endings. Don't let Git convert line endings to `CRLF` on Windows.
+       ```
+           "actions":
+           [
+               ...
+               {
+                   "command": "closePane",
+                   "keys": "ctrl+f4"
+               },
+               ...
+           ],
+       ```
 
-      ```
-      git config --global core.autocrlf input
-      git config --global core.safecrlf warn
-      ```
+    4. Resolve the key mapping conflict of `<Ctrl> + <Shift> + 6` in Neovim/Vim by adding the following contents to `settings.json`.
 
-   7. Remove unnecessary start-up scripts to speed up the shell launching.
+       ```
+           "actions":
+           [
+               ...
+               {
+                   "command" : "unbound",
+                   "keys": "ctrl+shift+6"
+               },
+               ...
+           ],
+       ```
 
-      ```
-      mv /etc/profile.d/git-prompt.sh{,.bak}
-      mv /etc/profile.d/git-sdk.sh{,.bak}
-      ```
+    5. Make ctrl + tab / ctrl + shift + tab switching tabs in MRU / LRU order but keep ctrl + pgup / ctrl + pgdown in order by addin the following contents to `settings.json`.
 
-   8. Go to [Installation](#installation)
+       ```
+           "actions":
+           [
+               ...
+               {
+                   "command":
+                   {
+                       "action": "nextTab",
+                       "tabSwitcherMode": "disabled"
+                   },
+                   "keys": "ctrl+pgdn"
+               },
+               {
+                   "command":
+                   {
+                       "action": "nextTab",
+                       "tabSwitcherMode": "mru"
+                   },
+                   "keys": "ctrl+tab"
+               },
+               {
+                   "command":
+                   {
+                       "action": "prevTab",
+                       "tabSwitcherMode": "disabled"
+                   },
+                   "keys": "ctrl+pgup"
+               },
+               {
+                   "command":
+                   {
+                       "action": "prevTab",
+                       "tabSwitcherMode": "mru"
+                   },
+                   "keys": "ctrl+shift+tab"
+               }
+               ...
+           ],
+       ```
+
+    6. Make Windows Terminal support MSYS2's shell by adding the following config to `settings.json`:
+
+       ```
+           "profiles": {
+               "list":
+               [
+                   // ...
+                   {
+                       "bellStyle": "none",
+                       "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path -shell zsh",
+                       "guid": "{7e049a6e-6aea-4e66-9bd3-a4bd49a49bab}",
+                       "icon": "C:/msys64/mingw64.ico",
+                       "name": "MINGW64 / MSYS2 - Zsh",
+                       "startingDirectory": "%USERPROFILE%"
+                   },
+                   // ...
+               ]
+           }
+       ```
+
+    7. Set "MINGW64 / MSYS -Zsh" as the default profile from Startup > Default profile.
+
+    8. Config the terminal to use the font "Hack NF" and set your prefered text color scheme in Profiles > MINGW64 / MSYS -Zsh.
+
+14. Pre-installation
+
+    1. Open an **elevated** (Run as administrator) **PowerShell** session and execute the following command. So that you can use `fsutil` in the later process. After the execution, you may need to restart your computer.
+
+       ```
+       Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+       ```
+
+    2. Open a "MINGW64 / MSYS2 - Zsh" tab in Windows Terminal.
+
+    3. Select `0` to create an empty `~/.zshrc`
+
+    4. Unset empty `$tmp` and `$temp`.
+
+       ```
+       unset tmp temp
+       ```
+
+       **Note**: Empty `$tmp` and `$temp` environment variables are extremely error-prone on Windows. And it's difficult to identify the inroduced errors.
+
+    5. Enable symlink support for Git. This is necessary for the installation of this dotfiles.
+
+       ```
+       git config --global core.symlinks true
+       ```
+
+    6. Text files inside dotfiles need to use `LF` as line endings. Don't let Git convert line endings to `CRLF` on Windows.
+
+       ```
+       git config --global core.autocrlf false
+       git config --global core.safecrlf warn
+       ```
+
+    8. Go to [Installation](#installation)
 
 </details>
 
 ### Installation
 
-1. `git clone` this repo in `$HOME` and `cd` into it. **Note**: The `dotfiles` folder **has to** be put at `${HOME}/dotfiles`. Do not rename `dotfiles` or change the parent folders.
+1. `git clone` this repo and `cd` into it.
 
    ```
    cd ~
@@ -498,6 +516,8 @@
    cd ~\dotfiles\3rdparties
    (Get-ChildItem -Recurse -Directory).FullName | ForEach-Object {fsutil.exe file setCaseSensitiveInfo $_ enable}
    ```
+
+   Then go back to ZSH.
 
 3. Clone sub-modules.
 
@@ -513,7 +533,7 @@
 
 5. Execute `tmux` (the command is `script -c tmux /dev/null` when using **Windows Terminal**) and press `<Ctrl> + s` `I` (uppercase i) to install plugins of tmux. It may take a few minutes. Please expect `tmux` frozen during the installation.
 
-6. Execute `nvim` and then `:PackerInstall` to install plugins of Neovim. Do **NOT** remove packer.nvim package manager (`<nvim-config>/site/pack/packer/start/packer.nvim`). You may need to execute other commands for installing dependencies of some plugins. Please follow the hints you see in Neovim.
+6. Execute `nvim` and then `:PackerSync` to install plugins of Neovim. Do **NOT** remove `packer.nvim` package manager (`<nvim-config>/site/pack/packer/start/packer.nvim`). You may need to execute other commands for installing dependencies of some plugins. Please follow the hints you see in Neovim.
 
    * You can use `:PackerSync` to update the installed plugins in the future. But please make sure you do **NOT** remove packer.nvim package manager (`<nvim-config>/site/pack/packer/start/packer.nvim`) during the syncing process.
 
@@ -547,9 +567,7 @@
 
 #### Windows
 
-1. Make Windows Terminal tab switching in `MRU` order. Reference: [Open next tab](https://docs.microsoft.com/en-us/windows/terminal/customize-settings/actions#open-next-tab), [Open previous tab](https://docs.microsoft.com/en-us/windows/terminal/customize-settings/actions#open-previous-tab) and [#8025](https://github.com/microsoft/terminal/issues/8025).
-
-2. OpenSSH server.
+1. OpenSSH server.
 
    1. Install
 
@@ -636,10 +654,10 @@
 
    ```
    Windows Registry Editor Version 5.00
-
+   
    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
    "Scancode Map"=hex:00,00,00,00,00,00,00,00,03,00,00,00,1d,00,3a,00,3a,00,1d,00,00,00,00,00
-
+   
    ; Refs:
    ; https://superuser.com/a/1381836
    ```
@@ -655,36 +673,8 @@ cd ..
 rm -rf dotfiles
 ```
 
-## Troubleshooting
-
-<details>
-  <summary>Click to expand</summary>
-
-### Windows
-
-1. Issues related to MSYS2
-
-   1. Multi-line pasting feature not working
-   2. `<Shift> + <Tab>` not functioning as `reverse-menu-complete` in Zsh menu-select
-
-   Comment out the following contents in `C:\msys64\etc\pacman.conf` that you added in `Prerequisites`, then do `pacman -Syyuu` again. Sometimes the runtime of Git for Windows is problematic.
-
-   ```
-   [git-for-windows]
-   Server = https://wingit.blob.core.windows.net/x86-64
-
-   [git-for-windows-mingw32]
-   Server = https://wingit.blob.core.windows.net/i686
-   ```
-
-</details>
-
 ## Known Issues
 
-1. Neovim cannot be launched properly inside Windows tmux or MinTTY. Need to switch back to Vim for these environments. [#6751](https://github.com/neovim/neovim/issues/6751) [#8271](https://github.com/neovim/neovim/pull/8271) [#11112](https://github.com/neovim/neovim/issues/11112)
+1. Neovim cannot be launched properly inside Windows tmux or MinTTY. However, Vim works in these environments. [#6751](https://github.com/neovim/neovim/issues/6751) [#8271](https://github.com/neovim/neovim/pull/8271) [#11112](https://github.com/neovim/neovim/issues/11112)
 
-2. Tmux cannot be launched in Windows Terminal directly. Need to use `script -c tmux /dev/null` as workaround ([source](https://github.com/csdvrx/sixel-tmux)). [#5132](https://github.com/microsoft/terminal/issues/5132)
-
-## To-Do
-
-1. Make dotfiles folder able to be put anywhere on the filesystem instead of only `${HOME}/dotfiles`.
+2. Tmux cannot be launched in Windows Terminal directly. Need to use `script -c tmux /dev/null` as a workaround ([source](https://github.com/csdvrx/sixel-tmux)). [#5132](https://github.com/microsoft/terminal/issues/5132)
