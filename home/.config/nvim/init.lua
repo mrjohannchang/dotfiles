@@ -36,6 +36,7 @@ require('packer').startup(function(use)
   -- use 'foo1/bar1.nvim'
   -- use 'foo2/bar2.nvim'
 
+  -- lua-based {
   use {
     "numToStr/Comment.nvim",
     config = function()
@@ -68,12 +69,16 @@ require('packer').startup(function(use)
     end
   }
 
-  use { "tpope/vim-surround" }
-
   use {
     "nvim-telescope/telescope.nvim",
     requires = { { "nvim-lua/plenary.nvim" } },
   }
+  -- }
+
+  -- vim-based {
+  use { "junegunn/vim-easy-align" }
+  use { "tpope/vim-surround" }
+  -- }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
@@ -166,13 +171,18 @@ require('telescope').setup {
 -- }
 
 
--- Load config for light background if available {
-pcall(require, "init-light")
+-- vim-easy-align {
+vim.api.nvim_set_keymap("v", "<ENTER>", ":EasyAlign<CR>", { noremap = true })
 -- }
 
 
 -- Neovide {
 vim.cmd("set guifont=Hack\\ NF:h10.2")
+-- }
+
+
+-- Load config for light background if available {
+pcall(require, "init-light")
 -- }
 
 

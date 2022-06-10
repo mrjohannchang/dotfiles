@@ -111,6 +111,9 @@
     2. `d` `s` `<existing>` - Delete `<existing>` surround
     3. `c` `s` `<existing>` `<desired>` - Change `<existing>` surround to `<desired>`
     4. `S` `<desired>` - Surround when in visual modes (surrounds full selection)
+11. vim-easy-align
+    Yank the line you'd like to align and then press `<Enter>`.
+    Read its [README](https://github.com/junegunn/vim-easy-align/blob/master/README.md) for more information.
 
 #### Neovim Plugins
 
@@ -121,6 +124,7 @@
 5. [packer.nvim](https://github.com/wbthomason/packer.nvim)
 6. [surround.vim](https://github.com/tpope/vim-surround)
 7. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+8. [vim-easy-align](https://github.com/junegunn/vim-easy-align)
 
 ### Tmux
 
