@@ -329,7 +329,7 @@
        C:/Users /home ntfs binary,posix=0,noacl,user 0 0
        ```
 
-    4. Install necessary and useful packages in `MSYS2 MinGW x64`
+    4. Install necessary and useful packages in `MSYS2 MinGW-w64`
 
        ```
        pacman -Sy man tmux zsh
@@ -455,7 +455,7 @@
                        "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path -shell zsh",
                        "guid": "{7e049a6e-6aea-4e66-9bd3-a4bd49a49bab}",
                        "icon": "C:/msys64/mingw64.ico",
-                       "name": "MSYS2 MinGW x64 Zsh",
+                       "name": "MSYS2 MinGW-w64 Zsh",
                        "startingDirectory": "%USERPROFILE%"
                    },
                    // ...
@@ -465,7 +465,7 @@
 
     7. Set "MINGW64 / MSYS -Zsh" as the default profile from Startup > Default profile.
 
-    8. Config the terminal to use the font "Hack NF" and set your prefered text color scheme in Profiles > MSYS2 MinGW x64 Zsh.
+    8. Config the terminal to use the font "Hack NF" and set your prefered text color scheme in Profiles > MSYS2 MinGW-w64 Zsh.
 
 14. Pre-installation
 
@@ -475,7 +475,7 @@
        Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
        ```
 
-    2. Open an "MSYS2 MinGW x64 Zsh" tab in Windows Terminal.
+    2. Open an "MSYS2 MinGW-w64 Zsh" tab in Windows Terminal.
 
     3. Select `0` to create an empty `~/.zshrc`
 
