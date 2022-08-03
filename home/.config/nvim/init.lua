@@ -45,13 +45,6 @@ require('packer').startup(function(use)
   }
 
   use {
-    "ms-jpq/coq_nvim",
-    branch = "coq",
-    event = "VimEnter",
-    config = "vim.cmd[[COQnow]]",
-  }
-
-  use {
     "nvim-lualine/lualine.nvim",
     requires = { { "kyazdani42/nvim-web-devicons" } },
   }
