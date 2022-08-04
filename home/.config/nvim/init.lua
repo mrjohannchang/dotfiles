@@ -41,7 +41,7 @@ require('packer').startup(function(use)
     "numToStr/Comment.nvim",
     config = function()
         require("Comment").setup()
-    end
+    end,
   }
 
   use {
@@ -195,18 +195,18 @@ cmp.setup.filetype('gitcommit', {
 cmp.setup.cmdline('/', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
-    { name = 'buffer' }
-  }
+    { name = 'buffer' },
+  },
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-    { name = 'path' }
+    { name = 'path' },
   }, {
-    { name = 'cmdline' }
-  })
+    { name = 'cmdline' },
+  }),
 })
 
 -- Setup lspconfig.
@@ -243,9 +243,9 @@ require('telescope').setup {
         ['<ESC>'] = false,
         ['dd'] = require('telescope.actions').delete_buffer,
         ['q'] = require('telescope.actions').close,
-      }
-    }
-  }
+      },
+    },
+  },
 }
 -- }
 
