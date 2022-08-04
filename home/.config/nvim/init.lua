@@ -60,15 +60,7 @@ require('packer').startup(function(use)
 
   use {
     "ishan9299/nvim-solarized-lua",
-    config = function()
-      vim.cmd([[
-        colorscheme solarized
-        highlight Normal guibg=#002b36
-      ]])
-      if vim.o.background == 'light' then
-        vim.cmd("highlight Normal guibg=#fdf6e3")
-      end
-    end
+    config = "vim.cmd[[colorscheme solarized]]",
   }
 
   use {
