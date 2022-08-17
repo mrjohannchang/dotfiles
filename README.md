@@ -438,7 +438,7 @@
                        "tabSwitcherMode": "mru"
                    },
                    "keys": "ctrl+shift+tab"
-               }
+               },
                ...
            ],
        ```
@@ -509,7 +509,7 @@
 1. `git clone` this repo and `cd` into it.
 
    ```
-   cd ~
+   cd ~  # You can put the dotfiles repository anywhere in $HOME. ~/dotfiles here is used as an example.
    git clone https://github.com/changyuheng/dotfiles.git
    cd dotfiles
    ```
@@ -517,11 +517,11 @@
 2. [**Windows Only**] Enable case sensitive support for sub-modules from a regular **PowerShell** session
 
    ```
-   cd ~\dotfiles\3rdparties
+   cd ~\dotfiles\3rdparties  # Assuming the dotfiles repository has been cloned into ~\dotfiles
    (Get-ChildItem -Recurse -Directory).FullName | ForEach-Object {fsutil.exe file setCaseSensitiveInfo $_ enable}
    ```
 
-   Then go back to ZSH.
+   Then **go back** to ZSH.
 
 3. Clone sub-modules.
 
