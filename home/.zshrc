@@ -138,6 +138,16 @@ export LESS="$LESS --ignore-case --no-init --quit-if-one-screen --RAW-CONTROL-CH
 # }
 
 
+# Python user executables on Windows {
+case "${OSTYPE:l}" in
+  cygwin*|msys*)
+    for d in "${HOME}/AppData/Roaming/Python/"*"/Scripts"; do
+      export PATH="${d}:${PATH}"
+    done
+esac
+# }
+
+
 # Python Poetry executables {
 if [ -d "${HOME}/.poetry/bin" ]; then
   export PATH="${HOME}/.poetry/bin:${PATH}"
