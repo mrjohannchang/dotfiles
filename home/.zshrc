@@ -141,9 +141,11 @@ export LESS="$LESS --ignore-case --no-init --quit-if-one-screen --RAW-CONTROL-CH
 # Python user executables on Windows {
 case "${OSTYPE:l}" in
   cygwin*|msys*)
-    for d in "${HOME}/AppData/Roaming/Python/"*"/Scripts"; do
-      export PATH="${d}:${PATH}"
-    done
+    if [ -d "${HOME}/AppData/Roaming/Python" ]; then
+      for d in "${HOME}/AppData/Roaming/Python/"*"/Scripts"; do
+        export PATH="${d}:${PATH}"
+      done
+    fi
 esac
 # }
 
