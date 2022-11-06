@@ -291,13 +291,11 @@
 
 9. Enable **long file path support** from: Start > Local Group Policy Editor > Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem > Enable Win32 long paths
 
-10. Enable [Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development) from: Settings > Update & Security > For developers > Developer Mode
+10. Enable [Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development) from: Settings > Update & Security > For developers > Developer Modern
 
-11. Enable **symlink creating support** by adding the current user to: Start > Local Security Policy > Security Settings > Local Policies > User Rights Assignment > Create symbolic links
+    * Adding the current user to: Start > Local Security Policy > Security Settings > Local Policies > User Rights Assignment > Create symbolic links if enabling the developer mode does not enable the symlink creating support for you.
 
-    **Note**: This should be done automatically after enabling Developer Mode
-
-12. Configure MSYS2
+11. Configure MSYS2
 
     1. Enable the symbolic link support in MSYS2 by uncommenting the following line in `C:\msys64\msys2_shell.cmd`
 
@@ -335,7 +333,7 @@
        pacman -Sy man tmux zsh
        ```
 
-13. Configure Windows Terminal
+12. Configure Windows Terminal
 
     1. Disable copy & paste mappings to `<Ctrl> + c` and `<Ctrl> + v` by commenting out related config in `settings.json` which can be opened from the buttom left gear icon of Windows Terminal Settings page. You will still be able to use `<Ctrl> + <Shift> + c` and `<Ctrl> + <Shift> + v` for copying and pasting.
 
@@ -467,7 +465,7 @@
 
     8. Config the terminal to use the font "Hack NF" and set your prefered text color scheme in Profiles > MSYS2 MinGW-w64 Zsh.
 
-14. Pre-installation
+13. Pre-installation
 
     1. Open an **elevated** (Run as administrator) **PowerShell** session and execute the following command. So that you can use `fsutil` in the later process. After the execution, you may need to restart your computer.
 
