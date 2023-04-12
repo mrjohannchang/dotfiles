@@ -251,9 +251,8 @@
    **Note**:
 
    1. **Uncheck** Git LFS (Large File Support)
-   2. Use external OpenSSH
-   3. Checkout as-is, commit Unix-style line endings
-   4. Only ever fast-forward
+   2. Checkout as-is, commit as-is
+   3. Only ever fast-forward
 
    **Optional tweak**:
 
