@@ -460,9 +460,7 @@
            }
        ```
 
-    7. Set "MINGW64 / MSYS -Zsh" as the default profile from Startup > Default profile.
-
-    8. Config the terminal to use the font "Hack NF" and set your prefered text color scheme in Profiles > MSYS2 MinGW-w64 Zsh.
+    7. Config the terminal to use the font "Hack NF" and set your prefered text color scheme in Profiles > MSYS2 MinGW-w64 Zsh.
 
 13. Pre-installation
 
