@@ -15,6 +15,8 @@
 * **Minimal Pollution** - Prefer adding config files instead of replacing them when it's possible.
 * **Removable** - Has a built-in uninstaller. Original setup will be backed up during the installation process and will be restored after the uninstallation.
 
+---
+
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 * [About](#about)
 * [Features](#features)
