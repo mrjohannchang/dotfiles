@@ -1,5 +1,20 @@
 # Johann Chang’s dotfiles
 
+* **Cross-platform** - Support [Linux](https://en.wikipedia.org/wiki/Linux), [macOS](https://en.wikipedia.org/wiki/MacOS), and [Microsoft Windows](https://en.wikipedia.org/wiki/Microsoft_Windows).
+* **Modern** - Richer features and better performance:
+  * [Z shell (Zsh)](https://en.wikipedia.org/wiki/Z_shell) over [Bourne Again Shell (Bash)](https://en.wikipedia.org/wiki/Bash_(Unix_shell)).
+  * [Neovim](https://en.wikipedia.org/wiki/Vim_(text_editor)#Neovim) over [Vi IMproved (Vim)](https://en.wikipedia.org/wiki/Vim_(text_editor)).
+  * [ripgrep](https://github.com/BurntSushi/ripgrep) over [grep](https://en.wikipedia.org/wiki/Grep).
+  * [fd](https://github.com/sharkdp/fd) over [find](https://en.wikipedia.org/wiki/Find_(Unix)).
+* **Lightweight** - Balanced between performance and feature count. Can run smoothly on a Raspberry Pi.
+* **Pure** - Only putting symbolic links of config files to the system. No modification to existing system files.
+* **Configurable**
+  * Support both light and dark background. Further reading: [Is Dark Mode Better for Your Eyes?](https://rxoptical.com/eye-health/is-dark-mode-better-for-your-eyes/)
+  * Interactive installation process.
+* **Compliant** - Follow standards of [XDG Base Directory](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html) and [Unix](https://en.wikipedia.org/wiki/Unix) convention.
+* **Minimal Pollution** - Prefer adding config files instead of replacing them when it's possible.
+* **Removable** - Has a built-in uninstaller. Original setup will be backed up during the installation process and will be restored after the uninstallation.
+
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 * [About](#about)
 * [Features](#features)
@@ -21,21 +36,6 @@
       - [macOS](#macos-1)
       - [Ubuntu](#ubuntu)
 <!-- TOC end -->
-
-* **Cross-platform** - Support [Linux](https://en.wikipedia.org/wiki/Linux), [macOS](https://en.wikipedia.org/wiki/MacOS), and [Microsoft Windows](https://en.wikipedia.org/wiki/Microsoft_Windows).
-* **Modern** (richer features and better performance but may be less compatible) - Prefer:
-  * [Z shell (Zsh)](https://en.wikipedia.org/wiki/Z_shell) over [Bourne Again Shell (Bash)](https://en.wikipedia.org/wiki/Bash_(Unix_shell)).
-  * [Neovim](https://en.wikipedia.org/wiki/Vim_(text_editor)#Neovim) over [Vi IMproved (Vim)](https://en.wikipedia.org/wiki/Vim_(text_editor)).
-  * [ripgrep](https://github.com/BurntSushi/ripgrep) over [grep](https://en.wikipedia.org/wiki/Grep).
-  * [fd](https://github.com/sharkdp/fd) over [find](https://en.wikipedia.org/wiki/Find_(Unix)).
-* **Lightweight** - Balanced between performance and feature count. Can run smoothly on a Raspberry Pi.
-* **Pure** - Only putting symbolic links of config files to the system. No modification to existing system files.
-* **Configurable**
-  * Support both light and dark background. Further reading: [Is Dark Mode Better for Your Eyes?](https://rxoptical.com/eye-health/is-dark-mode-better-for-your-eyes/)
-  * Interactive installation process.
-* **Compliant** - Follow standards of [XDG Base Directory](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html) and [Unix](https://en.wikipedia.org/wiki/Unix) convention.
-* **Minimal Pollution** - Prefer adding config files instead of replacing them when it's possible.
-* **Removable** - Has a built-in uninstaller. Original setup will be backed up during the installation process and will be restored after the uninstallation.
 
 ## Features
 
