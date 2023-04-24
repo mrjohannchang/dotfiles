@@ -1,30 +1,26 @@
 # Johann Chang’s dotfiles
 
-<!-- TOC generated with https://derlin.github.io/bitdowntoc/ -->
-- [About](#about)
-- [Features](#features)
-  * [Programs and Fonts](#programs-and-fonts)
-  * [Z Shell (zsh)](#z-shell-zsh)
-    + [Z Shell Plugins](#z-shell-plugins)
-  * [Neovim (nvim)](#neovim-nvim)
-    + [Neovim Plugins](#neovim-plugins)
-  * [Tmux](#tmux)
-    + [Tmux Plugins](#tmux-plugins)
-  * [Supported Virtual Environments](#supported-virtual-environments)
-- [Setup](#setup)
-  * [Prerequisites](#prerequisites)
-    + [Linux (tested on Ubuntu 20.04 Focal Fossa Desktop)](#linux-tested-on-ubuntu-2004-focal-fossa-desktop)
-    + [macOS](#macos)
-    + [Microsoft Windows (tested on Windows 10)](#microsoft-windows-tested-on-windows-10)
-  * [Installation](#installation)
-  * [Optional Tweak](#optional-tweak)
-    + [Ubuntu](#ubuntu)
-    + [Windows](#windows)
-  * [Uninstallation](#uninstallation)
-- [Known Issues](#known-issues)
-- [To-Do](#to-do)
-
-## About
+<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
+* [About](#about)
+* [Features](#features)
+   + [Programs and Fonts](#programs-and-fonts)
+   + [Z Shell (zsh)](#z-shell-zsh)
+      - [Z Shell Plugins](#z-shell-plugins)
+   + [Neovim (nvim)](#neovim-nvim)
+      - [Neovim Plugins](#neovim-plugins)
+   + [Tmux](#tmux)
+      - [Tmux Plugins](#tmux-plugins)
+   + [Supported Virtual Environments](#supported-virtual-environments)
+* [Setup](#setup)
+   + [Prerequisites](#prerequisites)
+      - [Linux (tested on Ubuntu 22.04 Jammy Jellyfish and Raspberry Pi OS Bookworm)](#linux-tested-on-ubuntu-2204-jammy-jellyfish-and-raspberry-pi-os-bookworm)
+      - [macOS](#macos)
+      - [Microsoft Windows (tested on Windows 10)](#microsoft-windows-tested-on-windows-10)
+   + [Installation](#installation)
+   + [Optional Tweak](#optional-tweak)
+      - [macOS](#macos-1)
+      - [Ubuntu](#ubuntu)
+<!-- TOC end -->
 
 * **Cross-platform** - Support [Linux](https://en.wikipedia.org/wiki/Linux), [macOS](https://en.wikipedia.org/wiki/MacOS), and [Microsoft Windows](https://en.wikipedia.org/wiki/Microsoft_Windows).
 * **Modern** (richer features and better performance but may be less compatible) - Prefer:
@@ -46,10 +42,9 @@
 ### Programs and Fonts
 
 1. [fd](https://github.com/sharkdp/fd)
-2. [jf open 粉圓](https://github.com/justfont/open-huninn-font)
-3. [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
-4. [ripgrep](https://github.com/BurntSushi/ripgrep)
-5. [zoxide](https://github.com/ajeetdsouza/zoxide)
+2. [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
+3. [ripgrep](https://github.com/BurntSushi/ripgrep)
+4. [zoxide](https://github.com/ajeetdsouza/zoxide)
 
 ### Z Shell (zsh)
 
