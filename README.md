@@ -32,7 +32,7 @@
   * [Neovim](https://en.wikipedia.org/wiki/Vim_(text_editor)#Neovim) over [Vi IMproved (Vim)](https://en.wikipedia.org/wiki/Vim_(text_editor)).
   * [ripgrep](https://github.com/BurntSushi/ripgrep) over [grep](https://en.wikipedia.org/wiki/Grep).
   * [fd](https://github.com/sharkdp/fd) over [find](https://en.wikipedia.org/wiki/Find_(Unix)).
-* **Lightweight** - Balanced between performance and numbers of features.
+* **Lightweight** - Balanced between performance and feature count. Can run smoothly on a Raspberry Pi.
 * **Pure** - Only putting symbolic links of config files to the system. No modification to existing system files.
 * **Configurable**
   * Support both light and dark background. Further reading: [Is Dark Mode Better for Your Eyes?](https://rxoptical.com/eye-health/is-dark-mode-better-for-your-eyes/)
@@ -188,11 +188,9 @@
 
 ### Prerequisites
 
-#### Linux (tested on Ubuntu 20.04 Focal Fossa Desktop)
+#### Linux (tested on Ubuntu 22.04 Jammy Jellyfish and Raspberry Pi OS Bookworm)
 
 1. Install necessary packages.
-
-   Note: zoxide only exists in Ubuntu 21.04+
 
    ```
    sudo apt install build-essential cmake git git-lfs golang tmux fontconfig python3 python3-dev python3-venv curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf xsel zoxide yapf3
@@ -200,7 +198,7 @@
 
 2. Change default shell to [Zsh](https://www.zsh.org/) via `chsh`.
 
-3. Install [flatpak](https://flatpak.org/).
+3. [Skip on Raspberry Pi OS] Install [flatpak](https://flatpak.org/).
 
    ```
    sudo apt install flatpak
@@ -209,10 +207,23 @@
 
 4. Install [Neovim](https://neovim.io/).
 
+   For Ubuntu:
+
    ```
    sudo add-apt-repository ppa:neovim-ppa/unstable
    sudo apt update
    sudo apt install neovim
+   ```
+
+   For Raspberry Pi OS:
+
+   ```
+   sudo apt install ninja-build gettext cmake unzip curl
+   git clone https://github.com/neovim/neovim
+   cd neovim
+   make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=/usr/local"
+   git switch stable
+   sudo make install
    ```
 
 5. Install [Node Version Manager (nvm)](https://github.com/nvm-sh/nvm).
