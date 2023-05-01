@@ -20,6 +20,8 @@ vim.opt.splitbelow = true
 vim.opt.termguicolors = true
 
 vim.opt.wrap = false
+
+vim.opt.mouse = ""
 -- }
 
 
