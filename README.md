@@ -222,7 +222,7 @@
 2. Install necessary packages.
 
    ```
-   brew install coreutils  fd ripgrep tmux neovim trash git-lfs cmake ctags go gotags nvm pyenv zoxide
+   brew install coreutils bash fd ripgrep tmux neovim trash git-lfs cmake ctags go gotags nvm pyenv zoxide
 
    brew tap homebrew/cask-fonts
    brew install font-hack-nerd-font
