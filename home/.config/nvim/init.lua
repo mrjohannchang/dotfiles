@@ -27,7 +27,7 @@ vim.opt.mouse = ""
 
 -- Workarounds {
 -- https://github.com/neovim/neovim/issues/6660
-if vim.fn.has("win32") then
+if vim.loop.os_uname().sysname == "Windows" then
   vim.api.nvim_set_keymap("", "<C-z>", "", { noremap = true })
 end
 -- }

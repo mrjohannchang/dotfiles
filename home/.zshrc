@@ -138,6 +138,13 @@ export LESS="$LESS --ignore-case --no-init --quit-if-one-screen --RAW-CONTROL-CH
 # }
 
 
+# PlatformIO {
+if [ -d "${HOME}/.platformio/penv/bin" ]; then
+  export PATH="${HOME}/.platformio/penv/bin:${PATH}"
+fi
+# }
+
+
 # Python user executables on Windows {
 case "${OSTYPE:l}" in
   cygwin*|msys*)
