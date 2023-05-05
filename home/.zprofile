@@ -1,3 +1,7 @@
+# Homebrew {
+eval "$(/opt/homebrew/bin/brew shellenv)"
+# }
+
 # pyenv {
 if [ -d "${HOME}/.pyenv" ]; then
   export PYENV_ROOT="${HOME}/.pyenv"
