@@ -541,6 +541,25 @@
 <details>
   <summary>Click to expand</summary>
 
+#### macOS
+
+1. `option` + `arrow` moving between words in Zsh and iTerm2
+
+   1. Go to Preferences, Profile, Keys.
+   2. Set your left ⌥ key to act as an escape character.
+   3. Locate the current shortcut for ⌥ ← or create a new one, with the following settings:
+      Keyboard Shortcut: ⌥←
+      Action: Send Escape Sequence
+      Esc+: b
+   4. repeat for the ⌥→ keyboard shortcut with the following settings:
+      Keyboard Shortcut: ⌥→
+      Action: Send Escape Sequence
+      Esc+: f
+
+2. Disable smart quotes and dashes from Settings > Keyboard > Text Input > Input Sources > All Input Sources > Use smart quotes and dashes
+
+3. Configure `option` + `space` to switch between input methods from Settings > Keyboard > Keyboard Shortcuts > Input Sources
+
 #### Ubuntu
 
 1. Install fcitx to replace iBus:
@@ -653,10 +672,10 @@
 
    ```
    Windows Registry Editor Version 5.00
-   
+
    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
    "Scancode Map"=hex:00,00,00,00,00,00,00,00,03,00,00,00,1d,00,3a,00,3a,00,1d,00,00,00,00,00
-   
+
    ; Refs:
    ; https://superuser.com/a/1381836
    ```
