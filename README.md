@@ -543,7 +543,7 @@
 
 #### macOS
 
-1. `option` + `arrow` moving between words in Zsh and iTerm2
+1. `Option` + `Arrow` moving between words in Zsh and iTerm2
 
    1. Go to Preferences, Profile, Keys.
    2. Set your left ⌥ key to act as an escape character.
@@ -558,7 +558,11 @@
 
 2. Disable smart quotes and dashes from Settings > Keyboard > Text Input > Input Sources > All Input Sources > Use smart quotes and dashes
 
-3. Configure `option` + `space` to switch between input methods from Settings > Keyboard > Keyboard Shortcuts > Input Sources
+3. Configure `Option` + `Space` to switch between input methods from Settings > Keyboard > Keyboard Shortcuts > Input Sources
+
+4. `Command` + `Mouse Wheel` to zoom in Firefox: `mousewheel.with_meta.action` in `about:config`.
+
+5. Make the scroll direction settings of mouse and trackpad independent: Use [Scroll Reverser](https://pilotmoon.com/scrollreverser/).
 
 #### Ubuntu
 
