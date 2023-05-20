@@ -145,7 +145,7 @@ fi
 # }
 
 
-# Python user executables on Windows {
+# Python user executables {
 case "${OSTYPE:l}" in
   cygwin*|msys*)
     if [ -d "${HOME}/AppData/Roaming/Python" ]; then
@@ -153,6 +153,14 @@ case "${OSTYPE:l}" in
         export PATH="${d}:${PATH}"
       done
     fi
+    ;;
+  darwin*)
+    if [ -d "${HOME}/Library/Python" ]; then
+      for d in "${HOME}/Library/Python/"*"/bin"; do
+        export PATH="${d}:${PATH}"
+      done
+    fi
+    ;;
 esac
 # }
 
