@@ -72,16 +72,17 @@ require('packer').startup(function(use)
   -- }
 
   -- vim-based {
+  use { "github/copilot.vim", run = ":Copilot setup" }
   use { "junegunn/vim-easy-align" }
   use { "tpope/vim-surround" }
   -- }
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
 end)
+-- }
+
+
+-- Copilot {
+vim.g.copilot_no_tab_map = true
+vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 -- }
 
 

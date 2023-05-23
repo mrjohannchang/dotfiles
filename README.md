@@ -125,6 +125,7 @@
 6. [surround.vim](https://github.com/tpope/vim-surround)
 7. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 8. [vim-easy-align](https://github.com/junegunn/vim-easy-align)
+9. [copilot.vim](https://github.com/github/copilot.vim)
 
 ### Tmux
 
