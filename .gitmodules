@@ -7,9 +7,6 @@
 [submodule "open-huninn-font"]
 	path = 3rdparties/open-huninn-font
 	url = https://github.com/justfont/open-huninn-font.git
-[submodule "packer.nvim"]
-	path = 3rdparties/packer.nvim
-	url = https://github.com/wbthomason/packer.nvim.git
 [submodule "tpm"]
 	path = 3rdparties/tpm
 	url = https://github.com/tmux-plugins/tpm.git

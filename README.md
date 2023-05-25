@@ -99,33 +99,51 @@
    * VISUAL mode
      1. `g` `c` - Toggles the region using linewise comment
      2. `g` `b` - Toggles the region using blockwise comment
-9. Telescope
+9. nvim-tree
+   1. Close the nvim-tree pane: `q`
+   2. Open the nvim-tree pane: `<Leader>` `t` `f`
+   3. Show shortcuts: `g` `?`
+10. telescope.nvim
    1. Close the telescope window: `q`
    2. Delete the highlighted buffer: `d` `d`
    3. Find: `<Leader>` `f` `f`
    4. Grep: `<Leader>` `f` `g`
    5. Buffers: `<Leader>` `f` `b`
    6. Help tags: `<Leader>` `f` `h`
-10. surround.vim
+11. surround.vim
     1. `y` `s` `<motion>` `<desired>` - Add desired surround around text defined by `<motion>`
     2. `d` `s` `<existing>` - Delete `<existing>` surround
     3. `c` `s` `<existing>` `<desired>` - Change `<existing>` surround to `<desired>`
     4. `S` `<desired>` - Surround when in visual modes (surrounds full selection)
-11. vim-easy-align
+12. vim-easy-align
     Yank the line you'd like to align and then press `<Enter>`.
     Read its [README](https://github.com/junegunn/vim-easy-align/blob/master/README.md) for more information.
+13. aerial.nvim
+   1. Close the aerial.nvim pane: `q`
+   2. Open the aerial.nvim pane: `<Leader>` `t` `s`
+   3. Show shortcuts: `g` `?`
+   4. Go to previous symbol: `{`
+   5. Go to next symbol: `}`
 
 #### Neovim Plugins
 
-1. [Comment.nvim](https://github.com/numToStr/Comment.nvim)
-2. [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-3. [nvim-cmp](https://github.com/hrsh7th/nvim-cmp/)
-4. [nvim-solarized-lua](https://github.com/ishan9299/nvim-solarized-lua)
-5. [packer.nvim](https://github.com/wbthomason/packer.nvim)
-6. [surround.vim](https://github.com/tpope/vim-surround)
-7. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-8. [vim-easy-align](https://github.com/junegunn/vim-easy-align)
-9. [copilot.vim](https://github.com/github/copilot.vim)
+1. [aerial.nvim](https://github.com/stevearc/aerial.nvim)
+2. [Comment.nvim](https://github.com/numToStr/Comment.nvim)
+
+#### Neovim Plugins
+
+1. [aerial.nvim](https://github.com/stevearc/aerial.nvim)
+2. [Comment.nvim](https://github.com/numToStr/Comment.nvim)
+3. [copilot.vim](https://github.com/github/copilot.vim)
+4. [lazy.nvim](https://github.com/folke/lazy.nvim)
+5. [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+6. [nvim-cmp](https://github.com/hrsh7th/nvim-cmp/)
+7. [nvim-solarized-lua](https://github.com/ishan9299/nvim-solarized-lua)
+8. [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
+9. [surround.vim](https://github.com/tpope/vim-surround)
+10. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+11. [trouble.nvim](https://github.com/folke/trouble.nvim)
+12. [vim-easy-align](https://github.com/junegunn/vim-easy-align)
 
 ### Tmux
 
@@ -532,10 +550,6 @@
    ```
 
 5. Execute `tmux` (the command is `script -c tmux /dev/null` when using **Windows Terminal**) and press `<Ctrl> + s` `I` (uppercase i) to install plugins of tmux. It may take a few minutes. Please expect `tmux` frozen during the installation.
-
-6. Execute `nvim` and then `:PackerSync` to install plugins of Neovim. Do **NOT** remove `packer.nvim` package manager (`<nvim-config>/site/pack/packer/start/packer.nvim`). You may need to execute other commands for installing dependencies of some plugins. Please follow the hints you see in Neovim.
-
-   * You can use `:PackerSync` to update the installed plugins in the future. But please make sure you do **NOT** remove packer.nvim package manager (`<nvim-config>/site/pack/packer/start/packer.nvim`) during the syncing process.
 
 ### Optional Tweak
 
