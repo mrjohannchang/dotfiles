@@ -129,21 +129,17 @@
 
 1. [aerial.nvim](https://github.com/stevearc/aerial.nvim)
 2. [Comment.nvim](https://github.com/numToStr/Comment.nvim)
-
-#### Neovim Plugins
-
-1. [aerial.nvim](https://github.com/stevearc/aerial.nvim)
-2. [Comment.nvim](https://github.com/numToStr/Comment.nvim)
 3. [copilot.vim](https://github.com/github/copilot.vim)
 4. [lazy.nvim](https://github.com/folke/lazy.nvim)
 5. [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-6. [nvim-cmp](https://github.com/hrsh7th/nvim-cmp/)
-7. [nvim-solarized-lua](https://github.com/ishan9299/nvim-solarized-lua)
-8. [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
-9. [surround.vim](https://github.com/tpope/vim-surround)
-10. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-11. [trouble.nvim](https://github.com/folke/trouble.nvim)
-12. [vim-easy-align](https://github.com/junegunn/vim-easy-align)
+6. [mason.nvim](https://github.com/williamboman/mason.nvim)
+7. [nvim-cmp](https://github.com/hrsh7th/nvim-cmp/)
+8. [nvim-solarized-lua](https://github.com/ishan9299/nvim-solarized-lua)
+9. [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
+10. [surround.vim](https://github.com/tpope/vim-surround)
+11. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+12. [trouble.nvim](https://github.com/folke/trouble.nvim)
+13. [vim-easy-align](https://github.com/junegunn/vim-easy-align)
 
 ### Tmux
 
@@ -551,6 +547,8 @@
 
 5. Execute `tmux` (the command is `script -c tmux /dev/null` when using **Windows Terminal**) and press `<Ctrl> + s` `I` (uppercase i) to install plugins of tmux. It may take a few minutes. Please expect `tmux` frozen during the installation.
 
+6. Execute `nvim` and install desired LSPs via `:Mason`.
+
 ### Optional Tweak
 
 <details>
@@ -698,6 +696,11 @@
    ; Refs:
    ; https://superuser.com/a/1381836
    ```
+
+#### General
+
+1. [Using tab instead of arrow key to scroll in code completion - JetBrains](https://intellij-support.jetbrains.com/hc/en-us/community/posts/8008270395538-Using-tab-instead-of-arrow-key-to-scroll-in-code-completion)
+2. [Visual Studio Code: Use tab (instead of arrow keys) to select Intellisense Suggestions?](https://stackoverflow.com/questions/48097507/visual-studio-code-use-tab-instead-of-arrow-keys-to-select-intellisense-sugge)
 
 </details>
 

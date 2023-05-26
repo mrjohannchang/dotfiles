@@ -28,15 +28,15 @@ vim.opt.termguicolors = true
 vim.opt.wrap = false
 
 vim.opt.mouse = ""
--- }
+-- } Built-in
 
 
 -- Workarounds {
 -- https://github.com/neovim/neovim/issues/6660
 if vim.loop.os_uname().sysname == "Windows" then
-  vim.api.nvim_set_keymap("", "<C-z>", "", { noremap = true })
+  vim.keymap.set("", "<C-z>", "", { noremap = true })
 end
--- }
+-- } Workarounds
 
 
 -- Plugins {
@@ -55,7 +55,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  -- lua-based {
+  -- Lua-based {
   {
     "numToStr/Comment.nvim",
     config = function()
@@ -75,14 +75,20 @@ require("lazy").setup({
     },
   },
 
-  { "hrsh7th/nvim-cmp" },
-  { "hrsh7th/cmp-buffer" },
-  { "hrsh7th/cmp-cmdline" },
-  -- { "hrsh7th/cmp-nvim-lsp" },
-  { "hrsh7th/cmp-path" },
-  { "hrsh7th/vim-vsnip" },
+  { "neovim/nvim-lspconfig" },
 
-  -- { "neovim/nvim-lspconfig" },
+  {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-path",
+      "hrsh7th/vim-vsnip",
+    },
+  },
 
   {
     "ishan9299/nvim-solarized-lua",
@@ -115,13 +121,12 @@ require("lazy").setup({
     "nvim-tree/nvim-tree.lua",
     config = function()
       require("nvim-tree").setup()
-      vim.api.nvim_set_keymap("n", "<LEADER>tf", "<CMD>NvimTreeOpen<CR>", { noremap = true })
+      vim.keymap.set("n", "<LEADER>tf", "<CMD>NvimTreeOpen<CR>", { noremap = true })
     end,
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
   },
-
 
   {
     "stevearc/aerial.nvim",
@@ -129,73 +134,108 @@ require("lazy").setup({
       require("aerial").setup()
       vim.keymap.set('n', '{', '<CMD>AerialPrev<CR>', { noremap = true })
       vim.keymap.set('n', '}', '<CMD>AerialNext<CR>', { noremap = true })
-      vim.api.nvim_set_keymap("n", "<LEADER>ts", "<CMD>AerialOpen!<CR>", { noremap = true })
+      vim.keymap.set("n", "<LEADER>ts", "<CMD>AerialOpen!<CR>", { noremap = true })
     end,
   },
+
+  {
+    "williamboman/mason.nvim",
+    build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+  },
+  { "mfussenegger/nvim-dap" },
+  { "jay-babu/mason-nvim-dap.nvim" },
+  { "mfussenegger/nvim-lint" },
+  { "jose-elias-alvarez/null-ls.nvim" },
+  { "williamboman/mason-lspconfig.nvim" },
+  { "mhartington/formatter.nvim" },
+
+  { "simrat39/rust-tools.nvim" },
   -- }
 
-  -- vim-based {
-  { "github/copilot.vim", build = "<CMD>Copilot setup" },
-
+  -- VimScript-based {
+  {
+    "github/copilot.vim",
+    build = ":Copilot setup",
+  },
   {
     "junegunn/vim-easy-align",
     config = function()
-      vim.api.nvim_set_keymap("v", "<ENTER>", "<CMD>EasyAlign<CR>", { noremap = true })
+      vim.keymap.set("v", "<ENTER>", "<CMD>EasyAlign<CR>", { noremap = true })
     end,
   },
 
   { "tpope/vim-surround" },
   -- }
 })
-
-
--- Copilot {
-vim.g.copilot_no_tab_map = true
-vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
--- }
+-- } Plugins
 
 
 -- Reselect visual block after indent/outdent {
-vim.api.nvim_set_keymap("v", "<", "<gv", { noremap = true })
-vim.api.nvim_set_keymap("v", ">", ">gv", { noremap = true })
--- }
+vim.keymap.set("v", "<", "<gv", { noremap = true })
+vim.keymap.set("v", ">", ">gv", { noremap = true })
+-- } Reselect visual block after indent/outdent
 
 
 -- Enable moving up and down with j and k in wrapped lines {
-vim.api.nvim_set_keymap("n", "j", "gj", { noremap = true })
-vim.api.nvim_set_keymap("n", "k", "gk", { noremap = true })
--- }
+vim.keymap.set("n", "j", "gj", { noremap = true })
+vim.keymap.set("n", "k", "gk", { noremap = true })
+-- } Enable moving up and down with j and k in wrapped lines
 
 
 -- Clear the search highlight with <LEADER>/ {
-vim.api.nvim_set_keymap("n", "<LEADER>/", "<CMD>nohlsearch<CR>", { noremap = true, silent = true })
--- }
+vim.keymap.set("n", "<LEADER>/", "<CMD>nohlsearch<CR>", { noremap = true, silent = true })
+-- } Clear the search highlight with <LEADER>/
 
 
 -- Saving files as root with w!! {
-vim.api.nvim_set_keymap("c", "w!!", "%!sudo tee > /dev/null %", { noremap = true })
--- }
+vim.keymap.set("c", "w!!", "%!sudo tee > /dev/null %", { noremap = true })
+-- } Saving files as root with w!!
 
 
 -- Better command-line editing {
 -- <CTRL> + j and <CTRL> + k move to lines that have identical prefixes
-vim.api.nvim_set_keymap("c", "<C-k>", "<UP>", { noremap = true })
-vim.api.nvim_set_keymap("c", "<C-j>", "<DOWN>", { noremap = true })
+vim.keymap.set("c", "<C-k>", "<UP>", { noremap = true })
+vim.keymap.set("c", "<C-j>", "<DOWN>", { noremap = true })
 
 -- <CTRL> + a and <CTRL> + e move to the beginning and the end of the line
-vim.api.nvim_set_keymap("c", "<C-a>", "<HOME>", { noremap = true })
-vim.api.nvim_set_keymap("c", "<C-e>", "<END>", { noremap = true })
--- }
+vim.keymap.set("c", "<C-a>", "<HOME>", { noremap = true })
+vim.keymap.set("c", "<C-e>", "<END>", { noremap = true })
+-- } Better command-line editing
 
 
 -- Toggle paste mode with <F2> {
 -- https://vim.fandom.com/wiki/Toggle_auto-indenting_for_code_paste
-vim.api.nvim_set_keymap("n", "<F2>", "<CMD>set invpaste paste?<CR>", { noremap = true })
+vim.keymap.set("n", "<F2>", "<CMD>set invpaste paste?<CR>", { noremap = true })
 vim.opt.pastetoggle="<F2>"
 
 -- Leave paste mode on leaving insert mode
 vim.api.nvim_command("autocmd InsertLeave * set nopaste")
--- }
+-- } Toggle paste mode with <F2>
+
+
+-- lspconfig {
+-- mason.nvim {
+require("mason").setup()
+require("mason-nvim-dap").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = {
+    "gopls",
+    "lua_ls",
+    "pylsp",
+    "rust_analyzer",
+  },
+})
+-- } mason.nvim
+require("lspconfig").lua_ls.setup {}
+require("lspconfig").pylsp.setup {}
+require("lspconfig").rust_analyzer.setup {}
+-- } lspconfig
+
+
+-- GitHub Copilot {
+vim.g.copilot_no_tab_map = true
+vim.keymap.set("i", "<C-e>", "copilot#Accept('<CR>')", {noremap = true, silent = true, expr=true, replace_keycodes = false })
+-- } GitHub Copilot
 
 
 -- nvim-cmp {
@@ -250,8 +290,9 @@ cmp.setup({
     }),
   },
   sources = cmp.config.sources({
-    -- { name = "nvim_lsp" },
-    { name = "vsnip" }, -- For vsnip users.
+    { name = "nvim_lsp", group_index = 2 },
+    { name = "path", group_index = 2 },
+    -- { name = "vsnip" }, -- For vsnip users.
     -- { name = "luasnip" }, -- For luasnip users.
     -- { name = "ultisnips" }, -- For ultisnips users.
     -- { name = "snippy" }, -- For snippy users.
@@ -287,23 +328,76 @@ cmp.setup.cmdline(":", {
   }),
 })
 
--- Setup lspconfig.
--- local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
--- require("lspconfig")["<YOUR_LSP_SERVER>"].setup {
---   capabilities = capabilities
--- }
--- }
+-- Setup LSP
+local capabilities = require('cmp_nvim_lsp').default_capabilities() --nvim-cmp
+
+-- Golang {
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+end
+
+require('lspconfig').gopls.setup{
+  cmd = {'gopls'},
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    gopls = {
+      experimentalPostfixCompletions = true,
+      analyses = {
+        unusedparams = true,
+        shadow = true,
+      },
+      staticcheck = true,
+    },
+  },
+  init_options = {
+    usePlaceholders = true,
+  }
+}
+-- } Golang
+-- Rust {
+local lsp_attach = function(client, buf)
+  -- Example maps, set your own with vim.api.nvim_buf_set_keymap(buf, "n", <lhs>, <rhs>, { desc = <desc> })
+  -- or a plugin like which-key.nvim
+  -- <lhs>        <rhs>                        <desc>
+  -- "K"          vim.lsp.buf.hover            "Hover Info"
+  -- "<leader>qf" vim.diagnostic.setqflist     "Quickfix Diagnostics"
+  -- "[d"         vim.diagnostic.goto_prev     "Previous Diagnostic"
+  -- "]d"         vim.diagnostic.goto_next     "Next Diagnostic"
+  -- "<leader>e"  vim.diagnostic.open_float    "Explain Diagnostic"
+  -- "<leader>ca" vim.lsp.buf.code_action      "Code Action"
+  -- "<leader>cr" vim.lsp.buf.rename           "Rename Symbol"
+  -- "<leader>fs" vim.lsp.buf.document_symbol  "Document Symbols"
+  -- "<leader>fS" vim.lsp.buf.workspace_symbol "Workspace Symbols"
+  -- "<leader>gq" vim.lsp.buf.formatting_sync  "Format File"
+
+  vim.api.nvim_buf_set_option(buf, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+  vim.api.nvim_buf_set_option(buf, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  vim.api.nvim_buf_set_option(buf, "tagfunc", "v:lua.vim.lsp.tagfunc")
+end
+
+-- Setup rust_analyzer via rust-tools.nvim
+require("rust-tools").setup({
+  server = {
+    capabilities = capabilities,
+    on_attach = lsp_attach,
+  },
+})
+-- } Rust
+-- } nvim-cmp
 
 
 -- telescope.nvim {
-vim.api.nvim_set_keymap(
+vim.keymap.set(
   "n", "<LEADER>ff", "<CMD>lua require('telescope.builtin').find_files()<CR>", { noremap = true })
-vim.api.nvim_set_keymap(
+vim.keymap.set(
   "n", "<LEADER>fg", "<CMD>lua require('telescope.builtin').live_grep()<CR>", { noremap = true })
-vim.api.nvim_set_keymap(
+vim.keymap.set(
   "n", "<LEADER>fb", "<CMD>lua require('telescope.builtin').buffers({ sort_mru = true })<CR>", { noremap = true })
-vim.api.nvim_set_keymap(
+vim.keymap.set(
   "n", "<LEADER>fh", "<CMD>lua require('telescope.builtin').help_tags()<CR>", { noremap = true })
 
 require("telescope").setup({
@@ -320,15 +414,15 @@ require("telescope").setup({
     },
   },
 })
--- }
+-- } telescope.nvim
 
 
 -- Load config for light background if available {
 pcall(require, "init-light")
--- }
+-- } Load config for light background if available
 
 
 -- Reference {
 -- nvim/options.lua https://github.com/neovim/neovim/blob/master/src/nvim/options.lua
 -- nvim-lua-guide https://github.com/nanotee/nvim-lua-guide
--- }
+-- } Reference
