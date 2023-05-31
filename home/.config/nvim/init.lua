@@ -450,6 +450,22 @@ require("telescope").setup({
 -- } telescope.nvim
 
 
+-- trouble.nvim {
+vim.keymap.set(
+  "n", "<leader>xx", "<CMD>TroubleToggle<CR>", { silent = true, noremap = true })
+-- vim.keymap.set(
+--   "n", "<leader>xw", "<CMD>TroubleToggle workspace_diagnostics<CR>", { silent = true, noremap = true })
+-- vim.keymap.set(
+--   "n", "<leader>xd", "<CMD>TroubleToggle document_diagnostics<CR>", { silent = true, noremap = true })
+-- vim.keymap.set(
+--   "n", "<leader>xl", "<CMD>TroubleToggle loclist<CR>", { silent = true, noremap = true })
+-- vim.keymap.set(
+--   "n", "<leader>xq", "<CMD>TroubleToggle quickfix<CR>", { silent = true, noremap = true })
+vim.keymap.set(
+  "n", "gR", "<CMD>TroubleToggle lsp_references<CR>", { silent = true, noremap = true })
+-- } trouble.nvim
+
+
 -- Load config for light background if available {
 pcall(require, "init-light")
 -- } Load config for light background if available

@@ -124,6 +124,9 @@
    3. Show shortcuts: `g` `?`
    4. Go to previous symbol: `{`
    5. Go to next symbol: `}`
+14. trouble.nvim
+   1. Toogle trouble pain: `<Leader>` `x` `x`
+   2. Toogle LSP trouble pain: `g` `R`
 
 #### Neovim Plugins
 
