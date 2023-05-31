@@ -24,9 +24,9 @@ __my_fzf_default_opts() {
   "
 }
 __my_fzf_default_opts && unset __my_fzf_default_opts
-# }
+# } fzf
 
 
 # zsh-autosuggestions {
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#a8b3b3"
-# }
+# } zsh-autosuggestions

@@ -5,7 +5,7 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-# }
+# } Powerlevel10k 1/2
 
 
 # General {
@@ -71,7 +71,7 @@ if command -v nvim &>/dev/null; then
   export EDITOR=nvim
   export VISUAL=nvim
 fi
-# }
+# } General
 
 
 # enable the color support of ls {
@@ -81,7 +81,7 @@ if command -v dircolors &>/dev/null; then
     alias ls="ls --quoting-style=literal --color=auto"
   fi
 fi
-# }
+# } enable the color support of ls
 
 
 # ZI {
@@ -117,7 +117,7 @@ zi light zsh-users/zsh-autosuggestions
 
 zi ice blockf
 zi light zsh-users/zsh-completions
-# }
+# } ZI
 
 
 # fd-find {
@@ -130,19 +130,26 @@ case "${OSTYPE:l}" in
     alias fd='fd --path-separator="//"'
     ;;
 esac
-# }
+# } fd-find
 
 
 # less {
 export LESS="$LESS --ignore-case --no-init --quit-if-one-screen --RAW-CONTROL-CHARS"
-# }
+# } less
+
+
+# Go {
+if [ -d "${HOME}/go/bin" ]; then
+  export PATH="${HOME}/go/bin:${PATH}"
+fi
+# } Go
 
 
 # PlatformIO {
 if [ -d "${HOME}/.platformio/penv/bin" ]; then
   export PATH="${HOME}/.platformio/penv/bin:${PATH}"
 fi
-# }
+# } PlatformIO
 
 
 # Python user executables {
@@ -162,14 +169,14 @@ case "${OSTYPE:l}" in
     fi
     ;;
 esac
-# }
+# } Python user executables
 
 
 # Python Poetry executables {
 if [ -d "${HOME}/.poetry/bin" ]; then
   export PATH="${HOME}/.poetry/bin:${PATH}"
 fi
-# }
+# } Python Poetry executables
 
 
 # ripgrep {
@@ -178,14 +185,14 @@ case "${OSTYPE:l}" in
     alias rg='rg --path-separator="//"'
     ;;
 esac
-# }
+# } ripgrep
 
 
 # rvm {
 if [ -s "${HOME}/.rvm/scripts/rvm" ]; then
   source "${HOME}/.rvm/scripts/rvm"
 fi
-# }
+# } rvm
 
 
 # TODO: Move SSH agent out as a standalone plugin
@@ -196,14 +203,14 @@ if [ ! -z "$SSH_AUTH_SOCK" \
   ln -s "$SSH_AUTH_SOCK" "${HOME}/.ssh/agent_sock"
   export SSH_AUTH_SOCK="${HOME}/.ssh/agent_sock"
 fi
-# }
+# } Refresh SSH agent in case it was dead
 
 
 # zoxide {
 if command -v zoxide &>/dev/null; then
   eval "$(zoxide init zsh)"
 fi
-# }
+# } zoxide
 
 
 # Workaround {
@@ -239,7 +246,7 @@ case "${OSTYPE:l}" in
     bindkey "^[[4~" end-of-line
     ;;
 esac
-# }
+# } Workaround
 
 
 # Powerlevel10k 2/2 {
@@ -248,16 +255,16 @@ esac
 # Avoid large git repos slowing down prompts
 # https://github.com/Powerlevel9k/powerlevel9k/issues/1105
 POWERLEVEL9K_VCS_MAX_INDEX_SIZE_DIRTY=10000
-# }
+# } Powerlevel10k 2/2
 
 
 # Neovide {
 alias neovide="neovide --multigrid"
-# }
+# } Neovide
 
 
 # .zshrc.light (configs for light background terminals) {
 if [ -r "${HOME}/.zshrc.light" ]; then
   source "${HOME}/.zshrc.light"
 fi
-# }
+# } .zshrc.light (configs for light background terminals)
