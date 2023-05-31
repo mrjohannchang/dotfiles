@@ -134,7 +134,7 @@ require("lazy").setup({
       require("aerial").setup()
       vim.keymap.set('n', '{', '<CMD>AerialPrev<CR>', { noremap = true })
       vim.keymap.set('n', '}', '<CMD>AerialNext<CR>', { noremap = true })
-      vim.keymap.set("n", "<LEADER>ts", "<CMD>AerialOpen!<CR>", { noremap = true })
+      vim.keymap.set("n", "<LEADER>ts", "<CMD>AerialOpen<CR>", { noremap = true })
     end,
   },
 
