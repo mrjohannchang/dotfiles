@@ -35,7 +35,6 @@
   * [ripgrep](https://github.com/BurntSushi/ripgrep) over [grep](https://en.wikipedia.org/wiki/Grep).
   * [fd](https://github.com/sharkdp/fd) over [find](https://en.wikipedia.org/wiki/Find_(Unix)).
 * **Lightweight** - Balanced between performance and numbers of features.
-  * Specifically, I don't want to make Neovim an IDE but just a text editor. There are already [JetBrains](https://www.jetbrains.com/) and [VS Code](https://code.visualstudio.com/). So I mainly choose plugins that enhance text editing but not focus on adding semantic support.
 * **Pure** - Only putting symbolic links of config files to the system. No modification to existing system files.
 * **Configurable**
   * Support both light and dark background. Further reading: [Is Dark Mode Better for Your Eyes?](https://rxoptical.com/eye-health/is-dark-mode-better-for-your-eyes/)
