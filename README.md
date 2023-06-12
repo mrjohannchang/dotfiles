@@ -1,5 +1,3 @@
-![screenshots/zsh-prompt.png](screenshots/zsh-prompt.png)
-
 # changyuheng’s dotfiles
 
 <!-- TOC generated with https://derlin.github.io/bitdowntoc/ -->
@@ -55,6 +53,8 @@
 
 ### Z Shell (zsh)
 
+![screenshots/zsh-prompt.png](screenshots/zsh-prompt.png)
+
 1. The current setup is blazingly fast.
 
 #### Z Shell Plugins
@@ -73,6 +73,9 @@
 5. [zsh-users/zsh-completions](https://github.com/zsh-users/zsh-completions)
 
 ### Neovim (nvim)
+
+![](screenshots/neovim-1.png)
+![](screenshots/neovim-2.png)
 
 1. The current setup is blazingly fast.
 2. Reselect visual block after indent/outdent.
