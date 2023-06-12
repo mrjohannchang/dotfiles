@@ -1,10 +1,4 @@
--- Built-in {
--- https://github.com/nvim-tree/nvim-tree.lua {
--- disable netrw at the very start of your init.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
--- }
-
+-- -- Built-in {
 vim.opt.cursorcolumn = true
 
 vim.opt.expandtab = true
@@ -194,13 +188,22 @@ require("lazy").setup({
   },
 
   {
-    "nvim-tree/nvim-tree.lua",
+    "nvim-neo-tree/neo-tree.nvim",
     config = function()
-      require("nvim-tree").setup()
-      vim.keymap.set("n", "<LEADER>wf", "<CMD>NvimTreeOpen<CR>", { noremap = true })
+      require("neo-tree").setup({
+        filesystem = {
+          follow_current_file = true,
+        },
+        buffers = {
+          follow_current_file = true,
+        },
+      })
+      vim.keymap.set("n", "<LEADER>wf", "<CMD>Neotree focus<CR>", { noremap = true })
     end,
     dependencies = {
-      "nvim-tree/nvim-web-devicons",
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
     },
   },
 

@@ -102,10 +102,10 @@
    * VISUAL mode
      1. `g` `c` - Toggles the region using linewise comment
      2. `g` `b` - Toggles the region using blockwise comment
-9. nvim-tree
-   1. Close the nvim-tree pane: `q`
-   2. Open the nvim-tree pane: `<Leader>` `w` `f`
-   3. Show shortcuts: `g` `?`
+9. neo-tree.nvim
+   1. Close the neo-tree.nvim pane: `q`
+   2. Open the neo-tree.nvim pane: `<Leader>` `w` `f`
+   3. Show shortcuts: `?` (when in neo-tree.nvim's pane)
 10. telescope.nvim
     1. Close the telescope window: `q`
     2. Delete the highlighted buffer: `d` `d`
@@ -124,7 +124,7 @@
 13. aerial.nvim
     1. Close the aerial.nvim pane: `q`
     2. Open the aerial.nvim pane: `<Leader>` `w` `s`
-    3. Show shortcuts: `g` `?`
+    3. Show shortcuts: `?` (when in aerial.nvim's pane)
     4. Go to previous symbol: `{`
     5. Go to next symbol: `}`
 14. trouble.nvim
@@ -147,7 +147,7 @@
 8. [mason.nvim](https://github.com/williamboman/mason.nvim)
 9. [nvim-cmp](https://github.com/hrsh7th/nvim-cmp/)
 10. [nvim-solarized-lua](https://github.com/ishan9299/nvim-solarized-lua)
-11. [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
+11. [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
 12. [surround.vim](https://github.com/tpope/vim-surround)
 13. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 14. [trouble.nvim](https://github.com/folke/trouble.nvim)
