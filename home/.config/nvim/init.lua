@@ -162,7 +162,7 @@ require("lazy").setup({
   {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
-      vim.cmd("IndentBlanklineDisable")
+      require("indent_blankline.commands").disable("<bang>" == "!")
       vim.keymap.set("n", "<leader>|", "<CMD>IndentBlanklineToggle<CR>", { silent = true, noremap = true })
     end,
   },
@@ -294,7 +294,7 @@ require("lazy").setup({
         group = go_auto_format_group,
       })
     end,
-    event = { "CmdlineEnter" },
+    -- event = { "CmdlineEnter" },
     ft = { "go", "gomod" },
     build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
   },
