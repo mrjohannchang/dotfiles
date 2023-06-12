@@ -74,8 +74,9 @@
 
 ### Neovim (nvim)
 
-![](screenshots/neovim-1.png)
-![](screenshots/neovim-2.png)
+![screenshots/neovim-1.png](screenshots/neovim-1.png)
+![screenshots/neovim-2.png](screenshots/neovim-2.png)
+![screenshots/neovim-3.png](screenshots/neovim-3.png)
 
 1. The current setup is blazingly fast.
 2. Reselect visual block after indent/outdent.
