@@ -107,12 +107,12 @@
    2. Open the nvim-tree pane: `<Leader>` `w` `f`
    3. Show shortcuts: `g` `?`
 10. telescope.nvim
-   1. Close the telescope window: `q`
-   2. Delete the highlighted buffer: `d` `d`
-   3. Find: `<Leader>` `f` `f`
-   4. Grep: `<Leader>` `f` `g`
-   5. Buffers: `<Leader>` `f` `b`
-   6. Help tags: `<Leader>` `f` `h`
+    1. Close the telescope window: `q`
+    2. Delete the highlighted buffer: `d` `d`
+    3. Find: `<Leader>` `f` `f`
+    4. Grep: `<Leader>` `f` `g`
+    5. Buffers: `<Leader>` `f` `b`
+    6. Help tags: `<Leader>` `f` `h`
 11. surround.vim
     1. `y` `s` `<motion>` `<desired>` - Add desired surround around text defined by `<motion>`
     2. `d` `s` `<existing>` - Delete `<existing>` surround
@@ -122,30 +122,36 @@
     Yank the line you'd like to align and then press `<Enter>`.
     Read its [README](https://github.com/junegunn/vim-easy-align/blob/master/README.md) for more information.
 13. aerial.nvim
-   1. Close the aerial.nvim pane: `q`
-   2. Open the aerial.nvim pane: `<Leader>` `w` `s`
-   3. Show shortcuts: `g` `?`
-   4. Go to previous symbol: `{`
-   5. Go to next symbol: `}`
+    1. Close the aerial.nvim pane: `q`
+    2. Open the aerial.nvim pane: `<Leader>` `w` `s`
+    3. Show shortcuts: `g` `?`
+    4. Go to previous symbol: `{`
+    5. Go to next symbol: `}`
 14. trouble.nvim
-   1. Toogle trouble pain: `<Leader>` `x` `x`
-   2. Toogle LSP trouble pain: `g` `R`
+    1. Toogle trouble pain: `<Leader>` `x` `x`
+    2. Toogle LSP trouble pain: `g` `R`
+15. inc-rename.nvim
+    1. Rename: `<Leader>` `r` `n`
+16. indent-blankline.nvim
+    1. Toggle indent helper: `<Leader>` `|`
 
 #### Neovim Plugins
 
 1. [aerial.nvim](https://github.com/stevearc/aerial.nvim)
 2. [Comment.nvim](https://github.com/numToStr/Comment.nvim)
 3. [copilot.vim](https://github.com/github/copilot.vim)
-4. [lazy.nvim](https://github.com/folke/lazy.nvim)
-5. [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-6. [mason.nvim](https://github.com/williamboman/mason.nvim)
-7. [nvim-cmp](https://github.com/hrsh7th/nvim-cmp/)
-8. [nvim-solarized-lua](https://github.com/ishan9299/nvim-solarized-lua)
-9. [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
-10. [surround.vim](https://github.com/tpope/vim-surround)
-11. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-12. [trouble.nvim](https://github.com/folke/trouble.nvim)
-13. [vim-easy-align](https://github.com/junegunn/vim-easy-align)
+4. [inc-rename.nvim](https://github.com/smjonas/inc-rename.nvim)
+5. [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
+6. [lazy.nvim](https://github.com/folke/lazy.nvim)
+7. [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+8. [mason.nvim](https://github.com/williamboman/mason.nvim)
+9. [nvim-cmp](https://github.com/hrsh7th/nvim-cmp/)
+10. [nvim-solarized-lua](https://github.com/ishan9299/nvim-solarized-lua)
+11. [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
+12. [surround.vim](https://github.com/tpope/vim-surround)
+13. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+14. [trouble.nvim](https://github.com/folke/trouble.nvim)
+15. [vim-easy-align](https://github.com/junegunn/vim-easy-align)
 
 ### Tmux
 

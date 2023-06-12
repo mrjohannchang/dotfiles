@@ -119,42 +119,12 @@ require("lazy").setup({
     },
   },
 
-  { "neovim/nvim-lspconfig" },
-
-  {
-    "williamboman/mason.nvim",
-    build = ":MasonUpdate", -- :MasonUpdate updates registry contents
-  },
-  { "mfussenegger/nvim-dap" },
-  { "jay-babu/mason-nvim-dap.nvim" },
-  { "mfussenegger/nvim-lint" },
-  { "jose-elias-alvarez/null-ls.nvim" },
-  { "williamboman/mason-lspconfig.nvim" },
-
-  {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-nvim-lsp-signature-help",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-path",
-      "hrsh7th/vim-vsnip",
-    },
-  },
-
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-  },
-
   {
     "ishan9299/nvim-solarized-lua",
     config = function()
       vim.cmd.colorscheme("solarized")
       vim.g.solarized_termtrans = 1
-    end
+    end,
   },
 
   {
@@ -162,6 +132,39 @@ require("lazy").setup({
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
+    config = function()
+      vim.keymap.set(
+      "n", "<LEADER>ff", "<CMD>lua require('telescope.builtin').find_files()<CR>", { noremap = true })
+      vim.keymap.set(
+      "n", "<LEADER>fg", "<CMD>lua require('telescope.builtin').live_grep()<CR>", { noremap = true })
+      vim.keymap.set(
+      "n", "<LEADER>fb", "<CMD>lua require('telescope.builtin').buffers({ sort_mru = true })<CR>", { noremap = true })
+      vim.keymap.set(
+      "n", "<LEADER>fh", "<CMD>lua require('telescope.builtin').help_tags()<CR>", { noremap = true })
+
+      require("telescope").setup({
+        defaults = {
+          -- Default configuration for telescope goes here:
+          -- config_key = value,
+          -- ..
+          mappings = {
+            n = {
+              ["<ESC>"] = false,
+              ["dd"] = require("telescope.actions").delete_buffer,
+              ["q"] = require("telescope.actions").close,
+            },
+          },
+        },
+      })
+    end,
+  },
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      vim.cmd("IndentBlanklineDisable")
+      vim.keymap.set("n", "<leader>|", "<CMD>IndentBlanklineToggle<CR>", { silent = true, noremap = true })
+    end,
   },
 
   {
@@ -174,6 +177,20 @@ require("lazy").setup({
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
     },
+    config = function()
+      vim.keymap.set(
+      "n", "<leader>xx", "<CMD>TroubleToggle<CR>", { silent = true, noremap = true })
+      -- vim.keymap.set(
+      --   "n", "<leader>xw", "<CMD>TroubleToggle workspace_diagnostics<CR>", { silent = true, noremap = true })
+      -- vim.keymap.set(
+      --   "n", "<leader>xd", "<CMD>TroubleToggle document_diagnostics<CR>", { silent = true, noremap = true })
+      -- vim.keymap.set(
+      --   "n", "<leader>xl", "<CMD>TroubleToggle loclist<CR>", { silent = true, noremap = true })
+      -- vim.keymap.set(
+      --   "n", "<leader>xq", "<CMD>TroubleToggle quickfix<CR>", { silent = true, noremap = true })
+      vim.keymap.set(
+      "n", "gR", "<CMD>TroubleToggle lsp_references<CR>", { silent = true, noremap = true })
+    end,
   },
 
   {
@@ -188,6 +205,11 @@ require("lazy").setup({
   },
 
   {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+  },
+
+  {
     "stevearc/aerial.nvim",
     config = function()
       require("aerial").setup()
@@ -195,6 +217,43 @@ require("lazy").setup({
       vim.keymap.set('n', '}', '<CMD>AerialNext<CR>', { noremap = true })
       vim.keymap.set("n", "<LEADER>ws", "<CMD>AerialOpen<CR>", { noremap = true })
     end,
+  },
+
+  -- nvim-lsp dependent {
+  { "neovim/nvim-lspconfig" },
+
+  {
+    "williamboman/mason.nvim",
+    build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+  },
+  { "mfussenegger/nvim-dap" },
+  { "jay-babu/mason-nvim-dap.nvim" },
+  { "mfussenegger/nvim-lint" },
+  { "jose-elias-alvarez/null-ls.nvim" },
+  { "williamboman/mason-lspconfig.nvim" },
+
+  {
+    "smjonas/inc-rename.nvim",
+    config = function()
+      require("inc_rename").setup()
+
+      vim.keymap.set("n", "<leader>rn", function()
+        return ":IncRename " .. vim.fn.expand("<cword>")
+      end, { expr = true })
+    end,
+  },
+
+  {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-path",
+      "hrsh7th/vim-vsnip",
+    },
   },
 
   {
@@ -239,12 +298,17 @@ require("lazy").setup({
     ft = { "go", "gomod" },
     build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
   },
-  -- }
+  -- } nvim-lsp dependent
+  -- } Lua-based
 
   -- VimScript-based {
   {
     "github/copilot.vim",
     build = ":Copilot setup",
+    config = function()
+      vim.g.copilot_no_tab_map = true
+      vim.keymap.set("i", "<C-e>", "copilot#Accept('<CR>')", {noremap = true, silent = true, expr=true, replace_keycodes = false })
+    end,
   },
 
   {
@@ -255,15 +319,6 @@ require("lazy").setup({
   },
 
   { "tpope/vim-surround" },
-
-  -- {
-  --   "fatih/vim-go",
-  --   build = {
-  --     ":GoInstallBinaries",
-  --     ":GoUpdateBinaries",
-  --   },
-  -- },
-  -- }
 })
 -- } Plugins
 
@@ -289,12 +344,6 @@ require("mason-lspconfig").setup_handlers({
 })
 -- } mason.nvim
 -- } lspconfig
-
-
--- GitHub Copilot {
-vim.g.copilot_no_tab_map = true
-vim.keymap.set("i", "<C-e>", "copilot#Accept('<CR>')", {noremap = true, silent = true, expr=true, replace_keycodes = false })
--- } GitHub Copilot
 
 
 -- nvim-cmp {
@@ -447,49 +496,6 @@ require("rust-tools").setup({
 })
 -- } Rust
 -- } nvim-cmp
-
-
--- telescope.nvim {
-vim.keymap.set(
-  "n", "<LEADER>ff", "<CMD>lua require('telescope.builtin').find_files()<CR>", { noremap = true })
-vim.keymap.set(
-  "n", "<LEADER>fg", "<CMD>lua require('telescope.builtin').live_grep()<CR>", { noremap = true })
-vim.keymap.set(
-  "n", "<LEADER>fb", "<CMD>lua require('telescope.builtin').buffers({ sort_mru = true })<CR>", { noremap = true })
-vim.keymap.set(
-  "n", "<LEADER>fh", "<CMD>lua require('telescope.builtin').help_tags()<CR>", { noremap = true })
-
-require("telescope").setup({
-  defaults = {
-    -- Default configuration for telescope goes here:
-    -- config_key = value,
-    -- ..
-    mappings = {
-      n = {
-        ["<ESC>"] = false,
-        ["dd"] = require("telescope.actions").delete_buffer,
-        ["q"] = require("telescope.actions").close,
-      },
-    },
-  },
-})
--- } telescope.nvim
-
-
--- trouble.nvim {
-vim.keymap.set(
-  "n", "<leader>xx", "<CMD>TroubleToggle<CR>", { silent = true, noremap = true })
--- vim.keymap.set(
---   "n", "<leader>xw", "<CMD>TroubleToggle workspace_diagnostics<CR>", { silent = true, noremap = true })
--- vim.keymap.set(
---   "n", "<leader>xd", "<CMD>TroubleToggle document_diagnostics<CR>", { silent = true, noremap = true })
--- vim.keymap.set(
---   "n", "<leader>xl", "<CMD>TroubleToggle loclist<CR>", { silent = true, noremap = true })
--- vim.keymap.set(
---   "n", "<leader>xq", "<CMD>TroubleToggle quickfix<CR>", { silent = true, noremap = true })
-vim.keymap.set(
-  "n", "gR", "<CMD>TroubleToggle lsp_references<CR>", { silent = true, noremap = true })
--- } trouble.nvim
 -- } Plugins and Plugin Configurations
 
 
