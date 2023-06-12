@@ -581,7 +581,7 @@
 
 4. `Command` + `Mouse Wheel` to zoom in Firefox: `mousewheel.with_meta.action` in `about:config`.
 
-5. Make the scroll direction settings of mouse and trackpad independent: Use [Scroll Reverser](https://pilotmoon.com/scrollreverser/).
+5. Make the scroll direction settings of mouse and trackpad independent: [LinearMouse](https://linearmouse.app/).
 
 #### Ubuntu
 
