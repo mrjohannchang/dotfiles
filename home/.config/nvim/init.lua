@@ -162,7 +162,7 @@ require("lazy").setup({
   {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
-      require("indent_blankline.commands").disable("<bang>" == "!")
+      vim.g.indent_blankline_enabled = false
       vim.keymap.set("n", "<leader>|", "<CMD>IndentBlanklineToggle<CR>", { silent = true, noremap = true })
     end,
   },
@@ -324,24 +324,31 @@ require("lazy").setup({
 
 
 -- lspconfig {
+if vim.fn.executable("ccls") == 1 then
+  if vim.fn.findfile("compile_commands.json", ".;") ~= "" or vim.fn.findfile(".ccls", ".;") ~= "" then
+    require("lspconfig").ccls.setup({})
+  end
+end
+
 -- mason.nvim related {
 require("mason").setup()
 require("mason-nvim-dap").setup()
-require("mason-lspconfig").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = { "lua_ls" },
+})
 
 require("mason-lspconfig").setup_handlers({
   -- The first entry (without a key) will be the default handler
   -- and will be called for each installed server that doesn't have
   -- a dedicated handler.
   function(server_name) -- default handler (optional)
-    require("lspconfig")[server_name].setup {}
+    require("lspconfig")[server_name].setup({})
   end,
   -- Next, you can provide a dedicated handler for specific servers.
   -- For example, a handler override for the `rust_analyzer`:
   -- ["rust_analyzer"] = function ()
   --   require("rust-tools").setup {}
   -- end
-  ensure_installed = { "lua_ls" },
 })
 -- } mason.nvim related
 -- } lspconfig
