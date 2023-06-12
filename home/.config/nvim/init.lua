@@ -31,174 +31,6 @@ vim.opt.mouse = ""
 -- } Built-in
 
 
--- Workarounds {
--- https://github.com/neovim/neovim/issues/6660
-if vim.loop.os_uname().sysname == "Windows" then
-  vim.keymap.set("", "<C-z>", "", { noremap = true })
-end
--- } Workarounds
-
-
--- Plugins {
--- https://github.com/folke/lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
-require("lazy").setup({
-  -- Lua-based {
-  {
-    "numToStr/Comment.nvim",
-    config = function()
-      require("Comment").setup()
-    end,
-  },
-
-  {
-    "nvim-lualine/lualine.nvim",
-    config = function()
-      require("lualine").setup({
-        options = { theme  = "solarized_light" },
-      })
-    end,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-  },
-
-  { "neovim/nvim-lspconfig" },
-
-  {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-nvim-lsp-signature-help",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-path",
-      "hrsh7th/vim-vsnip",
-    },
-  },
-
-  {
-    "ishan9299/nvim-solarized-lua",
-    config = function()
-      vim.cmd.colorscheme("solarized")
-      vim.g.solarized_termtrans = 1
-    end
-  },
-
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-  },
-
-  {
-    "folke/trouble.nvim",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
-  },
-
-  {
-    "nvim-tree/nvim-tree.lua",
-    config = function()
-      require("nvim-tree").setup()
-      vim.keymap.set("n", "<LEADER>tf", "<CMD>NvimTreeOpen<CR>", { noremap = true })
-    end,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-  },
-
-  {
-    "stevearc/aerial.nvim",
-    config = function()
-      require("aerial").setup()
-      vim.keymap.set('n', '{', '<CMD>AerialPrev<CR>', { noremap = true })
-      vim.keymap.set('n', '}', '<CMD>AerialNext<CR>', { noremap = true })
-      vim.keymap.set("n", "<LEADER>ts", "<CMD>AerialOpen<CR>", { noremap = true })
-    end,
-  },
-
-  {
-    "williamboman/mason.nvim",
-    build = ":MasonUpdate", -- :MasonUpdate updates registry contents
-  },
-  { "mfussenegger/nvim-dap" },
-  { "jay-babu/mason-nvim-dap.nvim" },
-  { "mfussenegger/nvim-lint" },
-  { "jose-elias-alvarez/null-ls.nvim" },
-  { "williamboman/mason-lspconfig.nvim" },
-  { "mhartington/formatter.nvim" },
-
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-  },
-
-  { "simrat39/rust-tools.nvim" },
-
-  {
-    "ray-x/go.nvim",
-    dependencies = {  -- optional packages
-      "ray-x/guihua.lua",
-      "neovim/nvim-lspconfig",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    config = function()
-      require("go").setup()
-    end,
-    event = {"CmdlineEnter"},
-    ft = {"go", 'gomod'},
-    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
-  },
-  -- }
-
-  -- VimScript-based {
-  {
-    "github/copilot.vim",
-    build = ":Copilot setup",
-  },
-
-  {
-    "junegunn/vim-easy-align",
-    config = function()
-      vim.keymap.set("v", "<ENTER>", "<CMD>EasyAlign<CR>", { noremap = true })
-    end,
-  },
-
-  { "tpope/vim-surround" },
-
-  -- {
-  --   "fatih/vim-go",
-  --   build = {
-  --     ":GoInstallBinaries",
-  --     ":GoUpdateBinaries",
-  --   },
-  -- },
-  -- }
-})
--- } Plugins
-
-
 -- Reselect visual block after indent/outdent {
 vim.keymap.set("v", "<", "<gv", { noremap = true })
 vim.keymap.set("v", ">", ">gv", { noremap = true })
@@ -240,6 +72,200 @@ vim.opt.pastetoggle="<F2>"
 -- Leave paste mode on leaving insert mode
 vim.api.nvim_command("autocmd InsertLeave * set nopaste")
 -- } Toggle paste mode with <F2>
+
+
+-- Workarounds {
+-- https://github.com/neovim/neovim/issues/6660
+if vim.loop.os_uname().sysname == "Windows" then
+  vim.keymap.set("", "<C-z>", "", { noremap = true })
+end
+-- } Workarounds
+
+
+-- Plugins and Plugin Configurations {
+-- Plugins {
+-- https://github.com/folke/lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+  -- Lua-based {
+  {
+    "numToStr/Comment.nvim",
+    config = function()
+      require("Comment").setup()
+    end,
+  },
+
+  {
+    "nvim-lualine/lualine.nvim",
+    config = function()
+      require("lualine").setup({
+        options = { theme  = "solarized_light" },
+      })
+    end,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+  },
+
+  { "neovim/nvim-lspconfig" },
+
+  {
+    "williamboman/mason.nvim",
+    build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+  },
+  { "mfussenegger/nvim-dap" },
+  { "jay-babu/mason-nvim-dap.nvim" },
+  { "mfussenegger/nvim-lint" },
+  { "jose-elias-alvarez/null-ls.nvim" },
+  { "williamboman/mason-lspconfig.nvim" },
+
+  {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-path",
+      "hrsh7th/vim-vsnip",
+    },
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+  },
+
+  {
+    "ishan9299/nvim-solarized-lua",
+    config = function()
+      vim.cmd.colorscheme("solarized")
+      vim.g.solarized_termtrans = 1
+    end
+  },
+
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
+
+  {
+    "folke/trouble.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+  },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    config = function()
+      require("nvim-tree").setup()
+      vim.keymap.set("n", "<LEADER>wf", "<CMD>NvimTreeOpen<CR>", { noremap = true })
+    end,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+  },
+
+  {
+    "stevearc/aerial.nvim",
+    config = function()
+      require("aerial").setup()
+      vim.keymap.set('n', '{', '<CMD>AerialPrev<CR>', { noremap = true })
+      vim.keymap.set('n', '}', '<CMD>AerialNext<CR>', { noremap = true })
+      vim.keymap.set("n", "<LEADER>ws", "<CMD>AerialOpen<CR>", { noremap = true })
+    end,
+  },
+
+  {
+    "simrat39/rust-tools.nvim",
+    dependencies = {  -- optional packages
+      "neovim/nvim-lspconfig",
+    },
+    config = function()
+      local rust_auto_format_group = vim.api.nvim_create_augroup("RustAutoFormat", {})
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = { "*.rs" },
+        callback = function()
+          vim.lsp.buf.format()
+        end,
+        group = rust_auto_format_group,
+      })
+    end,
+    ft = "rust",
+  },
+
+  {
+    "ray-x/go.nvim",
+    dependencies = {  -- optional packages
+      "ray-x/guihua.lua",
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("go").setup()
+
+      local go_auto_format_group = vim.api.nvim_create_augroup("GoAutoFormat", {})
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = { "*.go", "*.go.mod" },
+        -- command = "GoImport",
+        callback = function()
+          vim.lsp.buf.format()
+        end,
+        group = go_auto_format_group,
+      })
+    end,
+    event = { "CmdlineEnter" },
+    ft = { "go", "gomod" },
+    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+  },
+  -- }
+
+  -- VimScript-based {
+  {
+    "github/copilot.vim",
+    build = ":Copilot setup",
+  },
+
+  {
+    "junegunn/vim-easy-align",
+    config = function()
+      vim.keymap.set("v", "<ENTER>", "<CMD>EasyAlign<CR>", { noremap = true })
+    end,
+  },
+
+  { "tpope/vim-surround" },
+
+  -- {
+  --   "fatih/vim-go",
+  --   build = {
+  --     ":GoInstallBinaries",
+  --     ":GoUpdateBinaries",
+  --   },
+  -- },
+  -- }
+})
+-- } Plugins
 
 
 -- lspconfig {
@@ -464,6 +490,7 @@ vim.keymap.set(
 vim.keymap.set(
   "n", "gR", "<CMD>TroubleToggle lsp_references<CR>", { silent = true, noremap = true })
 -- } trouble.nvim
+-- } Plugins and Plugin Configurations
 
 
 -- Load config for light background if available {

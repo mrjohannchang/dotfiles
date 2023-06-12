@@ -104,7 +104,7 @@
      2. `g` `b` - Toggles the region using blockwise comment
 9. nvim-tree
    1. Close the nvim-tree pane: `q`
-   2. Open the nvim-tree pane: `<Leader>` `t` `f`
+   2. Open the nvim-tree pane: `<Leader>` `w` `f`
    3. Show shortcuts: `g` `?`
 10. telescope.nvim
    1. Close the telescope window: `q`
@@ -123,7 +123,7 @@
     Read its [README](https://github.com/junegunn/vim-easy-align/blob/master/README.md) for more information.
 13. aerial.nvim
    1. Close the aerial.nvim pane: `q`
-   2. Open the aerial.nvim pane: `<Leader>` `t` `s`
+   2. Open the aerial.nvim pane: `<Leader>` `w` `s`
    3. Show shortcuts: `g` `?`
    4. Go to previous symbol: `{`
    5. Go to next symbol: `}`
@@ -191,7 +191,7 @@
    Note: zoxide only exists in Ubuntu 21.04+
 
    ```
-   sudo apt install build-essential cmake git git-lfs golang tmux fontconfig python3 python3-dev python3-venv curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf xsel zoxide
+   sudo apt install build-essential cmake git git-lfs golang tmux fontconfig python3 python3-dev python3-venv curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf xsel zoxide yapf3
    ```
 
 2. Change default shell to [Zsh](https://www.zsh.org/) via `chsh`.
@@ -243,7 +243,7 @@
 2. Install necessary packages.
 
    ```
-   brew install coreutils bash fd ripgrep tmux neovim trash git-lfs cmake ctags go gotags nvm pyenv zoxide
+   brew install coreutils bash fd ripgrep tmux neovim trash git-lfs cmake ctags go gotags nvm pyenv zoxide yapf
 
    brew tap homebrew/cask-fonts
    brew install font-hack-nerd-font
