@@ -39,7 +39,7 @@
   * Interactive installation process.
 * **Compliant** - Follow standards of [XDG Base Directory](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html) and [Unix](https://en.wikipedia.org/wiki/Unix) convention.
 * **Minimal Pollution** - Prefer adding config files instead of replacing them when it's possible.
-* **Removable** - Has a built-in uninstaller.
+* **Removable** - Has a built-in uninstaller. Original setup will be backed up during the installation process and will be restored after the uninstallation.
 
 ## Features
 
