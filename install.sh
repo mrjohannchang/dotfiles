@@ -164,10 +164,10 @@ color.ui = auto
 diff.algorithm = patience
 diff.tool = nvimdiff
 difftool.prompt = false
-difftool.nvimdiff.cmd = nvim -d "\$LOCAL" "\$REMOTE" -c "wincmd w" -c "wincmd L"
+difftool.nvimdiff.layout "LOCAL,REMOTE"
 merge.tool = nvimdiff
 mergetool.prompt = true
-mergetool.nvimdiff.cmd nvim -d "\$LOCAL" "\$REMOTE" "\$MERGED" -c "wincmd w" -c "wincmd J"
+mergetool.nvimdiff.layout "LOCAL,BASE,REMOTE / MERGED"
 pull.ff = only
 push.default = simple
 EOF
@@ -181,10 +181,10 @@ EOF
     git config --global diff.algorithm patience
     git config --global diff.tool nvimdiff
     git config --global difftool.prompt false
-    git config --global difftool.nvimdiff.cmd 'nvim -d "$LOCAL" "$REMOTE" -c "wincmd w" -c "wincmd L"'
+    git config --global difftool.nvimdiff.layout "LOCAL,REMOTE"
     git config --global merge.tool nvimdiff
     git config --global mergetool.prompt true
-    git config --global mergetool.nvimdiff.cmd 'nvim -d "$LOCAL" "$MERGED" "$BASE" "$REMOTE" -c "wincmd w" -c "wincmd J"'
+    git config --global mergetool.nvimdiff.layout "LOCAL,BASE,REMOTE / MERGED"
     git config --global pull.ff only
     git config --global push.default simple
     echo "Git config was installed"
