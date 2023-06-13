@@ -216,8 +216,8 @@ require("lazy").setup({
     "stevearc/aerial.nvim",
     config = function()
       require("aerial").setup()
-      vim.keymap.set('n', '{', '<CMD>AerialPrev<CR>', { noremap = true })
-      vim.keymap.set('n', '}', '<CMD>AerialNext<CR>', { noremap = true })
+      vim.keymap.set("n", "{", "<CMD>AerialPrev<CR>", { noremap = true })
+      vim.keymap.set("n", "}", "<CMD>AerialNext<CR>", { noremap = true })
       vim.keymap.set("n", "<LEADER>ws", "<CMD>AerialOpen<CR>", { noremap = true })
     end,
   },
@@ -299,7 +299,7 @@ require("lazy").setup({
     end,
     -- event = { "CmdlineEnter" },
     ft = { "go", "gomod" },
-    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+    build = ":lua require('go.install').update_all_sync()", -- if you need to install/update all binaries
   },
   -- } nvim-lsp dependent
   -- } Lua-based
@@ -327,12 +327,6 @@ require("lazy").setup({
 
 
 -- lspconfig {
-if vim.fn.executable("ccls") == 1 then
-  if vim.fn.findfile("compile_commands.json", ".;") ~= "" or vim.fn.findfile(".ccls", ".;") ~= "" then
-    require("lspconfig").ccls.setup({})
-  end
-end
-
 -- mason.nvim related {
 require("mason").setup()
 require("mason-nvim-dap").setup()
@@ -447,19 +441,31 @@ cmp.setup.cmdline(":", {
   }),
 })
 
--- Setup LSP
-local capabilities = require('cmp_nvim_lsp').default_capabilities() --nvim-cmp
+-- Setup LSP {
+local capabilities = require("cmp_nvim_lsp").default_capabilities() --nvim-cmp
 
--- Golang {
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
-require('lspconfig').gopls.setup{
-  cmd = {'gopls'},
+-- C/C++ {
+if vim.fn.executable("ccls") == 1 then
+  if vim.fn.findfile("compile_commands.json", ".;") ~= "" or vim.fn.findfile(".ccls", ".;") ~= "" then
+    require("lspconfig").ccls.setup({
+      cmd = { "ccls" },
+      on_attach = on_attach,
+      capabilities = capabilities,
+    })
+  end
+end
+-- } C/C++
+
+-- Golang {
+require("lspconfig").gopls.setup({
+  cmd = { "gopls" },
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
@@ -475,10 +481,11 @@ require('lspconfig').gopls.setup{
   init_options = {
     usePlaceholders = true,
   }
-}
+})
 -- } Golang
+
 -- Rust {
-local lsp_attach = function(client, buf)
+local rust_lsp_attach = function(client, buf)
   -- Example maps, set your own with vim.api.nvim_buf_set_keymap(buf, "n", <lhs>, <rhs>, { desc = <desc> })
   -- or a plugin like which-key.nvim
   -- <lhs>        <rhs>                        <desc>
@@ -502,10 +509,11 @@ end
 require("rust-tools").setup({
   server = {
     capabilities = capabilities,
-    on_attach = lsp_attach,
+    on_attach = rust_lsp_attach,
   },
 })
 -- } Rust
+-- } Setup LSP
 -- } nvim-cmp
 -- } Plugins and Plugin Configurations
 
