@@ -58,16 +58,6 @@ vim.keymap.set("c", "<C-e>", "<END>", { noremap = true })
 -- } Better command-line editing
 
 
--- Toggle paste mode with <F2> {
--- https://vim.fandom.com/wiki/Toggle_auto-indenting_for_code_paste
-vim.keymap.set("n", "<F2>", "<CMD>set invpaste paste?<CR>", { noremap = true })
-vim.opt.pastetoggle="<F2>"
-
--- Leave paste mode on leaving insert mode
-vim.api.nvim_command("autocmd InsertLeave * set nopaste")
--- } Toggle paste mode with <F2>
-
-
 -- Workarounds {
 -- https://github.com/neovim/neovim/issues/6660
 if vim.loop.os_uname().sysname == "Windows" then
