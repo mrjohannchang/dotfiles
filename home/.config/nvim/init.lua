@@ -130,11 +130,11 @@ require("lazy").setup({
       vim.keymap.set(
       "n", "<LEADER>ff", "<CMD>lua require('telescope.builtin').find_files()<CR>", { noremap = true })
       vim.keymap.set(
+      "n", "<LEADER>fh", "<CMD>lua require('telescope.builtin').find_files({ hidden = true })<CR>", { noremap = true })
+      vim.keymap.set(
       "n", "<LEADER>fg", "<CMD>lua require('telescope.builtin').live_grep()<CR>", { noremap = true })
       vim.keymap.set(
       "n", "<LEADER>fb", "<CMD>lua require('telescope.builtin').buffers({ sort_mru = true })<CR>", { noremap = true })
-      vim.keymap.set(
-      "n", "<LEADER>fh", "<CMD>lua require('telescope.builtin').help_tags()<CR>", { noremap = true })
 
       require("telescope").setup({
         defaults = {

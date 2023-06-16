@@ -109,10 +109,10 @@
 10. telescope.nvim
     1. Close the telescope window: `q`
     2. Delete the highlighted buffer: `d` `d`
-    3. Find: `<Leader>` `f` `f`
-    4. Grep: `<Leader>` `f` `g`
-    5. Buffers: `<Leader>` `f` `b`
-    6. Help tags: `<Leader>` `f` `h`
+    3. Find files: `<Leader>` `f` `f`
+    6. Find files including hidden ones: `<Leader>` `f` `h`
+    4. Grep files: `<Leader>` `f` `g`
+    5. Find buffers: `<Leader>` `f` `b`
 11. surround.vim
     1. `y` `s` `<motion>` `<desired>` - Add desired surround around text defined by `<motion>`
     2. `d` `s` `<existing>` - Delete `<existing>` surround
