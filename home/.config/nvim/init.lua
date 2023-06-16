@@ -115,6 +115,7 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "debugloop/telescope-undo.nvim",
     },
     config = function()
       vim.keymap.set(
@@ -125,6 +126,8 @@ require("lazy").setup({
       "n", "<LEADER>fg", "<CMD>lua require('telescope.builtin').live_grep()<CR>", { noremap = true })
       vim.keymap.set(
       "n", "<LEADER>fb", "<CMD>lua require('telescope.builtin').buffers({ sort_mru = true })<CR>", { noremap = true })
+
+      require("telescope").load_extension("undo")
 
       require("telescope").setup({
         defaults = {
@@ -139,6 +142,12 @@ require("lazy").setup({
             },
           },
         },
+        extensions = {
+          undo = {
+            -- telescope-undo.nvim config, see below
+          },
+        },
+        vim.keymap.set("n", "<LEADER>fu", "<CMD>lua require('telescope').extensions.undo.undo()<CR>")
       })
     end,
   },
@@ -147,7 +156,7 @@ require("lazy").setup({
     "lukas-reineke/indent-blankline.nvim",
     config = function()
       vim.g.indent_blankline_enabled = false
-      vim.keymap.set("n", "<leader>|", "<CMD>IndentBlanklineToggle<CR>", { silent = true, noremap = true })
+      vim.keymap.set("n", "<LEADER>|", "<CMD>IndentBlanklineToggle<CR>", { silent = true, noremap = true })
     end,
   },
 
@@ -163,15 +172,15 @@ require("lazy").setup({
     },
     config = function()
       vim.keymap.set(
-      "n", "<leader>xx", "<CMD>TroubleToggle<CR>", { silent = true, noremap = true })
+      "n", "<LEADER>xx", "<CMD>TroubleToggle<CR>", { silent = true, noremap = true })
       -- vim.keymap.set(
-      --   "n", "<leader>xw", "<CMD>TroubleToggle workspace_diagnostics<CR>", { silent = true, noremap = true })
+      --   "n", "<LEADER>xw", "<CMD>TroubleToggle workspace_diagnostics<CR>", { silent = true, noremap = true })
       -- vim.keymap.set(
-      --   "n", "<leader>xd", "<CMD>TroubleToggle document_diagnostics<CR>", { silent = true, noremap = true })
+      --   "n", "<LEADER>xd", "<CMD>TroubleToggle document_diagnostics<CR>", { silent = true, noremap = true })
       -- vim.keymap.set(
-      --   "n", "<leader>xl", "<CMD>TroubleToggle loclist<CR>", { silent = true, noremap = true })
+      --   "n", "<LEADER>xl", "<CMD>TroubleToggle loclist<CR>", { silent = true, noremap = true })
       -- vim.keymap.set(
-      --   "n", "<leader>xq", "<CMD>TroubleToggle quickfix<CR>", { silent = true, noremap = true })
+      --   "n", "<LEADER>xq", "<CMD>TroubleToggle quickfix<CR>", { silent = true, noremap = true })
       vim.keymap.set(
       "n", "gR", "<CMD>TroubleToggle lsp_references<CR>", { silent = true, noremap = true })
     end,
@@ -230,7 +239,7 @@ require("lazy").setup({
     config = function()
       require("inc_rename").setup()
 
-      vim.keymap.set("n", "<leader>rn", function()
+      vim.keymap.set("n", "<LEADER>rn", function()
         return ":IncRename " .. vim.fn.expand("<cword>")
       end, { expr = true })
     end,
@@ -480,15 +489,15 @@ local rust_lsp_attach = function(client, buf)
   -- or a plugin like which-key.nvim
   -- <lhs>        <rhs>                        <desc>
   -- "K"          vim.lsp.buf.hover            "Hover Info"
-  -- "<leader>qf" vim.diagnostic.setqflist     "Quickfix Diagnostics"
+  -- "<LEADER>qf" vim.diagnostic.setqflist     "Quickfix Diagnostics"
   -- "[d"         vim.diagnostic.goto_prev     "Previous Diagnostic"
   -- "]d"         vim.diagnostic.goto_next     "Next Diagnostic"
-  -- "<leader>e"  vim.diagnostic.open_float    "Explain Diagnostic"
-  -- "<leader>ca" vim.lsp.buf.code_action      "Code Action"
-  -- "<leader>cr" vim.lsp.buf.rename           "Rename Symbol"
-  -- "<leader>fs" vim.lsp.buf.document_symbol  "Document Symbols"
-  -- "<leader>fS" vim.lsp.buf.workspace_symbol "Workspace Symbols"
-  -- "<leader>gq" vim.lsp.buf.formatting_sync  "Format File"
+  -- "<LEADER>e"  vim.diagnostic.open_float    "Explain Diagnostic"
+  -- "<LEADER>ca" vim.lsp.buf.code_action      "Code Action"
+  -- "<LEADER>cr" vim.lsp.buf.rename           "Rename Symbol"
+  -- "<LEADER>fs" vim.lsp.buf.document_symbol  "Document Symbols"
+  -- "<LEADER>fS" vim.lsp.buf.workspace_symbol "Workspace Symbols"
+  -- "<LEADER>gq" vim.lsp.buf.formatting_sync  "Format File"
 
   vim.api.nvim_buf_set_option(buf, "formatexpr", "v:lua.vim.lsp.formatexpr()")
   vim.api.nvim_buf_set_option(buf, "omnifunc", "v:lua.vim.lsp.omnifunc")
