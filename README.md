@@ -111,9 +111,10 @@
     2. Delete the highlighted buffer: `d` `d`
     3. Find files: `<Leader>` `f` `f`
     6. Find files including hidden ones: `<Leader>` `f` `h`
-    4. Grep files: `<Leader>` `f` `g`
-    5. Find buffers: `<Leader>` `f` `b`
-    6. View the undo tree: `<Leader>` `f` `u`
+    4. Grep in files: `<Leader>` `f` `g`
+    5. Grep current word in files: `<Leader>` `f` `w`
+    6. Find buffers: `<Leader>` `f` `b`
+    7. View the undo tree: `<Leader>` `f` `u`
 11. surround.vim
     1. `y` `s` `<motion>` `<desired>` - Add desired surround around text defined by `<motion>`
     2. `d` `s` `<existing>` - Delete `<existing>` surround

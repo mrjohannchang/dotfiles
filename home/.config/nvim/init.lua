@@ -55,6 +55,10 @@ vim.keymap.set("c", "<C-j>", "<DOWN>", { noremap = true })
 -- <CTRL> + a and <CTRL> + e move to the beginning and the end of the line
 vim.keymap.set("c", "<C-a>", "<HOME>", { noremap = true })
 vim.keymap.set("c", "<C-e>", "<END>", { noremap = true })
+
+-- <CTRL> + b and <CTRL> + f move left and right
+vim.keymap.set("c", "<C-b>", "<LEFT>", { noremap = true })
+vim.keymap.set("c", "<C-f>", "<RIGHT>", { noremap = true })
 -- } Better command-line editing
 
 
@@ -118,14 +122,11 @@ require("lazy").setup({
       "debugloop/telescope-undo.nvim",
     },
     config = function()
-      vim.keymap.set(
-      "n", "<LEADER>ff", "<CMD>lua require('telescope.builtin').find_files()<CR>", { noremap = true })
-      vim.keymap.set(
-      "n", "<LEADER>fh", "<CMD>lua require('telescope.builtin').find_files({ hidden = true })<CR>", { noremap = true })
-      vim.keymap.set(
-      "n", "<LEADER>fg", "<CMD>lua require('telescope.builtin').live_grep()<CR>", { noremap = true })
-      vim.keymap.set(
-      "n", "<LEADER>fb", "<CMD>lua require('telescope.builtin').buffers({ sort_mru = true })<CR>", { noremap = true })
+      vim.keymap.set("n", "<LEADER>ff", "<CMD>lua require('telescope.builtin').find_files()<CR>", { noremap = true })
+      vim.keymap.set("n", "<LEADER>fh", "<CMD>lua require('telescope.builtin').find_files({ hidden = true })<CR>", { noremap = true })
+      vim.keymap.set("n", "<LEADER>fg", "<CMD>lua require('telescope.builtin').live_grep()<CR>", { noremap = true })
+      vim.keymap.set("n", "<LEADER>fw", "<CMD>lua require('telescope.builtin').grep_string()<CR>", { noremap = true })
+      vim.keymap.set("n", "<LEADER>fb", "<CMD>lua require('telescope.builtin').buffers({ sort_mru = true })<CR>", { noremap = true })
 
       require("telescope").load_extension("undo")
 
@@ -432,7 +433,18 @@ cmp.setup.cmdline("/", {
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(":", {
-  mapping = cmp.mapping.preset.cmdline(),
+  mapping = cmp.mapping.preset.cmdline({
+    ["<C-e>"] = {
+      c = function(fallback)
+        if cmp.visible() then
+          cmp.close()
+          cmp.complete()
+        else
+          fallback()
+        end
+      end
+    },
+  }),
   sources = cmp.config.sources({
     { name = "path" },
   }, {
