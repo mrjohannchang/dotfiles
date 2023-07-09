@@ -146,9 +146,9 @@ fi
 
 
 # PlatformIO {
-if [ -d "${HOME}/.platformio/penv/bin" ]; then
-  export PATH="${HOME}/.platformio/penv/bin:${PATH}"
-fi
+# if [ -d "${HOME}/.platformio/penv/bin" ]; then
+#   export PATH="${HOME}/.platformio/penv/bin:${PATH}"
+# fi
 # } PlatformIO
 
 
