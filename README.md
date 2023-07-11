@@ -171,13 +171,12 @@
 #### Tmux Plugins
 
 1. [tmux-colors-solarized](https://github.com/seebi/tmux-colors-solarized)
-2. [tmux-continuum](https://github.com/tmux-plugins/tmux-continuum)
-3. [tmux-open](https://github.com/tmux-plugins/tmux-open)
-4. [tmux-pain-control](https://github.com/tmux-plugins/tmux-pain-control)
-5. [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect)
-6. [tmux-sidebar](https://github.com/tmux-plugins/tmux-sidebar)
-7. [tmux-yank](https://github.com/tmux-plugins/tmux-yank)
-8. [Tmux Plugin Manager (tpm)](https://github.com/tmux-plugins/tpm)
+2. [tmux-open](https://github.com/tmux-plugins/tmux-open)
+3. [tmux-pain-control](https://github.com/tmux-plugins/tmux-pain-control)
+4. [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect)
+5. [tmux-sidebar](https://github.com/tmux-plugins/tmux-sidebar)
+6. [tmux-yank](https://github.com/tmux-plugins/tmux-yank)
+7. [Tmux Plugin Manager (tpm)](https://github.com/tmux-plugins/tpm)
 
 ### Supported Virtual Environments
 
