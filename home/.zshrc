@@ -167,6 +167,9 @@ case "${OSTYPE:l}" in
         export PATH="${d}:${PATH}"
       done
     fi
+    if [ -d "/Library/Frameworks/Python.framework/Versions/Current/bin" ]; then
+        export PATH="/Library/Frameworks/Python.framework/Versions/Current/bin:${PATH}"
+    fi
     ;;
 esac
 # } Python user executables
