@@ -1,4 +1,4 @@
-# changyuheng’s dotfiles
+# Johann Chang’s dotfiles
 
 <!-- TOC generated with https://derlin.github.io/bitdowntoc/ -->
 - [About](#about)
@@ -533,7 +533,7 @@
 
    ```
    cd ~  # You can put the dotfiles repository anywhere in $HOME. ~/dotfiles here is used as an example.
-   git clone https://github.com/changyuheng/dotfiles.git
+   git clone https://github.com/johannchangpro/dotfiles.git
    cd dotfiles
    ```
 
