@@ -227,7 +227,7 @@
    curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
    ```
 
-7. Install [Nerd Fonts](https://www.nerdfonts.com/) - [Monaspace](https://monaspace.githubnext.com/), then configure the terminal to use Monaspace Nerd Font.
+7. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/): Download and extract [Monaspace.zip](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Monaspace.zip). Then configure the terminal to use Monaspace Nerd Font.
 
 #### macOS
 
