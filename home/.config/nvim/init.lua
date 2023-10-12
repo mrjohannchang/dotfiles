@@ -62,14 +62,6 @@ vim.keymap.set("c", "<C-f>", "<RIGHT>", { noremap = true })
 -- } Better command-line editing
 
 
--- Workarounds {
--- https://github.com/neovim/neovim/issues/6660
-if vim.loop.os_uname().sysname == "Windows" then
-  vim.keymap.set("", "<C-z>", "", { noremap = true })
-end
--- } Workarounds
-
-
 -- Plugins and Plugin Configurations {
 -- Plugins {
 -- https://github.com/folke/lazy.nvim
