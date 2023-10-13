@@ -301,6 +301,19 @@ require("lazy").setup({
     ft = { "go", "gomod" },
     build = ":lua require('go.install').update_all_sync()", -- if you need to install/update all binaries
   },
+
+  {
+    "echasnovski/mini.align",
+    config = function()
+      require('mini.align').setup({
+        mappings = {
+          start = "",
+          start_with_preview = "<CR>",
+        },
+      })
+    end,
+    version = false,
+  },
   -- } nvim-lsp dependent
   -- } Lua-based
 
@@ -311,13 +324,6 @@ require("lazy").setup({
     config = function()
       vim.g.copilot_no_tab_map = true
       vim.keymap.set("i", "<C-e>", "copilot#Accept('<CR>')", {noremap = true, silent = true, expr=true, replace_keycodes = false })
-    end,
-  },
-
-  {
-    "junegunn/vim-easy-align",
-    config = function()
-      vim.keymap.set("v", "<ENTER>", "<CMD>EasyAlign<CR>", { noremap = true })
     end,
   },
 

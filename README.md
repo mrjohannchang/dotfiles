@@ -120,9 +120,9 @@
     2. `d` `s` `<existing>` - Delete `<existing>` surround
     3. `c` `s` `<existing>` `<desired>` - Change `<existing>` surround to `<desired>`
     4. `S` `<desired>` - Surround when in visual modes (surrounds full selection)
-12. vim-easy-align
+12. mini.align
     Yank the line you'd like to align and then press `<Enter>`.
-    Read its [README](https://github.com/junegunn/vim-easy-align/blob/master/README.md) for more information.
+    Read the [README](https://github.com/echasnovski/mini.align/blob/main/README.md) for more information.
 13. aerial.nvim
     1. Close the aerial.nvim pane: `q`
     2. Open the aerial.nvim pane: `<Leader>` `w` `s`
@@ -153,7 +153,7 @@
 12. [surround.vim](https://github.com/tpope/vim-surround)
 13. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 14. [trouble.nvim](https://github.com/folke/trouble.nvim)
-15. [vim-easy-align](https://github.com/junegunn/vim-easy-align)
+15. [mini.align](https://github.com/echasnovski/mini.align)
 
 ### Tmux
 
