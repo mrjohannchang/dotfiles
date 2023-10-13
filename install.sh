@@ -207,8 +207,6 @@ EOF
       if [ "$bg" = "light" ]; then
         install_target "home/AppData/Local/nvim/lua/init-light.lua"
       fi
-      install_target "home/AppData/Local/nvim/after/ftplugin/c.lua"
-      install_target "home/AppData/Local/nvim/after/ftplugin/cpp.lua"
       install_target "home/AppData/Local/nvim/after/ftplugin/gitcommit.lua"
       install_target "home/AppData/Local/nvim/after/ftplugin/markdown.lua"
       install_target "home/AppData/Local/nvim/after/ftplugin/python.lua"
@@ -218,8 +216,6 @@ EOF
       if [ "$bg" = "light" ]; then
         install_target "home/.config/nvim/lua/init-light.lua"
       fi
-      install_target "home/.config/nvim/after/ftplugin/c.lua"
-      install_target "home/.config/nvim/after/ftplugin/cpp.lua"
       install_target "home/.config/nvim/after/ftplugin/gitcommit.lua"
       install_target "home/.config/nvim/after/ftplugin/markdown.lua"
       install_target "home/.config/nvim/after/ftplugin/python.lua"
@@ -278,15 +274,11 @@ uninstall() {
   uninstall_target "${HOME}/.config/fontconfig/conf.d/30-jf-openhuninn.conf"
 
   uninstall_target "${HOME}/.config/nvim/init.lua"
-  uninstall_target "${HOME}/.config/nvim/after/ftplugin/c.lua"
-  uninstall_target "${HOME}/.config/nvim/after/ftplugin/cpp.lua"
   uninstall_target "${HOME}/.config/nvim/after/ftplugin/gitcommit.lua"
   uninstall_target "${HOME}/.config/nvim/after/ftplugin/markdown.lua"
   uninstall_target "${HOME}/.config/nvim/after/ftplugin/python.lua"
   uninstall_target "${HOME}/.config/nvim/lua/init-light.lua"
   uninstall_target "${HOME}/Appdata/Local/nvim/init.lua"
-  uninstall_target "${HOME}/Appdata/Local/nvim/after/ftplugin/c.lua"
-  uninstall_target "${HOME}/Appdata/Local/nvim/after/ftplugin/cpp.lua"
   uninstall_target "${HOME}/Appdata/Local/nvim/after/ftplugin/gitcommit.lua"
   uninstall_target "${HOME}/Appdata/Local/nvim/after/ftplugin/markdown.lua"
   uninstall_target "${HOME}/Appdata/Local/nvim/after/ftplugin/python.lua"
