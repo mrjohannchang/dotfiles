@@ -227,9 +227,7 @@
    curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
    ```
 
-7. Install [Nerd Font](https://www.nerdfonts.com/) - [Hack](https://sourcefoundry.org/hack/) by following the [installation instruction](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack#linux).
-
-8. Config the terminal to use the font Hack Nerd Font that's installed in #1.
+7. Install [Nerd Fonts](https://www.nerdfonts.com/) - [Monaspace](https://monaspace.githubnext.com/), then configure the terminal to use Monaspace Nerd Font.
 
 #### macOS
 
@@ -245,7 +243,7 @@
    brew install coreutils bash fd ripgrep tmux neovim trash git-lfs cmake ctags go gotags nvm pyenv zoxide yapf ccls
 
    brew tap homebrew/cask-fonts
-   brew install font-hack-nerd-font
+   brew install font-monaspace-nerd-font
    ```
 
 3. Change default shell to [Zsh](https://www.zsh.org/).
@@ -255,7 +253,7 @@
       chsh -s $(which zsh)
       ```
 
-4. Config the terminal to use the font Hack Nerd Font that's installed in #2.
+4. Config the terminal to use Monaspace Nerd Font that's installed in #2.
 
 #### Microsoft Windows (tested on Windows 10)
 
@@ -295,24 +293,19 @@
    winget install --accept-package-agreements --accept-source-agreements --id UniversalCtags.Ctags
    winget install --accept-package-agreements --accept-source-agreements --id junegunn.fzf
    winget install --accept-package-agreements --accept-source-agreements --id ajeetdsouza.zoxide
+   winget install --accept-package-agreements --accept-source-agreements --id MSYS2.MSYS2
+   winget install --accept-package-agreements --accept-source-agreements --id Microsoft.VisualStudioCode
    ```
 
-7. Install [MSYS2](https://www.msys2.org/)
+7. Install [Windows Terminal](https://www.microsoft.com/p/windows-terminal/9n0dx20hk701)
 
-   **Note**:
+8. Enable **long file path support** from: Start > Local Group Policy Editor > Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem > Enable Win32 long paths
 
-   1. If you get stuck at "Installing MSYS2" with "Updating trust database...", just cancel the installation and install again
-   2. If you cannot run the installer due to existing installer, kill the installer process from **Task Manager** then try again
-
-8. Install [Windows Terminal](https://www.microsoft.com/p/windows-terminal/9n0dx20hk701)
-
-9. Enable **long file path support** from: Start > Local Group Policy Editor > Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem > Enable Win32 long paths
-
-10. Enable [Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development) from: Settings > Update & Security > For developers > Developer Modern
+9. Enable [Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development) from: Settings > Update & Security > For developers > Developer Mode
 
     * Adding the current user to: Start > Local Security Policy > Security Settings > Local Policies > User Rights Assignment > Create symbolic links if enabling the developer mode does not enable the symlink creating support for you.
 
-11. Configure MSYS2
+10. Configure MSYS2
 
     1. Enable the symbolic link support in MSYS2 by uncommenting the following line in `C:\msys64\msys2_shell.cmd`
 
@@ -350,7 +343,7 @@
        pacman -Sy man tmux zsh
        ```
 
-12. Configure Windows Terminal
+11. Configure Windows Terminal
 
     1. Disable copy & paste mappings to `<Ctrl> + c` and `<Ctrl> + v` by commenting out related config in `settings.json` which can be opened from the buttom left gear icon of Windows Terminal Settings page. You will still be able to use `<Ctrl> + <Shift> + c` and `<Ctrl> + <Shift> + v` for copying and pasting.
 
@@ -478,9 +471,9 @@
            }
        ```
 
-    7. Config the terminal to use the font "Hack NF" and set your prefered text color scheme in Profiles > MSYS2 MinGW-w64 Zsh.
+    7. Config the terminal to use Monaspace Nerd Font and set your prefered text color scheme in Profiles > MSYS2 MinGW-w64 Zsh.
 
-13. Pre-installation
+12. Pre-installation
 
     1. Open an **elevated** (Run as administrator) **PowerShell** session and execute the following command. So that you can use `fsutil` in the later process. After the execution, you may need to restart your computer.
 
