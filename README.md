@@ -533,7 +533,7 @@
 
    ```
    cd ~  # You can put the dotfiles repository anywhere in $HOME. ~/dotfiles here is used as an example.
-   git clone https://github.com/johannchangpro/dotfiles.git
+   git clone https://github.com/mrjohannchang/dotfiles.git
    cd dotfiles
    ```
 
