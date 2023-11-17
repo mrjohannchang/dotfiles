@@ -590,6 +590,8 @@
 
 5. Make the scroll direction settings of mouse and trackpad independent: [LinearMouse](https://linearmouse.app/).
 
+6. Support to use mouse middle button to drag: [Smooze Pro](https://smooze.co/).
+
 #### Ubuntu
 
 1. Install fcitx to replace iBus:
