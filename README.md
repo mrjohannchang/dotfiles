@@ -190,9 +190,6 @@
 
 #### Linux (tested on Ubuntu 20.04 Focal Fossa Desktop)
 
-<details>
-  <summary>Click to expand</summary>
-
 1. Install necessary packages.
 
    Note: zoxide only exists in Ubuntu 21.04+
@@ -234,12 +231,7 @@
 
 8. Config the terminal to use the font Hack Nerd Font that's installed in #1.
 
-</details>
-
 #### macOS
-
-<details>
-  <summary>Click to expand</summary>
 
 1. Install [Homebrew](http://brew.sh/).
 
@@ -265,12 +257,7 @@
 
 4. Config the terminal to use the font Hack Nerd Font that's installed in #2.
 
-</details>
-
 #### Microsoft Windows (tested on Windows 10)
-
-<details>
-  <summary>Click to expand</summary>
 
 1. `$HOME` (`%USERPROFILE%`) folder **has to** be on an [NTFS](https://en.wikipedia.org/wiki/NTFS) volume.
 
@@ -279,16 +266,16 @@
    **Note**:
 
    1. **Uncheck** Git LFS (Large File Support)
-   2. Checkout as-is, commit as-is
-   3. Only ever fast-forward
+   2. **Check** Use external OpenSSH
+   3. **Check** Enable symbolic links
 
-   **Optional tweak**:
+3. Install [OpenSSH](https://www.openssh.com/) Client. Open an **elevated** (Run as administrator) **PowerShell** session and execute the following command:
 
-   1. Disable bells: `/etc/inputrc` > `set bell-style none`
+   ```
+   Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH.Client*' | Add-WindowsCapability -Online
+   ```
 
-3. Install [OpenSSH Client](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse): Settings > Apps & features > Apps & features > Optional features > OpenSSH Client
-
-4. Install [Git Large File Storage](https://git-lfs.github.com/)
+4. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/): Download and extract [Monaspace.zip](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Monaspace.zip), move `*.otf` to `%WINDIR%\Fonts`.
 
 5. Install [Python](https://www.python.org/downloads/)
 
@@ -297,14 +284,17 @@
    1. Add Python to PATH
    2. Disable path length limit
 
-6. Install [Scoop](https://scoop.sh/)
-
-   Install necessary and useful packages:
+6. Install necessary packages via [winget](https://learn.microsoft.com/en-us/windows/package-manager/). In a regular Command Prompt or PowerShell session, execute the following commands:
 
    ```
-   scoop bucket add extras
-   scoop bucket add nerd-fonts
-   scoop install vcredist2015 vcredist2022 neovim Hack-NF fd ripgrep universal-ctags fzf zoxide
+   winget install --accept-package-agreements --accept-source-agreements --id Microsoft.VCRedist.2015+.x64
+   winget install --accept-package-agreements --accept-source-agreements --id GitHub.GitLFS
+   winget install --accept-package-agreements --accept-source-agreements --id Neovim.Neovim
+   winget install --accept-package-agreements --accept-source-agreements --id sharkdp.fd
+   winget install --accept-package-agreements --accept-source-agreements --id BurntSushi.ripgrep.MSVC
+   winget install --accept-package-agreements --accept-source-agreements --id UniversalCtags.Ctags
+   winget install --accept-package-agreements --accept-source-agreements --id junegunn.fzf
+   winget install --accept-package-agreements --accept-source-agreements --id ajeetdsouza.zoxide
    ```
 
 7. Install [MSYS2](https://www.msys2.org/)
@@ -525,8 +515,6 @@
 
     7. Go to [Installation](#installation)
 
-</details>
-
 ### Installation
 
 1. `git clone` this repo and `cd` into it.
@@ -563,9 +551,6 @@
 6. Execute `nvim` and install desired LSPs via `:Mason`.
 
 ### Optional Tweak
-
-<details>
-  <summary>Click to expand</summary>
 
 #### macOS
 
@@ -718,8 +703,6 @@
 
 1. [Using tab instead of arrow key to scroll in code completion - JetBrains](https://intellij-support.jetbrains.com/hc/en-us/community/posts/8008270395538-Using-tab-instead-of-arrow-key-to-scroll-in-code-completion)
 2. [Visual Studio Code: Use tab (instead of arrow keys) to select Intellisense Suggestions?](https://stackoverflow.com/questions/48097507/visual-studio-code-use-tab-instead-of-arrow-keys-to-select-intellisense-sugge)
-
-</details>
 
 ### Uninstallation
 
