@@ -592,6 +592,8 @@
 
 6. Support to use mouse middle button to drag: [Smooze Pro](https://smooze.co/).
 
+7. Useful apps from Sindre Sorhus: [Quality crafted apps](https://sindresorhus.com/apps).
+
 #### Ubuntu
 
 1. Install fcitx to replace iBus:
