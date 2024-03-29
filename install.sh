@@ -193,10 +193,6 @@ EOF
   case "${OSTYPE,,}" in
     linux*)
       install_target "home/.config/fontconfig/conf.d/20-noto-cjk.conf"
-
-      install_target "home/.local/share/fonts/jf-openhuninn-1.1.ttf"
-      install_target "home/.config/fontconfig/conf.d/30-jf-openhuninn.conf"
-
       fc-cache -fv
       ;;
   esac
@@ -270,8 +266,6 @@ uninstall() {
   uninstall_target "${HOME}/.ideavimrc"
 
   uninstall_target "${HOME}/.config/fontconfig/conf.d/20-noto-cjk.conf"
-  uninstall_target "${HOME}/.local/share/fonts/jf-openhuninn-1.1.ttf"
-  uninstall_target "${HOME}/.config/fontconfig/conf.d/30-jf-openhuninn.conf"
 
   uninstall_target "${HOME}/.config/nvim/init.lua"
   uninstall_target "${HOME}/.config/nvim/after/ftplugin/gitcommit.lua"
