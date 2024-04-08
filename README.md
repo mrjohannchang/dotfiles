@@ -18,7 +18,6 @@
 ---
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
-* [About](#about)
 * [Features](#features)
    + [Programs and Fonts](#programs-and-fonts)
    + [Z Shell (zsh)](#z-shell-zsh)
