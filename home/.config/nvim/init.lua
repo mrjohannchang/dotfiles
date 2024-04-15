@@ -190,7 +190,7 @@ require("lazy").setup({
           follow_current_file = { enabled = true },
         },
       })
-      vim.keymap.set("n", "<LEADER>wf", "<CMD>Neotree focus<CR>", { noremap = true })
+      vim.keymap.set("n", "<LEADER>wf", "<CMD>Neotree position=right<CR>", { noremap = true })
     end,
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -210,7 +210,7 @@ require("lazy").setup({
       require("aerial").setup()
       vim.keymap.set("n", "{", "<CMD>AerialPrev<CR>", { noremap = true })
       vim.keymap.set("n", "}", "<CMD>AerialNext<CR>", { noremap = true })
-      vim.keymap.set("n", "<LEADER>ws", "<CMD>AerialOpen<CR>", { noremap = true })
+      vim.keymap.set("n", "<LEADER>ws", "<CMD>AerialOpen left<CR>", { noremap = true })
     end,
   },
 
