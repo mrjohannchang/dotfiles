@@ -573,11 +573,13 @@
 
 4. `Command` + `Mouse Wheel` to zoom in Firefox: `mousewheel.with_meta.action` in `about:config`.
 
-5. Make the scroll direction settings of mouse and trackpad independent: [LinearMouse](https://linearmouse.app/).
+5. Make the scroll direction settings of mouse and trackpad independent, and use mouse middle button to drag: [Mac Mouse Fix](https://macmousefix.com/).
 
-6. Support to use mouse middle button to drag: [Smooze Pro](https://smooze.co/).
+   ```
+   brew install mac-mouse-fix
+   ```
 
-7. Useful apps from Sindre Sorhus: [Quality crafted apps](https://sindresorhus.com/apps).
+6. Useful apps from Sindre Sorhus: [Quality crafted apps](https://sindresorhus.com/apps).
 
 #### Ubuntu
 
