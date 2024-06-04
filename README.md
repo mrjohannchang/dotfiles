@@ -236,6 +236,8 @@
 
 7. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/): Download and extract [Monaspace.zip](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Monaspace.zip). Then configure the terminal to use Monaspace Nerd Font.
 
+8. Go to [Installation](#installation).
+
 #### macOS
 
 1. Install [Homebrew](http://brew.sh/).
@@ -244,23 +246,41 @@
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    ```
 
+   Make sure Homebrew is in the `$PATH`:
+
+   ```
+   export PATH="/opt/homebrew/bin:$PATH"
+   ```
+
 2. Install necessary packages.
 
    ```
    brew install coreutils bash fd ripgrep tmux neovim trash git-lfs cmake ctags go gotags nvm pyenv zoxide yapf ccls
-
-   brew tap homebrew/cask-fonts
-   brew install font-monaspace-nerd-font
    ```
 
-3. Change default shell to [Zsh](https://www.zsh.org/).
+3. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/):
 
-   1. Add the result of `which zsh` to `/etc/shells`.
-   2. ```
-      chsh -s $(which zsh)
-      ```
+   ```
+   brew install --cask font-monaspace-nerd-font
+   ```
 
-4. Config the terminal to use Monaspace Nerd Font that's installed in #2.
+4. Install [iTerm2](https://iterm2.com/):
+
+   ```
+   brew install --cask iterm2
+   ```
+
+5. Config the iTerm2 to use Monaspace Nerd Font (MonaspiceNe Nerd Font Propo) that's installed in #2.
+
+   ![](screenshots/iterm2-font-config.png)
+
+6. Launch iTerm2 and make sure the Homebrew's binary folder is in the `$PATH`:
+
+   ```
+   export PATH="/opt/homebrew/bin:$PATH"
+   ```
+
+7. Go to [Installation](#installation).
 
 #### Microsoft Windows (tested on Windows 10)
 
@@ -513,7 +533,7 @@
        git config --global core.safecrlf warn
        ```
 
-    7. Go to [Installation](#installation)
+13. Go to [Installation](#installation).
 
 ### Installation
 
@@ -571,15 +591,13 @@
 
 3. Configure `Option` + `Space` to switch between input methods from Settings > Keyboard > Keyboard Shortcuts > Input Sources
 
-4. `Command` + `Mouse Wheel` to zoom in Firefox: `mousewheel.with_meta.action` in `about:config`.
-
-5. Make the scroll direction settings of mouse and trackpad independent, and use mouse middle button to drag: [Mac Mouse Fix](https://macmousefix.com/).
+4. Make the scroll direction settings of mouse and trackpad independent, and use mouse middle button to drag: [Mac Mouse Fix](https://macmousefix.com/).
 
    ```
    brew install mac-mouse-fix
    ```
 
-6. Useful apps from Sindre Sorhus: [Quality crafted apps](https://sindresorhus.com/apps).
+5. Useful apps from Sindre Sorhus: [Quality crafted apps](https://sindresorhus.com/apps).
 
 #### Ubuntu
 
