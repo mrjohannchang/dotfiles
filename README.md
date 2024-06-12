@@ -270,17 +270,15 @@
    brew install --cask iterm2
    ```
 
-5. Config the iTerm2 to use Monaspace Nerd Font (MonaspiceNe Nerd Font Propo) that's installed in #2.
+5. Launch iTerm2  and configure the iTerm2 to use Monaspace Nerd Font (MonaspiceNe Nerd Font Propo) that's installed in #3.
 
    ![](screenshots/iterm2-font-config.png)
 
-6. Launch iTerm2 and make sure the Homebrew's binary folder is in the `$PATH`:
+6. Make sure the Homebrew's binary folder is in the `$PATH` then go to [Installation](#installation):
 
    ```
    export PATH="/opt/homebrew/bin:$PATH"
    ```
-
-7. Go to [Installation](#installation).
 
 #### Microsoft Windows (tested on Windows 10)
 
