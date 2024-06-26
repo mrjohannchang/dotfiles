@@ -189,7 +189,7 @@
 1. Install necessary packages.
 
    ```
-   sudo apt install build-essential cmake git git-lfs golang tmux fontconfig python3 python3-dev python3-venv curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf xsel zoxide yapf3 ccls
+   sudo apt install build-essential cmake git git-lfs golang tmux fontconfig python3 python3-dev python3-venv curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf xsel zoxide yapf3 clangd
    ```
 
 2. Change default shell to [Zsh](https://www.zsh.org/) via `chsh`.
@@ -255,7 +255,7 @@
 2. Install necessary packages.
 
    ```
-   brew install coreutils bash fd ripgrep tmux neovim trash git-lfs cmake ctags go gotags nvm pyenv zoxide yapf ccls
+   brew install coreutils bash fd ripgrep tmux neovim trash git-lfs cmake ctags go gotags nvm pyenv zoxide yapf llvm
    ```
 
 3. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/):
@@ -320,6 +320,7 @@
    winget install --accept-package-agreements --accept-source-agreements --id ajeetdsouza.zoxide
    winget install --accept-package-agreements --accept-source-agreements --id MSYS2.MSYS2
    winget install --accept-package-agreements --accept-source-agreements --id Microsoft.VisualStudioCode
+   winget install --accept-package-agreements --accept-source-agreements --exact --id LLVM.LLVM
    ```
 
 7. Install [Windows Terminal](https://www.microsoft.com/p/windows-terminal/9n0dx20hk701)
