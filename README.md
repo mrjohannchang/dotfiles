@@ -551,7 +551,7 @@
    (Get-ChildItem -Recurse -Directory).FullName | ForEach-Object {fsutil.exe file setCaseSensitiveInfo $_ enable}
    ```
 
-   Then **go back** to ZSH.
+   Then **go back** to the ZSH session.
 
 3. Clone sub-modules.
 
