@@ -189,7 +189,7 @@
 1. Install necessary packages.
 
    ```
-   sudo apt install build-essential cmake git git-lfs golang tmux fontconfig python3 python3-dev python3-venv curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf xsel zoxide yapf3
+   sudo apt install build-essential cmake git git-lfs golang tmux fontconfig python3 python3-dev python3-venv curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf xsel zoxide yapf3 ccls
    ```
 
 2. Change default shell to [Zsh](https://www.zsh.org/) via `chsh`.
