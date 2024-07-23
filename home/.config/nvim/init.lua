@@ -112,6 +112,7 @@ require("lazy").setup({
     dependencies = {
       "nvim-lua/plenary.nvim",
       "debugloop/telescope-undo.nvim",
+      "smartpde/telescope-recent-files",
     },
     config = function()
       vim.keymap.set("n", "<LEADER>ff", "<CMD>lua require('telescope.builtin').find_files()<CR>", { noremap = true })
@@ -121,6 +122,7 @@ require("lazy").setup({
       vim.keymap.set("n", "<LEADER>fb", "<CMD>lua require('telescope.builtin').buffers({ sort_mru = true })<CR>", { noremap = true })
 
       require("telescope").load_extension("undo")
+      require("telescope").load_extension("recent_files")
 
       require("telescope").setup({
         defaults = {
@@ -140,7 +142,8 @@ require("lazy").setup({
             -- telescope-undo.nvim config, see below
           },
         },
-        vim.keymap.set("n", "<LEADER>fu", "<CMD>lua require('telescope').extensions.undo.undo()<CR>")
+        vim.keymap.set("n", "<LEADER>fu", "<CMD>lua require('telescope').extensions.undo.undo()<CR>", { noremap = true }),
+        vim.keymap.set("n", "<LEADER>fr", "<CMD>lua require('telescope').extensions.recent_files.pick()<CR>", { noremap = true }),
       })
     end,
   },
@@ -320,6 +323,7 @@ require("lazy").setup({
   },
 
   { "tpope/vim-surround" },
+  -- } VimScript-based
 })
 -- } Plugins
 

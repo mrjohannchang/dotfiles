@@ -111,6 +111,7 @@
     5. Grep current word in files: `<Leader>` `f` `w`
     6. Find buffers: `<Leader>` `f` `b`
     7. View the undo tree: `<Leader>` `f` `u`
+    8. View the recent files: `<Leader>` `f` `r`
 11. surround.vim
     1. `y` `s` `<motion>` `<desired>` - Add desired surround around text defined by `<motion>`
     2. `d` `s` `<existing>` - Delete `<existing>` surround
