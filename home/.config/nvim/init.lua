@@ -129,6 +129,7 @@ require("lazy").setup({
           -- Default configuration for telescope goes here:
           -- config_key = value,
           -- ..
+          initial_mode = "normal",
           mappings = {
             n = {
               ["<ESC>"] = false,
