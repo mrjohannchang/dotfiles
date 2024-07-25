@@ -42,7 +42,7 @@ yes_or_no_question() {
   local default=n
   local hint="[y/N]"
 
-  if [[ "${2,,}" == y* ]]; then
+  if [[ "$(echo $2 | tr '[:upper:]' '[:lower:]')" == y* ]]; then
     default=y
     hint="[Y/n]"
   fi
@@ -53,7 +53,7 @@ yes_or_no_question() {
   if [ -z "$input" ]; then
     input="$default"
   fi
-  if [[ "${input,,}" == "y" ]]; then
+  if [[ "$(echo $input | tr '[:upper:]' '[:lower:]')" == "y" ]]; then
     return 0
   else
     return 1
@@ -104,7 +104,7 @@ install() {
 
   mkdir_and_check "${HOME}/.config"
   mkdir_and_check "${HOME}/bin.d"
-  case "${OSTYPE,,}" in
+  case "$(echo $OSTYPE | tr '[:upper:]' '[:lower:]')" in
     cygwin*|msys*)
       mkdir_and_check "${HOME}/AppData/Local/nvim"
       mkdir_and_check "${HOME}/AppData/Local/nvim/after/ftplugin"
@@ -145,7 +145,7 @@ install() {
   if [ "$bg" = "light" ]; then
     install_target "home/.tmux.light.conf"
   fi
-  case "${OSTYPE,,}" in
+  case "$(echo $OSTYPE | tr '[:upper:]' '[:lower:]')" in
     darwin*)
       install_target "home/.tmux.darwin.conf"
       ;;
@@ -191,14 +191,14 @@ EOF
     echo "Git config was installed"
   fi
 
-  case "${OSTYPE,,}" in
+  case "$(echo $OSTYPE | tr '[:upper:]' '[:lower:]')" in
     linux*)
       install_target "home/.config/fontconfig/conf.d/20-noto-cjk.conf"
       fc-cache -fv
       ;;
   esac
 
-  case "${OSTYPE,,}" in
+  case "$(echo $OSTYPE | tr '[:upper:]' '[:lower:]')" in
     cygwin*|msys*)
       install_target "home/AppData/Local/nvim/init.lua"
       if [ "$bg" = "light" ]; then
@@ -230,7 +230,7 @@ uninstall_target() {
   fi
 
   local readlink=readlink
-  case "${OSTYPE,,}" in
+  case "$(echo $OSTYPE | tr '[:upper:]' '[:lower:]')" in
     darwin*)
       readlink=greadlink
       ;;
@@ -283,7 +283,7 @@ uninstall() {
   INFO "Uninstallation has been completed"
 }
 
-case "${OSTYPE,,}" in
+case "$(echo $OSTYPE | tr '[:upper:]' '[:lower:]')" in
   cygwin*|msys*)
     # Enable the symbolic link support on Windows
     export MSYS=winsymlinks:nativestrict
