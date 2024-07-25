@@ -39,6 +39,12 @@ if [ -d "${HOME}/.poetry/bin" ]; then
 fi
 ## } Python
 
+## Rust {
+if [ -f "${HOME}/.cargo/env" ]; then
+  source "${HOME}/.cargo/env"
+fi
+## } Rust
+
 ## Snappy {
 if [ -d "/snap/bin" ]; then
   export PATH="/snap/bin:${PATH}"
