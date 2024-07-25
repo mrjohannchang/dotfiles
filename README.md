@@ -557,7 +557,7 @@
 3. Clone sub-modules.
 
    ```
-   git submodule update --init --recursive --remote
+   git submodule update --init --recursive
    ```
 
 4. Install. For **Windows** users, after executing `install.sh`, you'll need to terminate all the sessions and exit Windows Terminal. Then reopen it for the next step.
