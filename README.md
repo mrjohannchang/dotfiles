@@ -177,7 +177,7 @@
 
 ### Supported Virtual Environments
 
-1. [Node Version Manager - nvm](https://github.com/nvm-sh/nvm)
+1. [Node Version Manager - NVM](https://github.com/nvm-sh/nvm)
 2. [Simple Python version management: pyenv](https://github.com/pyenv/pyenv)
 3. [Ruby enVironment Manager (RVM)](https://github.com/rvm/rvm)
 

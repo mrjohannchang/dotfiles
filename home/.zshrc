@@ -29,62 +29,114 @@ case "${OSTYPE:l}" in
     ;;
 esac
 
-# disable ctrl-d
+## disable ctrl-d
 setopt IGNORE_EOF
 
-# HIST_IGNORE_ALL_DUPS: If a new command line being added to the history list
-# duplicates an older one, the older command is removed from the list (even if
-# it is not the previous event).
+## HIST_IGNORE_ALL_DUPS: If a new command line being added to the history list
+## duplicates an older one, the older command is removed from the list (even if
+## it is not the previous event).
 setopt HIST_IGNORE_ALL_DUPS
 
-# Snappy binary dir
-if [ -d "/snap/bin" ]; then
-  export PATH="/snap/bin:${PATH}"
-fi
-
-PATH="${HOME}/bin:${PATH}"
-
-[ ! -d "${HOME}/bin.d" ] || {
-  for d in "${HOME}/bin.d/"*; do
-    if [ ! -d "$d" ] && [ ! -L "$d" -a -d "$d" ]; then
-      continue
-    fi
-    PATH="${d}:${PATH}"
-  done
-}
-
-PATH="${HOME}/.local/bin:${PATH}"
-
-# Activate the bash-style comments in interactive mode
+## Activate the bash-style comments in interactive mode
 setopt INTERACTIVE_COMMENTS
 
 bindkey "^T" history-incremental-search-forward
 
-# locale
+## locale
 [[ -n "$LANG" ]] || export LANG=en_US.UTF-8
 [[ -n "$LC_ALL" ]] || export LC_ALL=en_US.UTF-8
-
-# Neovim
-# VISUAL vs. EDITOR – what’s the difference?
-# https://unix.stackexchange.com/questions/4859/visual-vs-editor-what-s-the-difference
-if command -v nvim &>/dev/null; then
-  export EDITOR=nvim
-  export VISUAL=nvim
-fi
 # } General
 
 
-# enable the color support of ls {
+# Dart {
+## Dart completions
+if [ -f "${HOME}/.dart-cli-completion/zsh-config.zsh" ]; then
+  source "${HOME}/.dart-cli-completion/zsh-config.zsh"
+fi
+# } Dart
+
+
+# fd-find {
+if command -v fdfind &>/dev/null; then
+  alias fd=fdfind
+fi
+
+case "${OSTYPE:l}" in
+  cygwin*|msys*)
+    alias fd='fd --path-separator="//"'
+    ;;
+esac
+# } fd-find
+
+
+# less {
+export LESS="$LESS --ignore-case --no-init --quit-if-one-screen --RAW-CONTROL-CHARS"
+# } less
+
+
+# ls
+## enable the color support of ls
 if command -v dircolors &>/dev/null; then
   if [ -r "${HOME}/.dircolors" ]; then
     eval "$(dircolors -b "${HOME}/.dircolors" 2>/dev/null)" || eval "$(dircolors -b)"
     alias ls="ls --quoting-style=literal --color=auto"
   fi
 fi
-# } enable the color support of ls
+# } ls
 
 
-# ZI {
+# Neovide {
+alias neovide="neovide --multigrid"
+# } Neovide
+
+
+# Python {
+## pyenv
+if [ -d "${HOME}/.pyenv" ]; then
+  export PYENV_ROOT="${HOME}/.pyenv"
+  export PATH="${PYENV_ROOT}/bin:${PATH}"
+  eval "$(pyenv init --path)"
+fi
+# } Python
+
+
+# ripgrep {
+case "${OSTYPE:l}" in
+  cygwin*|msys*)
+    alias rg='rg --path-separator="//"'
+    ;;
+esac
+# } ripgrep
+
+
+# Ruby {
+## RVM
+if [ -s "${HOME}/.rvm/scripts/rvm" ]; then
+  source "${HOME}/.rvm/scripts/rvm"
+fi
+# } Ruby
+
+
+# SSH {
+## TODO: Move SSH agent out as a standalone plugin
+## Refresh SSH agent in case it was dead
+if [ ! -z "$SSH_AUTH_SOCK" \
+    -a "$SSH_AUTH_SOCK" != "${HOME}/.ssh/agent_sock" ] ; then
+  unlink "${HOME}/.ssh/agent_sock" 2>/dev/null
+  ln -s "$SSH_AUTH_SOCK" "${HOME}/.ssh/agent_sock"
+  export SSH_AUTH_SOCK="${HOME}/.ssh/agent_sock"
+fi
+# } SSH
+
+
+# zoxide {
+if command -v zoxide &>/dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+# } zoxide
+
+
+# ZI https://github.com/z-shell/zi {
 if [[ ! -f ${HOME}/.zi/bin/zi.zsh ]]; then
   print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
   command mkdir -p "$HOME/.zi" && command chmod g-rwX "$HOME/.zi"
@@ -107,6 +159,7 @@ zi snippet OMZ::lib/functions.zsh
 zi snippet OMZ::lib/history.zsh
 zi snippet OMZ::lib/key-bindings.zsh
 zi snippet OMZ::lib/misc.zsh
+zi snippet OMZ::plugins/docker/docker.plugin.zsh
 zi snippet OMZ::plugins/docker-compose/docker-compose.plugin.zsh
 zi snippet OMZ::plugins/nvm/nvm.plugin.zsh
 zi snippet OMZ::plugins/pyenv/pyenv.plugin.zsh
@@ -118,102 +171,6 @@ zi light zsh-users/zsh-autosuggestions
 zi ice blockf
 zi light zsh-users/zsh-completions
 # } ZI
-
-
-# fd-find {
-if command -v fdfind &>/dev/null; then
-  alias fd=fdfind
-fi
-
-case "${OSTYPE:l}" in
-  cygwin*|msys*)
-    alias fd='fd --path-separator="//"'
-    ;;
-esac
-# } fd-find
-
-
-# less {
-export LESS="$LESS --ignore-case --no-init --quit-if-one-screen --RAW-CONTROL-CHARS"
-# } less
-
-
-# Go {
-if [ -d "${HOME}/go/bin" ]; then
-  export PATH="${HOME}/go/bin:${PATH}"
-fi
-# } Go
-
-
-# PlatformIO {
-# if [ -d "${HOME}/.platformio/penv/bin" ]; then
-#   export PATH="${HOME}/.platformio/penv/bin:${PATH}"
-# fi
-# } PlatformIO
-
-
-# Python user executables {
-case "${OSTYPE:l}" in
-  cygwin*|msys*)
-    if [ -d "${HOME}/AppData/Roaming/Python" ]; then
-      for d in "${HOME}/AppData/Roaming/Python/"*"/Scripts"; do
-        export PATH="${d}:${PATH}"
-      done
-    fi
-    ;;
-  darwin*)
-    if [ -d "${HOME}/Library/Python" ]; then
-      for d in "${HOME}/Library/Python/"*"/bin"; do
-        export PATH="${d}:${PATH}"
-      done
-    fi
-    if [ -d "/Library/Frameworks/Python.framework/Versions/Current/bin" ]; then
-        export PATH="/Library/Frameworks/Python.framework/Versions/Current/bin:${PATH}"
-    fi
-    ;;
-esac
-# } Python user executables
-
-
-# Python Poetry executables {
-if [ -d "${HOME}/.poetry/bin" ]; then
-  export PATH="${HOME}/.poetry/bin:${PATH}"
-fi
-# } Python Poetry executables
-
-
-# ripgrep {
-case "${OSTYPE:l}" in
-  cygwin*|msys*)
-    alias rg='rg --path-separator="//"'
-    ;;
-esac
-# } ripgrep
-
-
-# rvm {
-if [ -s "${HOME}/.rvm/scripts/rvm" ]; then
-  source "${HOME}/.rvm/scripts/rvm"
-fi
-# } rvm
-
-
-# TODO: Move SSH agent out as a standalone plugin
-# Refresh SSH agent in case it was dead {
-if [ ! -z "$SSH_AUTH_SOCK" \
-    -a "$SSH_AUTH_SOCK" != "${HOME}/.ssh/agent_sock" ] ; then
-  unlink "${HOME}/.ssh/agent_sock" 2>/dev/null
-  ln -s "$SSH_AUTH_SOCK" "${HOME}/.ssh/agent_sock"
-  export SSH_AUTH_SOCK="${HOME}/.ssh/agent_sock"
-fi
-# } Refresh SSH agent in case it was dead
-
-
-# zoxide {
-if command -v zoxide &>/dev/null; then
-  eval "$(zoxide init zsh)"
-fi
-# } zoxide
 
 
 # Workaround {
@@ -252,6 +209,13 @@ esac
 # } Workaround
 
 
+# .zshrc.light (configs for light background terminals) {
+if [ -r "${HOME}/.zshrc.light" ]; then
+  source "${HOME}/.zshrc.light"
+fi
+# } .zshrc.light (configs for light background terminals)
+
+
 # Powerlevel10k 2/2 {
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -259,21 +223,3 @@ esac
 # https://github.com/Powerlevel9k/powerlevel9k/issues/1105
 POWERLEVEL9K_VCS_MAX_INDEX_SIZE_DIRTY=10000
 # } Powerlevel10k 2/2
-
-
-# Neovide {
-alias neovide="neovide --multigrid"
-# } Neovide
-
-
-# .zshrc.light (configs for light background terminals) {
-if [ -r "${HOME}/.zshrc.light" ]; then
-  source "${HOME}/.zshrc.light"
-fi
-# } .zshrc.light (configs for light background terminals)
-
-# Dart {
-if [[ -f ~/.dart-cli-completion/zsh-config.zsh ]]; then
-    source ~/.dart-cli-completion/zsh-config.zsh
-fi
-# } Dart
