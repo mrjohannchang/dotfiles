@@ -271,3 +271,9 @@ if [ -r "${HOME}/.zshrc.light" ]; then
   source "${HOME}/.zshrc.light"
 fi
 # } .zshrc.light (configs for light background terminals)
+
+# Dart {
+if [[ -f ~/.dart-cli-completion/zsh-config.zsh ]]; then
+    source ~/.dart-cli-completion/zsh-config.zsh
+fi
+# } Dart
