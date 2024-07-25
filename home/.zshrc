@@ -136,6 +136,7 @@ fi
 # } zoxide
 
 
+# ================================= plugins =================================
 # ZI https://github.com/z-shell/zi {
 if [[ ! -f ${HOME}/.zi/bin/zi.zsh ]]; then
   print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
@@ -171,6 +172,14 @@ zi light zsh-users/zsh-autosuggestions
 zi ice blockf
 zi light zsh-users/zsh-completions
 # } ZI
+# ================================= plugins =================================
+
+
+# gh {
+if command -v gh &>/dev/null; then
+  eval "$(gh completion -s zsh)"
+fi
+# }
 
 
 # Workaround {
