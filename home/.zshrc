@@ -90,16 +90,6 @@ alias neovide="neovide --multigrid"
 # } Neovide
 
 
-# Python {
-## pyenv
-if [ -d "${HOME}/.pyenv" ]; then
-  export PYENV_ROOT="${HOME}/.pyenv"
-  export PATH="${PYENV_ROOT}/bin:${PATH}"
-  eval "$(pyenv init --path)"
-fi
-# } Python
-
-
 # ripgrep {
 case "${OSTYPE:l}" in
   cygwin*|msys*)
@@ -107,14 +97,6 @@ case "${OSTYPE:l}" in
     ;;
 esac
 # } ripgrep
-
-
-# Ruby {
-## RVM
-if [ -s "${HOME}/.rvm/scripts/rvm" ]; then
-  source "${HOME}/.rvm/scripts/rvm"
-fi
-# } Ruby
 
 
 # SSH {
