@@ -86,6 +86,11 @@ fi
 
 
 # Ruby {
+## Gem
+if [ -d "${HOME}/.gem/bin" ]; then
+  export PATH="${HOME}/.gem/bin:${PATH}"
+fi
+
 ## RVM
 if [ -s "${HOME}/.rvm/scripts/rvm" ]; then
   source "${HOME}/.rvm/scripts/rvm"
