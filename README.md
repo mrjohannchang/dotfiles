@@ -587,46 +587,28 @@
 
 #### General
 
-1. Set custom pre-config and plugins in `${XDG_CONFIG_HOME}/nvim/lua/custom-pre-config.lua`. For example:
+1. Set custom pre-init settings and plugins in `${XDG_CONFIG_HOME}/nvim/lua/custom-pre-init.lua`. For example:
 
    ```lua
+   vim.opt.mouse = ""
+
    custom_plugins = {
      {
-       "numToStr/Comment.nvim",
-       config = function()
-         require("Comment").setup()
-       end,
-     },
-
-     {
-       "nvim-lualine/lualine.nvim",
-       config = function()
-         require("lualine").setup({
-           options = { theme  = "solarized_dark" },
-         })
-       end,
-       dependencies = {
-         "nvim-tree/nvim-web-devicons",
-       },
-     },
-
-     {
-       "ishan9299/nvim-solarized-lua",
-       config = function()
-         vim.cmd.colorscheme("solarized")
-         vim.g.solarized_termtrans = 1
-       end,
+       "folke/tokyonight.nvim",
+       lazy = false,
+       priority = 1000,
+       opts = {},
      },
    }
    ```
 
-2. Set custom post-config in `${XDG_CONFIG_HOME}/nvim/lua/custom-post-config.lua`. For example:
+2. Set custom post-init settings in `${XDG_CONFIG_HOME}/nvim/lua/custom-post-init.lua`. For example:
 
    ```lua
-   vim.opt.background = "light"
+   vim.cmd.colorscheme("tokyonight")
 
    require("lualine").setup({
-     options = { theme  = "solarized_light" },
+     options = { theme  = "material" },
    })
    ```
 

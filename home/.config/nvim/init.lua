@@ -63,10 +63,10 @@ vim.keymap.set("c", "<C-f>", "<RIGHT>", { noremap = true })
 -- } Better command-line editing
 
 
--- custom pre-config {
-pcall(require, "custom-pre-config")
+-- custom pre-init settings {
+pcall(require, "custom-pre-init")
 local custom_plugins = custom_plugins or {}
--- } custom pre-config
+-- } custom pre-init settings
 
 
 -- Plugins and Plugin Configurations {
@@ -548,9 +548,9 @@ pcall(require, "init-light")
 -- } Load config for light background if available
 
 
--- custom post-config {
-pcall(require, "custom-post-config")
--- } custom post-config
+-- custom post-init settings {
+pcall(require, "custom-post-init")
+-- } custom post-init settings
 
 
 -- Reference {
