@@ -110,3 +110,10 @@ if [ -d "/snap/bin" ]; then
   export PATH="/snap/bin:${PATH}"
 fi
 # } Snappy
+
+
+# .zshenv.custom {
+if [ -r "${HOME}/.zshenv.custom" ]; then
+  source "${HOME}/.zshenv.custom"
+fi
+# } .zshenv.custom

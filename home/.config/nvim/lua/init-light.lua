@@ -1,1 +1,5 @@
-vim.o.background = 'light'
+vim.opt.background = "light"
+
+require("lualine").setup({
+  options = { theme  = "solarized_light" },
+})

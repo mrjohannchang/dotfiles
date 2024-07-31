@@ -22,6 +22,7 @@ vim.opt.termguicolors = true
 vim.opt.wrap = false
 
 vim.opt.mouse = ""
+vim.opt.background = "dark"
 -- } Built-in
 
 
@@ -62,6 +63,12 @@ vim.keymap.set("c", "<C-f>", "<RIGHT>", { noremap = true })
 -- } Better command-line editing
 
 
+-- custom pre-config {
+pcall(require, "custom-pre-config")
+local custom_plugins = custom_plugins or {}
+-- } custom pre-config
+
+
 -- Plugins and Plugin Configurations {
 -- Plugins {
 -- https://github.com/folke/lazy.nvim
@@ -91,7 +98,7 @@ require("lazy").setup({
     "nvim-lualine/lualine.nvim",
     config = function()
       require("lualine").setup({
-        options = { theme  = "solarized_light" },
+        options = { theme  = "solarized_dark" },
       })
     end,
     dependencies = {
@@ -301,7 +308,7 @@ require("lazy").setup({
   {
     "echasnovski/mini.align",
     config = function()
-      require('mini.align').setup({
+      require("mini.align").setup({
         mappings = {
           start = "",
           start_with_preview = "<CR>",
@@ -325,6 +332,10 @@ require("lazy").setup({
 
   { "tpope/vim-surround" },
   -- } VimScript-based
+
+  -- custom_plugins {
+  unpack(custom_plugins)
+  -- } custom_plugins
 })
 -- } Plugins
 
@@ -535,6 +546,11 @@ require("rust-tools").setup({
 -- Load config for light background if available {
 pcall(require, "init-light")
 -- } Load config for light background if available
+
+
+-- custom post-config {
+pcall(require, "custom-post-config")
+-- } custom post-config
 
 
 -- Reference {

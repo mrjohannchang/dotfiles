@@ -207,6 +207,13 @@ fi
 # } .zshrc.light (configs for light background terminals)
 
 
+# .zshrc.custom {
+if [ -r "${HOME}/.zshrc.custom" ]; then
+  source "${HOME}/.zshrc.custom"
+fi
+# } .zshrc.custom
+
+
 # Powerlevel10k 2/2 {
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f "${HOME}/.p10k.zsh" ]] || source "${HOME}/.p10k.zsh"

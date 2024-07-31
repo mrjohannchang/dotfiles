@@ -585,6 +585,57 @@
 
 ### Optional Tweak
 
+#### General
+
+1. Set custom pre-config and plugins in `${XDG_CONFIG_HOME}/nvim/lua/custom-pre-config.lua`. For example:
+
+   ```lua
+   custom_plugins = {
+     {
+       "numToStr/Comment.nvim",
+       config = function()
+         require("Comment").setup()
+       end,
+     },
+
+     {
+       "nvim-lualine/lualine.nvim",
+       config = function()
+         require("lualine").setup({
+           options = { theme  = "solarized_dark" },
+         })
+       end,
+       dependencies = {
+         "nvim-tree/nvim-web-devicons",
+       },
+     },
+
+     {
+       "ishan9299/nvim-solarized-lua",
+       config = function()
+         vim.cmd.colorscheme("solarized")
+         vim.g.solarized_termtrans = 1
+       end,
+     },
+   }
+   ```
+
+2. Set custom post-config in `${XDG_CONFIG_HOME}/nvim/lua/custom-post-config.lua`. For example:
+
+   ```lua
+   vim.opt.background = "light"
+
+   require("lualine").setup({
+     options = { theme  = "solarized_light" },
+   })
+   ```
+
+3. Set custom `${HOME}/.zshenv` at `${HOME}/.zshenv.custom` and `${HOME}/.zshrc` at `${HOME}/.zshrc.custom`.
+
+4. [Using tab instead of arrow key to scroll in code completion - JetBrains](https://intellij-support.jetbrains.com/hc/en-us/community/posts/8008270395538-Using-tab-instead-of-arrow-key-to-scroll-in-code-completion)
+
+5. [Visual Studio Code: Use tab (instead of arrow keys) to select Intellisense Suggestions?](https://stackoverflow.com/questions/48097507/visual-studio-code-use-tab-instead-of-arrow-keys-to-select-intellisense-sugge)
+
 #### macOS
 
 1. `Option` + `Arrow` moving between words in Zsh and iTerm2
@@ -702,7 +753,7 @@
 
       - For permissions to the `.ssh` folder and the `authorized_keys` file, what matters are Windows ACL permissions, not simple *nix permissions. Set the ACL so that the respective Windows account is the owner of the folder and the file and is the only account that has a write access to them. The account that runs *OpenSSH SSH Server* service (typically `SYSTEM` or `sshd`) needs to have read access to the file.
 
-         - Though, with the default Win32-OpenSSH configuration there is an exception set in `sshd_config` for accounts in `Administrators` group. For these, the server uses a different location for the authorized keys file: `%ALLUSERSPROFILE%\ssh\administrators_authorized_keys` (i.e. typically `C:\ProgramData\ssh\administrators_authorized_keys`).
+         - Though, with the default Win32-OpenSSH configuration there is an exception set in `sshd_config` for accounts in `Administrators` group. For these, the server uses a different location for the authorized keys file: `%ALLUSERSPROFILE%\ssh\administrators_authorized_keys` (For example: typically `C:\ProgramData\ssh\administrators_authorized_keys`).
 
    4. Default SSH Shell
 
@@ -731,11 +782,6 @@
    ; Refs:
    ; https://superuser.com/a/1381836
    ```
-
-#### General
-
-1. [Using tab instead of arrow key to scroll in code completion - JetBrains](https://intellij-support.jetbrains.com/hc/en-us/community/posts/8008270395538-Using-tab-instead-of-arrow-key-to-scroll-in-code-completion)
-2. [Visual Studio Code: Use tab (instead of arrow keys) to select Intellisense Suggestions?](https://stackoverflow.com/questions/48097507/visual-studio-code-use-tab-instead-of-arrow-keys-to-select-intellisense-sugge)
 
 ### Uninstallation
 
