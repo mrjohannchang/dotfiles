@@ -209,7 +209,7 @@ fi
 
 # Powerlevel10k 2/2 {
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f "${HOME}/.p10k.zsh" ]] || source "${HOME}/.p10k.zsh"
 # Avoid large git repos slowing down prompts
 # https://github.com/Powerlevel9k/powerlevel9k/issues/1105
 POWERLEVEL9K_VCS_MAX_INDEX_SIZE_DIRTY=10000
