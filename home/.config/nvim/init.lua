@@ -223,7 +223,7 @@ require("lazy").setup({
 
   {
     "williamboman/mason.nvim",
-    build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+    -- build = ":MasonUpdate", -- :MasonUpdate updates registry contents
   },
   { "mfussenegger/nvim-dap" },
   { "jay-babu/mason-nvim-dap.nvim" },
