@@ -126,7 +126,6 @@ install() {
   esac
 
   install_target "home/bin.d/changyuheng"
-  install_target "home/.p10k.zsh"
   install_target "home/.zprofile"
   install_target "home/.zshenv"
   install_target "home/.zshrc"
@@ -218,6 +217,12 @@ EOF
       install_target "home/.config/nvim/after/ftplugin/python.lua"
       ;;
   esac
+
+  if yes_or_no_question "Nerd Font supported?" y; then
+    install_target "home/.p10k.zsh"
+  else
+    install_target "home/.p10k-no-nerd-font.zsh" "${HOME}/.p10k.zsh"
+  fi
 
   INFO "Installation has been completed"
 }
