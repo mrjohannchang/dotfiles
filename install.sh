@@ -152,6 +152,33 @@ install() {
 
   install_target "home/.ideavimrc"
 
+  if yes_or_no_question "Nerd Font supported?" y; then
+    install_target "home/.p10k.zsh"
+  else
+    install_target "home/.p10k-no-nerd-font.zsh" "${HOME}/.p10k.zsh"
+  fi
+
+  case "$(echo $OSTYPE | tr '[:upper:]' '[:lower:]')" in
+    cygwin*|msys*)
+      install_target "home/AppData/Local/nvim/init.lua"
+      if [ "$bg" = "light" ]; then
+        install_target "home/AppData/Local/nvim/lua/init-light.lua"
+      fi
+      install_target "home/AppData/Local/nvim/after/ftplugin/gitcommit.lua"
+      install_target "home/AppData/Local/nvim/after/ftplugin/markdown.lua"
+      install_target "home/AppData/Local/nvim/after/ftplugin/python.lua"
+      ;;
+    *)
+      install_target "home/.config/nvim/init.lua"
+      if [ "$bg" = "light" ]; then
+        install_target "home/.config/nvim/lua/init-light.lua"
+      fi
+      install_target "home/.config/nvim/after/ftplugin/gitcommit.lua"
+      install_target "home/.config/nvim/after/ftplugin/markdown.lua"
+      install_target "home/.config/nvim/after/ftplugin/python.lua"
+      ;;
+  esac
+
   # TODO: Highlight modifications will be done on existing config
   INFO "Listing Git config that will be installed below:"
   cat << EOF
@@ -196,33 +223,6 @@ EOF
       fc-cache -fv
       ;;
   esac
-
-  case "$(echo $OSTYPE | tr '[:upper:]' '[:lower:]')" in
-    cygwin*|msys*)
-      install_target "home/AppData/Local/nvim/init.lua"
-      if [ "$bg" = "light" ]; then
-        install_target "home/AppData/Local/nvim/lua/init-light.lua"
-      fi
-      install_target "home/AppData/Local/nvim/after/ftplugin/gitcommit.lua"
-      install_target "home/AppData/Local/nvim/after/ftplugin/markdown.lua"
-      install_target "home/AppData/Local/nvim/after/ftplugin/python.lua"
-      ;;
-    *)
-      install_target "home/.config/nvim/init.lua"
-      if [ "$bg" = "light" ]; then
-        install_target "home/.config/nvim/lua/init-light.lua"
-      fi
-      install_target "home/.config/nvim/after/ftplugin/gitcommit.lua"
-      install_target "home/.config/nvim/after/ftplugin/markdown.lua"
-      install_target "home/.config/nvim/after/ftplugin/python.lua"
-      ;;
-  esac
-
-  if yes_or_no_question "Nerd Font supported?" y; then
-    install_target "home/.p10k.zsh"
-  else
-    install_target "home/.p10k-no-nerd-font.zsh" "${HOME}/.p10k.zsh"
-  fi
 
   INFO "Installation has been completed"
 }
