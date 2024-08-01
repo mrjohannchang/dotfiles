@@ -23,6 +23,14 @@ PATH="${HOME}/.local/bin:${PATH}"
 # } General
 
 
+# Homebrew {
+# Homebrew is dependent on the shell, so it should be loaded before other paths.
+if command -v /opt/homebrew/bin/brew &> /dev/null; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+# } Homebrew
+
+
 # Android SDK {
 if [ -d "${HOME}/Android/Sdk" ]; then
   export ANDROID_HOME="${HOME}/Android/Sdk"
