@@ -110,8 +110,12 @@
     4. Grep in files: `<Leader>` `f` `g`
     5. Grep current word in files: `<Leader>` `f` `w`
     6. Find buffers: `<Leader>` `f` `b`
-    7. View the undo tree: `<Leader>` `f` `u`
-    8. View the recent files: `<Leader>` `f` `r`
+    7. Show LSP definitions: `<Leader>` `g` `d`
+    8. Show LSP references: `<Leader>` `g` `r`
+    9. Show LSP implementations: `<Leader>` `g` `i`
+    10. Show LSP type definitions: `<Leader>` `g` `y`
+    11. View the undo tree: `<Leader>` `f` `u`
+    12. View the recent files: `<Leader>` `f` `r`
 11. surround.vim
     1. `y` `s` `<motion>` `<desired>` - Add desired surround around text defined by `<motion>`
     2. `d` `s` `<existing>` - Delete `<existing>` surround
