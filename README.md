@@ -133,7 +133,7 @@
 | `<Leader>` `g` `y`               | NORMAL                | Show LSP type definitions                                         | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
 | `<Leader>` `x` `x`               | NORMAL                | Toogle trouble pain                                               | [trouble.nvim](https://github.com/folke/trouble.nvim)              |
 | `<Leader>` `g` `R`               | NORMAL                | Toogle LSP trouble pain                                           | [trouble.nvim](https://github.com/folke/trouble.nvim)              |
-| `<Leader>` `|`                   | NORMAL                | Toggle indent helper                                              | [indent-blankline.nvim](indent-blankline.nvim)                     |
+| `<Leader>` `\|`                  | NORMAL                | Toggle indent helper                                              | [indent-blankline.nvim](indent-blankline.nvim)                     |
 
 #### Neovim Plugins
 
