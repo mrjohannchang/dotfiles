@@ -88,10 +88,10 @@
 | -----------                      | ----                  | -----------                                                       | ------                                                             |
 | `<Leader>` `/`                   | NORMAL                | Clear search highlight                                            | Built-in                                                           |
 | `w` `!` `!`                      | NORMAL                | Save file as root                                                 | Built-in                                                           |
-| `<Ctrl> + j`                     | COMMAND               | Move up to lines that have identical prefixes                     | Built-in                                                           |
-| `<Ctrl> + k`                     | COMMAND               | Move down to lines that have identical prefixes                   | Built-in                                                           |
-| `<Ctrl> + a`                     | COMMAND               | Move to the beginning the line                                    | Built-in                                                           |
-| `<Ctrl> + e`                     | COMMAND               | Move to the end the line                                          | Built-in                                                           |
+| `<Ctrl>` + `j`                   | COMMAND               | Move up to lines that have identical prefixes                     | Built-in                                                           |
+| `<Ctrl>` + `k`                   | COMMAND               | Move down to lines that have identical prefixes                   | Built-in                                                           |
+| `<Ctrl>` + `a`                   | COMMAND               | Move to the beginning the line                                    | Built-in                                                           |
+| `<Ctrl>` + `e`                   | COMMAND               | Move to the end the line                                          | Built-in                                                           |
 | `<F2>`                           | NORMAL, PASTE, INSERT | Toggle paste mode                                                 | Built-in                                                           |
 | `g` `c` `c`                      | NORMAL                | Toggle the current line using linewise comment                    | [Comment.nvim](https://github.com/numToStr/Comment.nvim)           |
 | `g` `b` `c`                      | NORMAL                | Toggle the current line using blockwise comment                   | [Comment.nvim](https://github.com/numToStr/Comment.nvim)           |
@@ -155,9 +155,9 @@
 
 ### Tmux
 
-1. Tmux prefix key: `<Ctrl> + s`.
-2. Switch to the last window: `<Ctrl> + s`.
-3. Send prefix: `<Ctrl> + a`.
+1. Tmux prefix key: `<Ctrl>` + `s`.
+2. Switch to the last window: `<Ctrl>` + `s`.
+3. Send prefix: `<Ctrl>` + `a`.
 4. Selection:
    1. Select: `v`
    2. Block select: `V`
@@ -386,7 +386,7 @@
 
 11. Configure Windows Terminal
 
-    1. Disable copy & paste mappings to `<Ctrl> + c` and `<Ctrl> + v` by commenting out related config in `settings.json` which can be opened from the buttom left gear icon of Windows Terminal Settings page. You will still be able to use `<Ctrl> + <Shift> + c` and `<Ctrl> + <Shift> + v` for copying and pasting.
+    1. Disable copy & paste mappings to `<Ctrl>` + `c` and `<Ctrl>` + `v` by commenting out related config in `settings.json` which can be opened from the buttom left gear icon of Windows Terminal Settings page. You will still be able to use `<Ctrl>` + `<Shift>` + `c` and `<Ctrl>` + `<Shift>` + `v` for copying and pasting.
 
        ```
            "actions":
@@ -403,7 +403,7 @@
            ],
        ```
 
-    2. Prevent from window being closed when pressing `<Ctrl> + <Shift> + w` by adding the following content to `settings.json`.
+    2. Prevent from window being closed when pressing `<Ctrl>` + `<Shift>` + `w` by adding the following content to `settings.json`.
 
        ```
            "actions":
@@ -417,7 +417,7 @@
            ],
        ```
 
-    3. Make `<Ctrl> + <F4>` close the current pane by adding the following content to `settings.jso:
+    3. Make `<Ctrl>` + `<F4>` close the current pane by adding the following content to `settings.jso:
 
        ```
            "actions":
@@ -431,7 +431,7 @@
            ],
        ```
 
-    4. Resolve the key mapping conflict of `<Ctrl> + <Shift> + 6` in Neovim/Vim by adding the following contents to `settings.json`.
+    4. Resolve the key mapping conflict of `<Ctrl>` + `<Shift>` + `6` in Neovim/Vim by adding the following contents to `settings.json`.
 
        ```
            "actions":
@@ -445,7 +445,7 @@
            ],
        ```
 
-    5. Make ctrl + tab / ctrl + shift + tab switching tabs in MRU / LRU order but keep ctrl + pgup / ctrl + pgdown in order by addin the following contents to `settings.json`.
+    5. Make `<Ctrl>` + `<Tab>` / `<Ctrl>` + `<Shift>` + `<Tab>` switching tabs in MRU / LRU order but keep `<Ctrl>` + `<Page Up>` / `<Ctrl>` + `<Page Down>` in order by addin the following contents to `settings.json`.
 
        ```
            "actions":
@@ -575,7 +575,7 @@
    ./install.sh
    ```
 
-5. Execute `tmux` (the command is `script -c tmux /dev/null` when using **Windows Terminal**) and press `<Ctrl> + s` `I` (uppercase i) to install plugins of tmux. It may take a few minutes. Please expect `tmux` frozen during the installation.
+5. Execute `tmux` (the command is `script -c tmux /dev/null` when using **Windows Terminal**) and press `<Ctrl>` + `s` `I` (uppercase i) to install plugins of tmux. It may take a few minutes. Please expect `tmux` frozen during the installation.
 
 6. Execute `nvim` and install desired LSPs via `:Mason`.
 
@@ -651,7 +651,7 @@
     b. Choose `fcitx` as the keyboard input method system in `gnome-language-selector`.
     c. Remove keyboard layouts if there are more than 1 from Input Source in `gnome-control-center` > Region & Language.
     d. Remove the hotkey for switching input source in `gnome-control-center` > Keyboard Shortcuts > Typing.
-    e. Replace the hotkey for Trigger Input Method to Super + Space in `fcitx-configtool` > Global Config > Hotkey > Trigger Input Method.
+    e. Replace the hotkey for Trigger Input Method to `<Super>` + `<Space>` in `fcitx-configtool` > Global Config > Hotkey > Trigger Input Method.
 
 2. Key remapping for REALFORCE for Mac keyboard:
 
