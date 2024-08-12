@@ -57,13 +57,17 @@
 
 1. [romkatv/powerlevel10k](https://github.com/romkatv/powerlevel10k)
 2. [ohmyzsh/ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
-   1. [lib/completion](https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/completion.zsh)
-   2. [lib/history](https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/history.zsh)
-   3. [lib/key-bindings](https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/key-bindings.zsh)
-   4. [plugins/docker-compose](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose)
-   5. [plugins/nvm](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/nvm)
-   6. [plugins/pyenv](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/pyenv)
-   7. [plugins/rvm](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/rvm)
+   1. [lib/clipboard](https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/clipboard.zsh)
+   2. [lib/completion](https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/completion.zsh)
+   3. [lib/functions](https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/functions.zsh)
+   4. [lib/history](https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/history.zsh)
+   5. [lib/key-bindings](https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/key-bindings.zsh)
+   6. [lib/misc](https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/misc.zsh)
+   7. [plugins/docker](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker)
+   8. [plugins/docker-compose](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose)
+   9. [plugins/nvm](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/nvm)
+   10. [plugins/pyenv](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/pyenv)
+   11. [plugins/rvm](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/rvm)
 3. [z-shell/zi](https://github.com/z-shell/zi)
 4. [zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 5. [zsh-users/zsh-completions](https://github.com/zsh-users/zsh-completions)
@@ -77,66 +81,59 @@
 1. The current setup is blazingly fast.
 2. Reselect visual block after indent/outdent.
 3. Enable moving up and down with j and k in wrapped lines.
-4. Clear the search highlight with `<Leader>` `/`.
-5. Saving files as root with `w!!`.
-6. Better command-line editing.
-   1. `<Ctrl> + j` and `<Ctrl> + k` move to lines that have identical prefixes.
-   2. `<Ctrl> + a` and `<Ctrl> + e` move to the beginning and the end of the line.
-7. Toggle paste mode with `<F2>`.
-   1. Leave paste mode on leaving insert mode
-8. Comment.nvim
-   * NORMAL mode
-     1. `g` `c` `c` - Toggles the current line using linewise comment
-     2. `g` `b` `c` - Toggles the current line using blockwise comment
-     3. `[count]` `g` `c` `c` - Toggles the number of line given as a prefix-count using linewise
-     4. `[count]` `g` `b` `c` - Toggles the number of line given as a prefix-count using blockwise
-     5. `g` `c` `[count]` `<motion>` - (Op-pending) Toggles the region using linewise comment
-     6. `g` `b` `[count]` `<motion>` - (Op-pending) Toggles the region using linewise comment
-     7. `g` `c` `o` - Insert comment to the next line and enters INSERT mode
-     8. `g` `c` `O` - Insert comment to the previous line and enters INSERT mode
-     9. `g` `c` `A` - Insert comment to end of the current line and enters INSERT mode
-   * VISUAL mode
-     1. `g` `c` - Toggles the region using linewise comment
-     2. `g` `b` - Toggles the region using blockwise comment
-9. neo-tree.nvim
-   1. Close the neo-tree.nvim pane: `q`
-   2. Open the neo-tree.nvim pane: `<Leader>` `w` `f`
-   3. Show shortcuts: `?` (when in neo-tree.nvim's pane)
-10. telescope.nvim
-    1. Close the telescope window: `q`
-    2. Delete the highlighted buffer: `d` `d`
-    3. Find files: `<Leader>` `f` `f`
-    6. Find files including hidden ones: `<Leader>` `f` `h`
-    4. Grep in files: `<Leader>` `f` `g`
-    5. Grep current word in files: `<Leader>` `f` `w`
-    6. Find buffers: `<Leader>` `f` `b`
-    7. Show LSP definitions: `<Leader>` `g` `d`
-    8. Show LSP references: `<Leader>` `g` `r`
-    9. Show LSP implementations: `<Leader>` `g` `i`
-    10. Show LSP type definitions: `<Leader>` `g` `y`
-    11. View the undo tree: `<Leader>` `f` `u`
-    12. View the recent files: `<Leader>` `f` `r`
-11. surround.vim
-    1. `y` `s` `<motion>` `<desired>` - Add desired surround around text defined by `<motion>`
-    2. `d` `s` `<existing>` - Delete `<existing>` surround
-    3. `c` `s` `<existing>` `<desired>` - Change `<existing>` surround to `<desired>`
-    4. `S` `<desired>` - Surround when in visual modes (surrounds full selection)
-12. mini.align
-    Yank the line you'd like to align and then press `<Enter>`.
-    Read the [README](https://github.com/echasnovski/mini.align/blob/main/README.md) for more information.
-13. aerial.nvim
-    1. Close the aerial.nvim pane: `q`
-    2. Open the aerial.nvim pane: `<Leader>` `w` `s`
-    3. Show shortcuts: `?` (when in aerial.nvim's pane)
-    4. Go to previous symbol: `{`
-    5. Go to next symbol: `}`
-14. trouble.nvim
-    1. Toogle trouble pain: `<Leader>` `x` `x`
-    2. Toogle LSP trouble pain: `g` `R`
-15. inc-rename.nvim
-    1. Rename: `<Leader>` `r` `n`
-16. indent-blankline.nvim
-    1. Toggle indent helper: `<Leader>` `|`
+
+#### Neovim Key Bindings
+
+| Key Binding                      | Mode                  | Description                                                       | Plugin                                                             |
+| -----------                      | ----                  | -----------                                                       | ------                                                             |
+| `<Leader>` `/`                   | NORMAL                | Clear search highlight                                            | Built-in                                                           |
+| `w` `!` `!`                      | NORMAL                | Save file as root                                                 | Built-in                                                           |
+| `<Ctrl> + j`                     | COMMAND               | Move up to lines that have identical prefixes                     | Built-in                                                           |
+| `<Ctrl> + k`                     | COMMAND               | Move down to lines that have identical prefixes                   | Built-in                                                           |
+| `<Ctrl> + a`                     | COMMAND               | Move to the beginning the line                                    | Built-in                                                           |
+| `<Ctrl> + e`                     | COMMAND               | Move to the end the line                                          | Built-in                                                           |
+| `<F2>`                           | NORMAL, PASTE, INSERT | Toggle paste mode                                                 | Built-in                                                           |
+| `g` `c` `c`                      | NORMAL                | Toggle the current line using linewise comment                    | [Comment.nvim](https://github.com/numToStr/Comment.nvim)           |
+| `g` `b` `c`                      | NORMAL                | Toggle the current line using blockwise comment                   | [Comment.nvim](https://github.com/numToStr/Comment.nvim)           |
+| `[count]` `g` `c` `c`            | NORMAL                | Toggle the number of line given as a prefix-count using linewise  | [Comment.nvim](https://github.com/numToStr/Comment.nvim)           |
+| `[count]` `g` `b` `c`            | NORMAL                | Toggle the number of line given as a prefix-count using blockwise | [Comment.nvim](https://github.com/numToStr/Comment.nvim)           |
+| `g` `c` `[count]` `<motion>`     | NORMAL                | (Op-pending) Toggle the region using linewise comment             | [Comment.nvim](https://github.com/numToStr/Comment.nvim)           |
+| `g` `b` `[count]` `<motion>`     | NORMAL                | (Op-pending) Toggle the region using blockwise comment            | [Comment.nvim](https://github.com/numToStr/Comment.nvim)           |
+| `g` `c` `o`                      | NORMAL                | Insert comment to the next line and enters INSERT mode            | [Comment.nvim](https://github.com/numToStr/Comment.nvim)           |
+| `g` `c` `O`                      | NORMAL                | Insert comment to the previous line and enters INSERT mode        | [Comment.nvim](https://github.com/numToStr/Comment.nvim)           |
+| `g` `c` `A`                      | NORMAL                | Insert comment to end of the current line and enters INSERT mode  | [Comment.nvim](https://github.com/numToStr/Comment.nvim)           |
+| `g` `c`                          | VISUAL                | Toggle the region using linewise comment                          | [Comment.nvim](https://github.com/numToStr/Comment.nvim)           |
+| `g` `b`                          | VISUAL                | Toggle the region using blockwise comment                         | [Comment.nvim](https://github.com/numToStr/Comment.nvim)           |
+| `q`                              | Neo-tree window       | Close Neo-tree window                                             | [Neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)    |
+| `<Leader>` `w` `f`               | NORMAL                | Open neo-tree.nvim window                                         | [Neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)    |
+| `?`                              | Neo-tree window       | Show Neo-tree shortcuts                                           | [Neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)    |
+| `q`                              | Aerial window         | Close the aerial.nvim window                                      | [aerial.nvim](https://github.com/stevearc/aerial.nvim)             |
+| `<Leader>` `w` `s`               | NORMAL                | Open the aerial.nvim window                                       | [aerial.nvim](https://github.com/stevearc/aerial.nvim)             |
+| `?`                              | Aerial window         | Show aerial.nvim shortcuts                                        | [aerial.nvim](https://github.com/stevearc/aerial.nvim)             |
+| `{`                              | Aerial window         | Go to previous symbol                                             | [aerial.nvim](https://github.com/stevearc/aerial.nvim)             |
+| `}`                              | Aerial window         | Go to next symbol                                                 | [aerial.nvim](https://github.com/stevearc/aerial.nvim)             |
+| `<Leader>` `r` `n`               | NORMAL                | Rename LSP symbol                                                 | [inc-rename.nvim](https://github.com/smjonas/inc-rename.nvim)      |
+| `<Enter>`                        | VISUAL                | Yank the line you'd like to align and then press `<Enter>`        | [mini.align](https://github.com/echasnovski/mini.align)            |
+| `y` `s` `<motion>` `<desired>`   | NORMAL                | Add desired surround around text defined by `<motion>`            | [surround.vim](https://github.com/tpope/vim-surround)              |
+| `d` `s` `<existing>`             | NORMAL                | Delete `<existing>` surround                                      | [surround.vim](https://github.com/tpope/vim-surround)              |
+| `c` `s` `<existing>` `<desired>` | NORMAL                | Change `<existing>` surround to `<desired>`                       | [surround.vim](https://github.com/tpope/vim-surround)              |
+| `S` `<desired>`                  | VISUAL                | Surround when in visual modes (surrounds full selection)          | [surround.vim](https://github.com/tpope/vim-surround)              |
+| `q`                              | Telescope window      | Close the telescope window                                        | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
+| `d` `d`                          | Telescope window      | Delete the highlighted buffer                                     | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
+| `<Leader>` `f` `f`               | NORMAL                | Find files                                                        | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
+| `<Leader>` `f` `h`               | NORMAL                | Find files including hidden ones                                  | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
+| `<Leader>` `f` `g`               | NORMAL                | Grep in files                                                     | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
+| `<Leader>` `f` `w`               | NORMAL                | Grep current word in files                                        | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
+| `<Leader>` `f` `b`               | NORMAL                | Find buffers                                                      | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
+| `<Leader>` `f` `u`               | NORMAL                | Show undo tree                                                    | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
+| `<Leader>` `f` `r`               | NORMAL                | Show recent files                                                 | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
+| `<Leader>` `g` `d`               | NORMAL                | Show LSP definitions                                              | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
+| `<Leader>` `g` `r`               | NORMAL                | Show LSP references                                               | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
+| `<Leader>` `g` `i`               | NORMAL                | Show LSP implementations                                          | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
+| `<Leader>` `g` `y`               | NORMAL                | Show LSP type definitions                                         | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
+| `<Leader>` `x` `x`               | NORMAL                | Toogle trouble pain                                               | [trouble.nvim](https://github.com/folke/trouble.nvim)              |
+| `<Leader>` `g` `R`               | NORMAL                | Toogle LSP trouble pain                                           | [trouble.nvim](https://github.com/folke/trouble.nvim)              |
+| `<Leader>` `|`                   | NORMAL                | Toggle indent helper                                              | [indent-blankline.nvim](indent-blankline.nvim)                     |
 
 #### Neovim Plugins
 
@@ -396,12 +393,7 @@
            [
                ...
                {
-                   "command":
-                   {
-                       "action": "copy",
-                       "singleLine": false
-                   },
-                   "keys": "ctrl+c"
+
                },
                {
                    "command": "paste",
