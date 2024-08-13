@@ -8,7 +8,7 @@ vim.opt.tabstop = 4
 
 vim.opt.fileformats = "unix,dos"
 
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "░" }
