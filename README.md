@@ -18,24 +18,28 @@
 ---
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
-* [Features](#features)
-   + [Programs and Fonts](#programs-and-fonts)
-   + [Z Shell (zsh)](#z-shell-zsh)
-      - [Z Shell Plugins](#z-shell-plugins)
-   + [Neovim (nvim)](#neovim-nvim)
-      - [Neovim Plugins](#neovim-plugins)
-   + [Tmux](#tmux)
-      - [Tmux Plugins](#tmux-plugins)
-   + [Supported Virtual Environments](#supported-virtual-environments)
-* [Setup](#setup)
-   + [Prerequisites](#prerequisites)
-      - [Linux (tested on Ubuntu 22.04 Jammy Jellyfish and Raspberry Pi OS Bookworm)](#linux-tested-on-ubuntu-2204-jammy-jellyfish-and-raspberry-pi-os-bookworm)
-      - [macOS](#macos)
-      - [Microsoft Windows (tested on Windows 10)](#microsoft-windows-tested-on-windows-10)
-   + [Installation](#installation)
-   + [Optional Tweak](#optional-tweak)
-      - [macOS](#macos-1)
-      - [Ubuntu](#ubuntu)
+
+- [Features](#features)
+   * [Programs and Fonts](#programs-and-fonts)
+   * [Z Shell (zsh)](#z-shell-zsh)
+      + [Z Shell Plugins](#z-shell-plugins)
+   * [Neovim (nvim)](#neovim-nvim)
+      + [Neovim Key Bindings](#neovim-key-bindings)
+      + [Neovim Plugins](#neovim-plugins)
+   * [Tmux](#tmux)
+      + [Tmux Plugins](#tmux-plugins)
+   * [Supported Virtual Environments](#supported-virtual-environments)
+- [Setup](#setup)
+   * [Prerequisites](#prerequisites)
+      + [Linux (tested on Ubuntu 22.04 Jammy Jellyfish and Raspberry Pi OS Bookworm)](#linux-tested-on-ubuntu-2204-jammy-jellyfish-and-raspberry-pi-os-bookworm)
+      + [macOS](#macos)
+      + [Microsoft Windows (tested on Windows 10)](#microsoft-windows-tested-on-windows-10)
+   * [Installation](#installation)
+   * [Optional Tweak](#optional-tweak)
+      + [General](#general)
+      + [macOS](#macos-1)
+      + [Ubuntu](#ubuntu)
+
 <!-- TOC end -->
 
 ## Features
