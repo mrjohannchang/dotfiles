@@ -141,22 +141,23 @@
 
 #### Neovim Plugins
 
-1. [aerial.nvim](https://github.com/stevearc/aerial.nvim)
-2. [Comment.nvim](https://github.com/numToStr/Comment.nvim)
-3. [copilot.vim](https://github.com/github/copilot.vim)
-4. [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
-5. [inc-rename.nvim](https://github.com/smjonas/inc-rename.nvim)
-6. [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
-7. [lazy.nvim](https://github.com/folke/lazy.nvim)
-8. [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-9. [mason.nvim](https://github.com/williamboman/mason.nvim)
-10. [mini.align](https://github.com/echasnovski/mini.align)
-11. [nvim-cmp](https://github.com/hrsh7th/nvim-cmp/)
-12. [nvim-solarized-lua](https://github.com/ishan9299/nvim-solarized-lua)
-13. [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
-14. [surround.vim](https://github.com/tpope/vim-surround)
-15. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-16. [trouble.nvim](https://github.com/folke/trouble.nvim)
+1. [Comment.nvim](https://github.com/numToStr/Comment.nvim)
+2. [NeoSolarized](https://github.com/Tsuzat/NeoSolarized.nvim)
+3. [aerial.nvim](https://github.com/stevearc/aerial.nvim)
+4. [copilot.vim](https://github.com/github/copilot.vim)
+5. [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+6. [inc-rename.nvim](https://github.com/smjonas/inc-rename.nvim)
+7. [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
+8. [lazy.nvim](https://github.com/folke/lazy.nvim)
+9. [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+10. [mason.nvim](https://github.com/williamboman/mason.nvim)
+11. [mini.align](https://github.com/echasnovski/mini.align)
+12. [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
+13. [nvim-cmp](https://github.com/hrsh7th/nvim-cmp/)
+14. [nvim-config-local](https://github.com/mrjohannchang/nvim-config-local)
+15. [surround.vim](https://github.com/tpope/vim-surround)
+16. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+17. [trouble.nvim](https://github.com/folke/trouble.nvim)
 
 ### Tmux
 
@@ -166,20 +167,16 @@
 4. Selection:
    1. Select: `v`
    2. Block select: `V`
-5. Tmux Resurrect key bindings:
-   1. Save: `s`
-   2. Restore: `r`
-6. Go through installed plugins for more features.
+5. Go through installed plugins for more features.
 
 #### Tmux Plugins
 
 1. [tmux-colors-solarized](https://github.com/seebi/tmux-colors-solarized)
 2. [tmux-open](https://github.com/tmux-plugins/tmux-open)
 3. [tmux-pain-control](https://github.com/tmux-plugins/tmux-pain-control)
-4. [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect)
-5. [tmux-sidebar](https://github.com/tmux-plugins/tmux-sidebar)
-6. [tmux-yank](https://github.com/tmux-plugins/tmux-yank)
-7. [Tmux Plugin Manager (tpm)](https://github.com/tmux-plugins/tpm)
+4. [tmux-sidebar](https://github.com/tmux-plugins/tmux-sidebar)
+5. [tmux-yank](https://github.com/tmux-plugins/tmux-yank)
+6. [Tmux Plugin Manager (tpm)](https://github.com/tmux-plugins/tpm)
 
 ### Supported Virtual Environments
 

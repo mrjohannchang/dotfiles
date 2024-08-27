@@ -48,6 +48,14 @@ vim.keymap.set("c", "w!!", "%!sudo tee > /dev/null %", { noremap = true })
 -- } Saving files as root with w!!
 
 
+-- Better buffer navigation {
+-- Move to the previous buffer
+vim.keymap.set("n", "[b", "<CMD>bprevious<CR>", { noremap = true })
+-- Move to the next buffer
+vim.keymap.set("n", "]b", "<CMD>bnext<CR>", { noremap = true })
+-- } Better buffer navigation
+
+
 -- Better command-line editing {
 -- <CTRL> + j and <CTRL> + k move to lines that have identical prefixes
 vim.keymap.set("c", "<C-k>", "<UP>", { noremap = true })
@@ -65,7 +73,6 @@ vim.keymap.set("c", "<C-f>", "<RIGHT>", { noremap = true })
 
 -- custom pre-init settings {
 pcall(require, "custom-pre-init")
-local custom_plugins = custom_plugins or {}
 -- } custom pre-init settings
 
 
@@ -88,6 +95,15 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   -- Lua-based {
   {
+    "Tsuzat/NeoSolarized.nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      vim.cmd.colorscheme("NeoSolarized")
+    end,
+  },
+
+  {
     "numToStr/Comment.nvim",
     config = function()
       require("Comment").setup()
@@ -107,11 +123,12 @@ require("lazy").setup({
   },
 
   {
-    "ishan9299/nvim-solarized-lua",
+    "mrjohannchang/nvim-config-local",
     config = function()
-      vim.cmd.colorscheme("solarized")
-      vim.g.solarized_termtrans = 1
-    end,
+      require("config-local").setup({
+        lookup_parents = true,     -- Lookup config files in parent directories
+      })
+    end
   },
 
   {
@@ -141,12 +158,15 @@ require("lazy").setup({
           -- Default configuration for telescope goes here:
           -- config_key = value,
           -- ..
-          initial_mode = "normal",
+          -- initial_mode = "normal",
           mappings = {
             n = {
               ["<ESC>"] = false,
               ["dd"] = require("telescope.actions").delete_buffer,
               ["q"] = require("telescope.actions").close,
+              ["<C-c>"] = require("telescope.actions").close,
+              ["<C-n>"] = require("telescope.actions").move_selection_next,
+              ["<C-p>"] = require("telescope.actions").move_selection_previous,
             },
           },
         },
@@ -171,28 +191,40 @@ require("lazy").setup({
 
   {
     "folke/trouble.nvim",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<LEADER>xx",
+        "<CMD>Trouble diagnostics toggle<CR>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<LEADER>xX",
+        "<CMD>Trouble diagnostics toggle filter.buf=0<CR>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<LEADER>cs",
+        "<CMD>Trouble symbols toggle focus=false<CR>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<LEADER>cl",
+        "<CMD>Trouble lsp toggle focus=false win.position=right<CR>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<LEADER>xL",
+        "<CMD>Trouble loclist toggle<CR>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<LEADER>xQ",
+        "<CMD>Trouble qflist toggle<CR>",
+        desc = "Quickfix List (Trouble)",
+      },
     },
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
-    config = function()
-      vim.keymap.set(
-      "n", "<LEADER>xx", "<CMD>TroubleToggle<CR>", { silent = true, noremap = true })
-      -- vim.keymap.set(
-      --   "n", "<LEADER>xw", "<CMD>TroubleToggle workspace_diagnostics<CR>", { silent = true, noremap = true })
-      -- vim.keymap.set(
-      --   "n", "<LEADER>xd", "<CMD>TroubleToggle document_diagnostics<CR>", { silent = true, noremap = true })
-      -- vim.keymap.set(
-      --   "n", "<LEADER>xl", "<CMD>TroubleToggle loclist<CR>", { silent = true, noremap = true })
-      -- vim.keymap.set(
-      --   "n", "<LEADER>xq", "<CMD>TroubleToggle quickfix<CR>", { silent = true, noremap = true })
-      vim.keymap.set(
-      "n", "gR", "<CMD>TroubleToggle lsp_references<CR>", { silent = true, noremap = true })
-    end,
   },
 
   {
@@ -215,9 +247,16 @@ require("lazy").setup({
     },
   },
 
+  -- {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   build = ":TSUpdate",
+  -- },
+
   {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup()
+    end,
   },
 
   {
@@ -264,6 +303,18 @@ require("lazy").setup({
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-path",
       "hrsh7th/vim-vsnip",
+    },
+  },
+
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+      },
     },
   },
 
@@ -325,7 +376,7 @@ require("lazy").setup({
   -- } nvim-lsp dependent
   -- } Lua-based
 
-  -- VimScript-based {
+  -- Vim script-based {
   {
     "github/copilot.vim",
     build = ":Copilot setup",
@@ -336,11 +387,7 @@ require("lazy").setup({
   },
 
   { "tpope/vim-surround" },
-  -- } VimScript-based
-
-  -- custom_plugins {
-  unpack(custom_plugins)
-  -- } custom_plugins
+  -- } Vim script-based
 })
 -- } Plugins
 
