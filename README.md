@@ -89,14 +89,13 @@
 #### Neovim Key Bindings
 
 | Key Binding                      | Mode                  | Description                                                       | Plugin                                                             |
-| -----------                      | ----                  | -----------                                                       | ------                                                             |
+| -------------------------------- | --------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------ |
 | `<Leader>` `/`                   | NORMAL                | Clear search highlight                                            | Built-in                                                           |
 | `w` `!` `!`                      | NORMAL                | Save file as root                                                 | Built-in                                                           |
 | `<Ctrl>` + `j`                   | COMMAND               | Move up to lines that have identical prefixes                     | Built-in                                                           |
 | `<Ctrl>` + `k`                   | COMMAND               | Move down to lines that have identical prefixes                   | Built-in                                                           |
 | `<Ctrl>` + `a`                   | COMMAND               | Move to the beginning the line                                    | Built-in                                                           |
 | `<Ctrl>` + `e`                   | COMMAND               | Move to the end the line                                          | Built-in                                                           |
-| `<F2>`                           | NORMAL, PASTE, INSERT | Toggle paste mode                                                 | Built-in                                                           |
 | `g` `c` `c`                      | NORMAL                | Toggle the current line using linewise comment                    | [Comment.nvim](https://github.com/numToStr/Comment.nvim)           |
 | `g` `b` `c`                      | NORMAL                | Toggle the current line using blockwise comment                   | [Comment.nvim](https://github.com/numToStr/Comment.nvim)           |
 | `[count]` `g` `c` `c`            | NORMAL                | Toggle the number of line given as a prefix-count using linewise  | [Comment.nvim](https://github.com/numToStr/Comment.nvim)           |
@@ -137,7 +136,7 @@
 | `<Leader>` `g` `y`               | NORMAL                | Show LSP type definitions                                         | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
 | `<Leader>` `x` `x`               | NORMAL                | Toogle trouble pain                                               | [trouble.nvim](https://github.com/folke/trouble.nvim)              |
 | `<Leader>` `g` `R`               | NORMAL                | Toogle LSP trouble pain                                           | [trouble.nvim](https://github.com/folke/trouble.nvim)              |
-| `<Leader>` `\|`                  | NORMAL                | Toggle indent helper                                              | [indent-blankline.nvim](indent-blankline.nvim)                     |
+| `<Leader>` <code>&#124;</code>   | NORMAL                | Toggle indent helper                                              | [indent-blankline.nvim](indent-blankline.nvim)                     |
 
 #### Neovim Plugins
 

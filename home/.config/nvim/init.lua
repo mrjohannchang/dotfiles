@@ -247,10 +247,10 @@ require("lazy").setup({
     },
   },
 
-  -- {
-  --   "nvim-treesitter/nvim-treesitter",
-  --   build = ":TSUpdate",
-  -- },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":tsupdate",
+  },
 
   {
     "lewis6991/gitsigns.nvim",
