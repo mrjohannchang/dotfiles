@@ -1,4 +1,4 @@
--- -- Built-in {
+-- Built-in {
 vim.opt.cursorcolumn = true
 
 vim.opt.expandtab = true
@@ -23,6 +23,8 @@ vim.opt.wrap = false
 
 vim.opt.mouse = ""
 vim.opt.background = "dark"
+
+vim.opt.splitright = true  -- temporary for CopilotChat.nvim
 -- } Built-in
 
 
@@ -113,7 +115,6 @@ require("lazy").setup({
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
-    event = "InsertEnter",
     config = function()
       require("copilot").setup({
         panel = {
@@ -147,6 +148,7 @@ require("lazy").setup({
         },
       })
     end,
+    event = "InsertEnter",
   },
 
   {
@@ -154,82 +156,6 @@ require("lazy").setup({
     branch = "canary", -- Use the canary branch if you want to test the latest features but it might be unstable
     -- version = "v2.11.0",
     -- Do not use branch and version together, either use branch or version
-    dependencies = {
-      { "nvim-telescope/telescope.nvim" }, -- Use telescope for help actions
-      { "nvim-lua/plenary.nvim" },
-    },
-    opts = {
-      question_header = "## User ",
-      answer_header = "## Copilot ",
-      error_header = "## Error ",
-      prompts = {
-        -- Code related prompts
-        Explain = "Please explain how the following code works.",
-        Review = "Please review the following code and provide suggestions for improvement.",
-        Tests = "Please explain how the selected code works, then generate unit tests for it.",
-        Refactor = "Please refactor the following code to improve its clarity and readability.",
-        FixCode = "Please fix the following code to make it work as intended.",
-        FixError = "Please explain the error in the following text and provide a solution.",
-        BetterNamings = "Please provide better names for the following variables and functions.",
-        Documentation = "Please provide documentation for the following code.",
-        SwaggerApiDocs = "Please provide documentation for the following API using Swagger.",
-        SwaggerJsDocs = "Please write JSDoc for the following API using Swagger.",
-        -- Text related prompts
-        Summarize = "Please summarize the following text.",
-        Spelling = "Please correct any grammar and spelling errors in the following text.",
-        Wording = "Please improve the grammar and wording of the following text.",
-        Concise = "Please rewrite the following text to make it more concise.",
-      },
-      auto_follow_cursor = false, -- Don't follow the cursor after getting response
-      show_help = false, -- Show help in virtual text, set to true if that's 1st time using Copilot Chat
-      mappings = {
-        -- Use tab for completion
-        complete = {
-          detail = "Use @<Tab> or /<Tab> for options.",
-          insert = "<Tab>",
-        },
-        -- Close the chat
-        close = {
-          normal = "q",
-          insert = "<C-c>",
-        },
-        -- Reset the chat buffer
-        reset = {
-          normal = "<C-x>",
-          insert = "<C-x>",
-        },
-        -- Submit the prompt to Copilot
-        submit_prompt = {
-          normal = "<CR>",
-          insert = "<C-CR>",
-        },
-        -- Accept the diff
-        accept_diff = {
-          normal = "<C-y>",
-          insert = "<C-y>",
-        },
-        -- Yank the diff in the response to register
-        yank_diff = {
-          normal = "gmy",
-        },
-        -- Show the diff
-        show_diff = {
-          normal = "gmd",
-        },
-        -- Show the prompt
-        show_system_prompt = {
-          normal = "gmp",
-        },
-        -- Show the user selection
-        show_user_selection = {
-          normal = "gms",
-        },
-        -- Show help
-        show_help = {
-          normal = "gmh",
-        },
-      },
-    },
     config = function(_, opts)
       local chat = require("CopilotChat")
       local select = require("CopilotChat.select")
@@ -279,7 +205,7 @@ require("lazy").setup({
       vim.api.nvim_create_autocmd("BufEnter", {
         pattern = "copilot-*",
         callback = function()
-          vim.opt_local.relativenumber = true
+          -- vim.opt_local.relativenumber = true
           vim.opt_local.number = true
 
           -- Get current filetype and set it to markdown if the current filetype is copilot-chat
@@ -290,6 +216,11 @@ require("lazy").setup({
         end,
       })
     end,
+    dependencies = {
+      { "hrsh7th/nvim-cmp" },
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope.nvim" }, -- Use telescope for help actions
+    },
     event = "VeryLazy",
     keys = {
       -- Show help actions with telescope
@@ -379,6 +310,78 @@ require("lazy").setup({
       -- Copilot Chat Models
       { "<leader>a?", "<cmd>CopilotChatModels<cr>", desc = "CopilotChat - Select Models" },
     },
+    opts = {
+      question_header = "## User ",
+      answer_header = "## Copilot ",
+      error_header = "## Error ",
+      prompts = {
+        -- Code related prompts
+        Explain = "Please explain how the following code works.",
+        Review = "Please review the following code and provide suggestions for improvement.",
+        Tests = "Please explain how the selected code works, then generate unit tests for it.",
+        Refactor = "Please refactor the following code to improve its clarity and readability.",
+        FixCode = "Please fix the following code to make it work as intended.",
+        FixError = "Please explain the error in the following text and provide a solution.",
+        BetterNamings = "Please provide better names for the following variables and functions.",
+        Documentation = "Please provide documentation for the following code.",
+        SwaggerApiDocs = "Please provide documentation for the following API using Swagger.",
+        SwaggerJsDocs = "Please write JSDoc for the following API using Swagger.",
+        -- Text related prompts
+        Summarize = "Please summarize the following text.",
+        Spelling = "Please correct any grammar and spelling errors in the following text.",
+        Wording = "Please improve the grammar and wording of the following text.",
+        Concise = "Please rewrite the following text to make it more concise.",
+      },
+      auto_follow_cursor = false, -- Don't follow the cursor after getting response
+      show_help = false, -- Show help in virtual text, set to true if that's 1st time using Copilot Chat
+      mappings = {
+        -- Use tab for completion
+        complete = {
+          detail = "Use @<Tab> or /<Tab> for options.",
+          insert = "<Tab>",
+        },
+        -- Close the chat
+        close = {
+          normal = "q",
+          insert = "<C-c>",
+        },
+        -- Reset the chat buffer
+        reset = {
+          normal = "<C-x>",
+          insert = "<C-x>",
+        },
+        -- Submit the prompt to Copilot
+        submit_prompt = {
+          normal = "<CR>",
+          insert = "<C-CR>",
+        },
+        -- Accept the diff
+        accept_diff = {
+          normal = "<C-y>",
+          insert = "<C-y>",
+        },
+        -- Yank the diff in the response to register
+        yank_diff = {
+          normal = "gmy",
+        },
+        -- Show the diff
+        show_diff = {
+          normal = "gmd",
+        },
+        -- Show the prompt
+        show_system_prompt = {
+          normal = "gmp",
+        },
+        -- Show the user selection
+        show_user_selection = {
+          normal = "gms",
+        },
+        -- Show help
+        show_help = {
+          normal = "gmh",
+        },
+      },
+    },
   },
 
   {
@@ -403,7 +406,42 @@ require("lazy").setup({
       })
     end,
     dependencies = {
-      "nvim-tree/nvim-web-devicons",
+      { "nvim-tree/nvim-web-devicons" },
+    },
+  },
+
+  {
+    "williamboman/mason-lspconfig.nvim",
+    config = function()
+      require("mason-lspconfig").setup({
+        ensure_installed = { "lua_ls" },
+        dependencies = {
+          { "nvim-lua/plenary.nvim" },
+          { "nvim-telescope/telescope.nvim" }, -- Use telescope for help actions
+        },
+      })
+      require("mason-lspconfig").setup_handlers({
+        -- The first entry (without a key) will be the default handler
+        -- and will be called for each installed server that doesn't have
+        -- a dedicated handler.
+        function(server_name) -- default handler (optional)
+          require("lspconfig")[server_name].setup({})
+        end,
+        -- Next, you can provide a dedicated handler for specific servers.
+        -- For example, a handler override for the `rust_analyzer`:
+        -- ["rust_analyzer"] = function ()
+        --   require("rust-tools").setup {}
+        -- end
+      })
+    end,
+    dependencies = {
+      { "neovim/nvim-lspconfig" },
+      {
+        "williamboman/mason.nvim",
+        config = function()
+          require("mason").setup()
+        end,
+      },
     },
   },
 
@@ -434,19 +472,145 @@ require("lazy").setup({
       vim.keymap.set("n", "<LEADER>wf", "<CMD>Neotree position=left<CR>", { noremap = true })
     end,
     dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
+      { "MunifTanjim/nui.nvim" },
+      { "nvim-tree/nvim-web-devicons" },  -- not strictly required, but recommended
+      { "nvim-lua/plenary.nvim" },
     },
   },
 
   {
     "Tsuzat/NeoSolarized.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       vim.cmd.colorscheme("NeoSolarized")
     end,
+    lazy = false,  -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000,  -- make sure to load this before all the other start plugins
+  },
+
+  {
+    "hrsh7th/nvim-cmp",
+    config = function()
+      local has_words_before = function()
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+      end
+      local feedkey = function(key, mode)
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+      end
+
+      local cmp = require("cmp")
+      cmp.setup({
+        snippet = {
+          -- REQUIRED - you must specify a snippet engine
+          expand = function(args)
+            vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+            -- require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+            -- require("snippy").expand_snippet(args.body) -- For `snippy` users.
+            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+          end,
+        },
+        window = {
+          -- completion = cmp.config.window.bordered(),
+          -- documentation = cmp.config.window.bordered(),
+        },
+        mapping = {
+          ["<C-n>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif vim.fn["vsnip#available"](1) == 1 then
+              feedkey("<Plug>(vsnip-expand-or-jump)", "")
+            elseif has_words_before() then
+              cmp.complete()
+            else
+              fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+            end
+          end, { "i", "s" }),
+          ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif vim.fn["vsnip#available"](1) == 1 then
+              feedkey("<Plug>(vsnip-expand-or-jump)", "")
+            elseif has_words_before() then
+              cmp.complete()
+            else
+              fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+            end
+          end, { "i", "s" }),
+
+          ["<C-p>"] = cmp.mapping(function()
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+              feedkey("<Plug>(vsnip-jump-prev)", "")
+            end
+          end, { "i", "s" }),
+          ["<S-Tab>"] = cmp.mapping(function()
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+              feedkey("<Plug>(vsnip-jump-prev)", "")
+            end
+          end, { "i", "s" }),
+        },
+        sources = cmp.config.sources({
+          { name = "nvim_lsp", group_index = 2 },
+          { name = "path", group_index = 2 },
+          -- { name = "vsnip" }, -- For vsnip users.
+          -- { name = "luasnip" }, -- For luasnip users.
+          -- { name = "ultisnips" }, -- For ultisnips users.
+          -- { name = "snippy" }, -- For snippy users.
+        }, {
+          { name = "buffer" },
+        })
+      })
+
+      -- Set configuration for specific filetype.
+      cmp.setup.filetype("gitcommit", {
+        sources = cmp.config.sources({
+          { name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
+        }, {
+          { name = "buffer" },
+        })
+      })
+
+      -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+      cmp.setup.cmdline("/", {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = "buffer" },
+        },
+      })
+
+      -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+      cmp.setup.cmdline(":", {
+        mapping = cmp.mapping.preset.cmdline({
+          ["<C-e>"] = {
+            c = function(fallback)
+              if cmp.visible() then
+                cmp.close()
+                cmp.complete()
+              else
+                fallback()
+              end
+            end,
+          },
+        }),
+        sources = cmp.config.sources({
+          { name = "path" },
+        }, {
+          { name = "cmdline" },
+        }),
+      })
+    end,
+    dependencies = {
+      { "hrsh7th/cmp-nvim-lsp" },
+      { "hrsh7th/cmp-nvim-lsp-signature-help" },
+      { "hrsh7th/cmp-buffer" },
+      { "hrsh7th/cmp-cmdline" },
+      { "hrsh7th/cmp-path" },
+      { "hrsh7th/vim-vsnip" },
+    },
+    event = "InsertEnter",
   },
 
   {
@@ -455,16 +619,16 @@ require("lazy").setup({
       require("config-local").setup({
         lookup_parents = true,     -- Lookup config files in parent directories
       })
-    end
+    end,
   },
 
   {
     "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
     config = function()
       require("nvim-surround").setup()
-    end
+    end,
+    event = "VeryLazy",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
   },
 
   {
@@ -474,11 +638,6 @@ require("lazy").setup({
 
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "debugloop/telescope-undo.nvim",
-      "smartpde/telescope-recent-files",
-    },
     config = function()
       vim.keymap.set("n", "<LEADER>ff", "<CMD>lua require('telescope.builtin').find_files()<CR>", { noremap = true })
       vim.keymap.set("n", "<LEADER>fh", "<CMD>lua require('telescope.builtin').find_files({ hidden = true })<CR>", { noremap = true })
@@ -520,12 +679,56 @@ require("lazy").setup({
         vim.keymap.set("n", "<LEADER>fr", "<CMD>lua require('telescope').extensions.recent_files.pick()<CR>", { noremap = true }),
       })
     end,
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      { "smartpde/telescope-recent-files" },
+      { "debugloop/telescope-undo.nvim" },
+    },
+  },
+
+  -- LSP related {
+  {
+    "smjonas/inc-rename.nvim",
+    config = function()
+      require("inc_rename").setup()
+      vim.keymap.set("n", "<LEADER>rn", function()
+        return ":IncRename " .. vim.fn.expand("<cword>")
+      end, { expr = true })
+    end,
+    dependencies = {
+      { "williamboman/mason-lspconfig.nvim" },
+    }
+  },
+
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    config = function()
+      require("lazydev").setup()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "lua",
+        command = "setlocal shiftwidth=2 softtabstop=2 tabstop=2"
+      })
+    end,
+    dependencies = {
+      { "Bilal2453/luvit-meta", lazy = true },
+      { "williamboman/mason-lspconfig.nvim" },
+    },
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+      },
+    },
   },
 
   {
     "folke/trouble.nvim",
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
     cmd = "Trouble",
+    dependencies = {
+      { "williamboman/mason-lspconfig.nvim" },
+    },
     keys = {
       {
         "<LEADER>xx",
@@ -558,317 +761,11 @@ require("lazy").setup({
         desc = "Quickfix List (Trouble)",
       },
     },
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
   },
-
-  -- nvim-lsp dependent {
-  { "neovim/nvim-lspconfig" },
-
-  {
-    "williamboman/mason.nvim",
-    -- build = ":MasonUpdate", -- :MasonUpdate updates registry contents
-  },
-  { "mfussenegger/nvim-dap" },
-  { "jay-babu/mason-nvim-dap.nvim" },
-  { "mfussenegger/nvim-lint" },
-  { "jose-elias-alvarez/null-ls.nvim" },
-  { "williamboman/mason-lspconfig.nvim" },
-
-  {
-    "smjonas/inc-rename.nvim",
-    config = function()
-      require("inc_rename").setup()
-
-      vim.keymap.set("n", "<LEADER>rn", function()
-        return ":IncRename " .. vim.fn.expand("<cword>")
-      end, { expr = true })
-    end,
-  },
-
-  {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-nvim-lsp-signature-help",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-path",
-      "hrsh7th/vim-vsnip",
-    },
-  },
-
-  {
-    "folke/lazydev.nvim",
-    ft = "lua", -- only load on lua files
-    opts = {
-      library = {
-        -- See the configuration section for more details
-        -- Load luvit types when the `vim.uv` word is found
-        { path = "luvit-meta/library", words = { "vim%.uv" } },
-      },
-    },
-  },
-
-  {
-    "simrat39/rust-tools.nvim",
-    dependencies = {  -- optional packages
-      "neovim/nvim-lspconfig",
-    },
-    config = function()
-      local rust_auto_format_group = vim.api.nvim_create_augroup("RustAutoFormat", {})
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = { "*.rs" },
-        callback = function()
-          vim.lsp.buf.format()
-        end,
-        group = rust_auto_format_group,
-      })
-    end,
-    ft = "rust",
-  },
-
-  {
-    "ray-x/go.nvim",
-    dependencies = {  -- optional packages
-      "ray-x/guihua.lua",
-      "neovim/nvim-lspconfig",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    config = function()
-      require("go").setup()
-
-      local go_auto_format_group = vim.api.nvim_create_augroup("GoAutoFormat", {})
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = { "*.go", "*.go.mod" },
-        -- command = "GoImport",
-        callback = function()
-          vim.lsp.buf.format()
-        end,
-        group = go_auto_format_group,
-      })
-    end,
-    -- event = { "CmdlineEnter" },
-    ft = { "go", "gomod" },
-    build = ":lua require('go.install').update_all_sync()", -- if you need to install/update all binaries
-  },
-  -- } nvim-lsp dependent
+  -- } LSP related
 })
 -- } Plugins
-
-
--- lspconfig {
--- mason.nvim related {
-require("mason").setup()
-require("mason-nvim-dap").setup()
-require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls" },
-})
-
-require("mason-lspconfig").setup_handlers({
-  -- The first entry (without a key) will be the default handler
-  -- and will be called for each installed server that doesn't have
-  -- a dedicated handler.
-  function(server_name) -- default handler (optional)
-    require("lspconfig")[server_name].setup({})
-  end,
-  -- Next, you can provide a dedicated handler for specific servers.
-  -- For example, a handler override for the `rust_analyzer`:
-  -- ["rust_analyzer"] = function ()
-  --   require("rust-tools").setup {}
-  -- end
-})
--- } mason.nvim related
--- } lspconfig
-
-
--- nvim-cmp {
-local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
-local feedkey = function(key, mode)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-end
-
-local cmp = require("cmp")
-cmp.setup({
-  snippet = {
-    -- REQUIRED - you must specify a snippet engine
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      -- require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-      -- require("snippy").expand_snippet(args.body) -- For `snippy` users.
-      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-    end,
-  },
-  window = {
-    -- completion = cmp.config.window.bordered(),
-    -- documentation = cmp.config.window.bordered(),
-  },
-  mapping = {
-    ["<C-n>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif vim.fn["vsnip#available"](1) == 1 then
-        feedkey("<Plug>(vsnip-expand-or-jump)", "")
-      elseif has_words_before() then
-        cmp.complete()
-      else
-        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-      end
-    end, { "i", "s" }),
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif vim.fn["vsnip#available"](1) == 1 then
-        feedkey("<Plug>(vsnip-expand-or-jump)", "")
-      elseif has_words_before() then
-        cmp.complete()
-      else
-        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-      end
-    end, { "i", "s" }),
-
-    ["<C-p>"] = cmp.mapping(function()
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-        feedkey("<Plug>(vsnip-jump-prev)", "")
-      end
-    end, { "i", "s" }),
-    ["<S-Tab>"] = cmp.mapping(function()
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-        feedkey("<Plug>(vsnip-jump-prev)", "")
-      end
-    end, { "i", "s" }),
-  },
-  sources = cmp.config.sources({
-    { name = "nvim_lsp", group_index = 2 },
-    { name = "path", group_index = 2 },
-    -- { name = "vsnip" }, -- For vsnip users.
-    -- { name = "luasnip" }, -- For luasnip users.
-    -- { name = "ultisnips" }, -- For ultisnips users.
-    -- { name = "snippy" }, -- For snippy users.
-  }, {
-    { name = "buffer" },
-  })
-})
-
--- Set configuration for specific filetype.
-cmp.setup.filetype("gitcommit", {
-  sources = cmp.config.sources({
-    { name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
-  }, {
-    { name = "buffer" },
-  })
-})
-
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline("/", {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = "buffer" },
-  },
-})
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(":", {
-  mapping = cmp.mapping.preset.cmdline({
-    ["<C-e>"] = {
-      c = function(fallback)
-        if cmp.visible() then
-          cmp.close()
-          cmp.complete()
-        else
-          fallback()
-        end
-      end
-    },
-  }),
-  sources = cmp.config.sources({
-    { name = "path" },
-  }, {
-    { name = "cmdline" },
-  }),
-})
-
--- Setup LSP {
-local capabilities = require("cmp_nvim_lsp").default_capabilities() --nvim-cmp
-
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-end
-
--- C/C++ {
-if vim.fn.executable("ccls") == 1 then
-  if vim.fn.findfile("compile_commands.json", ".;") ~= "" or vim.fn.findfile(".ccls", ".;") ~= "" then
-    require("lspconfig").ccls.setup({
-      cmd = { "ccls" },
-      on_attach = on_attach,
-      capabilities = capabilities,
-    })
-  end
-end
--- } C/C++
-
--- Golang {
-require("lspconfig").gopls.setup({
-  cmd = { "gopls" },
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    gopls = {
-      experimentalPostfixCompletions = true,
-      analyses = {
-        unusedparams = true,
-        shadow = true,
-      },
-      staticcheck = true,
-    },
-  },
-  init_options = {
-    usePlaceholders = true,
-  }
-})
--- } Golang
-
--- Rust {
-local rust_lsp_attach = function(client, buf)
-  -- Example maps, set your own with vim.api.nvim_buf_set_keymap(buf, "n", <lhs>, <rhs>, { desc = <desc> })
-  -- or a plugin like which-key.nvim
-  -- <lhs>        <rhs>                        <desc>
-  -- "K"          vim.lsp.buf.hover            "Hover Info"
-  -- "<LEADER>qf" vim.diagnostic.setqflist     "Quickfix Diagnostics"
-  -- "[d"         vim.diagnostic.goto_prev     "Previous Diagnostic"
-  -- "]d"         vim.diagnostic.goto_next     "Next Diagnostic"
-  -- "<LEADER>e"  vim.diagnostic.open_float    "Explain Diagnostic"
-  -- "<LEADER>ca" vim.lsp.buf.code_action      "Code Action"
-  -- "<LEADER>cr" vim.lsp.buf.rename           "Rename Symbol"
-  -- "<LEADER>fs" vim.lsp.buf.document_symbol  "Document Symbols"
-  -- "<LEADER>fS" vim.lsp.buf.workspace_symbol "Workspace Symbols"
-  -- "<LEADER>gq" vim.lsp.buf.formatting_sync  "Format File"
-
-  vim.api.nvim_buf_set_option(buf, "formatexpr", "v:lua.vim.lsp.formatexpr()")
-  vim.api.nvim_buf_set_option(buf, "omnifunc", "v:lua.vim.lsp.omnifunc")
-  vim.api.nvim_buf_set_option(buf, "tagfunc", "v:lua.vim.lsp.tagfunc")
-end
-
--- Setup rust_analyzer via rust-tools.nvim
-require("rust-tools").setup({
-  server = {
-    capabilities = capabilities,
-    on_attach = rust_lsp_attach,
-  },
-})
--- } Rust
--- } Setup LSP
--- } nvim-cmp
 -- } Plugins and Plugin Configurations
 
 
