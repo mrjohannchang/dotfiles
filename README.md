@@ -117,10 +117,10 @@
 | `}`                              | Aerial window         | Go to next symbol                                                 | [aerial.nvim](https://github.com/stevearc/aerial.nvim)             |
 | `<Leader>` `r` `n`               | NORMAL                | Rename LSP symbol                                                 | [inc-rename.nvim](https://github.com/smjonas/inc-rename.nvim)      |
 | `<Enter>`                        | VISUAL                | Yank the line you'd like to align and then press `<Enter>`        | [mini.align](https://github.com/echasnovski/mini.align)            |
-| `y` `s` `<motion>` `<desired>`   | NORMAL                | Add desired surround around text defined by `<motion>`            | [surround.vim](https://github.com/tpope/vim-surround)              |
-| `d` `s` `<existing>`             | NORMAL                | Delete `<existing>` surround                                      | [surround.vim](https://github.com/tpope/vim-surround)              |
-| `c` `s` `<existing>` `<desired>` | NORMAL                | Change `<existing>` surround to `<desired>`                       | [surround.vim](https://github.com/tpope/vim-surround)              |
-| `S` `<desired>`                  | VISUAL                | Surround when in visual modes (surrounds full selection)          | [surround.vim](https://github.com/tpope/vim-surround)              |
+| `y` `s` `<motion>` `<desired>`   | NORMAL                | Add desired surround around text defined by `<motion>`            | [nvim-surround](https://github.com/kylechui/nvim-surround)              |
+| `d` `s` `<existing>`             | NORMAL                | Delete `<existing>` surround                                      | [nvim-surround](https://github.com/kylechui/nvim-surround)              |
+| `c` `s` `<existing>` `<desired>` | NORMAL                | Change `<existing>` surround to `<desired>`                       | [nvim-surround](https://github.com/kylechui/nvim-surround)              |
+| `S` `<desired>`                  | VISUAL                | Surround when in visual modes (surrounds full selection)          | [nvim-surround](https://github.com/kylechui/nvim-surround)              |
 | `q`                              | Telescope window      | Close the telescope window                                        | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
 | `d` `d`                          | Telescope window      | Delete the highlighted buffer                                     | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
 | `<Leader>` `f` `f`               | NORMAL                | Find files                                                        | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
@@ -143,20 +143,21 @@
 1. [Comment.nvim](https://github.com/numToStr/Comment.nvim)
 2. [NeoSolarized](https://github.com/Tsuzat/NeoSolarized.nvim)
 3. [aerial.nvim](https://github.com/stevearc/aerial.nvim)
-4. [copilot.vim](https://github.com/github/copilot.vim)
-5. [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
-6. [inc-rename.nvim](https://github.com/smjonas/inc-rename.nvim)
-7. [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
-8. [lazy.nvim](https://github.com/folke/lazy.nvim)
-9. [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-10. [mason.nvim](https://github.com/williamboman/mason.nvim)
-11. [mini.align](https://github.com/echasnovski/mini.align)
-12. [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
-13. [nvim-cmp](https://github.com/hrsh7th/nvim-cmp/)
-14. [nvim-config-local](https://github.com/mrjohannchang/nvim-config-local)
-15. [surround.vim](https://github.com/tpope/vim-surround)
-16. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-17. [trouble.nvim](https://github.com/folke/trouble.nvim)
+4. [copilot.lua](https://github.com/zbirenbaum/copilot.lua)
+5. [CopilotChat.nvim](https://github.com/CopilotC-Nvim/CopilotChat.nvim)
+6. [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+7. [inc-rename.nvim](https://github.com/smjonas/inc-rename.nvim)
+8. [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
+9. [lazy.nvim](https://github.com/folke/lazy.nvim)
+10. [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+11. [mason.nvim](https://github.com/williamboman/mason.nvim)
+12. [mini.align](https://github.com/echasnovski/mini.align)
+13. [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
+14. [nvim-cmp](https://github.com/hrsh7th/nvim-cmp/)
+15. [nvim-config-local](https://github.com/mrjohannchang/nvim-config-local)
+16. [nvim-surround](https://github.com/kylechui/nvim-surround)
+17. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+18. [trouble.nvim](https://github.com/folke/trouble.nvim)
 
 ### Tmux
 
