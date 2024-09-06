@@ -74,7 +74,7 @@ vim.keymap.set("c", "<C-f>", "<RIGHT>", { noremap = true })
 
 
 -- custom pre-init settings {
-pcall(require, "custom-pre-init")
+pcall(require, "pre-init")
 -- } custom pre-init settings
 
 
@@ -89,7 +89,7 @@ pcall(require, "init-light")
 
 
 -- custom post-init settings {
-pcall(require, "custom-post-init")
+pcall(require, "post-init")
 -- } custom post-init settings
 
 
