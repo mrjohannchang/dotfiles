@@ -109,12 +109,14 @@ install() {
       mkdir_and_check "${HOME}/AppData/Local/nvim"
       mkdir_and_check "${HOME}/AppData/Local/nvim/after/ftplugin"
       mkdir_and_check "${HOME}/AppData/Local/nvim/lua"
+      mkdir_and_check "${HOME}/AppData/Local/nvim/lua/plugins"
       ;;
     darwin*)
       mkdir_and_check "${HOME}/Library/Fonts"
       mkdir_and_check "${HOME}/.config/nvim"
       mkdir_and_check "${HOME}/.config/nvim/after/ftplugin"
       mkdir_and_check "${HOME}/.config/nvim/lua"
+      mkdir_and_check "${HOME}/.config/nvim/lua/plugins"
       ;;
     linux*)
       mkdir_and_check "${HOME}/.config/fontconfig/conf.d"
@@ -122,6 +124,7 @@ install() {
       mkdir_and_check "${HOME}/.config/nvim"
       mkdir_and_check "${HOME}/.config/nvim/after/ftplugin"
       mkdir_and_check "${HOME}/.config/nvim/lua"
+      mkdir_and_check "${HOME}/.config/nvim/lua/plugins"
       ;;
   esac
 
@@ -160,6 +163,8 @@ install() {
   case "$(echo $OSTYPE | tr '[:upper:]' '[:lower:]')" in
     cygwin*|msys*)
       install_target "home/AppData/Local/nvim/init.lua"
+      install_target "home/AppData/Local/nvim/lua/init-lazy.lua"
+      install_target "home/AppData/Local/nvim/lua/plugins/default.lua"
       if [ "$bg" = "light" ]; then
         install_target "home/AppData/Local/nvim/lua/init-light.lua"
       fi
@@ -169,6 +174,8 @@ install() {
       ;;
     *)
       install_target "home/.config/nvim/init.lua"
+      install_target "home/.config/nvim/lua/init-lazy.lua"
+      install_target "home/.config/nvim/lua/plugins/default.lua"
       if [ "$bg" = "light" ]; then
         install_target "home/.config/nvim/lua/init-light.lua"
       fi
@@ -273,11 +280,15 @@ uninstall() {
   uninstall_target "${HOME}/.config/fontconfig/conf.d/20-noto-cjk.conf"
 
   uninstall_target "${HOME}/.config/nvim/init.lua"
+  uninstall_target "${HOME}/.config/nvim/lua/init-lazy.lua"
+  uninstall_target "${HOME}/.config/nvim/lua/plugins/default.lua"
   uninstall_target "${HOME}/.config/nvim/after/ftplugin/gitcommit.lua"
   uninstall_target "${HOME}/.config/nvim/after/ftplugin/markdown.lua"
   uninstall_target "${HOME}/.config/nvim/after/ftplugin/python.lua"
   uninstall_target "${HOME}/.config/nvim/lua/init-light.lua"
   uninstall_target "${HOME}/Appdata/Local/nvim/init.lua"
+  uninstall_target "${HOME}/Appdata/Local/nvim/lua/init-lazy.lua"
+  uninstall_target "${HOME}/Appdata/Local/nvim/lua/plugins/default.lua"
   uninstall_target "${HOME}/Appdata/Local/nvim/after/ftplugin/gitcommit.lua"
   uninstall_target "${HOME}/Appdata/Local/nvim/after/ftplugin/markdown.lua"
   uninstall_target "${HOME}/Appdata/Local/nvim/after/ftplugin/python.lua"
