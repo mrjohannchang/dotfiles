@@ -551,6 +551,11 @@ require("lazy").setup({
               feedkey("<Plug>(vsnip-jump-prev)", "")
             end
           end, { "i", "s" }),
+
+          ["<CR>"] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+          }),
         },
         sources = cmp.config.sources({
           { name = "nvim_lsp", group_index = 2 },
