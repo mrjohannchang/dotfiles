@@ -111,13 +111,6 @@ fi
 # } SSH
 
 
-# zoxide {
-if command -v zoxide &>/dev/null; then
-  eval "$(zoxide init zsh)"
-fi
-# } zoxide
-
-
 # ================================= plugins =================================
 # ZI https://github.com/z-shell/zi {
 if [[ ! -f ${HOME}/.zi/bin/zi.zsh ]]; then
@@ -162,6 +155,13 @@ if command -v gh &>/dev/null; then
   eval "$(gh completion -s zsh)"
 fi
 # }
+
+
+# zoxide {
+if command -v zoxide &>/dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+# } zoxide
 
 
 # Workaround {
