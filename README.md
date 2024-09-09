@@ -117,10 +117,10 @@
 | `}`                              | Aerial window         | Go to next symbol                                                 | [aerial.nvim](https://github.com/stevearc/aerial.nvim)             |
 | `<Leader>` `r` `n`               | NORMAL                | Rename LSP symbol                                                 | [inc-rename.nvim](https://github.com/smjonas/inc-rename.nvim)      |
 | `<Enter>`                        | VISUAL                | Yank the line you'd like to align and then press `<Enter>`        | [mini.align](https://github.com/echasnovski/mini.align)            |
-| `y` `s` `<motion>` `<desired>`   | NORMAL                | Add desired surround around text defined by `<motion>`            | [nvim-surround](https://github.com/kylechui/nvim-surround)              |
-| `d` `s` `<existing>`             | NORMAL                | Delete `<existing>` surround                                      | [nvim-surround](https://github.com/kylechui/nvim-surround)              |
-| `c` `s` `<existing>` `<desired>` | NORMAL                | Change `<existing>` surround to `<desired>`                       | [nvim-surround](https://github.com/kylechui/nvim-surround)              |
-| `S` `<desired>`                  | VISUAL                | Surround when in visual modes (surrounds full selection)          | [nvim-surround](https://github.com/kylechui/nvim-surround)              |
+| `y` `s` `<motion>` `<desired>`   | NORMAL                | Add desired surround around text defined by `<motion>`            | [nvim-surround](https://github.com/kylechui/nvim-surround)         |
+| `d` `s` `<existing>`             | NORMAL                | Delete `<existing>` surround                                      | [nvim-surround](https://github.com/kylechui/nvim-surround)         |
+| `c` `s` `<existing>` `<desired>` | NORMAL                | Change `<existing>` surround to `<desired>`                       | [nvim-surround](https://github.com/kylechui/nvim-surround)         |
+| `S` `<desired>`                  | VISUAL                | Surround when in visual modes (surrounds full selection)          | [nvim-surround](https://github.com/kylechui/nvim-surround)         |
 | `q`                              | Telescope window      | Close the telescope window                                        | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
 | `d` `d`                          | Telescope window      | Delete the highlighted buffer                                     | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
 | `<Leader>` `f` `f`               | NORMAL                | Find files                                                        | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
@@ -137,6 +137,8 @@
 | `<Leader>` `x` `x`               | NORMAL                | Toogle trouble pain                                               | [trouble.nvim](https://github.com/folke/trouble.nvim)              |
 | `<Leader>` `g` `R`               | NORMAL                | Toogle LSP trouble pain                                           | [trouble.nvim](https://github.com/folke/trouble.nvim)              |
 | `<Leader>` <code>&#124;</code>   | NORMAL                | Toggle indent helper                                              | [indent-blankline.nvim](indent-blankline.nvim)                     |
+| `<Leader>` `s` `b`               | NORMAL                | git blame                                                         | [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)        |
+| `<Leader>` `s` `l` `b`           | NORMAL                | git blame current line                                            | [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)        |
 
 #### Neovim Plugins
 

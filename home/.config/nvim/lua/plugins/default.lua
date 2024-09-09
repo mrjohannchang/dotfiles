@@ -292,6 +292,14 @@ return {
     "lewis6991/gitsigns.nvim",
     config = function()
       require("gitsigns").setup()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "gitsigns-blame" },
+        callback = function()
+          vim.api.nvim_buf_set_keymap(0, "n", "q", "<CMD>q<CR>", { noremap = true, silent = true })
+        end,
+      })
+      vim.keymap.set("n", "<LEADER>sb", "<CMD>Gitsigns blame<CR>", { noremap = true, silent = true })
+      vim.keymap.set("n", "<LEADER>slb", "<CMD>Gitsigns blame_line<CR>", { noremap = true, silent = true })
     end,
   },
 
