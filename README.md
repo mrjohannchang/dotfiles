@@ -138,7 +138,6 @@
 | `<Leader>` `g` `R`               | NORMAL                | Toogle LSP trouble pain                                           | [trouble.nvim](https://github.com/folke/trouble.nvim)              |
 | `<Leader>` <code>&#124;</code>   | NORMAL                | Toggle indent helper                                              | [indent-blankline.nvim](indent-blankline.nvim)                     |
 | `<Leader>` `s` `b`               | NORMAL                | git blame                                                         | [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)        |
-| `<Leader>` `s` `l` `b`           | NORMAL                | git blame current line                                            | [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)        |
 
 #### Neovim Plugins
 
