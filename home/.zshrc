@@ -57,6 +57,15 @@ bindkey "^T" history-incremental-search-forward
 # } General
 
 
+# cz {
+if command -v cz &>/dev/null; then
+    if command -v register-python-argcomplete &>/dev/null; then
+        eval "$(register-python-argcomplete cz)"
+    fi
+fi
+# }
+
+
 # Dart {
 ## Dart completions
 if [ -f "${HOME}/.dart-cli-completion/zsh-config.zsh" ]; then
