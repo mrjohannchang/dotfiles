@@ -1,9 +1,12 @@
 [submodule "bin"]
-	path = 3rdparties/bin-changyuheng
-	url = https://github.com/changyuheng/bin.git
+	path = 3rdparties/bin-mrjohannchang
+	url = https://github.com/mrjohannchang/bin.git
 [submodule "dircolors-solarized"]
 	path = 3rdparties/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
 [submodule "tpm"]
 	path = 3rdparties/tpm
 	url = https://github.com/tmux-plugins/tpm.git
+[submodule "3rdparties/bin-johannchang"]
+	path = 3rdparties/bin-johannchang
+	url = https://github.com/mrjohannchang/bin.git
