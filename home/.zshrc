@@ -8,6 +8,15 @@ fi
 # } Powerlevel10k 1/2
 
 
+# compinstall {
+# The following lines were added by compinstall
+zstyle :compinstall filename '/Users/johann/.zshrc'
+
+autoload -Uz compinit && compinit
+# End of lines added by compinstall
+# } compinstall
+
+
 # General {
 export CASE_SENSITIVE=true
 case "${OSTYPE:l}" in
