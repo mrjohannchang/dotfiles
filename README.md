@@ -243,6 +243,7 @@
 
    ```
    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+   nvm install stable
    ```
 
 6. Install [pyenv](https://github.com/pyenv/pyenv).
@@ -273,6 +274,12 @@
 
    ```
    brew install coreutils bash fd ripgrep tmux neovim trash git-lfs cmake ctags go gotags nvm pyenv zoxide yapf llvm
+   ```
+
+   Node:
+
+   ```
+   nvm install stable
    ```
 
 3. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/):
