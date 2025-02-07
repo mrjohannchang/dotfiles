@@ -153,11 +153,6 @@ zi snippet OMZ::lib/functions.zsh
 zi snippet OMZ::lib/history.zsh
 zi snippet OMZ::lib/key-bindings.zsh
 zi snippet OMZ::lib/misc.zsh
-zi snippet OMZ::plugins/docker/docker.plugin.zsh
-zi snippet OMZ::plugins/docker-compose/docker-compose.plugin.zsh
-zi snippet OMZ::plugins/nvm/nvm.plugin.zsh
-zi snippet OMZ::plugins/pyenv/pyenv.plugin.zsh
-zi snippet OMZ::plugins/rvm/rvm.plugin.zsh
 
 zi ice wait lucid atload'_zsh_autosuggest_start'
 zi light zsh-users/zsh-autosuggestions
@@ -172,7 +167,23 @@ zi light zsh-users/zsh-completions
 if command -v gh &>/dev/null; then
   eval "$(gh completion -s zsh)"
 fi
-# }
+# } gh
+
+
+# nvm {
+if [ -d "${HOME}/.nvm" ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "${NVM_DIR}/nvm.sh" ] && source "${NVM_DIR}/nvm.sh"
+  [ -s "${NVM_DIR}/bash_completion" ] && source "${NVM_DIR}/bash_completion"
+fi
+# } nvm
+
+
+# pyenv {
+if pyenv virtualenv-init - &> /dev/null; then
+  eval "$(pyenv virtualenv-init -)"
+fi
+# } pyenv
 
 
 # zoxide {
