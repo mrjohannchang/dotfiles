@@ -3,7 +3,7 @@
 ## Neovim
 ## VISUAL vs. EDITOR – what’s the difference?
 ## https://unix.stackexchange.com/questions/4859/visual-vs-editor-what-s-the-difference
-if command -v nvim &>/dev/null; then
+if command -v nvim &> /dev/null; then
   export EDITOR=nvim
   export VISUAL=nvim
 fi

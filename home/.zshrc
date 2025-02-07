@@ -26,7 +26,7 @@ case "${OSTYPE:l}" in
 
   darwin*)
     # ls color
-    if command -v gdircolors &>/dev/null; then
+    if command -v gdircolors &> /dev/null; then
       if [ -r "${HOME}/.dircolors" ]; then
         eval "$(gdircolors -b "${HOME}/.dircolors" 2>/dev/null)" || eval "$(gdircolors -b)"
         alias ls="gls --quoting-style=literal --color=auto"
@@ -58,8 +58,8 @@ bindkey "^T" history-incremental-search-forward
 
 
 # cz {
-if command -v cz &>/dev/null; then
-    if command -v register-python-argcomplete &>/dev/null; then
+if command -v cz &> /dev/null; then
+    if command -v register-python-argcomplete &> /dev/null; then
         eval "$(register-python-argcomplete cz)"
     fi
 fi
@@ -75,7 +75,7 @@ fi
 
 
 # fd-find {
-if command -v fdfind &>/dev/null; then
+if command -v fdfind &> /dev/null; then
   alias fd=fdfind
 fi
 
@@ -94,7 +94,7 @@ export LESS="$LESS --ignore-case --no-init --quit-if-one-screen --RAW-CONTROL-CH
 
 # ls
 ## enable the color support of ls
-if command -v dircolors &>/dev/null; then
+if command -v dircolors &> /dev/null; then
   if [ -r "${HOME}/.dircolors" ]; then
     eval "$(dircolors -b "${HOME}/.dircolors" 2>/dev/null)" || eval "$(dircolors -b)"
     alias ls="ls --quoting-style=literal --color=auto"
@@ -164,7 +164,7 @@ zi light zsh-users/zsh-completions
 
 
 # gh {
-if command -v gh &>/dev/null; then
+if command -v gh &> /dev/null; then
   eval "$(gh completion -s zsh)"
 fi
 # } gh
@@ -187,7 +187,7 @@ fi
 
 
 # zoxide {
-if command -v zoxide &>/dev/null; then
+if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"
 fi
 # } zoxide
