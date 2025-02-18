@@ -638,17 +638,21 @@
       Action: Send Escape Sequence
       Esc+: f
 
-2. Disable smart quotes and dashes from Settings > Keyboard > Text Input > Input Sources > All Input Sources > Use smart quotes and dashes
+2. Allow pasting multiple lines at once in iTerm2:
 
-3. Configure `Option` + `Space` to switch between input methods from Settings > Keyboard > Keyboard Shortcuts > Input Sources
+   iTerm2 > Settings > Profiles > Terminal > Terminal may enable paste bracketing
 
-4. Make the scroll direction settings of mouse and trackpad independent, and use mouse middle button to drag: [Mac Mouse Fix](https://macmousefix.com/).
+3. Disable smart quotes and dashes from Settings > Keyboard > Text Input > Input Sources > All Input Sources > Use smart quotes and dashes
+
+4. Configure `Option` + `Space` to switch between input methods from Settings > Keyboard > Keyboard Shortcuts > Input Sources
+
+5. Make the scroll direction settings of mouse and trackpad independent, and use mouse middle button to drag: [Mac Mouse Fix](https://macmousefix.com/).
 
    ```
    brew install mac-mouse-fix
    ```
 
-5. Useful apps from Sindre Sorhus: [Quality crafted apps](https://sindresorhus.com/apps).
+6. Useful apps from Sindre Sorhus: [Quality crafted apps](https://sindresorhus.com/apps).
 
 #### Ubuntu
 
