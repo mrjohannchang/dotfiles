@@ -232,7 +232,6 @@
 
    ```
    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
-   nvm install stable
    ```
 
 6. Install [pyenv](https://github.com/pyenv/pyenv).
@@ -582,17 +581,26 @@
    git submodule update --init --recursive
    ```
 
-4. Install. For **Windows** users, after executing `install.sh`, you'll need to terminate all the sessions and exit Windows Terminal. Then reopen it for the next step.
+4. **Install this dotfiles**.
 
    ```
    ./install.sh
    ```
 
-   Note: You have Nerd Font support if you have followed the prerequisites.
+   Note 1: During the installation, if you don't know what to choose, just press enter using the default option.
+   Note 2: You have Nerd Font support if you have followed the prerequisites.
 
-5. Execute `tmux` (the command is `script -c tmux /dev/null` when using **Windows Terminal**) and press `<Ctrl>` + `s` `I` (uppercase i) to install plugins of tmux. It may take a few minutes. Please expect `tmux` frozen during the installation.
+5. Reboot and reopen terminal.
 
-6. Execute `nvim` and install desired LSPs via `:Mason`.
+6. Install `node` via `nvm`.
+
+   ```
+   nvm install stable
+   ```
+
+7. Execute `tmux` (the command is `script -c tmux /dev/null` when using **Windows Terminal**) and press `<Ctrl>` + `s` `I` (uppercase i) to install plugins of tmux. It may take a few minutes. Please expect `tmux` frozen during the installation.
+
+8. Execute `nvim` and install desired LSPs via `:Mason`.
 
 ### Optional Tweak
 
