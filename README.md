@@ -241,17 +241,21 @@
    curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
    ```
 
-7. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/): Download and extract [Monaspace.zip](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Monaspace.zip). Then configure the terminal to use Monaspace Nerd Font.
+7. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/).
 
-   ```
-   cd /tmp
-   wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Monaspace.zip
-   mkdir -p ~/.local/share/fonts
-   unzip Monaspace.zip -d ~/.local/share/fonts
-   rm Monaspace.zip
-   fc-cache -f -v
-   cd
-   ```
+   1. Download and extract [Monaspace.zip](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Monaspace.zip).
+
+      ```
+      cd /tmp
+      wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Monaspace.zip
+      mkdir -p ~/.local/share/fonts
+      unzip Monaspace.zip -d ~/.local/share/fonts
+      rm Monaspace.zip
+      fc-cache -f -v
+      cd
+      ```
+
+   2. Then configure the terminal to use the installed font **Monaspace**.
 
 8. Go to [Installation](#installation).
 
@@ -309,7 +313,7 @@
 
 2. Install [Git for Windows](https://gitforwindows.org/)
 
-   **Note**:
+   **Note:**
 
    1. **Uncheck** Git LFS (Large File Support)
    2. **Check** Use external OpenSSH
@@ -325,7 +329,7 @@
 
 5. Install [Python](https://www.python.org/downloads/)
 
-   **Note**: Install Python that's from the official website but not Microsoft Store
+   **Note:** Install Python that's from the official website but not Microsoft Store
 
    1. Add Python to PATH
    2. Disable path length limit
@@ -535,7 +539,7 @@
        unset tmp temp
        ```
 
-       **Note**: Empty `$tmp` and `$temp` environment variables are extremely error-prone on Windows. And it's difficult to identify the inroduced errors.
+       **Note:** Empty `$tmp` and `$temp` environment variables are extremely error-prone on Windows. And it's difficult to identify the inroduced errors.
 
     5. Enable symlink support for Git. This is necessary for the installation of this dotfiles.
 
@@ -554,10 +558,11 @@
 
 ### Installation
 
-1. `git clone` this repo and `cd` into it.
+1. `git clone` this repo and `cd` into it. You can put the dotfiles repository anywhere under `$HOME`, `~/workspace/dotfiles` here is used as an example.
 
    ```
-   cd ~  # You can put the dotfiles repository anywhere in $HOME. ~/dotfiles here is used as an example.
+   mkdir ~/workspace
+   cd ~/workspace
    git clone https://github.com/mrjohannchang/dotfiles.git
    cd dotfiles
    ```
@@ -565,7 +570,7 @@
 2. [**Windows Only**] Enable case sensitive support for sub-modules from a regular **PowerShell** session
 
    ```
-   cd ~\dotfiles\3rdparties  # Assuming the dotfiles repository has been cloned into ~\dotfiles
+   cd ~\workspace\dotfiles\3rdparties  # Assuming the dotfiles repository has been cloned into ~\workspace\dotfiles
    (Get-ChildItem -Recurse -Directory).FullName | ForEach-Object {fsutil.exe file setCaseSensitiveInfo $_ enable}
    ```
 
@@ -582,6 +587,8 @@
    ```
    ./install.sh
    ```
+
+   Note: You have Nerd Font support if you have followed the prerequisites.
 
 5. Execute `tmux` (the command is `script -c tmux /dev/null` when using **Windows Terminal**) and press `<Ctrl>` + `s` `I` (uppercase i) to install plugins of tmux. It may take a few minutes. Please expect `tmux` frozen during the installation.
 
@@ -776,7 +783,7 @@
 ### Uninstallation
 
 ```
-cd ~/dotfiles
+cd ~/workspace/dotfiles
 ./uninstall.sh
 cd ..
 rm -rf dotfiles
