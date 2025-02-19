@@ -397,7 +397,6 @@ return {
       vim.keymap.set("n", "<LEADER>gi", "<CMD>lua require('telescope.builtin').lsp_implementations({ reuse_win = true })<CR>", { noremap = true })
       vim.keymap.set("n", "<LEADER>gy", "<CMD>lua require('telescope.builtin').lsp_type_definitions({ reuse_win = true })<CR>", { noremap = true })
 
-      require("telescope").load_extension("undo")
       require("telescope").load_extension("recent_files")
 
       require("telescope").setup({
@@ -419,12 +418,21 @@ return {
         },
         extensions = {
           undo = {
-            -- telescope-undo.nvim config, see below
+            mappings = {
+              i = {
+                ["<CR>"] = require("telescope-undo.actions").restore,
+              },
+              n = {
+                ["<CR>"] = require("telescope-undo.actions").restore,
+              },
+            },
           },
         },
         vim.keymap.set("n", "<LEADER>fu", "<CMD>lua require('telescope').extensions.undo.undo()<CR>", { noremap = true }),
         vim.keymap.set("n", "<LEADER>fr", "<CMD>lua require('telescope').extensions.recent_files.pick()<CR>", { noremap = true }),
       })
+
+      require("telescope").load_extension("undo")
     end,
     dependencies = {
       { "nvim-lua/plenary.nvim" },
