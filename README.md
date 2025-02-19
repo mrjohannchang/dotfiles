@@ -243,6 +243,16 @@
 
 7. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/): Download and extract [Monaspace.zip](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Monaspace.zip). Then configure the terminal to use Monaspace Nerd Font.
 
+   ```
+   cd /tmp
+   wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Monaspace.zip
+   mkdir -p ~/.local/share/fonts
+   unzip Monaspace.zip -d ~/.local/share/fonts
+   rm Monaspace.zip
+   fc-cache -f -v
+   cd
+   ```
+
 8. Go to [Installation](#installation).
 
 #### macOS
