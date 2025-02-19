@@ -197,20 +197,9 @@
    sudo apt install build-essential cmake git git-lfs golang tmux fontconfig python3 python3-dev python3-venv curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf xsel zoxide yapf3 clangd
    ```
 
-   For Raspberry Pi OS that's based on Debian bookworm only:
-
-   ```
-   echo "deb http://deb.debian.org/debian bookworm-backports main" | sudo tee /etc/apt/sources.list.d/bookworm-backports.list
-   sudo apt Update
-   sudo apt install golang-1.22
-   cd /usr/bin
-   sudo mv go go-1.19
-   sudo mv gofmt gofmt-1.19
-   sudo ln -s /usr/lib/go-1.22/bin/go
-   sudo ln -s /usr/lib/go-1.22/bin/gofmt
-   ```
-
 2. Change default shell to [Zsh](https://www.zsh.org/) via `chsh`.
+
+   Execute `chsh` then input `/usr/bin/zsh`.
 
 3. [Skip on Raspberry Pi OS] Install [flatpak](https://flatpak.org/).
 
