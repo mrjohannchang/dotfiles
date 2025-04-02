@@ -141,9 +141,9 @@
 
 #### Neovim Plugins
 
-1. [Comment.nvim](https://github.com/numToStr/Comment.nvim)
-2. [NeoSolarized](https://github.com/Tsuzat/NeoSolarized.nvim)
-3. [aerial.nvim](https://github.com/stevearc/aerial.nvim)
+1. [aerial.nvim](https://github.com/stevearc/aerial.nvim)
+2. [Comment.nvim](https://github.com/numToStr/Comment.nvim)
+3. [conform.nvim](https://github.com/stevearc/conform.nvim)
 4. [copilot.lua](https://github.com/zbirenbaum/copilot.lua)
 5. [CopilotChat.nvim](https://github.com/CopilotC-Nvim/CopilotChat.nvim)
 6. [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
@@ -154,11 +154,12 @@
 11. [mason.nvim](https://github.com/williamboman/mason.nvim)
 12. [mini.align](https://github.com/echasnovski/mini.align)
 13. [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
-14. [nvim-cmp](https://github.com/hrsh7th/nvim-cmp/)
-15. [nvim-config-local](https://github.com/mrjohannchang/nvim-config-local)
-16. [nvim-surround](https://github.com/kylechui/nvim-surround)
-17. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-18. [trouble.nvim](https://github.com/folke/trouble.nvim)
+14. [NeoSolarized](https://github.com/Tsuzat/NeoSolarized.nvim)
+15. [nvim-cmp](https://github.com/hrsh7th/nvim-cmp/)
+16. [nvim-config-local](https://github.com/mrjohannchang/nvim-config-local)
+17. [nvim-surround](https://github.com/kylechui/nvim-surround)
+18. [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+19. [trouble.nvim](https://github.com/folke/trouble.nvim)
 
 ### Tmux
 
