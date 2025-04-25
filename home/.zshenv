@@ -13,7 +13,7 @@ fi
 PATH="${HOME}/bin:${PATH}"
 [ ! -d "${HOME}/bin.d" ] || {
   for d in "${HOME}/bin.d/"*; do
-    if [ ! -d "$d" ] && [ ! -L "$d" -a -d "$d" ]; then
+    if [ ! -d "$d" ] && [ ! -L "$d" ]; then
       continue
     fi
     PATH="${d}:${PATH}"
@@ -56,6 +56,9 @@ case "${OSTYPE:l}" in
   cygwin*|msys*)
     if [ -d "${HOME}/AppData/Roaming/Python" ]; then
       for d in "${HOME}/AppData/Roaming/Python/"*"/Scripts"; do
+        if [ ! -d "${d}" ]; then
+          continue
+        fi
         export PATH="${d}:${PATH}"
       done
     fi
@@ -63,6 +66,9 @@ case "${OSTYPE:l}" in
   darwin*)
     if [ -d "${HOME}/Library/Python" ]; then
       for d in "${HOME}/Library/Python/"*"/bin"; do
+        if [ ! -d "${d}" ]; then
+          continue
+        fi
         export PATH="${d}:${PATH}"
       done
     fi
