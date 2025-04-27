@@ -60,7 +60,7 @@ case "${OSTYPE:l}" in
           continue
         fi
         export PATH="${d}:${PATH}"
-      done
+      done &> /dev/null
     fi
     ;;
   darwin*)
@@ -70,7 +70,7 @@ case "${OSTYPE:l}" in
           continue
         fi
         export PATH="${d}:${PATH}"
-      done
+      done &> /dev/null
     fi
     if [ -d "/Library/Frameworks/Python.framework/Versions/Current/bin" ]; then
         export PATH="/Library/Frameworks/Python.framework/Versions/Current/bin:${PATH}"
