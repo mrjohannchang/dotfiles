@@ -2,7 +2,7 @@
 
 * **Cross-platform** - Support [Linux](https://en.wikipedia.org/wiki/Linux), [macOS](https://en.wikipedia.org/wiki/MacOS), and [Microsoft Windows](https://en.wikipedia.org/wiki/Microsoft_Windows).
 * **Modern** - Richer features and better performance:
-  * [Z shell (Zsh)](https://en.wikipedia.org/wiki/Z_shell) over [Bourne Again Shell (Bash)](https://en.wikipedia.org/wiki/Bash_(Unix_shell)).
+  * [Fish](https://en.wikipedia.org/wiki/Fish_(Unix_shell)) over [Bourne Again Shell (Bash)](https://en.wikipedia.org/wiki/Bash_(Unix_shell)).
   * [Neovim](https://en.wikipedia.org/wiki/Vim_(text_editor)#Neovim) over [Vi IMproved (Vim)](https://en.wikipedia.org/wiki/Vim_(text_editor)).
   * [ripgrep](https://github.com/BurntSushi/ripgrep) over [grep](https://en.wikipedia.org/wiki/Grep).
   * [fd](https://github.com/sharkdp/fd) over [find](https://en.wikipedia.org/wiki/Find_(Unix)).
@@ -21,8 +21,8 @@
 
 - [Features](#features)
    * [Programs and Fonts](#programs-and-fonts)
-   * [Z Shell (zsh)](#z-shell-zsh)
-      + [Z Shell Plugins](#z-shell-plugins)
+   * [Fish](#fish)
+      + [Fish Plugins](#fish-plugins)
    * [Neovim (nvim)](#neovim-nvim)
       + [Neovim Key Bindings](#neovim-key-bindings)
       + [Neovim Plugins](#neovim-plugins)
@@ -51,30 +51,13 @@
 3. [ripgrep](https://github.com/BurntSushi/ripgrep)
 4. [zoxide](https://github.com/ajeetdsouza/zoxide)
 
-### Z Shell (zsh)
+### Fish
 
-![screenshots/zsh-prompt.png](screenshots/zsh-prompt.png)
+![screenshots/shell-prompt.png](screenshots/shell-prompt.png)
 
-1. The current setup is blazingly fast.
+#### Fish Plugins
 
-#### Z Shell Plugins
-
-1. [romkatv/powerlevel10k](https://github.com/romkatv/powerlevel10k)
-2. [ohmyzsh/ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
-   1. [lib/clipboard](https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/clipboard.zsh)
-   2. [lib/completion](https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/completion.zsh)
-   3. [lib/functions](https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/functions.zsh)
-   4. [lib/history](https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/history.zsh)
-   5. [lib/key-bindings](https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/key-bindings.zsh)
-   6. [lib/misc](https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/misc.zsh)
-   7. [plugins/docker](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker)
-   8. [plugins/docker-compose](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose)
-   9. [plugins/nvm](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/nvm)
-   10. [plugins/pyenv](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/pyenv)
-   11. [plugins/rvm](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/rvm)
-3. [z-shell/zi](https://github.com/z-shell/zi)
-4. [zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-5. [zsh-users/zsh-completions](https://github.com/zsh-users/zsh-completions)
+1. [IlanCosman/tide](https://github.com/IlanCosman/tide)
 
 ### Neovim (nvim)
 
@@ -195,21 +178,40 @@
 1. Install necessary packages.
 
    ```
-   sudo apt install build-essential cmake git git-lfs golang tmux fontconfig python3 python3-dev python3-venv curl fd-find ripgrep zsh exuberant-ctags trash-cli fzf xsel zoxide yapf3 clangd
+   sudo apt install build-essential cmake git git-lfs golang tmux fontconfig python3 python3-dev python3-venv curl fd-find ripgrep fish exuberant-ctags trash-cli fzf xsel zoxide yapf3 clangd
    ```
 
-2. Change default shell to [Zsh](https://www.zsh.org/) via `chsh`.
+2. Change default shell to [fish](https://fishshell.com) via `chsh`.
 
-   Execute `chsh` then input `/usr/bin/zsh`.
+   Execute `chsh` then input `/usr/bin/fish`.
 
-3. [Skip on Raspberry Pi OS] Install [flatpak](https://flatpak.org/).
+3. Launch fish. Config fish's theme if you'd like:
+
+   ```
+   fish_config
+   ```
+
+4. Install [fisher](https://github.com/jorgebucaran/fisher) and fish plugins.
+
+   ```
+   curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+   ```
+
+   1. Install [tide](https://github.com/IlanCosman/tide)
+
+      ```
+      fisher install IlanCosman/tide@v6
+      tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time='24-hour format' --rainbow_prompt_separators=Round --powerline_prompt_heads=Round --powerline_prompt_tails=Round --powerline_prompt_style='Two lines, character and frame' --prompt_connection=Dotted --powerline_right_prompt_frame=No --prompt_spacing=Compact --icons='Many icons' --transient=No
+      ```
+
+5. [Skip on Raspberry Pi OS] Install [flatpak](https://flatpak.org/).
 
    ```
    sudo apt install flatpak
    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
    ```
 
-4. Install [Neovim](https://neovim.io/).
+6. Install [Neovim](https://neovim.io/).
 
    For Ubuntu:
 
@@ -229,19 +231,19 @@
    sudo make install
    ```
 
-5. Install [Node Version Manager (nvm)](https://github.com/nvm-sh/nvm).
+7. Install [Node Version Manager (nvm)](https://github.com/nvm-sh/nvm).
 
    ```
    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
    ```
 
-6. Install [pyenv](https://github.com/pyenv/pyenv).
+8. Install [pyenv](https://github.com/pyenv/pyenv).
 
    ```
    curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
    ```
 
-7. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/).
+9. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/).
 
    1. Download and extract [Monaspace.zip](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Monaspace.zip).
 
@@ -257,7 +259,7 @@
 
    2. Then configure the terminal to use the installed font **Monaspace**.
 
-8. Go to [Installation](#installation).
+10. Go to [Installation](#installation).
 
 #### macOS
 
@@ -276,36 +278,49 @@
 2. Install necessary packages.
 
    ```
-   brew install coreutils bash fd ripgrep tmux neovim trash git-lfs cmake ctags go gotags nvm pyenv zoxide yapf llvm
+   brew install coreutils bash fish fd ripgrep tmux neovim trash git-lfs cmake ctags go gotags nvm pyenv zoxide yapf llvm
    ```
 
-   Node:
-
-   ```
-   nvm install stable
-   ```
-
-3. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/):
+4. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/):
 
    ```
    brew install --cask font-monaspace-nerd-font
    ```
 
-4. Install [iTerm2](https://iterm2.com/):
+5. Install [iTerm2](https://iterm2.com/):
 
    ```
    brew install --cask iterm2
    ```
 
-5. Launch iTerm2  and configure the iTerm2 to use Monaspace Nerd Font (MonaspiceNe Nerd Font Propo) that's installed in #3.
+6. Launch iTerm2 and configure iTerm2 to use Monaspace Nerd Font (MonaspiceNe Nerd Font Propo) that's installed in #3.
 
    ![](screenshots/iterm2-font-config.png)
 
-6. Make sure the Homebrew's binary folder is in the `$PATH` then go to [Installation](#installation):
+7. Set default shell to fish. Add `/opt/homebrew/bin/fish` to `/etc/shells`, then do:
 
    ```
-   export PATH="/opt/homebrew/bin:$PATH"
+   chsh -s /opt/homebrew/bin/fish
    ```
+
+8. Config the theme of fish if you'd like:
+
+      ```
+      fish_config
+      ```
+
+9. Install [fisher](https://github.com/jorgebucaran/fisher) and fish plugins.
+
+   ```
+   curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+   ```
+
+   1. Install [tide](https://github.com/IlanCosman/tide)
+
+      ```
+      fisher install IlanCosman/tide@v6
+      tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time='24-hour format' --rainbow_prompt_separators=Round --powerline_prompt_heads=Round --powerline_prompt_tails=Round --powerline_prompt_style='Two lines, character and frame' --prompt_connection=Dotted --powerline_right_prompt_frame=No --prompt_spacing=Compact --icons='Many icons' --transient=No
+      ```
 
 #### Microsoft Windows (tested on Windows 10)
 
@@ -393,7 +408,7 @@
     4. Install necessary and useful packages in `MSYS2 MinGW-w64`
 
        ```
-       pacman -Sy man tmux zsh
+       pacman -Sy man fish tmux
        ```
 
 11. Configure Windows Terminal
@@ -508,10 +523,10 @@
                    // ...
                    {
                        "bellStyle": "none",
-                       "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path -shell zsh",
+                       "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path -shell fish",
                        "guid": "{7e049a6e-6aea-4e66-9bd3-a4bd49a49bab}",
                        "icon": "C:/msys64/mingw64.ico",
-                       "name": "MSYS2 MinGW-w64 Zsh",
+                       "name": "MSYS2 MinGW-w64 Fish",
                        "startingDirectory": "%USERPROFILE%"
                    },
                    // ...
@@ -519,7 +534,7 @@
            }
        ```
 
-    7. Config the terminal to use Monaspace Nerd Font and set your prefered text color scheme in Profiles > MSYS2 MinGW-w64 Zsh.
+    7. Config the terminal to use Monaspace Nerd Font and set your prefered text color scheme in Profiles > MSYS2 MinGW-w64 Fish.
 
 12. Pre-installation
 
@@ -529,11 +544,9 @@
        Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
        ```
 
-    2. Open an "MSYS2 MinGW-w64 Zsh" tab in Windows Terminal.
+    2. Open an "MSYS2 MinGW-w64 Fish" tab in Windows Terminal.
 
-    3. Select `0` to create an empty `~/.zshrc`
-
-    4. Unset empty `$tmp` and `$temp`.
+    3. Unset empty `$tmp` and `$temp`.
 
        ```
        unset tmp temp
@@ -541,13 +554,33 @@
 
        **Note:** Empty `$tmp` and `$temp` environment variables are extremely error-prone on Windows. And it's difficult to identify the inroduced errors.
 
-    5. Enable symlink support for Git. This is necessary for the installation of this dotfiles.
+
+    4. Config fish's theme if you'd like:
+
+       ```
+       fish_config
+       ```
+
+    5. Install [fisher](https://github.com/jorgebucaran/fisher) and fish plugins.
+
+       ```
+       curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+       ```
+
+       1. Install [tide](https://github.com/IlanCosman/tide)
+
+          ```
+          fisher install IlanCosman/tide@v6
+          tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time='24-hour format' --rainbow_prompt_separators=Round --powerline_prompt_heads=Round --powerline_prompt_tails=Round --powerline_prompt_style='Two lines, character and frame' --prompt_connection=Dotted --powerline_right_prompt_frame=No --prompt_spacing=Compact --icons='Many icons' --transient=No
+          ```
+
+    6. Enable symlink support for Git. This is necessary for the installation of this dotfiles.
 
        ```
        git config --global core.symlinks true
        ```
 
-    6. Text files inside dotfiles need to use `LF` as line endings. Don't let Git convert line endings to `CRLF` on Windows.
+    7. Text files inside dotfiles need to use `LF` as line endings. Don't let Git convert line endings to `CRLF` on Windows.
 
        ```
        git config --global core.autocrlf false
@@ -574,7 +607,7 @@
    (Get-ChildItem -Recurse -Directory).FullName | ForEach-Object {fsutil.exe file setCaseSensitiveInfo $_ enable}
    ```
 
-   Then **go back** to the ZSH session.
+   Then **go back** to the Fish session.
 
 3. Clone sub-modules.
 
@@ -632,15 +665,13 @@
    })
    ```
 
-3. Set custom `${HOME}/.zshenv` at `${HOME}/.zshenv.custom` and `${HOME}/.zshrc` at `${HOME}/.zshrc.custom`.
+3. [Using tab instead of arrow key to scroll in code completion - JetBrains](https://intellij-support.jetbrains.com/hc/en-us/community/posts/8008270395538-Using-tab-instead-of-arrow-key-to-scroll-in-code-completion)
 
-4. [Using tab instead of arrow key to scroll in code completion - JetBrains](https://intellij-support.jetbrains.com/hc/en-us/community/posts/8008270395538-Using-tab-instead-of-arrow-key-to-scroll-in-code-completion)
-
-5. [Visual Studio Code: Use tab (instead of arrow keys) to select Intellisense Suggestions?](https://stackoverflow.com/questions/48097507/visual-studio-code-use-tab-instead-of-arrow-keys-to-select-intellisense-sugge)
+4. [Visual Studio Code: Use tab (instead of arrow keys) to select Intellisense Suggestions?](https://stackoverflow.com/questions/48097507/visual-studio-code-use-tab-instead-of-arrow-keys-to-select-intellisense-sugge)
 
 #### macOS
 
-1. `Option` + `Arrow` moving between words in Zsh and iTerm2
+1. `Option` + `Arrow` moving between words in Fish and iTerm2
 
    1. Go to Preferences, Profile, Keys.
    2. Set your left ⌥ key to act as an escape character.
@@ -767,7 +798,7 @@
 
          ```
          cat << EOF > /c/msys64/sshd-default-shell.cmd
-         C:\msys64\msys2_shell.cmd -defterm -here -no-start -mingw64 -shell zsh
+         C:\msys64\msys2_shell.cmd -defterm -here -no-start -mingw64 -shell fish
          EOF
          ```
 

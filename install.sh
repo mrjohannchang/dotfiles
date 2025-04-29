@@ -106,6 +106,7 @@ install() {
   mkdir_and_check "${HOME}/bin.d"
   case "$(echo $OSTYPE | tr '[:upper:]' '[:lower:]')" in
     cygwin*|msys*)
+      mkdir_and_check "${HOME}/AppData/Local/fish/conf.d"
       mkdir_and_check "${HOME}/AppData/Local/nvim"
       mkdir_and_check "${HOME}/AppData/Local/nvim/after/ftplugin"
       mkdir_and_check "${HOME}/AppData/Local/nvim/lua"
@@ -113,14 +114,16 @@ install() {
       ;;
     darwin*)
       mkdir_and_check "${HOME}/Library/Fonts"
+      mkdir_and_check "${HOME}/.config/fish/conf.d"
       mkdir_and_check "${HOME}/.config/nvim"
       mkdir_and_check "${HOME}/.config/nvim/after/ftplugin"
       mkdir_and_check "${HOME}/.config/nvim/lua"
       mkdir_and_check "${HOME}/.config/nvim/lua/plugins"
       ;;
     linux*)
-      mkdir_and_check "${HOME}/.config/fontconfig/conf.d"
       mkdir_and_check "${HOME}/.local/share/fonts"
+      mkdir_and_check "${HOME}/.config/fontconfig/conf.d"
+      mkdir_and_check "${HOME}/.config/fish/conf.d"
       mkdir_and_check "${HOME}/.config/nvim"
       mkdir_and_check "${HOME}/.config/nvim/after/ftplugin"
       mkdir_and_check "${HOME}/.config/nvim/lua"
@@ -129,11 +132,14 @@ install() {
   esac
 
   install_target "home/bin.d/johannchang"
+
   install_target "home/.zshenv"
   install_target "home/.zshrc"
   if [ "$bg" = "light" ]; then
     install_target "home/.zshrc.light"
   fi
+
+  install_target "home/.config/fish/conf.d/johannchang.fish"
 
   if [ "$bg" = "light" ]; then
     install_target "home/.dircolors.light" "${HOME}/.dircolors"
@@ -263,10 +269,13 @@ uninstall_target() {
 
 uninstall() {
   uninstall_target "${HOME}/bin.d/johannchang"
+
   uninstall_target "${HOME}/.p10k.zsh"
   uninstall_target "${HOME}/.zshenv"
   uninstall_target "${HOME}/.zshrc"
   uninstall_target "${HOME}/.zshrc.light"
+
+  uninstall_target "${HOME}/.config/fish/conf.d/johannchang.fish"
 
   uninstall_target "${HOME}/.dircolors"
 
