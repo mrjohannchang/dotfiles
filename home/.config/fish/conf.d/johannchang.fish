@@ -3,11 +3,11 @@
 bind \cd delete-char
 
 ## locale
-if not set -q LANG
-    set -x LANG en_US.UTF-8
+if not set --query LANG
+    set --export LANG en_US.UTF-8
 end
-if not set -q LC_ALL
-    set -x LC_ALL en_US.UTF-8
+if not set --query LC_ALL
+    set --export LC_ALL en_US.UTF-8
 end
 
 ## bin
@@ -29,8 +29,25 @@ end
 # } Homebrew
 
 
+# LS_COLORS {
+if test -r $HOME/.config/dircolors/dircolors
+    if type --query gdircolors
+        set --export LS_COLORS (gdircolors -b $HOME/.config/dircolors/dircolors | head -n 1 | string sub --start 12 --end -2)
+    else if type --query dircolors
+        set --export LS_COLORS (dircolors -b $HOME/.config/dircolors/dircolors | head -n 1 | string sub --start 12 --end -2)
+    end
+
+    if type --query gls
+        alias ls "gls --color=always --quoting-style=literal"
+    else
+        alias ls "ls --color=always --quoting-style=literal"
+    end
+end
+# } LS_COLORS
+
+
 # fd-find {
-if type -q fdfind
+if type --query fdfind
     alias fd fdfind
 end
 
@@ -42,9 +59,9 @@ end
 
 
 # neovim {
-if type -q nvim
-    set -x EDITOR nvim
-    set -x VISUAL nvim
+if type --query nvim
+    set --export EDITOR nvim
+    set --export VISUAL nvim
 end
 # } neovim
 
@@ -58,7 +75,7 @@ end
 
 
 # zoxide {
-if type -q zoxide
+if type --query zoxide
     zoxide init fish | source
 end
 # } zoxide
@@ -97,7 +114,7 @@ end
 
 ## pyenv
 if not test -x pyenv; and test -d $HOME/.pyenv
-    set -x PYENV_ROOT $HOME/.pyenv
+    set --export PYENV_ROOT $HOME/.pyenv
     fish_add_path $PYENV_ROOT/bin
 end
 if status --is-interactive; and test -x pyenv
@@ -109,12 +126,12 @@ end
 
 # Android SDK {
 if test -d $HOME/Android/Sdk
-    set -x ANDROID_HOME $HOME/Android/Sdk
+    set --export ANDROID_HOME $HOME/Android/Sdk
 else if test -d $HOME/Library/Android/sdk
-    set -x ANDROID_HOME $HOME/Library/Android/sdk
+    set --export ANDROID_HOME $HOME/Library/Android/sdk
 end
 
-if set -q ANDROID_HOME
+if set --query ANDROID_HOME
     fish_add_path $ANDROID_HOME/tools
     fish_add_path $ANDROID_HOME/tools/bin
     fish_add_path $ANDROID_HOME/platform-tools

@@ -104,9 +104,12 @@ install() {
 
   mkdir_and_check "${HOME}/.config"
   mkdir_and_check "${HOME}/bin.d"
+
+  mkdir_and_check "${HOME}/.config/dircolors"
+  mkdir_and_check "${HOME}/.config/fish/conf.d"
+
   case "$(echo $OSTYPE | tr '[:upper:]' '[:lower:]')" in
     cygwin*|msys*)
-      mkdir_and_check "${HOME}/AppData/Local/fish/conf.d"
       mkdir_and_check "${HOME}/AppData/Local/nvim"
       mkdir_and_check "${HOME}/AppData/Local/nvim/after/ftplugin"
       mkdir_and_check "${HOME}/AppData/Local/nvim/lua"
@@ -114,7 +117,6 @@ install() {
       ;;
     darwin*)
       mkdir_and_check "${HOME}/Library/Fonts"
-      mkdir_and_check "${HOME}/.config/fish/conf.d"
       mkdir_and_check "${HOME}/.config/nvim"
       mkdir_and_check "${HOME}/.config/nvim/after/ftplugin"
       mkdir_and_check "${HOME}/.config/nvim/lua"
@@ -123,7 +125,6 @@ install() {
     linux*)
       mkdir_and_check "${HOME}/.local/share/fonts"
       mkdir_and_check "${HOME}/.config/fontconfig/conf.d"
-      mkdir_and_check "${HOME}/.config/fish/conf.d"
       mkdir_and_check "${HOME}/.config/nvim"
       mkdir_and_check "${HOME}/.config/nvim/after/ftplugin"
       mkdir_and_check "${HOME}/.config/nvim/lua"
@@ -142,9 +143,9 @@ install() {
   install_target "home/.config/fish/conf.d/johannchang.fish"
 
   if [ "$bg" = "light" ]; then
-    install_target "home/.dircolors.light" "${HOME}/.dircolors"
+    install_target "home/.config/dircolors/dircolors.light" "${HOME}/.config/dircolors/dircolors"
   else
-    install_target "home/.dircolors"
+    install_target "home/.config/dircolors/dircolors"
   fi
 
   install_target "home/.tmux"
@@ -277,7 +278,7 @@ uninstall() {
 
   uninstall_target "${HOME}/.config/fish/conf.d/johannchang.fish"
 
-  uninstall_target "${HOME}/.dircolors"
+  uninstall_target "${HOME}/.config/dircolors/dircolors"
 
   uninstall_target "${HOME}/.tmux"
   uninstall_target "${HOME}/.tmux.conf"
