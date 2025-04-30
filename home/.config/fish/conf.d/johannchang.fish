@@ -88,6 +88,14 @@ end
 # } Go
 
 
+# Node.js {
+## NVM
+if not set --query nvm_default_version
+    set --export nvm_default_version lts
+end
+# } Node.js
+
+
 # Python {
 ## User executables
 switch (string lower (uname -o))

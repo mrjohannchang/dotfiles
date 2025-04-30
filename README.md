@@ -204,6 +204,12 @@
       tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time='24-hour format' --rainbow_prompt_separators=Round --powerline_prompt_heads=Round --powerline_prompt_tails=Round --powerline_prompt_style='Two lines, character and frame' --prompt_connection=Dotted --powerline_right_prompt_frame=No --prompt_spacing=Compact --icons='Many icons' --transient=No
       ```
 
+   2. Install [nvm.fish](https://github.com/jorgebucaran/nvm.fish)
+
+      ```
+      fisher install jorgebucaran/nvm.fish
+      ```
+
 5. [Skip on Raspberry Pi OS] Install [flatpak](https://flatpak.org/).
 
    ```
@@ -231,19 +237,13 @@
    sudo make install
    ```
 
-7. Install [Node Version Manager (nvm)](https://github.com/nvm-sh/nvm).
-
-   ```
-   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
-   ```
-
-8. Install [pyenv](https://github.com/pyenv/pyenv).
+7. Install [pyenv](https://github.com/pyenv/pyenv).
 
    ```
    curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
    ```
 
-9. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/).
+8. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/).
 
    1. Download and extract [Monaspace.zip](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Monaspace.zip).
 
@@ -259,7 +259,7 @@
 
    2. Then configure the terminal to use the installed font **Monaspace**.
 
-10. Go to [Installation](#installation).
+9. Go to [Installation](#installation).
 
 #### macOS
 
@@ -278,7 +278,7 @@
 2. Install necessary packages.
 
    ```
-   brew install coreutils bash fish fd ripgrep tmux neovim trash git-lfs cmake ctags go gotags nvm pyenv zoxide yapf llvm
+   brew install coreutils bash fish fd ripgrep tmux neovim trash git-lfs cmake ctags go gotags pyenv zoxide yapf llvm
    ```
 
 4. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/):
@@ -320,6 +320,12 @@
       ```
       fisher install IlanCosman/tide@v6
       tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time='24-hour format' --rainbow_prompt_separators=Round --powerline_prompt_heads=Round --powerline_prompt_tails=Round --powerline_prompt_style='Two lines, character and frame' --prompt_connection=Dotted --powerline_right_prompt_frame=No --prompt_spacing=Compact --icons='Many icons' --transient=No
+      ```
+
+   2. Install [nvm.fish](https://github.com/jorgebucaran/nvm.fish)
+
+      ```
+      fisher install jorgebucaran/nvm.fish
       ```
 
 #### Microsoft Windows (tested on Windows 10)
@@ -574,6 +580,12 @@
           tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time='24-hour format' --rainbow_prompt_separators=Round --powerline_prompt_heads=Round --powerline_prompt_tails=Round --powerline_prompt_style='Two lines, character and frame' --prompt_connection=Dotted --powerline_right_prompt_frame=No --prompt_spacing=Compact --icons='Many icons' --transient=No
           ```
 
+       2. Install [nvm.fish](https://github.com/jorgebucaran/nvm.fish)
+
+          ```
+          fisher install jorgebucaran/nvm.fish
+          ```
+
     6. Enable symlink support for Git. This is necessary for the installation of this dotfiles.
 
        ```
@@ -629,7 +641,7 @@
 6. Install `node` via `nvm`.
 
    ```
-   nvm install stable
+   nvm install lts
    ```
 
 7. Execute `tmux` (the command is `script -c tmux /dev/null` when using **Windows Terminal**) and press `<Ctrl>` + `s` `I` (uppercase i) to install plugins of tmux. It may take a few minutes. Please expect `tmux` frozen during the installation.
