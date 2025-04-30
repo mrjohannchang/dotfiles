@@ -38,9 +38,9 @@ if test -r $HOME/.config/dircolors/dircolors
     end
 
     if type --query gls
-        alias ls "gls --color=always --quoting-style=literal"
+        alias ls "gls --color=auto --quoting-style=literal"
     else
-        alias ls "ls --color=always --quoting-style=literal"
+        alias ls "ls --color=auto --quoting-style=literal"
     end
 end
 # } LS_COLORS

@@ -27,9 +27,9 @@ case "${OSTYPE:l}" in
   darwin*)
     # ls color
     if command -v gdircolors &> /dev/null; then
-      if [ -r "${HOME}/.dircolors" ]; then
-        eval "$(gdircolors -b "${HOME}/.dircolors" 2>/dev/null)" || eval "$(gdircolors -b)"
-        alias ls="gls --quoting-style=literal --color=auto"
+      if [ -r "${HOME}/.config/dircolors/dircolors" ]; then
+        eval "$(gdircolors -b "${HOME}/.config/dircolors/dircolors" 2>/dev/null)" || eval "$(gdircolors -b)"
+        alias ls="gls --color=auto --quoting-style=literal"
       fi
     fi
 
@@ -95,9 +95,9 @@ export LESS="$LESS --ignore-case --no-init --quit-if-one-screen --RAW-CONTROL-CH
 # ls
 ## enable the color support of ls
 if command -v dircolors &> /dev/null; then
-  if [ -r "${HOME}/.dircolors" ]; then
-    eval "$(dircolors -b "${HOME}/.dircolors" 2>/dev/null)" || eval "$(dircolors -b)"
-    alias ls="ls --quoting-style=literal --color=auto"
+  if [ -r "${HOME}/.config/dircolors/dircolors" ]; then
+    eval "$(dircolors -b "${HOME}/.config/dircolors/dircolors" 2>/dev/null)" || eval "$(dircolors -b)"
+    alias ls="ls --color=auto --quoting-style=literal"
   fi
 fi
 # } ls
