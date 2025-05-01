@@ -24,6 +24,8 @@ vim.opt.wrap = false
 vim.opt.mouse = ""
 vim.opt.background = "dark"
 
+vim.opt.shellslash = true
+
 vim.opt.splitright = true  -- temporary for CopilotChat.nvim
 -- } Built-in
 
