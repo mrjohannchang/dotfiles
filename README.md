@@ -537,10 +537,10 @@
                    // ...
                    {
                        "bellStyle": "none",
-                       "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path -shell fish",
-                       "guid": "{7e049a6e-6aea-4e66-9bd3-a4bd49a49bab}",
-                       "icon": "C:/msys64/mingw64.ico",
-                       "name": "MSYS2 MinGW-w64 Fish",
+                       "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -ucrt64 -use-full-path -shell fish",
+                       "guid": "{17da3cac-b318-431e-8a3e-7fcdefe6d114}",
+                       "icon": "C:/msys64/ucrt64.ico",
+                       "name": "UCRT64 / MSYS2",
                        "startingDirectory": "%USERPROFILE%"
                    },
                    // ...

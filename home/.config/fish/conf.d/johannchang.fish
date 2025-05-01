@@ -10,6 +10,21 @@ if not set --query LC_ALL
     set --export LC_ALL en_US.UTF-8
 end
 
+## system bin
+## Mainly to solve the PATH issue in MSYS2
+if test -d /bin; and not contains /bin $PATH
+    fish_add_path /bin
+end
+if test -d /usr/bin; and not contains /usr/bin $PATH
+    fish_add_path /usr/bin
+end
+if test -d /usr/sbin; and not contains /usr/sbin $PATH
+    fish_add_path /usr/sbin
+end
+if test -d /usr/local/bin; and not contains /usr/local/bin $PATH
+    fish_add_path /usr/local/bin
+end
+
 ## bin
 fish_add_path $HOME/bin
 if test -d $HOME/bin.d
