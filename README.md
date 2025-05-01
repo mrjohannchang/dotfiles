@@ -33,7 +33,7 @@
    * [Prerequisites](#prerequisites)
       + [Linux (tested on Ubuntu 22.04 Jammy Jellyfish and Raspberry Pi OS Bookworm)](#linux-tested-on-ubuntu-2204-jammy-jellyfish-and-raspberry-pi-os-bookworm)
       + [macOS](#macos)
-      + [Microsoft Windows (tested on Windows 10)](#microsoft-windows-tested-on-windows-10)
+      + [Windows (tested on Windows 10)](#windows-tested-on-windows-11)
    * [Installation](#installation)
    * [Optional Tweak](#optional-tweak)
       + [General](#general)
@@ -328,7 +328,7 @@
       fisher install jorgebucaran/nvm.fish
       ```
 
-#### Microsoft Windows (tested on Windows 10)
+#### Windows (tested on Windows 11)
 
 1. `$HOME` (`%USERPROFILE%`) folder **has to** be on an [NTFS](https://en.wikipedia.org/wiki/NTFS) volume.
 
@@ -340,7 +340,7 @@
    2. **Check** Use external OpenSSH
    3. **Check** Enable symbolic links
 
-3. Install [OpenSSH](https://www.openssh.com/) Client. Open an **elevated** (Run as administrator) **PowerShell** session and execute the following command:
+3. Install [OpenSSH](https://www.openssh.com/) Client if you haven't (should be installed by default). Open an **elevated** (Run as administrator) **PowerShell** session and execute the following command:
 
    ```
    Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH.Client*' | Add-WindowsCapability -Online
@@ -371,13 +371,21 @@
    winget install --accept-package-agreements --accept-source-agreements --exact --id LLVM.LLVM
    ```
 
-7. Install [Windows Terminal](https://www.microsoft.com/p/windows-terminal/9n0dx20hk701)
+7. Install [Windows Terminal](https://www.microsoft.com/p/windows-terminal/9n0dx20hk701) if you haven't. It should be installed by default.
 
 8. Enable **long file path support** from: Start > Local Group Policy Editor > Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem > Enable Win32 long paths
 
-9. Enable [Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development) from: Settings > Update & Security > For developers > Developer Mode
+9. Enable the symbolic link support manually by:
 
-    * Adding the current user to: Start > Local Security Policy > Security Settings > Local Policies > User Rights Assignment > Create symbolic links if enabling the developer mode does not enable the symlink creating support for you.
+   * Adding the current user to: Start > Local Security Policy > Security Settings > Local Policies > User Rights Assignment > Create symbolic links
+
+   Username can be obtained by calling the below command in CMD:
+
+   ```
+   echo %USERNAME%
+   ```
+
+   Or simply enable [Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development) from: Settings > Update & Security > For developers > Developer Mode
 
 10. Configure MSYS2
 
@@ -555,7 +563,8 @@
     3. Unset empty `$tmp` and `$temp`.
 
        ```
-       unset tmp temp
+       set --erase tmp
+       set --erase temp
        ```
 
        **Note:** Empty `$tmp` and `$temp` environment variables are extremely error-prone on Windows. And it's difficult to identify the inroduced errors.

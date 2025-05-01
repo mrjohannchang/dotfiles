@@ -89,7 +89,7 @@ end
 
 
 # Node.js {
-## NVM
+## nvm.fish https://github.com/jorgebucaran/nvm.fish
 if not set --query nvm_default_version
     set --export nvm_default_version lts
 end
