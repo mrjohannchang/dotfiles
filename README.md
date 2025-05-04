@@ -423,6 +423,7 @@
 
        ```
        pacman -Sy man fish tmux
+       pacman -Sy mingw-w64-ucrt-x86_64-clang
        ```
 
 11. Configure Windows Terminal
