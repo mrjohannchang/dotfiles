@@ -368,6 +368,7 @@
    winget install --accept-package-agreements --accept-source-agreements --id ajeetdsouza.zoxide
    winget install --accept-package-agreements --accept-source-agreements --id MSYS2.MSYS2
    winget install --accept-package-agreements --accept-source-agreements --id Microsoft.VisualStudioCode
+   winget install --accept-package-agreements --accept-source-agreements --id Microsoft.VisualStudio.2022.BuildTools
    winget install --accept-package-agreements --accept-source-agreements --exact --id LLVM.LLVM
    ```
 
@@ -426,110 +427,49 @@
        pacman -Sy mingw-w64-ucrt-x86_64-clang
        ```
 
-11. Configure Windows Terminal
+11. Configure Windows Terminal.
 
-    1. Disable copy & paste mappings to `<Ctrl>` + `c` and `<Ctrl>` + `v` by commenting out related config in `settings.json` which can be opened from the buttom left gear icon of Windows Terminal Settings page. You will still be able to use `<Ctrl>` + `<Shift>` + `c` and `<Ctrl>` + `<Shift>` + `v` for copying and pasting.
+    1. Change key bindings. Go to Windows Terminal > Settings > Actions:
 
-       ```
-           "actions":
-           [
-               ...
-               {
+       1. Change `<Ctrl>` + `v` to `<Ctrl>` + `<Shift>` + `v` on Action **Paste**.
 
-               },
-               {
-                   "command": "paste",
-                   "keys": "ctrl+v"
-               },
-               ...
-           ],
-       ```
+       2. Change `<Ctrl>` + `<Shift>` + `w` to `<Ctrl>` + `<F4>` on Action **Close pane**.
 
-    2. Prevent from window being closed when pressing `<Ctrl>` + `<Shift>` + `w` by adding the following content to `settings.json`.
+       3. Remove `<Ctrl>` + `<Shift>` + `6` key binding by delete the Action **New tab, profile index: 5**.
 
-       ```
-           "actions":
-           [
-               ...
-               {
-                   "command": "unbound",
-                   "keys": "ctrl+shift+w"
-               },
-               ...
-           ],
-       ```
+    2. Make `<Ctrl>` + `<Tab>` / `<Ctrl>` + `<Shift>` + `<Tab>` switch last / oldest used tab, and `<Ctrl>` + `<PgUp>` / `<Ctrl>` + `<PgDown>` switch previous / next tab in tab strip order.
 
-    3. Make `<Ctrl>` + `<F4>` close the current pane by adding the following content to `settings.jso:
+       1. Settings > Interaction > Tab switcher interface style: separate window, in most recently used order.
 
-       ```
-           "actions":
-           [
-               ...
-               {
-                   "command": "closePane",
-                   "keys": "ctrl+f4"
-               },
-               ...
-           ],
-       ```
+       2. In Settings > Actions, add keybindgs `<Ctrl>` + `<Tab>` for **Next tab**, `<Ctrl>` + `<Shift>` + `<Tab>` for **Previous tab**.
 
-    4. Resolve the key mapping conflict of `<Ctrl>` + `<Shift>` + `6` in Neovim/Vim by adding the following contents to `settings.json`.
+       3. In Settings > **Open JSON file**, set `tabSwitcherMode` to `inOrder` for `User.nextTab.0` and `User.prevTab.0`.
 
-       ```
-           "actions":
-           [
-               ...
-               {
-                   "command" : "unbound",
-                   "keys": "ctrl+shift+6"
-               },
-               ...
-           ],
-       ```
+          ```
+          "actions":
+          [
+              ...
+              {
+                  "command":
+                  {
+                      "action": "nextTab",
+                      "tabSwitcherMode": "inOrder"
+                  },
+                  "id": "User.nextTab.0"
+              },
+              {
+                  "command":
+                  {
+                      "action": "prevTab",
+                      "tabSwitcherMode": "inOrder"
+                  },
+                  "id": "User.prevTab.0"
+              }
+              ...
+          ],
+          ```
 
-    5. Make `<Ctrl>` + `<Tab>` / `<Ctrl>` + `<Shift>` + `<Tab>` switching tabs in MRU / LRU order but keep `<Ctrl>` + `<Page Up>` / `<Ctrl>` + `<Page Down>` in order by addin the following contents to `settings.json`.
-
-       ```
-           "actions":
-           [
-               ...
-               {
-                   "command":
-                   {
-                       "action": "nextTab",
-                       "tabSwitcherMode": "disabled"
-                   },
-                   "keys": "ctrl+pgdn"
-               },
-               {
-                   "command":
-                   {
-                       "action": "nextTab",
-                       "tabSwitcherMode": "mru"
-                   },
-                   "keys": "ctrl+tab"
-               },
-               {
-                   "command":
-                   {
-                       "action": "prevTab",
-                       "tabSwitcherMode": "disabled"
-                   },
-                   "keys": "ctrl+pgup"
-               },
-               {
-                   "command":
-                   {
-                       "action": "prevTab",
-                       "tabSwitcherMode": "mru"
-                   },
-                   "keys": "ctrl+shift+tab"
-               },
-               ...
-           ],
-       ```
-
-    6. Make Windows Terminal support MSYS2's shell by adding the following config to `settings.json`:
+    3. Make Windows Terminal support MSYS2's shell by adding the following config to `settings.json`:
 
        ```
            "profiles": {
@@ -549,7 +489,7 @@
            }
        ```
 
-    7. Config the terminal to use Monaspace Nerd Font and set your prefered text color scheme in Profiles > MSYS2 MinGW-w64 Fish.
+    3. Config the terminal to use Monaspace Nerd Font and set your prefered text color scheme in Profiles > MSYS2 MinGW-w64 Fish.
 
 12. Pre-installation
 
