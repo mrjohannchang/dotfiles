@@ -154,6 +154,9 @@ install() {
     install_target "home/.tmux.light.conf"
   fi
   case "$(echo $OSTYPE | tr '[:upper:]' '[:lower:]')" in
+    cygwin*|msys*)
+      install_target "home/.tmux.windows.conf"
+      ;;
     darwin*)
       install_target "home/.tmux.darwin.conf"
       ;;
@@ -283,6 +286,7 @@ uninstall() {
   uninstall_target "${HOME}/.tmux"
   uninstall_target "${HOME}/.tmux.conf"
   uninstall_target "${HOME}/.tmux.darwin.conf"
+  uninstall_target "${HOME}/.tmux.windows.conf"
   uninstall_target "${HOME}/.tmux.light.conf"
 
   uninstall_target "${HOME}/.ideavimrc"
