@@ -68,6 +68,7 @@ config.keys = {
   { key = " ",  mods = "CTRL",         action = wezterm.action.QuickSelect },
   { key = "?",  mods = "LEADER",       action = wezterm.action.ActivateCommandPalette },
   { key = "/",  mods = "CTRL",         action = wezterm.action.Search({ CaseInSensitiveString = "" }) },
+  { key = "_",  mods = "CTRL|SHIFT",   action = wezterm.action.DisableDefaultAssignment },
 }
 
 config.key_tables = {
