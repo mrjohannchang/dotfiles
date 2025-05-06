@@ -75,6 +75,12 @@ local copy_mode_keys = wezterm.gui.default_key_tables().copy_mode
 table.insert(
   copy_mode_keys,
   { key = "[", mods = "CTRL", action = wezterm.action.CopyMode("Close") })
+table.insert(
+  copy_mode_keys,
+  { key = "b", mods = "CTRL", action = wezterm.action.ScrollByPage(-1) })
+table.insert(
+  copy_mode_keys,
+  { key = "f", mods = "CTRL", action = wezterm.action.ScrollByPage(1) })
 
 local search_mode_keys = wezterm.gui.default_key_tables().search_mode
 table.insert(
@@ -89,6 +95,12 @@ table.insert(
 table.insert(
   search_mode_keys,
   { key = "Tab", mods = "SHIFT", action = wezterm.action.CopyMode("NextMatch") })
+table.insert(
+  search_mode_keys,
+  { key = "b", mods = "CTRL", action = wezterm.action.ScrollByPage(-1) })
+table.insert(
+  search_mode_keys,
+  { key = "f", mods = "CTRL", action = wezterm.action.ScrollByPage(1) })
 
 config.key_tables = {
   copy_mode = copy_mode_keys,
