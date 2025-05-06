@@ -102,11 +102,10 @@ install() {
     bg=light
   fi
 
-  mkdir_and_check "${HOME}/.config"
   mkdir_and_check "${HOME}/bin.d"
-
   mkdir_and_check "${HOME}/.config/dircolors"
   mkdir_and_check "${HOME}/.config/fish/conf.d"
+  mkdir_and_check "${HOME}/.config/wezterm"
 
   case "$(echo $OSTYPE | tr '[:upper:]' '[:lower:]')" in
     cygwin*|msys*)
@@ -169,6 +168,11 @@ install() {
   else
     install_target "home/.p10k-no-nerd-font.zsh" "${HOME}/.p10k.zsh"
   fi
+
+  install_target "home/.config/wezterm/wezterm.lua"
+  install_target "home/.config/wezterm/color_scheme"
+  install_target "home/.config/wezterm/font"
+  install_target "home/.config/wezterm/font_size"
 
   case "$(echo $OSTYPE | tr '[:upper:]' '[:lower:]')" in
     cygwin*|msys*)
@@ -280,6 +284,11 @@ uninstall() {
   uninstall_target "${HOME}/.zshrc.light"
 
   uninstall_target "${HOME}/.config/fish/conf.d/johannchang.fish"
+
+  uninstall_target "${HOME}/.config/wezterm/wezterm.lua"
+  uninstall_target "${HOME}/.config/wezterm/color_scheme"
+  uninstall_target "${HOME}/.config/wezterm/font"
+  uninstall_target "${HOME}/.config/wezterm/font_size"
 
   uninstall_target "${HOME}/.config/dircolors/dircolors"
 
