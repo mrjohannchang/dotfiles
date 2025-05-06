@@ -71,26 +71,28 @@ config.keys = {
   { key = "_",  mods = "CTRL|SHIFT",   action = wezterm.action.DisableDefaultAssignment },
 }
 
+local copy_mode_keys = wezterm.gui.default_key_tables().copy_mode
+table.insert(
+  copy_mode_keys,
+  { key = "[", mods = "CTRL", action = wezterm.action.CopyMode("Close") })
+
+local search_mode_keys = wezterm.gui.default_key_tables().search_mode
+table.insert(
+  search_mode_keys,
+  { key = "[",   mods = "CTRL",  action = wezterm.action.CopyMode("Close") })
+table.insert(
+  search_mode_keys,
+  { key = "c",   mods = "CTRL",  action = wezterm.action.CopyMode("Close") })
+table.insert(
+  search_mode_keys,
+  { key = "Tab", mods = "NONE",  action = wezterm.action.CopyMode("PriorMatch") })
+table.insert(
+  search_mode_keys,
+  { key = "Tab", mods = "SHIFT", action = wezterm.action.CopyMode("NextMatch") })
+
 config.key_tables = {
-  search_mode = {
-    -- Has to retain the default, otherwise will be wiped out.
-    -- default {
-    { key = "Enter",     mods = "NONE", action = wezterm.action.CopyMode("PriorMatch") },
-    { key = "Escape",    mods = "NONE", action = wezterm.action.CopyMode("Close") },
-    { key = "p",         mods = "CTRL", action = wezterm.action.CopyMode("PriorMatch") },
-    { key = "n",         mods = "CTRL", action = wezterm.action.CopyMode("NextMatch") },
-    { key = "r",         mods = "CTRL", action = wezterm.action.CopyMode("CycleMatchType") },
-    { key = "u",         mods = "CTRL", action = wezterm.action.CopyMode("ClearPattern") },
-    { key = "PageUp",    mods = "NONE", action = wezterm.action.CopyMode("PriorMatchPage") },
-    { key = "PageDown",  mods = "NONE", action = wezterm.action.CopyMode("NextMatchPage") },
-    { key = "UpArrow",   mods = "NONE", action = wezterm.action.CopyMode("PriorMatch") },
-    { key = "DownArrow", mods = "NONE", action = wezterm.action.CopyMode("NextMatch") },
-    -- } default
-    { key = "[",   mods = "CTRL",  action = wezterm.action.CopyMode("Close") },
-    { key = "c",   mods = "CTRL",  action = wezterm.action.CopyMode("Close") },
-    { key = "Tab", mods = "NONE",  action = wezterm.action.CopyMode("PriorMatch") },
-    { key = "Tab", mods = "SHIFT", action = wezterm.action.CopyMode("NextMatch") },
-  },
+  copy_mode = copy_mode_keys,
+  search_mode = search_mode_keys,
 }
 
 config.hide_tab_bar_if_only_one_tab = true
