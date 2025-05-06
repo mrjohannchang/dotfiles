@@ -723,9 +723,9 @@ WezTerm uses the same leader key as tmux by my design, to provide a consistent u
 
         3. As the Administrator, install `sshd` and `ssh-agent` services:
 
-           ```
-           powershell.exe -ExecutionPolicy Bypass -File install-sshd.ps1
-           ```
+            ```
+            powershell.exe -ExecutionPolicy Bypass -File install-sshd.ps1
+            ```
 
     2. Configuring SSH server
 
@@ -744,7 +744,7 @@ WezTerm uses the same leader key as tmux by my design, to provide a consistent u
 
             - or go to *Control Panel > System and Security > Windows Defender Firewall*[1](https://winscp.net/eng/docs/guide_windows_openssh_server#fn1) *> Advanced Settings > Inbound Rules* and add a new rule for port 22.
 
-        *   Start the service and/or configure automatic start:
+        * Start the service and/or configure automatic start:
 
             - Go to *Control Panel > System and Security > Administrative Tools* and open *Services*. Locate *OpenSSH SSH Server* service.
 
