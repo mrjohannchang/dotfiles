@@ -91,16 +91,25 @@ table.insert(
   { key = "c",   mods = "CTRL",  action = wezterm.action.CopyMode("Close") })
 table.insert(
   search_mode_keys,
-  { key = "Tab", mods = "NONE",  action = wezterm.action.CopyMode("PriorMatch") })
+  { key = "Tab", mods = "SHIFT", action = wezterm.action.CopyMode("PriorMatch") })
 table.insert(
   search_mode_keys,
-  { key = "Tab", mods = "SHIFT", action = wezterm.action.CopyMode("NextMatch") })
+  { key = "Tab", mods = "NONE",  action = wezterm.action.CopyMode("NextMatch") })
 table.insert(
   search_mode_keys,
   { key = "b", mods = "CTRL", action = wezterm.action.ScrollByPage(-1) })
 table.insert(
   search_mode_keys,
   { key = "f", mods = "CTRL", action = wezterm.action.ScrollByPage(1) })
+table.insert(
+  search_mode_keys,
+  { key = "u",   mods = "CTRL",  action = wezterm.action.ScrollByPage(-0.5) })
+table.insert(
+  search_mode_keys,
+  { key = "d",   mods = "CTRL",  action = wezterm.action.ScrollByPage(0.5) })
+table.insert(
+  search_mode_keys,
+  { key = "w",   mods = "CTRL",  action = wezterm.action.CopyMode("ClearPattern") })
 
 config.key_tables = {
   copy_mode = copy_mode_keys,
