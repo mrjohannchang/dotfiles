@@ -1,11 +1,11 @@
 local function read_file(filename)
-    local file = io.open(filename, "r")
-    if not file then
-        return nil
-    end
-    local content = file:read("*a")
-    file:close()
-    return content
+  local file = io.open(filename, "r")
+  if not file then
+    return nil
+  end
+  local content = file:read("*a")
+  file:close()
+  return content
 end
 
 local function trim(s)
