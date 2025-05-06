@@ -20,11 +20,16 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 
--- For example, changing the color scheme:
-config.color_scheme = trim(read_file(os.getenv("HOME") .. "/.config/wezterm/color_scheme"))
+local home_dir = os.getenv("HOME")
+if not home_dir then
+  home_dir = os.getenv("USERPROFILE")
+end
 
-config.font = wezterm.font(trim(read_file(os.getenv("HOME") .. "/.config/wezterm/font")))
-config.font_size = tonumber(trim(read_file(os.getenv("HOME") .. "/.config/wezterm/font_size")))
+-- For example, changing the color scheme:
+config.color_scheme = trim(read_file(home_dir .. "/.config/wezterm/color_scheme"))
+
+config.font = wezterm.font(trim(read_file(home_dir .. "/.config/wezterm/font")))
+config.font_size = tonumber(trim(read_file(home_dir .. "/.config/wezterm/font_size")))
 
 config.leader = { key="s", mods="CTRL" }
 config.keys = {
@@ -89,6 +94,10 @@ config.key_tables = {
 
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
+
+if wezterm.target_triple == "x86_64-pc-windows-msvc" then
+  config.default_prog = { "C:/msys64/msys2_shell.cmd", "-defterm", "-here", "-no-start", "-ucrt64", "-use-full-path", "-shell", "fish" }
+end
 
 -- and finally, return the configuration to wezterm
 return config
