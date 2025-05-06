@@ -29,6 +29,7 @@
    * [Tmux](#tmux)
       + [Tmux Plugins](#tmux-plugins)
    * [Supported Virtual Environments](#supported-virtual-environments)
+   * [WezTerm](#wezterm)
 - [Setup](#setup)
    * [Prerequisites](#prerequisites)
       + [Linux (tested on Ubuntu 22.04 Jammy Jellyfish and Raspberry Pi OS Bookworm)](#linux-tested-on-ubuntu-2204-jammy-jellyfish-and-raspberry-pi-os-bookworm)
@@ -150,8 +151,8 @@
 2. Switch to the last window: `<Ctrl>` + `s`.
 3. Send prefix: `<Ctrl>` + `a`.
 4. Selection:
-   1. Select: `v`
-   2. Block select: `V`
+    1. Select: `v`
+    2. Block select: `V`
 5. Go through installed plugins for more features.
 
 #### Tmux Plugins
@@ -169,6 +170,10 @@
 2. [Simple Python version management: pyenv](https://github.com/pyenv/pyenv)
 3. [Ruby enVironment Manager (RVM)](https://github.com/rvm/rvm)
 
+### WezTerm
+
+WezTerm uses the same leader key as tmux by my design, to provide a consistent user experience between the two. However, this makes it inconvenient to send tmux's prefix key while inside WezTerm. When tmux is required, please use an alternative terminal such as GNOME Terminal, iTerm2, or Windows Terminal. This is why these terminals are installed and configured alongside WezTerm.
+
 ## Setup
 
 ### Prerequisites
@@ -177,156 +182,164 @@
 
 1. Install necessary packages.
 
-   ```
-   sudo apt install build-essential cmake git git-lfs golang tmux fontconfig python3 python3-dev python3-venv curl fd-find ripgrep fish exuberant-ctags trash-cli fzf xsel zoxide yapf3 clangd
-   ```
+    ```
+    sudo apt install build-essential cmake git git-lfs golang tmux fontconfig python3 python3-dev python3-venv curl fd-find ripgrep fish exuberant-ctags trash-cli fzf xsel zoxide yapf3 clangd
+    ```
 
 2. Change default shell to [fish](https://fishshell.com) via `chsh`.
 
-   Execute `chsh` then input `/usr/bin/fish`.
+    Execute `chsh` then input `/usr/bin/fish`.
 
 3. Launch fish. Config fish's theme if you'd like:
 
-   ```
-   fish_config
-   ```
+    ```
+    fish_config
+    ```
 
 4. Install [fisher](https://github.com/jorgebucaran/fisher) and fish plugins.
 
-   ```
-   curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-   ```
+    ```
+    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+    ```
 
-   1. Install [tide](https://github.com/IlanCosman/tide)
+    1. Install [tide](https://github.com/IlanCosman/tide)
 
-      ```
-      fisher install IlanCosman/tide@v6
-      tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time='24-hour format' --rainbow_prompt_separators=Round --powerline_prompt_heads=Round --powerline_prompt_tails=Round --powerline_prompt_style='Two lines, character and frame' --prompt_connection=Dotted --powerline_right_prompt_frame=No --prompt_spacing=Compact --icons='Many icons' --transient=No
-      ```
+        ```
+        fisher install IlanCosman/tide@v6
+        tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time='24-hour format' --rainbow_prompt_separators=Round --powerline_prompt_heads=Round --powerline_prompt_tails=Round --powerline_prompt_style='Two lines, character and frame' --prompt_connection=Dotted --powerline_right_prompt_frame=No --prompt_spacing=Compact --icons='Many icons' --transient=No
+        ```
 
-   2. Install [nvm.fish](https://github.com/jorgebucaran/nvm.fish)
+    2. Install [nvm.fish](https://github.com/jorgebucaran/nvm.fish)
 
-      ```
-      fisher install jorgebucaran/nvm.fish
-      ```
+        ```
+        fisher install jorgebucaran/nvm.fish
+        ```
 
 5. [Skip on Raspberry Pi OS] Install [flatpak](https://flatpak.org/).
 
-   ```
-   sudo apt install flatpak
-   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-   ```
+    ```
+    sudo apt install flatpak
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    ```
 
 6. Install [Neovim](https://neovim.io/).
 
-   For Ubuntu:
+    For Ubuntu:
 
-   ```
-   sudo add-apt-repository ppa:neovim-ppa/unstable
-   sudo apt update
-   sudo apt install neovim
-   ```
+    ```
+    sudo add-apt-repository ppa:neovim-ppa/unstable
+    sudo apt update
+    sudo apt install neovim
+    ```
 
-   For Raspberry Pi OS:
+    For Raspberry Pi OS:
 
-   ```
-   sudo apt install ninja-build gettext cmake unzip curl
-   git clone https://github.com/neovim/neovim
-   cd neovim
-   make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=/usr/local"
-   sudo make install
-   ```
+    ```
+    sudo apt install ninja-build gettext cmake unzip curl
+    git clone https://github.com/neovim/neovim
+    cd neovim
+    make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=/usr/local"
+    sudo make install
+    ```
 
 7. Install [pyenv](https://github.com/pyenv/pyenv).
 
-   ```
-   curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
-   ```
+    ```
+    curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+    ```
 
 8. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/).
 
-   1. Download and extract [Monaspace.zip](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Monaspace.zip).
+    1. Download and extract [Monaspace.zip](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Monaspace.zip).
 
-      ```
-      cd /tmp
-      wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Monaspace.zip
-      mkdir -p ~/.local/share/fonts
-      unzip Monaspace.zip -d ~/.local/share/fonts
-      rm Monaspace.zip
-      fc-cache -f -v
-      cd
-      ```
+        ```
+        cd /tmp
+        wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Monaspace.zip
+        mkdir -p ~/.local/share/fonts
+        unzip Monaspace.zip -d ~/.local/share/fonts
+        rm Monaspace.zip
+        fc-cache -f -v
+        cd
+        ```
 
-   2. Then configure the terminal to use the installed font **Monaspace**.
+    2. Then configure the terminal to use the installed font **Monaspace**.
 
-9. Go to [Installation](#installation).
+9. Install [WezTerm](https://wezterm.org/install/linux.html).
+
+10. Go to [Installation](#installation).
 
 #### macOS
 
 1. Install [Homebrew](http://brew.sh/).
 
-   ```
-   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-   ```
+    ```
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
 
-   Make sure Homebrew is in the `$PATH`:
+    Make sure Homebrew is in the `$PATH`:
 
-   ```
-   export PATH="/opt/homebrew/bin:$PATH"
-   ```
+    ```
+    export PATH="/opt/homebrew/bin:$PATH"
+    ```
 
 2. Install necessary packages.
 
-   ```
-   brew install coreutils bash fish fd ripgrep tmux neovim trash git-lfs cmake ctags go gotags pyenv zoxide yapf llvm
-   ```
+    ```
+    brew install coreutils bash fish fd ripgrep tmux neovim trash git-lfs cmake ctags go gotags pyenv zoxide yapf llvm
+    ```
 
 4. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/):
 
-   ```
-   brew install --cask font-monaspace-nerd-font
-   ```
+    ```
+    brew install --cask font-monaspace-nerd-font
+    ```
 
-5. Install [iTerm2](https://iterm2.com/):
+5. Install [WezTerm](https://wezterm.org/):
 
-   ```
-   brew install --cask iterm2
-   ```
+    ```
+    brew install --cask wezterm
+    ```
 
-6. Launch iTerm2 and configure iTerm2 to use Monaspace Nerd Font (MonaspiceNe Nerd Font Propo) that's installed in #3.
+6. Install [iTerm2](https://iterm2.com/):
 
-   ![](screenshots/iterm2-font-config.png)
+    ```
+    brew install --cask iterm2
+    ```
+
+    Launch iTerm2 and configure iTerm2 to use Monaspace Nerd Font (MonaspiceNe Nerd Font Propo) that's installed in #3.
+
+    ![](screenshots/iterm2-font-config.png)
 
 7. Set default shell to fish. Add `/opt/homebrew/bin/fish` to `/etc/shells`, then do:
 
-   ```
-   chsh -s /opt/homebrew/bin/fish
-   ```
+    ```
+    chsh -s /opt/homebrew/bin/fish
+    ```
 
 8. Config the theme of fish if you'd like:
 
-      ```
-      fish_config
-      ```
+    ```
+    fish_config
+    ```
 
 9. Install [fisher](https://github.com/jorgebucaran/fisher) and fish plugins.
 
-   ```
-   curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-   ```
+    ```
+    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+    ```
 
-   1. Install [tide](https://github.com/IlanCosman/tide)
+    1. Install [tide](https://github.com/IlanCosman/tide)
 
-      ```
-      fisher install IlanCosman/tide@v6
-      tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time='24-hour format' --rainbow_prompt_separators=Round --powerline_prompt_heads=Round --powerline_prompt_tails=Round --powerline_prompt_style='Two lines, character and frame' --prompt_connection=Dotted --powerline_right_prompt_frame=No --prompt_spacing=Compact --icons='Many icons' --transient=No
-      ```
+        ```
+        fisher install IlanCosman/tide@v6
+        tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time='24-hour format' --rainbow_prompt_separators=Round --powerline_prompt_heads=Round --powerline_prompt_tails=Round --powerline_prompt_style='Two lines, character and frame' --prompt_connection=Dotted --powerline_right_prompt_frame=No --prompt_spacing=Compact --icons='Many icons' --transient=No
+        ```
 
-   2. Install [nvm.fish](https://github.com/jorgebucaran/nvm.fish)
+    2. Install [nvm.fish](https://github.com/jorgebucaran/nvm.fish)
 
-      ```
-      fisher install jorgebucaran/nvm.fish
-      ```
+        ```
+        fisher install jorgebucaran/nvm.fish
+        ```
 
 #### Windows (tested on Windows 11)
 
@@ -334,43 +347,44 @@
 
 2. Install [Git for Windows](https://gitforwindows.org/)
 
-   **Note:**
+    **Note:**
 
-   1. **Uncheck** Git LFS (Large File Support)
-   2. **Check** Use external OpenSSH
-   3. **Check** Enable symbolic links
+    1. **Uncheck** Git LFS (Large File Support)
+    2. **Check** Use external OpenSSH
+    3. **Check** Enable symbolic links
 
 3. Install [OpenSSH](https://www.openssh.com/) Client if you haven't (should be installed by default). Open an **elevated** (Run as administrator) **PowerShell** session and execute the following command:
 
-   ```
-   Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH.Client*' | Add-WindowsCapability -Online
-   ```
+    ```
+    Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH.Client*' | Add-WindowsCapability -Online
+    ```
 
 4. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/): Download and extract [Monaspace.zip](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Monaspace.zip), move `*.otf` to `%WINDIR%\Fonts`.
 
 5. Install [Python](https://www.python.org/downloads/)
 
-   **Note:** Install Python that's from the official website but not Microsoft Store
+    **Note:** Install Python that's from the official website but not Microsoft Store
 
-   1. Add Python to PATH
-   2. Disable path length limit
+    1. Add Python to PATH
+    2. Disable path length limit
 
 6. Install necessary packages via [winget](https://learn.microsoft.com/en-us/windows/package-manager/). In a regular Command Prompt or PowerShell session, execute the following commands:
 
-   ```
-   winget install --accept-package-agreements --accept-source-agreements --id Microsoft.VCRedist.2015+.x64
-   winget install --accept-package-agreements --accept-source-agreements --id GitHub.GitLFS
-   winget install --accept-package-agreements --accept-source-agreements --id Neovim.Neovim
-   winget install --accept-package-agreements --accept-source-agreements --id sharkdp.fd
-   winget install --accept-package-agreements --accept-source-agreements --id BurntSushi.ripgrep.MSVC
-   winget install --accept-package-agreements --accept-source-agreements --id UniversalCtags.Ctags
-   winget install --accept-package-agreements --accept-source-agreements --id junegunn.fzf
-   winget install --accept-package-agreements --accept-source-agreements --id ajeetdsouza.zoxide
-   winget install --accept-package-agreements --accept-source-agreements --id MSYS2.MSYS2
-   winget install --accept-package-agreements --accept-source-agreements --id Microsoft.VisualStudioCode
-   winget install --accept-package-agreements --accept-source-agreements --id Microsoft.VisualStudio.2022.BuildTools
-   winget install --accept-package-agreements --accept-source-agreements --exact --id LLVM.LLVM
-   ```
+    ```
+    winget install --accept-package-agreements --accept-source-agreements --exact --id Microsoft.VCRedist.2015+.x64
+    winget install --accept-package-agreements --accept-source-agreements --exact --id GitHub.GitLFS
+    winget install --accept-package-agreements --accept-source-agreements --exact --id Neovim.Neovim
+    winget install --accept-package-agreements --accept-source-agreements --exact --id sharkdp.fd
+    winget install --accept-package-agreements --accept-source-agreements --exact --id BurntSushi.ripgrep.MSVC
+    winget install --accept-package-agreements --accept-source-agreements --exact --id UniversalCtags.Ctags
+    winget install --accept-package-agreements --accept-source-agreements --exact --id junegunn.fzf
+    winget install --accept-package-agreements --accept-source-agreements --exact --id ajeetdsouza.zoxide
+    winget install --accept-package-agreements --accept-source-agreements --exact --id MSYS2.MSYS2
+    winget install --accept-package-agreements --accept-source-agreements --exact --id Microsoft.VisualStudioCode
+    winget install --accept-package-agreements --accept-source-agreements --exact --id Microsoft.VisualStudio.2022.BuildTools
+    winget install --accept-package-agreements --accept-source-agreements --exact --id LLVM.LLVM
+    winget install --accept-package-agreements --accept-source-agreements --exact --id wez.wezterm
+    ```
 
 7. Install [Windows Terminal](https://www.microsoft.com/p/windows-terminal/9n0dx20hk701) if you haven't. It should be installed by default.
 
@@ -378,176 +392,176 @@
 
 9. Enable the symbolic link support manually by:
 
-   * Adding the current user to: Start > Local Security Policy > Security Settings > Local Policies > User Rights Assignment > Create symbolic links
+    * Adding the current user to: Start > Local Security Policy > Security Settings > Local Policies > User Rights Assignment > Create symbolic links
 
-   Username can be obtained by calling the below command in CMD:
+    Username can be obtained by calling the below command in CMD:
 
-   ```
-   echo %USERNAME%
-   ```
+    ```
+    echo %USERNAME%
+    ```
 
-   Or simply enable [Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development) from: Settings > Update & Security > For developers > Developer Mode
+    Or simply enable [Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development) from: Settings > Update & Security > For developers > Developer Mode
 
 10. Configure MSYS2
 
     1. Enable the symbolic link support in MSYS2 by uncommenting the following line in `C:\msys64\msys2_shell.cmd`
 
-       ```
-       rem set MSYS=winsymlinks:nativestrict
-       ```
+        ```
+        rem set MSYS=winsymlinks:nativestrict
+        ```
 
-       and the following line in `C:\msys64\mingw64.ini`.
+        and the following line in `C:\msys64\mingw64.ini`.
 
-       ```
-       #MSYS=winsymlinks:nativestrict
-       ```
+        ```
+        #MSYS=winsymlinks:nativestrict
+        ```
 
        Note: You can use VS Code to edit those files.
 
     2. Make `%TMEP%` mounted at `/tmp` by adding the following contents to `C:\msys64\etc\fstab`.
 
-       ```
-       none /tmp usertemp binary,posix=0,noacl 0 0
-       ```
+        ```
+        none /tmp usertemp binary,posix=0,noacl 0 0
+        ```
 
     3. Set Windows `%USERPROFILE%` folder (`C:\Users\<user name>`) as the `$HOME` folder by adding the following contents to `C:\msys64\etc\fstab`. Ref: [How to change HOME directory and start directory on MSYS2?](https://stackoverflow.com/a/66946901).
 
-       ```
-       ##################################################################
-       # Canonicalize the two home directories by mounting the windows  #
-       # user home with the same path mapping as unix.                  #
-       ##################################################################
-       C:/Users /home ntfs binary,posix=0,noacl,user 0 0
-       ```
+        ```
+        ##################################################################
+        # Canonicalize the two home directories by mounting the windows  #
+        # user home with the same path mapping as unix.                  #
+        ##################################################################
+        C:/Users /home ntfs binary,posix=0,noacl,user 0 0
+        ```
 
     4. Install necessary and useful packages in `MSYS2 MinGW-w64`
 
-       ```
-       pacman -Sy man fish tmux
-       pacman -Sy mingw-w64-ucrt-x86_64-clang
-       ```
+        ```
+        pacman -Sy man fish tmux
+        pacman -Sy mingw-w64-ucrt-x86_64-clang
+        ```
 
 11. Configure Windows Terminal.
 
     1. Change key bindings. Go to Windows Terminal > Settings > Actions:
 
-       1. Change `<Ctrl>` + `v` to `<Ctrl>` + `<Shift>` + `v` on Action **Paste**.
+        1. Change `<Ctrl>` + `v` to `<Ctrl>` + `<Shift>` + `v` on Action **Paste**.
 
-       2. Change `<Ctrl>` + `<Shift>` + `w` to `<Ctrl>` + `<F4>` on Action **Close pane**.
+        2. Change `<Ctrl>` + `<Shift>` + `w` to `<Ctrl>` + `<F4>` on Action **Close pane**.
 
-       3. Remove `<Ctrl>` + `<Shift>` + `6` key binding by delete the Action **New tab, profile index: 5**.
+        3. Remove `<Ctrl>` + `<Shift>` + `6` key binding by delete the Action **New tab, profile index: 5**.
 
     2. Make `<Ctrl>` + `<Tab>` / `<Ctrl>` + `<Shift>` + `<Tab>` switch last / oldest used tab, and `<Ctrl>` + `<PgUp>` / `<Ctrl>` + `<PgDown>` switch previous / next tab in tab strip order.
 
-       1. Settings > Interaction > Tab switcher interface style: separate window, in most recently used order.
+        1. Settings > Interaction > Tab switcher interface style: separate window, in most recently used order.
 
-       2. In Settings > Actions, add keybindgs `<Ctrl>` + `<Tab>` for **Next tab**, `<Ctrl>` + `<Shift>` + `<Tab>` for **Previous tab**.
+        2. In Settings > Actions, add keybindgs `<Ctrl>` + `<Tab>` for **Next tab**, `<Ctrl>` + `<Shift>` + `<Tab>` for **Previous tab**.
 
-       3. In Settings > **Open JSON file**, set `tabSwitcherMode` to `inOrder` for `User.nextTab.0` and `User.prevTab.0`.
+        3. In Settings > **Open JSON file**, set `tabSwitcherMode` to `inOrder` for `User.nextTab.0` and `User.prevTab.0`.
 
-          ```
-          "actions":
-          [
-              ...
-              {
-                  "command":
-                  {
-                      "action": "nextTab",
-                      "tabSwitcherMode": "inOrder"
-                  },
-                  "id": "User.nextTab.0"
-              },
-              {
-                  "command":
-                  {
-                      "action": "prevTab",
-                      "tabSwitcherMode": "inOrder"
-                  },
-                  "id": "User.prevTab.0"
-              }
-              ...
-          ],
-          ```
+            ```
+            "actions":
+            [
+                ...
+                {
+                    "command":
+                    {
+                        "action": "nextTab",
+                        "tabSwitcherMode": "inOrder"
+                    },
+                    "id": "User.nextTab.0"
+                },
+                {
+                    "command":
+                    {
+                        "action": "prevTab",
+                        "tabSwitcherMode": "inOrder"
+                    },
+                    "id": "User.prevTab.0"
+                }
+                ...
+            ],
+            ```
 
     3. Make Windows Terminal support MSYS2's shell by adding the following config to `settings.json`:
 
-       ```
-           "profiles": {
-               "list":
-               [
-                   // ...
-                   {
-                       "bellStyle": "none",
-                       "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -ucrt64 -use-full-path -shell fish",
-                       "guid": "{17da3cac-b318-431e-8a3e-7fcdefe6d114}",
-                       "icon": "C:/msys64/ucrt64.ico",
-                       "name": "UCRT64 / MSYS2",
-                       "startingDirectory": "%USERPROFILE%"
-                   },
-                   // ...
-               ]
-           }
-       ```
+        ```
+            "profiles": {
+                "list":
+                [
+                    // ...
+                    {
+                        "bellStyle": "none",
+                        "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -ucrt64 -use-full-path -shell fish",
+                        "guid": "{17da3cac-b318-431e-8a3e-7fcdefe6d114}",
+                        "icon": "C:/msys64/ucrt64.ico",
+                        "name": "UCRT64 / MSYS2",
+                        "startingDirectory": "%USERPROFILE%"
+                    },
+                    // ...
+                ]
+            }
+        ```
 
-    3. Config the terminal to use Monaspace Nerd Font and set your prefered text color scheme in Profiles > MSYS2 MinGW-w64 Fish.
+    4. Config the terminal to use Monaspace Nerd Font and set your prefered text color scheme in Profiles > MSYS2 MinGW-w64 Fish.
 
 12. Pre-installation
 
     1. Open an **elevated** (Run as administrator) **PowerShell** session and execute the following command. So that you can use `fsutil` in the later process. After the execution, you may need to restart your computer.
 
-       ```
-       Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-       ```
+        ```
+        Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+        ```
 
     2. Open an "MSYS2 MinGW-w64 Fish" tab in Windows Terminal.
 
     3. Unset empty `$tmp` and `$temp`.
 
-       ```
-       set --erase tmp
-       set --erase temp
-       ```
+        ```
+        set --erase tmp
+        set --erase temp
+        ```
 
-       **Note:** Empty `$tmp` and `$temp` environment variables are extremely error-prone on Windows. And it's difficult to identify the inroduced errors.
+        **Note:** Empty `$tmp` and `$temp` environment variables are extremely error-prone on Windows. And it's difficult to identify the inroduced errors.
 
 
     4. Config fish's theme if you'd like:
 
-       ```
-       fish_config
-       ```
+        ```
+        fish_config
+        ```
 
     5. Install [fisher](https://github.com/jorgebucaran/fisher) and fish plugins.
 
-       ```
-       curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-       ```
+        ```
+        curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+        ```
 
-       1. Install [tide](https://github.com/IlanCosman/tide)
+        1. Install [tide](https://github.com/IlanCosman/tide)
 
-          ```
-          fisher install IlanCosman/tide@v6
-          tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time='24-hour format' --rainbow_prompt_separators=Round --powerline_prompt_heads=Round --powerline_prompt_tails=Round --powerline_prompt_style='Two lines, character and frame' --prompt_connection=Dotted --powerline_right_prompt_frame=No --prompt_spacing=Compact --icons='Many icons' --transient=No
-          ```
+            ```
+            fisher install IlanCosman/tide@v6
+            tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time='24-hour format' --rainbow_prompt_separators=Round --powerline_prompt_heads=Round --powerline_prompt_tails=Round --powerline_prompt_style='Two lines, character and frame' --prompt_connection=Dotted --powerline_right_prompt_frame=No --prompt_spacing=Compact --icons='Many icons' --transient=No
+            ```
 
        2. Install [nvm.fish](https://github.com/jorgebucaran/nvm.fish)
 
-          ```
-          fisher install jorgebucaran/nvm.fish
-          ```
+           ```
+           fisher install jorgebucaran/nvm.fish
+           ```
 
     6. Enable symlink support for Git. This is necessary for the installation of this dotfiles.
 
-       ```
-       git config --global core.symlinks true
-       ```
+        ```
+        git config --global core.symlinks true
+        ```
 
     7. Text files inside dotfiles need to use `LF` as line endings. Don't let Git convert line endings to `CRLF` on Windows.
 
-       ```
-       git config --global core.autocrlf false
-       git config --global core.safecrlf warn
-       ```
+        ```
+        git config --global core.autocrlf false
+        git config --global core.safecrlf warn
+        ```
 
 13. Go to [Installation](#installation).
 
@@ -555,44 +569,44 @@
 
 1. `git clone` this repo and `cd` into it. You can put the dotfiles repository anywhere under `$HOME`, `~/workspace/dotfiles` here is used as an example.
 
-   ```
-   mkdir ~/workspace
-   cd ~/workspace
-   git clone https://github.com/mrjohannchang/dotfiles.git
-   cd dotfiles
-   ```
+    ```
+    mkdir ~/workspace
+    cd ~/workspace
+    git clone https://github.com/mrjohannchang/dotfiles.git
+    cd dotfiles
+    ```
 
 2. [**Windows Only**] Enable case sensitive support for sub-modules from a regular **PowerShell** session
 
-   ```
-   cd ~\workspace\dotfiles\3rdparties  # Assuming the dotfiles repository has been cloned into ~\workspace\dotfiles
-   (Get-ChildItem -Recurse -Directory).FullName | ForEach-Object {fsutil.exe file setCaseSensitiveInfo $_ enable}
-   ```
+    ```
+    cd ~\workspace\dotfiles\3rdparties  # Assuming the dotfiles repository has been cloned into ~\workspace\dotfiles
+    (Get-ChildItem -Recurse -Directory).FullName | ForEach-Object {fsutil.exe file setCaseSensitiveInfo $_ enable}
+    ```
 
-   Then **go back** to the Fish session.
+    Then **go back** to the Fish session.
 
 3. Clone sub-modules.
 
-   ```
-   git submodule update --init --recursive
-   ```
+    ```
+    git submodule update --init --recursive
+    ```
 
 4. **Install this dotfiles**.
 
-   ```
-   ./install.sh
-   ```
+    ```
+    ./install.sh
+    ```
 
-   Note 1: During the installation, if you don't know what to choose, just press enter using the default option.
-   Note 2: You have Nerd Font support if you have followed the prerequisites.
+    Note 1: During the installation, if you don't know what to choose, just press enter using the default option.
+    Note 2: You have Nerd Font support if you have followed the prerequisites.
 
 5. Reboot and reopen terminal.
 
 6. Install `node` via `nvm`.
 
-   ```
-   nvm install lts
-   ```
+    ```
+    nvm install lts
+    ```
 
 7. Execute `tmux` (the command is `script -c tmux /dev/null` when using **Windows Terminal**) and press `<Ctrl>` + `s` `I` (uppercase i) to install plugins of tmux. It may take a few minutes. Please expect `tmux` frozen during the installation.
 
@@ -604,28 +618,28 @@
 
 1. Set custom pre-init settings and plugins in `${XDG_CONFIG_HOME}/nvim/lua/custom-pre-init.lua`. For example:
 
-   ```lua
-   vim.opt.mouse = ""
+    ```lua
+    vim.opt.mouse = ""
 
-   custom_plugins = {
-     {
-       "folke/tokyonight.nvim",
-       lazy = false,
-       priority = 1000,
-       opts = {},
-     },
-   }
-   ```
+    custom_plugins = {
+      {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+      },
+    }
+    ```
 
 2. Set custom post-init settings in `${XDG_CONFIG_HOME}/nvim/lua/custom-post-init.lua`. For example:
 
-   ```lua
-   vim.cmd.colorscheme("tokyonight")
+    ```lua
+    vim.cmd.colorscheme("tokyonight")
 
-   require("lualine").setup({
-     options = { theme  = "material" },
-   })
-   ```
+    require("lualine").setup({
+      options = { theme  = "material" },
+    })
+    ```
 
 3. [Using tab instead of arrow key to scroll in code completion - JetBrains](https://intellij-support.jetbrains.com/hc/en-us/community/posts/8008270395538-Using-tab-instead-of-arrow-key-to-scroll-in-code-completion)
 
@@ -635,20 +649,20 @@
 
 1. `Option` + `Arrow` moving between words in Fish and iTerm2
 
-   1. Go to Preferences, Profile, Keys.
-   2. Set your left ⌥ key to act as an escape character.
-   3. Locate the current shortcut for ⌥ ← or create a new one, with the following settings:
-      Keyboard Shortcut: ⌥←
-      Action: Send Escape Sequence
-      Esc+: b
-   4. repeat for the ⌥→ keyboard shortcut with the following settings:
-      Keyboard Shortcut: ⌥→
-      Action: Send Escape Sequence
-      Esc+: f
+    1. Go to Preferences, Profile, Keys.
+    2. Set your left ⌥ key to act as an escape character.
+    3. Locate the current shortcut for ⌥ ← or create a new one, with the following settings:
+       Keyboard Shortcut: ⌥←
+       Action: Send Escape Sequence
+       Esc+: b
+    4. repeat for the ⌥→ keyboard shortcut with the following settings:
+       Keyboard Shortcut: ⌥→
+       Action: Send Escape Sequence
+       Esc+: f
 
 2. Allow pasting multiple lines at once in iTerm2:
 
-   iTerm2 > Settings > Profiles > Terminal > Terminal may enable paste bracketing
+    iTerm2 > Settings > Profiles > Terminal > Terminal may enable paste bracketing
 
 3. Disable smart quotes and dashes from Settings > Keyboard > Text Input > Input Sources > All Input Sources > Use smart quotes and dashes
 
@@ -656,9 +670,9 @@
 
 5. Make the scroll direction settings of mouse and trackpad independent, and use mouse middle button to drag: [Mac Mouse Fix](https://macmousefix.com/).
 
-   ```
-   brew install mac-mouse-fix
-   ```
+    ```
+    brew install mac-mouse-fix
+    ```
 
 6. Useful apps from Sindre Sorhus: [Quality crafted apps](https://sindresorhus.com/apps).
 
@@ -666,121 +680,121 @@
 
 1. Install fcitx to replace iBus:
 
-    a. ```
+    1. ```
        sudo apt install fcitx-chewing fcitx-table-boshiamy
        ```
-    b. Choose `fcitx` as the keyboard input method system in `gnome-language-selector`.
-    c. Remove keyboard layouts if there are more than 1 from Input Source in `gnome-control-center` > Region & Language.
-    d. Remove the hotkey for switching input source in `gnome-control-center` > Keyboard Shortcuts > Typing.
-    e. Replace the hotkey for Trigger Input Method to `<Super>` + `<Space>` in `fcitx-configtool` > Global Config > Hotkey > Trigger Input Method.
+    2. Choose `fcitx` as the keyboard input method system in `gnome-language-selector`.
+    3. Remove keyboard layouts if there are more than 1 from Input Source in `gnome-control-center` > Region & Language.
+    4. Remove the hotkey for switching input source in `gnome-control-center` > Keyboard Shortcuts > Typing.
+    5. Replace the hotkey for Trigger Input Method to `<Super>` + `<Space>` in `fcitx-configtool` > Global Config > Hotkey > Trigger Input Method.
 
 2. Key remapping for REALFORCE for Mac keyboard:
 
-    a. Config udev:
+    1. Config udev:
 
        ```
        sudo cp ubuntu/etc/udev/rules.d/1000-key-remapping-for-realforce-for-mac.rules /etc/udev/rules.d
        sudo udevadm control --reload
        ```
 
-    b. In `Startup Applications Preferences`, add an item that executes "${HOME}/dotfiles/bin/linux/swap-option-and-command-for-realforce-for-mac.sh"
+    2. In `Startup Applications Preferences`, add an item that executes "${HOME}/dotfiles/bin/linux/swap-option-and-command-for-realforce-for-mac.sh"
 
 #### Windows
 
 1. OpenSSH server.
 
-   1. Install
+    1. Install
 
-      **Windows 11**
+        **Windows 11**
 
-      1. Go to *Apps > Optional features* and click on *View features*.
-      2. Locate *“OpenSSH server”* feature, select it, click *Next*, and then click *Install*.
+        1. Go to *Apps > Optional features* and click on *View features*.
+        2. Locate *“OpenSSH server”* feature, select it, click *Next*, and then click *Install*.
 
-      **Windows 10 (version 1803 and newer)**
+        **Windows 10 (version 1803 and newer)**
 
-      1. Go to *Apps > Apps & features > Optional features* and click on *Add a feature*.
-      2. Locate *“OpenSSH server”* feature, expand it, and select *Install*.
+        1. Go to *Apps > Apps & features > Optional features* and click on *Add a feature*.
+        2. Locate *“OpenSSH server”* feature, expand it, and select *Install*.
 
-      **Manual**
+        **Manual**
 
-      1. Download the latest [OpenSSH for Windows binaries](https://github.com/PowerShell/Win32-OpenSSH/releases) (package `OpenSSH-Win64.zip`)
+        1. Download the latest [OpenSSH for Windows binaries](https://github.com/PowerShell/Win32-OpenSSH/releases) (package `OpenSSH-Win64.zip`)
 
-      2. As the Administrator, extract the package to `C:\Program Files\OpenSSH`
+        2. As the Administrator, extract the package to `C:\Program Files\OpenSSH`
 
-      3. As the Administrator, install `sshd` and `ssh-agent` services:
+        3. As the Administrator, install `sshd` and `ssh-agent` services:
 
-         ```
-         powershell.exe -ExecutionPolicy Bypass -File install-sshd.ps1
-         ```
+           ```
+           powershell.exe -ExecutionPolicy Bypass -File install-sshd.ps1
+           ```
 
-   2. Configuring SSH server
+    2. Configuring SSH server
 
-      * Allow incoming connections to SSH server in Windows Firewall:
+        * Allow incoming connections to SSH server in Windows Firewall:
 
-        - When installed as an optional feature, the firewall rule *“OpenSSH SSH Server (sshd)”* should have been created automatically. If not, proceed to create and enable the rule as follows.
+            - When installed as an optional feature, the firewall rule *“OpenSSH SSH Server (sshd)”* should have been created automatically. If not, proceed to create and enable the rule as follows.
 
-        - Either run the following PowerShell command as the Administrator:
+            - Either run the following PowerShell command as the Administrator:
 
-          ```
-          New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH SSH Server' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22 -Program "C:\Windows\System32\OpenSSH\sshd.exe"
-          ```
+                ```
+                New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH SSH Server' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22 -Program "C:\Windows\System32\OpenSSH\sshd.exe"
+                ```
 
-          Replace `C:\Windows\System32\OpenSSH\sshd.exe`
-          with the actual path to the `sshd.exe` (`C:\Program Files\OpenSSH\ssh.exe` , had you followed the manual installation instructions above).
+                Replace `C:\Windows\System32\OpenSSH\sshd.exe`
+                with the actual path to the `sshd.exe` (`C:\Program Files\OpenSSH\ssh.exe` , had you followed the manual installation instructions above).
 
-        - or go to *Control Panel > System and Security > Windows Defender Firewall*[1](https://winscp.net/eng/docs/guide_windows_openssh_server#fn1) *> Advanced Settings > Inbound Rules* and add a new rule for port 22.
+            - or go to *Control Panel > System and Security > Windows Defender Firewall*[1](https://winscp.net/eng/docs/guide_windows_openssh_server#fn1) *> Advanced Settings > Inbound Rules* and add a new rule for port 22.
 
-      * Start the service and/or configure automatic start:
+        *   Start the service and/or configure automatic start:
 
-        - Go to *Control Panel > System and Security > Administrative Tools* and open *Services*. Locate *OpenSSH SSH Server* service.
+            - Go to *Control Panel > System and Security > Administrative Tools* and open *Services*. Locate *OpenSSH SSH Server* service.
 
-        - If you want the server to start automatically when your machine is started: Go to *Action > Properties*. In the Properties dialog, change *Startup type* to *Automatic* and confirm.
+            - If you want the server to start automatically when your machine is started: Go to *Action > Properties*. In the Properties dialog, change *Startup type* to *Automatic* and confirm.
 
-        - Start the *OpenSSH SSH Server* service by clicking the *Start the service*.
+            - Start the *OpenSSH SSH Server* service by clicking the *Start the service*.
 
-   3. Setting up SSH public key authentication
+    3. Setting up SSH public key authentication
 
-      1. Method 1
+        1. Method 1
 
-         Add authorized public keys to `%programdata%/ssh/administrators_authorized_keys`
+            Add authorized public keys to `%programdata%/ssh/administrators_authorized_keys`
 
-      2. Method 2
+        2. Method 2
 
-         Follow a generic guide for [Setting up SSH public key authentication](https://winscp.net/eng/docs/guide_public_key) in *nix OpenSSH server, with the following difference:
+            Follow a generic guide for [Setting up SSH public key authentication](https://winscp.net/eng/docs/guide_public_key) in *nix OpenSSH server, with the following difference:
 
-         - Create the `.ssh` folder (for the `authorized_keys` file) in your Windows account profile folder (typically in `C:\Users\username\.ssh`).
+            - Create the `.ssh` folder (for the `authorized_keys` file) in your Windows account profile folder (typically in `C:\Users\username\.ssh`).
 
-      - For permissions to the `.ssh` folder and the `authorized_keys` file, what matters are Windows ACL permissions, not simple *nix permissions. Set the ACL so that the respective Windows account is the owner of the folder and the file and is the only account that has a write access to them. The account that runs *OpenSSH SSH Server* service (typically `SYSTEM` or `sshd`) needs to have read access to the file.
+        - For permissions to the `.ssh` folder and the `authorized_keys` file, what matters are Windows ACL permissions, not simple *nix permissions. Set the ACL so that the respective Windows account is the owner of the folder and the file and is the only account that has a write access to them. The account that runs *OpenSSH SSH Server* service (typically `SYSTEM` or `sshd`) needs to have read access to the file.
 
-         - Though, with the default Win32-OpenSSH configuration there is an exception set in `sshd_config` for accounts in `Administrators` group. For these, the server uses a different location for the authorized keys file: `%ALLUSERSPROFILE%\ssh\administrators_authorized_keys` (For example: typically `C:\ProgramData\ssh\administrators_authorized_keys`).
+            - Though, with the default Win32-OpenSSH configuration there is an exception set in `sshd_config` for accounts in `Administrators` group. For these, the server uses a different location for the authorized keys file: `%ALLUSERSPROFILE%\ssh\administrators_authorized_keys` (For example: typically `C:\ProgramData\ssh\administrators_authorized_keys`).
 
-   4. Default SSH Shell
+    4. Default SSH Shell
 
-      1. Create a CMD file
+        1. Create a CMD file
 
-         ```
-         cat << EOF > /c/msys64/sshd-default-shell.cmd
-         C:\msys64\msys2_shell.cmd -defterm -here -no-start -mingw64 -shell fish
-         EOF
-         ```
+            ```
+            cat << EOF > /c/msys64/sshd-default-shell.cmd
+            C:\msys64\msys2_shell.cmd -defterm -here -no-start -mingw64 -shell fish
+            EOF
+            ```
 
-      2. Add the following content to Windows Registry > `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH` in the string value `DefaultShell`
+        2. Add the following content to Windows Registry > `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH` in the string value `DefaultShell`
 
-         ```
-         C:\msys64\sshd-default-shell.cmd
-         ```
+            ```
+            C:\msys64\sshd-default-shell.cmd
+            ```
 
 3. Swap keys caps lock and left control.
 
-   ```
-   Windows Registry Editor Version 5.00
+    ```
+    Windows Registry Editor Version 5.00
 
-   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
-   "Scancode Map"=hex:00,00,00,00,00,00,00,00,03,00,00,00,1d,00,3a,00,3a,00,1d,00,00,00,00,00
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+    "Scancode Map"=hex:00,00,00,00,00,00,00,00,03,00,00,00,1d,00,3a,00,3a,00,1d,00,00,00,00,00
 
-   ; Refs:
-   ; https://superuser.com/a/1381836
-   ```
+    ; Refs:
+    ; https://superuser.com/a/1381836
+    ```
 
 ### Uninstallation
 
@@ -793,8 +807,4 @@ rm -rf dotfiles
 
 ## Known Issues
 
-1. Neovim cannot be launched properly inside Windows tmux or MinTTY. However, Vim works in these environments. [#6751](https://github.com/neovim/neovim/issues/6751) [#8271](https://github.com/neovim/neovim/pull/8271) [#11112](https://github.com/neovim/neovim/issues/11112)
-
-2. Tmux cannot be launched in Windows Terminal directly. Need to use `script -c tmux /dev/null` as a workaround ([source](https://github.com/csdvrx/sixel-tmux)). [#5132](https://github.com/microsoft/terminal/issues/5132)
-
-3. Windows Terminal 'fontFace' not working for any profile after system reboot. [#3257](https://github.com/microsoft/terminal/issues/3257)
+1. Windows Terminal 'fontFace' not working for any profile after system reboot. [#3257](https://github.com/microsoft/terminal/issues/3257)
