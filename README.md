@@ -434,7 +434,7 @@ WezTerm uses the same leader key as tmux by my design, to provide a consistent u
         C:/Users /home ntfs binary,posix=0,noacl,user 0 0
         ```
 
-    4. Install necessary and useful packages in `MSYS2 MinGW-w64`
+    4. Install necessary and useful packages in `UCRT64 / MSYS2`
 
         ```
         pacman -Sy man fish tmux
@@ -503,7 +503,7 @@ WezTerm uses the same leader key as tmux by my design, to provide a consistent u
             }
         ```
 
-    4. Config the terminal to use Monaspace Nerd Font and set your prefered text color scheme in Profiles > MSYS2 MinGW-w64 Fish.
+    4. Config the terminal to use Monaspace Nerd Font and set your prefered text color scheme in Profiles > UCRT64 / MSYS2.
 
 12. Pre-installation
 
@@ -513,7 +513,7 @@ WezTerm uses the same leader key as tmux by my design, to provide a consistent u
         Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
         ```
 
-    2. Open an "MSYS2 MinGW-w64 Fish" tab in Windows Terminal.
+    2. Open an "UCRT64 / MSYS2" tab in Windows Terminal.
 
     3. Unset empty `$tmp` and `$temp`.
 
