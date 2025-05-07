@@ -77,10 +77,10 @@ table.insert(
   { key = "[", mods = "CTRL", action = wezterm.action.CopyMode("Close") })
 table.insert(
   copy_mode_keys,
-  { key = "b", mods = "CTRL", action = wezterm.action.ScrollByPage(-1) })
+  { key = "b", mods = "CTRL", action = wezterm.action.CopyMode("PageUp") })
 table.insert(
   copy_mode_keys,
-  { key = "f", mods = "CTRL", action = wezterm.action.ScrollByPage(1) })
+  { key = "f", mods = "CTRL", action = wezterm.action.CopyMode("PageDown") })
 
 local search_mode_keys = wezterm.gui.default_key_tables().search_mode
 table.insert(
