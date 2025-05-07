@@ -110,6 +110,9 @@ table.insert(
 table.insert(
   search_mode_keys,
   { key = "w",   mods = "CTRL",  action = wezterm.action.CopyMode("ClearPattern") })
+table.insert(
+  search_mode_keys,
+  { key = "Enter",   mods = "NONE",  action = wezterm.action.CopyMode("AcceptPattern") })
 
 config.key_tables = {
   copy_mode = copy_mode_keys,
