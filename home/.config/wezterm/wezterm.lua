@@ -81,8 +81,23 @@ table.insert(
 table.insert(
   copy_mode_keys,
   { key = "f", mods = "CTRL", action = wezterm.action.CopyMode("PageDown") })
+table.insert(
+  copy_mode_keys,
+  { key = "n", mods = "CTRL",  action = wezterm.action.CopyMode("PriorMatch") })
+table.insert(
+  copy_mode_keys,
+  { key = "p", mods = "CTRL", action = wezterm.action.CopyMode("NextMatch") })
+table.insert(
+  copy_mode_keys,
+  { key = "Tab", mods = "NONE",  action = wezterm.action.CopyMode("PriorMatch") })
+table.insert(
+  copy_mode_keys,
+  { key = "Tab", mods = "SHIFT", action = wezterm.action.CopyMode("NextMatch") })
 
 local search_mode_keys = wezterm.gui.default_key_tables().search_mode
+table.insert(
+  search_mode_keys,
+  { key = "Enter",   mods = "NONE",  action = wezterm.action.CopyMode("AcceptPattern") })
 table.insert(
   search_mode_keys,
   { key = "[",   mods = "CTRL",  action = wezterm.action.CopyMode("Close") })
@@ -91,10 +106,7 @@ table.insert(
   { key = "c",   mods = "CTRL",  action = wezterm.action.CopyMode("Close") })
 table.insert(
   search_mode_keys,
-  { key = "Tab", mods = "SHIFT", action = wezterm.action.CopyMode("PriorMatch") })
-table.insert(
-  search_mode_keys,
-  { key = "Tab", mods = "NONE",  action = wezterm.action.CopyMode("NextMatch") })
+  { key = "w",   mods = "CTRL",  action = wezterm.action.CopyMode("ClearPattern") })
 table.insert(
   search_mode_keys,
   { key = "b", mods = "CTRL", action = wezterm.action.ScrollByPage(-1) })
@@ -109,10 +121,16 @@ table.insert(
   { key = "d",   mods = "CTRL",  action = wezterm.action.ScrollByPage(0.5) })
 table.insert(
   search_mode_keys,
-  { key = "w",   mods = "CTRL",  action = wezterm.action.CopyMode("ClearPattern") })
+  { key = "n", mods = "CTRL",  action = wezterm.action.CopyMode("PriorMatch") })
 table.insert(
   search_mode_keys,
-  { key = "Enter",   mods = "NONE",  action = wezterm.action.CopyMode("AcceptPattern") })
+  { key = "p", mods = "CTRL", action = wezterm.action.CopyMode("NextMatch") })
+table.insert(
+  search_mode_keys,
+  { key = "Tab", mods = "NONE",  action = wezterm.action.CopyMode("PriorMatch") })
+table.insert(
+  search_mode_keys,
+  { key = "Tab", mods = "SHIFT", action = wezterm.action.CopyMode("NextMatch") })
 
 config.key_tables = {
   copy_mode = copy_mode_keys,
