@@ -137,6 +137,24 @@ config.key_tables = {
   search_mode = search_mode_keys,
 }
 
+config.mouse_bindings = {
+  {
+    event = { Up = { streak = 1, button = "Left" } },
+    mods = "NONE",
+    action = wezterm.action.CompleteSelection("PrimarySelection"),
+  },
+  {
+    event = { Up = { streak = 1, button = "Left" } },
+    mods = "ALT",
+    action = wezterm.action.OpenLinkAtMouseCursor,
+  },
+  {
+    event = { Up = { streak = 1, button = "Left" } },
+    mods = "SUPER",
+    action = wezterm.action.OpenLinkAtMouseCursor,
+  },
+}
+
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 
