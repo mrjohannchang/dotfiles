@@ -19,7 +19,7 @@ vim.opt.splitbelow = true
 
 vim.opt.termguicolors = true
 
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 vim.opt.mouse = ""
 vim.opt.background = "dark"
