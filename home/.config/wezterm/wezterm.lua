@@ -31,7 +31,8 @@ config.color_scheme = trim(read_file(home_dir .. "/.config/wezterm/color_scheme"
 config.font = wezterm.font(trim(read_file(home_dir .. "/.config/wezterm/font")))
 config.font_size = tonumber(trim(read_file(home_dir .. "/.config/wezterm/font_size")))
 
-config.leader = { key="s", mods="CTRL" }
+-- The current search mode does not pause the stream, so it's not ready for replacing tmux. Disbling the tmux mimic for now.
+-- config.leader = { key="s", mods="CTRL" }
 config.keys = {
   { key = "a",  mods = "LEADER|CTRL",  action = wezterm.action.SendString("\x13") },
   { key = "-",  mods = "LEADER",       action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
@@ -65,10 +66,13 @@ config.keys = {
   { key = "n",  mods = "LEADER",       action = wezterm.action.ActivateTabRelative(1) },
   { key = "s",  mods = "LEADER|CTRL",  action = wezterm.action.ActivateLastTab },
   { key = "[",  mods = "LEADER",       action = wezterm.action.ActivateCopyMode },
-  { key = " ",  mods = "CTRL",         action = wezterm.action.QuickSelect },
+  -- { key = " ",  mods = "CTRL",         action = wezterm.action.QuickSelect },
   { key = "?",  mods = "LEADER",       action = wezterm.action.ActivateCommandPalette },
-  { key = "/",  mods = "CTRL",         action = wezterm.action.Search({ CaseInSensitiveString = "" }) },
-  { key = "_",  mods = "CTRL|SHIFT",   action = wezterm.action.DisableDefaultAssignment },
+
+  -- { key = "/",   mods = "CTRL",       action = wezterm.action.Search({ CaseInSensitiveString = "" }) },
+  { key = "_",   mods = "CTRL|SHIFT", action = wezterm.action.DisableDefaultAssignment },
+  { key = "[",   mods = "CTRL",       action = wezterm.action.SendKey({ key = "Escape", mods = "NONE" }) },
+  { key = "Tab", mods = "CTRL",       action = wezterm.action.ActivateLastTab },
 }
 
 local copy_mode_keys = wezterm.gui.default_key_tables().copy_mode
@@ -155,10 +159,9 @@ config.mouse_bindings = {
   },
 }
 
-config.hide_tab_bar_if_only_one_tab = true
-config.tab_bar_at_bottom = true
+-- config.quick_select_remove_styling = true
 
-config.enable_scroll_bar = true
+config.hide_tab_bar_if_only_one_tab = true
 
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
   config.default_prog = { "C:/msys64/msys2_shell.cmd", "-defterm", "-here", "-no-start", "-ucrt64", "-use-full-path", "-shell", "fish" }

@@ -206,7 +206,18 @@ WezTerm uses the same leader key as tmux by my design, to provide a consistent u
 
         ```
         fisher install IlanCosman/tide@v6
+        ```
+
+        Configure it:
+
+        ```
         tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time='24-hour format' --rainbow_prompt_separators=Round --powerline_prompt_heads=Round --powerline_prompt_tails=Round --powerline_prompt_style='Two lines, character and frame' --prompt_connection=Dotted --powerline_right_prompt_frame=No --prompt_spacing=Compact --icons='Many icons' --transient=No
+        ```
+
+        For non-Nerd-font environment, use this instead:
+
+        ```
+        tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time='24-hour format' --rainbow_prompt_separators=Round --powerline_prompt_heads=Round --powerline_prompt_tails=Round --powerline_prompt_style='Two lines, character and frame' --prompt_connection=Dotted --powerline_right_prompt_frame=No --prompt_spacing=Compact --icons='Few icons' --transient=No
         ```
 
     2. Install [nvm.fish](https://github.com/jorgebucaran/nvm.fish)
