@@ -24,6 +24,8 @@ vim.opt.wrap = true
 vim.opt.mouse = ""
 vim.opt.background = "dark"
 
+vim.opt.ignorecase = true
+
 if package.config:sub(1,1) == '\\' then
   vim.opt.shellslash = true
 end
