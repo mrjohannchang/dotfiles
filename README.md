@@ -417,7 +417,7 @@ WezTerm uses the same leader key as tmux by my design, to provide a consistent u
         rem set MSYS=winsymlinks:nativestrict
         ```
 
-        and the following line in `C:\msys64\mingw64.ini`.
+        and the following line in `C:\msys64\ucrt64.ini`.
 
         ```
         #MSYS=winsymlinks:nativestrict
@@ -781,7 +781,7 @@ WezTerm uses the same leader key as tmux by my design, to provide a consistent u
 
             ```
             cat << EOF > /c/msys64/sshd-default-shell.cmd
-            C:\msys64\msys2_shell.cmd -defterm -here -no-start -mingw64 -shell fish
+            C:\msys64\msys2_shell.cmd -defterm -here -no-start -ucrt64 -shell fish
             EOF
             ```
 
