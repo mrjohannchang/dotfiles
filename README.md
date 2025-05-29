@@ -360,26 +360,22 @@ WezTerm uses the same leader key as tmux by my design, to provide a consistent u
 
     **Note:**
 
-    1. **Uncheck** Git LFS (Large File Support)
-    2. **Check** Use external OpenSSH
-    3. **Check** Enable symbolic links
+    1. **Uncheck** Windows Explorer integration
+    2. **Uncheck** Git LFS (Large File Support)
+    3. **Select** Checkout as-is, commit as-is
+    4. **Select** Only ever fast-forward
+    5. **Check** Enable symbolic links
 
-3. Install [OpenSSH](https://www.openssh.com/) Client if you haven't (should be installed by default). Open an **elevated** (Run as administrator) **PowerShell** session and execute the following command:
+3. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/): Download and extract [Monaspace.zip](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Monaspace.zip), move `*.otf` to `%WINDIR%\Fonts`.
 
-    ```
-    Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH.Client*' | Add-WindowsCapability -Online
-    ```
-
-4. Install [Nerd Fonts](https://www.nerdfonts.com/) patched [GitHub Next Monaspace](https://monaspace.githubnext.com/): Download and extract [Monaspace.zip](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Monaspace.zip), move `*.otf` to `%WINDIR%\Fonts`.
-
-5. Install [Python](https://www.python.org/downloads/)
+4. Install [Python](https://www.python.org/downloads/)
 
     **Note:** Install Python that's from the official website but not Microsoft Store
 
     1. Add Python to PATH
     2. Disable path length limit
 
-6. Install necessary packages via [winget](https://learn.microsoft.com/en-us/windows/package-manager/). In a regular Command Prompt or PowerShell session, execute the following commands:
+5. Install necessary packages via [winget](https://learn.microsoft.com/en-us/windows/package-manager/). In a regular Command Prompt or PowerShell session, execute the following commands:
 
     ```
     winget install --accept-package-agreements --accept-source-agreements --exact --id Microsoft.VCRedist.2015+.x64
@@ -397,11 +393,11 @@ WezTerm uses the same leader key as tmux by my design, to provide a consistent u
     winget install --accept-package-agreements --accept-source-agreements --exact --id wez.wezterm
     ```
 
-7. Install [Windows Terminal](https://www.microsoft.com/p/windows-terminal/9n0dx20hk701) if you haven't. It should be installed by default.
+6. Install [Windows Terminal](https://www.microsoft.com/p/windows-terminal/9n0dx20hk701) if you haven't. It should be installed by default.
 
-8. Enable **long file path support** from: Start > Local Group Policy Editor > Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem > Enable Win32 long paths
+7. Enable **long file path support** from: Start > Local Group Policy Editor > Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem > Enable Win32 long paths
 
-9. Enable the symbolic link support manually by:
+8. Enable the symbolic link support manually by:
 
     * Adding the current user to: Start > Local Security Policy > Security Settings > Local Policies > User Rights Assignment > Create symbolic links
 
@@ -413,7 +409,7 @@ WezTerm uses the same leader key as tmux by my design, to provide a consistent u
 
     Or simply enable [Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development) from: Settings > Update & Security > For developers > Developer Mode
 
-10. Configure MSYS2
+9. Configure MSYS2
 
     1. Enable the symbolic link support in MSYS2 by uncommenting the following line in `C:\msys64\msys2_shell.cmd`
 
@@ -452,7 +448,7 @@ WezTerm uses the same leader key as tmux by my design, to provide a consistent u
         pacman -Sy mingw-w64-ucrt-x86_64-clang
         ```
 
-11. Configure Windows Terminal.
+10. Configure Windows Terminal.
 
     1. Change key bindings. Go to Windows Terminal > Settings > Actions:
 
@@ -516,7 +512,7 @@ WezTerm uses the same leader key as tmux by my design, to provide a consistent u
 
     4. Config the terminal to use Monaspace Nerd Font and set your prefered text color scheme in Profiles > UCRT64 / MSYS2.
 
-12. Pre-installation
+11. Pre-installation
 
     1. Open an **elevated** (Run as administrator) **PowerShell** session and execute the following command. So that you can use `fsutil` in the later process. After the execution, you may need to restart your computer.
 
@@ -574,7 +570,7 @@ WezTerm uses the same leader key as tmux by my design, to provide a consistent u
         git config --global core.safecrlf warn
         ```
 
-13. Go to [Installation](#installation).
+12. Go to [Installation](#installation).
 
 ### Installation
 
