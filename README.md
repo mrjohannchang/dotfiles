@@ -815,3 +815,4 @@ rm -rf dotfiles
 ## Known Issues
 
 1. Windows Terminal 'fontFace' not working for any profile after system reboot. [#3257](https://github.com/microsoft/terminal/issues/3257)
+2. Warning "Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings" https://stackoverflow.com/a/66409838
