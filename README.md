@@ -583,7 +583,7 @@ WezTerm uses the same leader key as tmux by my design, to provide a consistent u
     cd dotfiles
     ```
 
-2. [**Windows Only**] Enable case sensitive support for sub-modules from a regular **PowerShell** session
+2. [**Windows Only**] Enable case sensitive support for sub-modules from a regular (**not** elevated) **PowerShell** session
 
     ```
     cd ~\workspace\dotfiles\3rdparties  # Assuming the dotfiles repository has been cloned into ~\workspace\dotfiles
@@ -615,7 +615,7 @@ WezTerm uses the same leader key as tmux by my design, to provide a consistent u
     nvm install lts
     ```
 
-7. Execute `tmux` (the command is `script -c tmux /dev/null` when using **Windows Terminal**) and press `<Ctrl>` + `s` `I` (uppercase i) to install plugins of tmux. It may take a few minutes. Please expect `tmux` frozen during the installation.
+7. Execute `tmux` and press `<Ctrl>` + `s` `I` (uppercase i) to install plugins of tmux. It may take a few minutes. Please expect `tmux` frozen during the installation.
 
 8. Execute `nvim` and install desired LSPs via `:Mason`.
 
