@@ -160,7 +160,7 @@ return {
   },
 
   {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = { "lua_ls" },
@@ -169,24 +169,11 @@ return {
           { "nvim-telescope/telescope.nvim" }, -- Use telescope for help actions
         },
       })
-      require("mason-lspconfig").setup_handlers({
-        -- The first entry (without a key) will be the default handler
-        -- and will be called for each installed server that doesn't have
-        -- a dedicated handler.
-        function(server_name) -- default handler (optional)
-          require("lspconfig")[server_name].setup({})
-        end,
-        -- Next, you can provide a dedicated handler for specific servers.
-        -- For example, a handler override for the `rust_analyzer`:
-        -- ["rust_analyzer"] = function ()
-        --   require("rust-tools").setup {}
-        -- end
-      })
     end,
     dependencies = {
       { "neovim/nvim-lspconfig" },
       {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
         config = function()
           require("mason").setup({
             PATH = "append",
@@ -468,7 +455,7 @@ return {
       end, { expr = true })
     end,
     dependencies = {
-      { "williamboman/mason-lspconfig.nvim" },
+      { "mason-org/mason-lspconfig.nvim" },
     }
   },
 
@@ -484,7 +471,7 @@ return {
     end,
     dependencies = {
       { "Bilal2453/luvit-meta", lazy = true },
-      { "williamboman/mason-lspconfig.nvim" },
+      { "mason-org/mason-lspconfig.nvim" },
     },
     opts = {
       library = {
@@ -499,7 +486,7 @@ return {
     "folke/trouble.nvim",
     cmd = "Trouble",
     dependencies = {
-      { "williamboman/mason-lspconfig.nvim" },
+      { "mason-org/mason-lspconfig.nvim" },
     },
     keys = {
       {
