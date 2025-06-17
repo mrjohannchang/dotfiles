@@ -4,7 +4,7 @@ vim.opt.cursorcolumn = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
-vim.opt.tabstop = 4
+vim.opt.tabstop = 8
 
 vim.opt.fileformats = "unix,dos"
 
