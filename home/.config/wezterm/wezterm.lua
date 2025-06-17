@@ -162,6 +162,7 @@ config.mouse_bindings = {
 -- config.quick_select_remove_styling = true
 
 config.hide_tab_bar_if_only_one_tab = true
+config.tab_bar_at_bottom = true
 
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
   config.default_prog = { "C:/msys64/msys2_shell.cmd", "-defterm", "-here", "-no-start", "-ucrt64", "-use-full-path", "-shell", "fish" }
