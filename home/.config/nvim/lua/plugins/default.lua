@@ -116,6 +116,7 @@ return {
           },
         },
       })
+      require("copilot.command").disable()
     end,
     event = "InsertEnter",
   },
