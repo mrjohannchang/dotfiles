@@ -73,6 +73,8 @@ config.keys = {
   { key = "_",   mods = "CTRL|SHIFT", action = wezterm.action.DisableDefaultAssignment },
   { key = "[",   mods = "CTRL",       action = wezterm.action.SendKey({ key = "Escape", mods = "NONE" }) },
   { key = "Tab", mods = "CTRL",       action = wezterm.action.ActivateLastTab },
+
+  { key = 'Enter', mods = 'ALT', action = wezterm.action.DisableDefaultAssignment },  -- disable alt-enter keybinding
 }
 
 local copy_mode_keys = wezterm.gui.default_key_tables().copy_mode
