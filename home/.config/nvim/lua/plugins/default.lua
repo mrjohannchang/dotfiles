@@ -162,25 +162,12 @@ return {
 
   {
     "mason-org/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls" },
-        dependencies = {
-          { "nvim-lua/plenary.nvim" },
-          { "nvim-telescope/telescope.nvim" }, -- Use telescope for help actions
-        },
-      })
-    end,
+    opts = {
+      ensure_installed = { "lua_ls", "rust_analyzer" },
+    },
     dependencies = {
-      { "neovim/nvim-lspconfig" },
-      {
-        "mason-org/mason.nvim",
-        config = function()
-          require("mason").setup({
-            PATH = "append",
-          })
-        end,
-      },
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
     },
   },
 
